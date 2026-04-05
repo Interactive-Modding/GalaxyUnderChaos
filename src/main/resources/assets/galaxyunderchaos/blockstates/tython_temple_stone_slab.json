@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "galaxyunderchaos:block/tython_temple_stone_slab"
+    },
+    "type=top": {
+      "model": "galaxyunderchaos:block/tython_temple_stone_slab",
+      "x": 180,
+      "y": 0
+    },
+    "type=double": {
+      "model": "galaxyunderchaos:block/tython_temple_stone"
+    }
+  }
+}

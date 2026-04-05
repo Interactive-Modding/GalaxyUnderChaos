@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column_horizontal",
+  "textures": {
+    "end": "galaxyunderchaos:block/temple_stone_holobook_top",
+    "side": "galaxyunderchaos:block/temple_stone_holobook_side"
+  }
+}

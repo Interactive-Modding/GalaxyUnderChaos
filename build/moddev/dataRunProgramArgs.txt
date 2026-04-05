@@ -1,0 +1,29 @@
+# Main Class
+cpw.mods.bootstraplauncher.BootstrapLauncher
+
+# NeoForge Run-Type Program Arguments
+--launchTarget
+forgedatadev
+--assetIndex
+17
+--assetsDir
+/Users/dj17/.gradle/caches/neoformruntime/assets
+--gameDir
+.
+--fml.fmlVersion
+4.0.39
+--fml.mcVersion
+1.21.1
+--fml.neoForgeVersion
+21.1.169
+--fml.neoFormVersion
+20240808.144430
+
+# User Supplied Program Arguments
+--mod
+galaxyunderchaos
+--all
+--output
+/Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/src/generated/resources
+--existing
+/Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/src/main/resources

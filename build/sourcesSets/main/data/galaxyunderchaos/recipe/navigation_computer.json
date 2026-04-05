@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "hyperdrive",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:redstone"
+    },
+    "R": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "galaxyunderchaos:titanium_ingot"
+    },
+    "X": {
+      "item": "minecraft:compass"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "#X#",
+    "#R#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:navigation_computer"
+  }
+}

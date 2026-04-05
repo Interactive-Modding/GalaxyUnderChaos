@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hyperdrive",
+  "key": {
+    "#": {
+      "item": "minecraft:snowball"
+    },
+    "X": {
+      "item": "galaxyunderchaos:portal_item"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:ilum_portal"
+  },
+  "show_notification": true
+}

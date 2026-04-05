@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:tython_temple_chair_5"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "galaxyunderchaos:blocks/tython_temple_chair_5"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "galaxyunderchaos:add_item",
+  "conditions": [
+    {
+      "condition": "minecraft:all_of",
+      "terms": [
+        {
+          "condition": "forge:loot_table_id",
+          "loot_table_id": "minecraft:chests/desert_pyramid"
+        },
+        {
+          "chance": 0.1,
+          "condition": "minecraft:random_chance"
+        }
+      ]
+    }
+  ],
+  "item": "galaxyunderchaos:aegis_hilt"
+}

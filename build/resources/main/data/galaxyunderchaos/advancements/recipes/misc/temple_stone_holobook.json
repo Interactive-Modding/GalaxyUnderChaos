@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jedi_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:jedi_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:temple_stone_holobook"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_jedi_holobook",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:temple_stone_holobook"
+    ]
+  },
+  "sends_telemetry_event": false
+}

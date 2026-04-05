@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[51,)"
+license="MIT"
+issueTrackerURL="https://github.com/Darth-Vitiate/GalaxyUnderChaosMod/issues"
+[[mods]]
+modId="galaxyunderchaos"
+version="0.0.1"
+displayName="Galaxy Under Chaos"
+# This is a short description of your mod.
+description='''
+A mod that introduces the galaxy from far far away.
+'''
+
+# Optional (default=empty). Update URL for your mod.
+updateJSONURL="https://yourupdateurl/update.json"
+
+# Optional (default=empty). A URL to a "homepage" for the mod, displayed in the mod UI.
+displayURL="https://github.com/Darth-Vitiate/GalaxyUnderChaosMod"
+
+# A list of credits for the mod, can be left empty.
+credits="Thanks to all the contributors!"
+
+# A list of authors for the mod, can be left empty.
+authors="Vitiate"

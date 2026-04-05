@@ -1,0 +1,34 @@
+{
+  "mappings": {
+    "client/mixin/HumanoidModelMixin": {
+      "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V": "Lnet/minecraft/client/model/HumanoidModel;m_6973_(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V"
+    },
+    "client/mixin/RenderStateShardAccessor": {
+      "POSITION_COLOR_SHADER": "f_173104_:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;",
+      "NO_LIGHTMAP": "f_110153_:Lnet/minecraft/client/renderer/RenderStateShard$LightmapStateShard;",
+      "COLOR_DEPTH_WRITE": "f_110114_:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;",
+      "NO_OVERLAY": "f_110155_:Lnet/minecraft/client/renderer/RenderStateShard$OverlayStateShard;",
+      "COLOR_WRITE": "f_110115_:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;",
+      "LIGHTNING_TRANSPARENCY": "f_110136_:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;",
+      "NO_TRANSPARENCY": "f_110134_:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;",
+      "NO_CULL": "f_110110_:Lnet/minecraft/client/renderer/RenderStateShard$CullStateShard;"
+    }
+  },
+  "data": {
+    "searge": {
+      "client/mixin/HumanoidModelMixin": {
+        "setupAnim(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V": "Lnet/minecraft/client/model/HumanoidModel;m_6973_(Lnet/minecraft/world/entity/LivingEntity;FFFFF)V"
+      },
+      "client/mixin/RenderStateShardAccessor": {
+        "POSITION_COLOR_SHADER": "f_173104_:Lnet/minecraft/client/renderer/RenderStateShard$ShaderStateShard;",
+        "NO_LIGHTMAP": "f_110153_:Lnet/minecraft/client/renderer/RenderStateShard$LightmapStateShard;",
+        "COLOR_DEPTH_WRITE": "f_110114_:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;",
+        "NO_OVERLAY": "f_110155_:Lnet/minecraft/client/renderer/RenderStateShard$OverlayStateShard;",
+        "COLOR_WRITE": "f_110115_:Lnet/minecraft/client/renderer/RenderStateShard$WriteMaskStateShard;",
+        "LIGHTNING_TRANSPARENCY": "f_110136_:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;",
+        "NO_TRANSPARENCY": "f_110134_:Lnet/minecraft/client/renderer/RenderStateShard$TransparencyStateShard;",
+        "NO_CULL": "f_110110_:Lnet/minecraft/client/renderer/RenderStateShard$CullStateShard;"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "type": "galaxyunderchaos:ashla_type",
+    "generator": {
+        "type": "minecraft:noise",
+        "biome_source": {
+            "type": "minecraft:fixed",
+            "biome": "galaxyunderchaos:ashla_biome"
+        },
+        "settings": "galaxyunderchaos:ashla_noise_settings"
+    }
+}

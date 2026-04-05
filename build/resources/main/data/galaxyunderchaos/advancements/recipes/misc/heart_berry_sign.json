@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_heart_berry_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:heart_berry_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:heart_berry_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_heart_berry_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:heart_berry_sign"
+    ]
+  },
+  "sends_telemetry_event": false
+}

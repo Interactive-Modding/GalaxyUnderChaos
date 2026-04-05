@@ -1,0 +1,15 @@
+Java Launcher: /Users/dj17/Library/Java/JavaVirtualMachines/corretto-17.0.18/Contents/Home/bin/java
+Arguments: '--task, SRG_TO_MCP, --input, /Users/dj17/.gradle/caches/modules-2/files-2.1/curse.maven/citadel-331936/7476570/fb0b1fa96ce28e4be77b38ad95d83c3da7ec8316/citadel-331936-7476570.jar, --output, /Users/dj17/.gradle/caches/forge_gradle/deobf_dependencies/curse/maven/citadel-331936/7476570_mapped_official_1.20.1/citadel-331936-7476570_mapped_official_1.20.1.jar, --mcp, /Users/dj17/.gradle/caches/forge_gradle/mcp_repo/net/minecraft/mapping/1.20.1/mapping-1.20.1-mapping.zip, --strip-signatures'
+Classpath:
+ - /Users/dj17/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/installertools/1.4.4/installertools-1.4.4-fatjar.jar
+Working directory: /Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/build/_RenameSrg2Mcp_-1846780578
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  /Users/dj17/.gradle/caches/modules-2/files-2.1/curse.maven/citadel-331936/7476570/fb0b1fa96ce28e4be77b38ad95d83c3da7ec8316/citadel-331936-7476570.jar
+Output: /Users/dj17/.gradle/caches/forge_gradle/deobf_dependencies/curse/maven/citadel-331936/7476570_mapped_official_1.20.1/citadel-331936-7476570_mapped_official_1.20.1.jar
+MCP:    /Users/dj17/.gradle/caches/forge_gradle/mcp_repo/net/minecraft/mapping/1.20.1/mapping-1.20.1-mapping.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Process complete

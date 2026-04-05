@@ -1,0 +1,9 @@
+
+{
+  "variants": {
+    "facing=north": { "model": "galaxyunderchaos:block/council_chair_3" },
+    "facing=east":  { "model": "galaxyunderchaos:block/council_chair_3", "y": 90 },
+    "facing=south": { "model": "galaxyunderchaos:block/council_chair_3", "y": 180 },
+    "facing=west":  { "model": "galaxyunderchaos:block/council_chair_3", "y": 270 }
+  }
+}

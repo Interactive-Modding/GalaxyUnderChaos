@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+	  "galaxyunderchaos:ak_log",
+	  "galaxyunderchaos:ak_wood",
+    "galaxyunderchaos:stripped_ak_wood",
+    "galaxyunderchaos:stripped_ak_log"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "temperature": 0.8,
+  "downfall": 0.6,
+  "has_precipitation": true,
+  "effects": {
+    "sky_color": 46578,
+    "fog_color": 12638463,
+    "water_color": 2069949,
+    "water_fog_color": 329011,
+    "grass_color": 7505193,
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    }
+  },
+  "spawners": {
+    "creature": [],
+    "monster": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [],
+    [
+      "minecraft:lake_lava_underground",
+      "minecraft:lake_lava_surface"
+    ],
+    [],
+    [
+      "minecraft:monster_room"
+    ],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower"
+    ],
+    [],
+    [
+      "minecraft:spring_water"
+    ],
+    [
+      "galaxyunderchaos:ak_pine_placed",
+      "galaxyunderchaos:heart_berry_placed",
+      "minecraft:glow_lichen",
+      "minecraft:patch_large_fern",
+      "minecraft:flower_default",
+      "minecraft:patch_grass_taiga_2",
+      "minecraft:patch_dead_bush",
+      "minecraft:patch_sugar_cane",
+      "minecraft:patch_pumpkin",
+      "minecraft:patch_berry_common"
+    ],
+    [
+      "minecraft:freeze_top_layer"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "galaxyunderchaos:block/tython_temple_chair_1" },
+    "facing=east":  { "model": "galaxyunderchaos:block/tython_temple_chair_1", "y": 90 },
+    "facing=south": { "model": "galaxyunderchaos:block/tython_temple_chair_1", "y": 180 },
+    "facing=west":  { "model": "galaxyunderchaos:block/tython_temple_chair_1", "y": 270 }
+  }
+}

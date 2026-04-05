@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "lightsaber",
+  "key": {
+    "#": {
+      "item": "minecraft:gray_concrete"
+    },
+    "X": {
+      "item": "galaxyunderchaos:ancient_holobook"
+    },
+    "C": {
+      "item": "minecraft:light_gray_concrete"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:lightsaber_crafting_table"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sith_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:sith_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:bleeding_table"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sith_holobook",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:bleeding_table"
+    ]
+  },
+  "sends_telemetry_event": false
+}

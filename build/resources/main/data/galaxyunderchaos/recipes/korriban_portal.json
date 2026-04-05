@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hyperdrive",
+  "key": {
+    "#": {
+      "item": "minecraft:red_sand"
+    },
+    "X": {
+      "item": "galaxyunderchaos:portal_item"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:korriban_portal"
+  },
+  "show_notification": true
+}

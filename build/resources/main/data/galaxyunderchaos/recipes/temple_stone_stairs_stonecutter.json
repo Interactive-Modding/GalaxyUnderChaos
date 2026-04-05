@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "group": "misc",
+  "ingredient": {
+    "item": "galaxyunderchaos:temple_stone"
+  },
+  "result": "galaxyunderchaos:temple_stone_stairs"
+}

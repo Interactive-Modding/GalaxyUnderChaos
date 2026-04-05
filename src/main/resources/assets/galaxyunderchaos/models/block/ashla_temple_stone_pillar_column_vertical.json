@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "galaxyunderchaos:block/ashla_temple_stone_pillar_top",
+    "side": "galaxyunderchaos:block/ashla_temple_stone_pillar_side"
+  }
+}

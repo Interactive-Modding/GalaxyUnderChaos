@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "chitin_fragments",
+  "ingredient": {
+    "item": "galaxyunderchaos:chitin_fragments"
+  },
+  "result": {
+    "id": "galaxyunderchaos:acid_forged_plate"
+  }
+}

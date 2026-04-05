@@ -1,0 +1,95 @@
+{
+  "carvers": {
+    "air": [
+      "minecraft:cave",
+      "minecraft:cave_extra_underground",
+      "minecraft:canyon"
+    ]
+  },
+  "downfall": 0.5,
+  "effects": {
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "sky_color": 9613498,
+    "water_color": 6050877,
+    "water_fog_color": 6050877,
+    "fog_color": 14083839,
+    "grass_color": 5458976,
+    "foliage_color": 5722926
+  },
+  "features": [
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "minecraft:amethyst_geode"
+    ],
+    [
+      "minecraft:monster_room_deep"
+    ],
+    [],
+    [],
+    [
+      "minecraft:ore_gravel",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_tuff",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_redstone_lower",
+      "minecraft:ore_diamond_buried",
+      "minecraft:ore_lapis_buried",
+      "minecraft:underwater_magma",
+      "minecraft:disk_gravel"
+    ],
+    [],
+    [
+      "minecraft:spring_water"
+    ],
+    [
+      "minecraft:glow_lichen",
+      "minecraft:seagrass_simple",
+      "minecraft:kelp_cold"
+    ],
+    []
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "underground_water_creature": [
+      {
+        "type": "minecraft:glow_squid",
+        "maxCount": 6,
+        "minCount": 3,
+        "weight": 10
+      }
+    ],
+    "water_ambient": [
+      {
+        "type": "minecraft:cod",
+        "maxCount": 6,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
+    "water_creature": [
+      {
+        "type": "minecraft:squid",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
+      }
+    ]
+  },
+  "temperature": 0.5
+}

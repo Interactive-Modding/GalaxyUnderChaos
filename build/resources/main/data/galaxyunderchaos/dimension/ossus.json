@@ -1,0 +1,72 @@
+{
+  "type": "galaxyunderchaos:ossus_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:ossus_forest",
+          "parameters": {
+            "continentalness": 0.2,
+            "depth": 0.1,
+            "erosion": 0.3,
+            "humidity": 0.7,
+            "offset": 0.0,
+            "temperature": 0.6,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:ossus_plains",
+          "parameters": {
+            "continentalness": 0.3,
+            "depth": 0.0,
+            "erosion": 0.2,
+            "humidity": 0.4,
+            "offset": 0.0,
+            "temperature": 0.8,
+            "weirdness": 0.1
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:ossus_mountains",
+          "parameters": {
+            "continentalness": 0.4,
+            "depth": 0.2,
+            "erosion": 0.3,
+            "humidity": 0.5,
+            "offset": 0.0,
+            "temperature": 0.4,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:ossus_ocean",
+          "parameters": {
+            "continentalness": -0.2,
+            "depth": -0.3,
+            "erosion": 0.2,
+            "humidity": 0.6,
+            "offset": 0.0,
+            "temperature": 0.5,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:ossus_deep_ocean",
+          "parameters": {
+            "continentalness": -0.3,
+            "depth": -0.5,
+            "erosion": 0.1,
+            "humidity": 0.7,
+            "offset": 0.0,
+            "temperature": 0.5,
+            "weirdness": 0.0
+          }
+        }
+      ]
+    },
+    "settings": "galaxyunderchaos:ossus_noise_settings"
+  }
+}

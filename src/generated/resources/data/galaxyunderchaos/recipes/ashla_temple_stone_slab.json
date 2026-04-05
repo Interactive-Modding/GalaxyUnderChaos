@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "misc",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:ashla_temple_stone"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "galaxyunderchaos:ashla_temple_stone_slab"
+  },
+  "show_notification": true
+}

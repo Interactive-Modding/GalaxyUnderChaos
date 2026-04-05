@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "galaxyunderchaos:tython_temple_stone"
+    },
+    "result": {
+        "id": "galaxyunderchaos:chiseled_tython_temple_stone",
+        "count": 1
+    },
+    "group": "misc"
+}

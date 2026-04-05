@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column_horizontal",
+  "textures": {
+    "end": "galaxyunderchaos:block/chiseled_tython_temple_stone",
+    "side": "galaxyunderchaos:block/chiseled_tython_temple_stone"
+  }
+}

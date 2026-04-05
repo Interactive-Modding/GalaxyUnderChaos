@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "hyperdrive",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:chromium_ingot"
+    },
+    "X": {
+      "item": "galaxyunderchaos:titanium_ingot"
+    }
+  },
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:titanium_chromium_ingot"
+  }
+}

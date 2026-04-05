@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "galaxyunderchaos:block/heart_berry_planks"
+  }
+}

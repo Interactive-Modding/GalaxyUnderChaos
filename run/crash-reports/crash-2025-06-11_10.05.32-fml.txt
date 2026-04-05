@@ -1,0 +1,102 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 2025-06-11 10:05:32
+Description: Mod loading failures have occurred; consult the issue messages for more details
+
+net.neoforged.neoforge.logging.CrashReportExtender$ModLoadingCrashException: Mod loading has failed
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at TRANSFORMER/neoforge@21.1.169/net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent.put(EntityAttributeCreationEvent.java:32) ~[neoforge-21.1.169.jar%23185!/:?] {re:classloading}
+-- Mod loading issue for: galaxyunderchaos --
+Details:
+	Mod file: /Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/build/classes/java/main/
+	Failure message: Galaxy Under Chaos (galaxyunderchaos) encountered an error while dispatching the net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent event
+		java.lang.IllegalStateException: Duplicate DefaultAttributes entry: entity.galaxyunderchaos.acid_spider
+	Mod version: 0.0.2
+	Mod issues URL: <No issues URL found>
+	Exception message: java.lang.IllegalStateException: Duplicate DefaultAttributes entry: entity.galaxyunderchaos.acid_spider
+Stacktrace:
+	at TRANSFORMER/neoforge@21.1.169/net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent.put(EntityAttributeCreationEvent.java:32) ~[neoforge-21.1.169.jar%23185!/:?] {re:classloading}
+	at TRANSFORMER/galaxyunderchaos@0.0.2/client.renderer.CommonEntityEvents.onRegisterAttributes(CommonEntityEvents.java:28) ~[%23186!/:?] {re:classloading}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.2.jar%23144!/:?] {}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:329) ~[bus-8.0.2.jar%23144!/:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:177) ~[loader-4.0.39.jar%23140!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.ModLoader.lambda$postEvent$13(ModLoader.java:358) ~[loader-4.0.39.jar%23140!/:4.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.ModList.forEachModInOrder(ModList.java:174) ~[loader-4.0.39.jar%23140!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.39/net.neoforged.fml.ModLoader.postEvent(ModLoader.java:358) ~[loader-4.0.39.jar%23140!/:4.0] {}
+	at TRANSFORMER/neoforge@21.1.169/net.neoforged.neoforge.common.CommonHooks.modifyAttributes(CommonHooks.java:1103) ~[neoforge-21.1.169.jar%23185!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.1.169/net.neoforged.neoforge.registries.GameData.postRegisterEvents(GameData.java:103) ~[neoforge-21.1.169.jar%23185!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.1.169/net.neoforged.neoforge.internal.CommonModLoader.lambda$begin$0(CommonModLoader.java:54) ~[neoforge-21.1.169.jar%23185!/:?] {re:classloading}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.1
+	Minecraft Version ID: 1.21.1
+	Operating System: Mac OS X (x86_64) version 15.5
+	Java Version: 21.0.6, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 123968928 bytes (118 MiB) / 503316480 bytes (480 MiB) up to 4294967296 bytes (4096 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz
+	Identifier: Intel64 Family 6 Model 126 Stepping 5
+	Microarchitecture: Ice Lake (Client)
+	Frequency (GHz): 2.30
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel Iris Plus Graphics
+	Graphics card #0 vendor: Intel
+	Graphics card #0 VRAM (MiB): 1536.00
+	Graphics card #0 deviceId: 0x8a53
+	Graphics card #0 versionInfo: Revision ID: 0x0007
+	Memory slot #0 capacity (MiB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.73
+	Memory slot #0 type: LPDDR4X
+	Memory slot #1 capacity (MiB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.73
+	Memory slot #1 type: LPDDR4X
+	Virtual memory max (MiB): 18432.00
+	Virtual memory used (MiB): 11835.10
+	Swap memory total (MiB): 2048.00
+	Swap memory used (MiB): 1069.00
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 327122.34, total: 476802.03
+	Space in storage for workdir (MiB): available: 327122.34, total: 476802.03
+	JVM Flags: 0 total; 
+	ModLauncher: 11.0.4+main.d2e20e43
+	ModLauncher launch target: forgeclientdev
+	ModLauncher services: 
+		sponge-mixin-0.15.2+mixin.0.8.7.jar mixin PLUGINSERVICE 
+		loader-4.0.39.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.39.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.39.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.4.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.4.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		main                                              |Galaxy Under Chaos            |galaxyunderchaos              |0.0.2               |Manifest: NOSIGNATURE
+		neoforge-21.1.169.jar                             |Minecraft                     |minecraft                     |1.21.1              |Manifest: NOSIGNATURE
+		neoforge-21.1.169.jar                             |NeoForge                      |neoforge                      |21.1.169            |Manifest: NOSIGNATURE
+	Crash Report UUID: 78ee2840-c537-406a-a7e2-0e8d4651088c
+	FML: 4.0.39
+	NeoForge: 21.1.169

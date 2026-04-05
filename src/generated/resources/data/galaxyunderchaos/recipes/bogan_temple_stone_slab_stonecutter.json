@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "misc",
+  "ingredient": {
+    "item": "galaxyunderchaos:bogan_temple_stone"
+  },
+  "result": "galaxyunderchaos:bogan_temple_stone_slab"
+}

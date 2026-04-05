@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:tython_temple_stone_slab_stonecutter"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tython_temple_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:tython_temple_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tython_temple_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:tython_temple_stone_slab_stonecutter"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "galaxyunderchaos:block/sith_holocron" },
+    "facing=east": { "model": "galaxyunderchaos:block/sith_holocron", "y": 90 },
+    "facing=south": { "model": "galaxyunderchaos:block/sith_holocron", "y": 180 },
+    "facing=west": { "model": "galaxyunderchaos:block/sith_holocron", "y": 270 }
+  }
+}

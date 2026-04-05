@@ -1,0 +1,185 @@
+---- Minecraft Crash Report ----
+// Everything's going to plan. No, really, that was supposed to happen.
+
+Time: 2025-05-09 19:18:09
+Description: Initializing game
+
+net.minecraftforge.fml.ModLoadingException: Galaxy Under Chaos (galaxyunderchaos) encountered an error during the common_setup event phase
+§7java.lang.NullPointerException: Registry Object not present: galaxyunderchaos:ak_boat
+	at LAYER PLUGIN/net.minecraftforge.javafmlmod@1.21.1-52.1.0/net.minecraftforge.fml.javafmlmod.FMLModContainer.acceptEvent(FMLModContainer.java:189) ~[javafmllanguage-1.21.1-52.1.0.jar:52.1.0]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModLoader.lambda$postEvent$21(ModLoader.java:352) ~[fmlcore-1.21.1-52.1.0.jar:1.0]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModList.forEachModInOrder(ModList.java:222) ~[fmlcore-1.21.1-52.1.0.jar:1.0]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModLoader.postEvent(ModLoader.java:352) ~[fmlcore-1.21.1-52.1.0.jar:1.0]
+	at TRANSFORMER/net.minecraftforge.forge@52.1.0/net.minecraftforge.client.ForgeHooksClient.initClientHooks(ForgeHooksClient.java:999) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.<init>(Minecraft.java:587) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:212) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:85) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:69) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:77) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:97) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:116) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:75) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17) [modlauncher-10.2.4.jar!/:?]
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188) [bootstrap-2.1.8.jar!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19) [bootstrap-2.1.8.jar:2.1.8]
+Caused by: java.lang.NullPointerException: Registry Object not present: galaxyunderchaos:ak_boat
+	at TRANSFORMER/net.minecraftforge.forge@52.1.0/net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:193) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%231!/:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/client.renderer.ClientModEvents.registerRenderers(ModClientEvents.java:28) ~[main/:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/client.renderer.__ClientModEvents_registerRenderers_RegisterRenderers.invoke(.dynamic) ~[main/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:46) ~[eventbus-6.2.27.jar:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-6.2.27.jar:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.eventbus/net.minecraftforge.eventbus.EventBus.post(EventBus.java:288) ~[eventbus-6.2.27.jar:?]
+	at LAYER PLUGIN/net.minecraftforge.javafmlmod@1.21.1-52.1.0/net.minecraftforge.fml.javafmlmod.FMLModContainer.acceptEvent(FMLModContainer.java:185) ~[javafmllanguage-1.21.1-52.1.0.jar:52.1.0]
+	... 22 more
+Transformer Audit:
+  client.renderer.ClientModEvents
+    REASON: classloading
+    PLUGIN: eventbus:AFTER
+  client.renderer.__ClientModEvents_registerRenderers_RegisterRenderers
+    REASON: classloading
+    PLUGIN: eventbus:BEFORE
+  net.minecraft.client.Minecraft
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+    PLUGIN: runtimedistcleaner:AFTER
+  net.minecraft.client.main.Main
+    REASON: classloading
+  net.minecraftforge.client.ForgeHooksClient
+    REASON: classloading
+  net.minecraftforge.registries.RegistryObject
+    REASON: classloading
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Suspected Mod: 
+	Galaxy Under Chaos (galaxyunderchaos), Version: 0.0.1
+		Issue tracker URL: https://github.com/Darth-Vitiate/GalaxyUnderChaosMod/issues
+		at TRANSFORMER/galaxyunderchaos@0.0.1/client.renderer.ClientModEvents.registerRenderers(ModClientEvents.java:28)
+Stacktrace:
+	at LAYER PLUGIN/net.minecraftforge.javafmlmod@1.21.1-52.1.0/net.minecraftforge.fml.javafmlmod.FMLModContainer.acceptEvent(FMLModContainer.java:189) ~[javafmllanguage-1.21.1-52.1.0.jar!/:52.1.0]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModLoader.lambda$postEvent$21(ModLoader.java:352) ~[fmlcore-1.21.1-52.1.0.jar!/:1.0]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModList.forEachModInOrder(ModList.java:222) ~[fmlcore-1.21.1-52.1.0.jar!/:1.0]
+	at LAYER PLUGIN/net.minecraftforge.fmlcore@1.21.1-52.1.0/net.minecraftforge.fml.ModLoader.postEvent(ModLoader.java:352) ~[fmlcore-1.21.1-52.1.0.jar!/:1.0]
+	at TRANSFORMER/net.minecraftforge.forge@52.1.0/net.minecraftforge.client.ForgeHooksClient.initClientHooks(ForgeHooksClient.java:999) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%231!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.<init>(Minecraft.java:587) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+Transformer Audit:
+  net.minecraft.client.Minecraft
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+    PLUGIN: runtimedistcleaner:AFTER
+  net.minecraftforge.client.ForgeHooksClient
+    REASON: classloading
+-- Initialization --
+Details:
+	Modules: 
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:212) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:85) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:69) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:77) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:97) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:116) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:75) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17) [modlauncher-10.2.4.jar!/:?]
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188) [bootstrap-2.1.8.jar!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19) [bootstrap-2.1.8.jar:2.1.8]
+Transformer Audit:
+  net.minecraft.client.main.Main
+    REASON: classloading
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.1
+	Minecraft Version ID: 1.21.1
+	Operating System: Mac OS X (x86_64) version 15.4.1
+	Java Version: 21.0.6, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 79690864 bytes (75 MiB) / 415236096 bytes (396 MiB) up to 4294967296 bytes (4096 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz
+	Identifier: Intel64 Family 6 Model 126 Stepping 5
+	Microarchitecture: Ice Lake (Client)
+	Frequency (GHz): 2.30
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel Iris Plus Graphics
+	Graphics card #0 vendor: Intel
+	Graphics card #0 VRAM (MiB): 1536.00
+	Graphics card #0 deviceId: 0x8a53
+	Graphics card #0 versionInfo: Revision ID: 0x0007
+	Memory slot #0 capacity (MiB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.73
+	Memory slot #0 type: LPDDR4X
+	Memory slot #1 capacity (MiB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.73
+	Memory slot #1 type: LPDDR4X
+	Virtual memory max (MiB): 20480.00
+	Virtual memory used (MiB): 13897.31
+	Swap memory total (MiB): 4096.00
+	Swap memory used (MiB): 3249.50
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 329692.03, total: 476802.03
+	Space in storage for workdir (MiB): available: 329692.03, total: 476802.03
+	JVM Flags: 1 total; -Xss1M
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.3.3+5
+	Backend API: Intel(R) Iris(TM) Plus Graphics OpenGL Engine GL version 4.1 INTEL-23.0.26, Intel Inc.
+	Window size: <not initialized>
+	GFLW Platform: cocoa
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: <disabled>
+	Is Modded: Definitely; Client brand changed to 'forge'
+	Universe: 404
+	Type: Client (map_client.txt)
+	Locale: en_US
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 8x Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz
+	ModLauncher: 10.2.4
+	ModLauncher launch target: forge_userdev_client
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/ slf4jfixer PLUGINSERVICE 
+		/ runtimedistcleaner PLUGINSERVICE 
+		/ runtime_enum_extender PLUGINSERVICE 
+		/ object_holder_definalize PLUGINSERVICE 
+		/ capability_token_subclass PLUGINSERVICE 
+		/ accesstransformer PLUGINSERVICE 
+		/ eventbus PLUGINSERVICE 
+		/ mixin PLUGINSERVICE 
+		/ fml TRANSFORMATIONSERVICE 
+		/ mixin TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@52
+		javafml@52.1.0
+	Mod List: 
+		                                                  |Minecraft                     |minecraft                     |1.21.1              |COMMON_SET|Manifest: NOSIGNATURE
+		                                                  |Forge                         |forge                         |52.1.0              |COMMON_SET|Manifest: NOSIGNATURE
+		main                                              |Galaxy Under Chaos            |galaxyunderchaos              |0.0.1               |COMMON_SET|Manifest: NOSIGNATURE
+	Crash Report UUID: 08207abf-b831-4c72-90ba-e83554112bfe
+	FML: 0.0
+	Forge: net.minecraftforge:52.1.0

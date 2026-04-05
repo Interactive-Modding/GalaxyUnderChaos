@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0.0,
+    "size": 3,
+    "targets": [
+      {
+        "state": {
+          "Name": "galaxyunderchaos:white_crystal_ore",
+          "Properties": {
+            "facing": "up"
+          }
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:stone_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

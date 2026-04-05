@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_wingmaw_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:raw_wingmaw_meat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:cooked_wingmaw_meat_by_smelting_raw_wingmaw_meat"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_wingmaw_meat",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:cooked_wingmaw_meat_by_smelting_raw_wingmaw_meat"
+    ]
+  },
+  "sends_telemetry_event": false
+}

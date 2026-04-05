@@ -1,0 +1,53 @@
+{
+  "lightsaber_hit": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_hit",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_hit0",
+      "galaxyunderchaos:lightsaber_hit1",
+      "galaxyunderchaos:lightsaber_hit3"
+    ]
+  },
+  "lightsaber_on": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_on",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_on"
+    ]
+  },
+  "lightsaber_swing": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_swing",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_swing0",
+      "galaxyunderchaos:lightsaber_swing1",
+      "galaxyunderchaos:lightsaber_swing2",
+      "galaxyunderchaos:lightsaber_swing3",
+      "galaxyunderchaos:lightsaber_swing4",
+      "galaxyunderchaos:lightsaber_swing5",
+      "galaxyunderchaos:lightsaber_swing6",
+      "galaxyunderchaos:lightsaber_swing7"
+    ]
+  },
+  "lightsaber_idle": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_idle",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_idle"
+    ]
+  },
+  "lightsaber_off": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_off",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_off"
+    ]
+  },
+  "hyperspace": {
+    "subtitle": "sounds.galaxyunderchaos.hyperspace",
+    "sounds": [
+      "galaxyunderchaos:hyperspace"
+    ]
+  },
+  "lightsaber_deflect": {
+    "subtitle": "sounds.galaxyunderchaos.lightsaber_deflect",
+    "sounds": [
+      "galaxyunderchaos:lightsaber_deflect"
+    ]
+  }
+}

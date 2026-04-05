@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "wooden_slab",
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:heart_berry_planks"
+        }
+    },
+    "pattern": [
+        "###"
+    ],
+    "result": {
+        "count": 6,
+        "id": "galaxyunderchaos:heart_berry_slab"
+    }
+}

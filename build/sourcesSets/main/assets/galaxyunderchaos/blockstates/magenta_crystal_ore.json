@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": { "model": "galaxyunderchaos:block/magenta_crystal_ore" },
+    "facing=down": { "model": "galaxyunderchaos:block/magenta_crystal_ore", "x": 180 },
+    "facing=north": { "model": "galaxyunderchaos:block/magenta_crystal_ore", "x": 90 },
+    "facing=south": { "model": "galaxyunderchaos:block/magenta_crystal_ore", "x": 90, "y": 180 },
+    "facing=east": { "model": "galaxyunderchaos:block/magenta_crystal_ore", "x": 90, "y": 90 },
+    "facing=west": { "model": "galaxyunderchaos:block/magenta_crystal_ore", "x": 90, "y": 270 }
+  }
+}

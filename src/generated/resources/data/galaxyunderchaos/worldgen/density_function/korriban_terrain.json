@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_value": 1.6,
+    "from_y": -64,
+    "to_value": -1.6,
+    "to_y": 140
+  },
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:mul",
+      "argument1": 0.65,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "galaxyunderchaos:korriban_terrain",
+        "xz_scale": 0.65,
+        "y_scale": 0.35
+      }
+    },
+    "argument2": {
+      "type": "minecraft:mul",
+      "argument1": 0.3,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "galaxyunderchaos:korriban_terrain",
+        "xz_scale": 0.35,
+        "y_scale": 0.175
+      }
+    }
+  }
+}

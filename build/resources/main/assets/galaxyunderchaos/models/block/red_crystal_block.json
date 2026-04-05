@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "galaxyunderchaos:block/red_crystal_block"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "lightsaber",
+  "key": {
+    "#": {
+      "item": "minecraft:gray_concrete"
+    },
+    "X": {
+      "item": "galaxyunderchaos:sith_holobook"
+    },
+    "C": {
+      "item": "minecraft:black_concrete"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:bleeding_table"
+  }
+}

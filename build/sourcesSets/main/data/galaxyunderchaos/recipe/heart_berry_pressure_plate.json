@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "redstone",
+    "group": "wooden_pressure_plate",
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:heart_berry_planks"
+        }
+    },
+    "pattern": [
+        "##"
+    ],
+    "result": {
+        "count": 1,
+        "id": "galaxyunderchaos:heart_berry_pressure_plate"
+    }
+}

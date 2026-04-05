@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "galaxyunderchaos:block/dark_temple_stone_pillar_column_vertical" },
+    "axis=z": { "model": "galaxyunderchaos:block/dark_temple_stone_pillar_column_horizontal", "x": 90 },
+    "axis=x": { "model": "galaxyunderchaos:block/dark_temple_stone_pillar_column_horizontal", "x": 90, "y": 90 }
+  }
+}

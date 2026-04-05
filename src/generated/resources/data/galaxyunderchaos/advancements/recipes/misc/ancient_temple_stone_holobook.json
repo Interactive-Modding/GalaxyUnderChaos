@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ancient_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ancient_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:ancient_temple_stone_holobook"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ancient_holobook",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:ancient_temple_stone_holobook"
+    ]
+  },
+  "sends_telemetry_event": false
+}

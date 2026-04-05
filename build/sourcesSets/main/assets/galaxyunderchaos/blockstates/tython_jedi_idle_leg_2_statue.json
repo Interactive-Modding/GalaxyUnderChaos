@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "galaxyunderchaos:block/tython_jedi_idle_leg_2_statue" },
+    "facing=east": { "model": "galaxyunderchaos:block/tython_jedi_idle_leg_2_statue", "y": 90 },
+    "facing=south": { "model": "galaxyunderchaos:block/tython_jedi_idle_leg_2_statue", "y": 180 },
+    "facing=west": { "model": "galaxyunderchaos:block/tython_jedi_idle_leg_2_statue", "y": 270 }
+  }
+}

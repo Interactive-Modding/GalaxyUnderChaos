@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "galaxyunderchaos:temple_guard_fabric"
+    }
+  },
+  "pattern": [
+    "S S",
+    "P P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:temple_guard_boots"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:wingmaw_hilt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wingmaw_feather": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_feather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wingmaw_feather",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:wingmaw_hilt"
+    ]
+  },
+  "sends_telemetry_event": false
+}

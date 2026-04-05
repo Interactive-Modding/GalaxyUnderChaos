@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "galaxyunderchaos:block/ancient_temple_stone"
+  }
+}

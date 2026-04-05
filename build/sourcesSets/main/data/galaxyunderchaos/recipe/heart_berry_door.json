@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "redstone",
+    "group": "wooden_door",
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:heart_berry_planks"
+        }
+    },
+    "pattern": [
+        "##",
+        "##",
+        "##"
+    ],
+    "result": {
+        "count": 3,
+        "id": "galaxyunderchaos:heart_berry_door"
+    }
+}

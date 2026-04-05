@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_value": 3.0,
+    "from_y": -64,
+    "to_value": -3.0,
+    "to_y": 80
+  },
+  "argument2": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:mul",
+      "argument1": 0.2,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "galaxyunderchaos:naboo_terrain",
+        "xz_scale": 0.4,
+        "y_scale": 0.2
+      }
+    },
+    "argument2": {
+      "type": "minecraft:mul",
+      "argument1": 0.1,
+      "argument2": {
+        "type": "minecraft:noise",
+        "noise": "galaxyunderchaos:naboo_terrain",
+        "xz_scale": 0.1,
+        "y_scale": 0.05
+      }
+    }
+  }
+}

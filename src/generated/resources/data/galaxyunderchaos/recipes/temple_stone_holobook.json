@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:temple_stone"
+    },
+    "G": {
+      "item": "galaxyunderchaos:jedi_holobook"
+    }
+  },
+  "pattern": [
+    "###",
+    "GGG",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:temple_stone_holobook"
+  },
+  "show_notification": true
+}

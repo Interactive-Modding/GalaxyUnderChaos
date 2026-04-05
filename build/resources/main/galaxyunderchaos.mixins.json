@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "client.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "galaxyunderchaos.refmap.json",
+  "mixins": [],
+  "client": [
+    "RenderStateShardAccessor",
+    "HumanoidModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

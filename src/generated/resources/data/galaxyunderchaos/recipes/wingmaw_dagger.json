@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sticks",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:wingmaw_blade"
+    },
+    "a": {
+      "item": "galaxyunderchaos:wingmaw_fang"
+    },
+    "x": {
+      "item": "galaxyunderchaos:wingmaw_hilt"
+    }
+  },
+  "pattern": [
+    "   ",
+    "a# ",
+    "xa "
+  ],
+  "result": {
+    "item": "galaxyunderchaos:wingmaw_dagger"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "#X#",
+    "#R#"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:titanium_chromium_ingot"
+    },
+    "R": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "T": {
+      "item": "minecraft:diamond"
+    },
+    "X": {
+      "item": "galaxyunderchaos:navigation_computer"
+    }
+  },
+  "result": {
+    "id": "galaxyunderchaos:portal_item",
+    "count": 1
+  }
+}

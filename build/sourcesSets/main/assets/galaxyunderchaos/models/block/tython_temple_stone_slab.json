@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/tython_temple_stone",
+    "top": "galaxyunderchaos:block/tython_temple_stone",
+    "side": "galaxyunderchaos:block/tython_temple_stone"
+  }
+}

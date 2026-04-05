@@ -1,0 +1,36 @@
+{
+  "type": "galaxyunderchaos:ilum_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:ilum_biome",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": 0.9,
+            "offset": 0.0,
+            "temperature": -1.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:ilum_biome_forest",
+          "parameters": {
+            "continentalness": 0.2,
+            "depth": 0.2,
+            "erosion": 0.1,
+            "humidity": 1.0,
+            "offset": 0.0,
+            "temperature": -0.8,
+            "weirdness": 0.1
+          }
+        }
+      ]
+    },
+    "settings": "galaxyunderchaos:ilum_noise_settings"
+  }
+}

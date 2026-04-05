@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "hyperdrive",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:chromium_ingot"
+    },
+    "X": {
+      "item": "galaxyunderchaos:titanium_ingot"
+    }
+  },
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:titanium_chromium_ingot"
+  },
+  "show_notification": true
+}

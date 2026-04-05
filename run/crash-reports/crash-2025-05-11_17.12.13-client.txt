@@ -1,0 +1,257 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 2025-05-11 17:12:13
+Description: Unexpected error
+
+java.lang.IllegalStateException: Entity class server.galaxyunderchaos.entity.AkBoat has not defined synched data value 15
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.network.syncher.SynchedEntityData$Builder.build(SynchedEntityData.java:167) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Entity.<init>(Entity.java:266) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.vehicle.VehicleEntity.<init>(VehicleEntity.java:24) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.vehicle.Boat.<init>(Boat.java:94) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/server.galaxyunderchaos.entity.AkBoat.<init>(AkBoat.java:26) ~[main/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.EntityType.create(EntityType.java:960) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/server.galaxyunderchaos.item.ModBoatItem.use(ModBoatItem.java:65) ~[main/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.ItemStack.use(ItemStack.java:382) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.lambda$useItem$5(MultiPlayerGameMode.java:386) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.startPrediction(MultiPlayerGameMode.java:263) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.useItem(MultiPlayerGameMode.java:370) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.startUseItem(Minecraft.java:1749) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.handleKeybinds(Minecraft.java:2007) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.tick(Minecraft.java:1820) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1147) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:795) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:228) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:85) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:69) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:77) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:97) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:116) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:75) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17) [modlauncher-10.2.4.jar!/:?]
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188) [bootstrap-2.1.8.jar!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19) [bootstrap-2.1.8.jar:2.1.8]
+Transformer Audit:
+  net.minecraft.client.Minecraft
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+    PLUGIN: runtimedistcleaner:AFTER
+  net.minecraft.client.main.Main
+    REASON: classloading
+  net.minecraft.client.multiplayer.MultiPlayerGameMode
+    REASON: classloading
+  net.minecraft.network.syncher.SynchedEntityData$Builder
+    REASON: classloading
+  net.minecraft.world.entity.Entity
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+  net.minecraft.world.entity.EntityType
+    REASON: classloading
+    TRANSFORMER: fml:forge:forge_method_redirector
+  net.minecraft.world.entity.vehicle.Boat
+    REASON: classloading
+  net.minecraft.world.entity.vehicle.VehicleEntity
+    REASON: classloading
+  net.minecraft.world.item.ItemStack
+    REASON: classloading
+  server.galaxyunderchaos.entity.AkBoat
+    REASON: classloading
+  server.galaxyunderchaos.item.ModBoatItem
+    REASON: classloading
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Suspected Mod: 
+	Galaxy Under Chaos (galaxyunderchaos), Version: 0.0.1
+		Issue tracker URL: https://github.com/Darth-Vitiate/GalaxyUnderChaosMod/issues
+		at TRANSFORMER/galaxyunderchaos@0.0.1/server.galaxyunderchaos.entity.AkBoat.<init>(AkBoat.java:26)
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.network.syncher.SynchedEntityData$Builder.build(SynchedEntityData.java:167) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Entity.<init>(Entity.java:266) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.vehicle.VehicleEntity.<init>(VehicleEntity.java:24) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.vehicle.Boat.<init>(Boat.java:94) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/server.galaxyunderchaos.entity.AkBoat.<init>(AkBoat.java:26) ~[main/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.EntityType.create(EntityType.java:960) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/galaxyunderchaos@0.0.1/server.galaxyunderchaos.item.ModBoatItem.use(ModBoatItem.java:65) ~[main/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.item.ItemStack.use(ItemStack.java:382) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.lambda$useItem$5(MultiPlayerGameMode.java:386) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.startPrediction(MultiPlayerGameMode.java:263) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.multiplayer.MultiPlayerGameMode.useItem(MultiPlayerGameMode.java:370) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.startUseItem(Minecraft.java:1749) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.handleKeybinds(Minecraft.java:2007) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar%230!/:?]
+Transformer Audit:
+  net.minecraft.client.Minecraft
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+    PLUGIN: runtimedistcleaner:AFTER
+  net.minecraft.client.multiplayer.MultiPlayerGameMode
+    REASON: classloading
+  net.minecraft.network.syncher.SynchedEntityData$Builder
+    REASON: classloading
+  net.minecraft.world.entity.Entity
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+  net.minecraft.world.entity.EntityType
+    REASON: classloading
+    TRANSFORMER: fml:forge:forge_method_redirector
+  net.minecraft.world.entity.vehicle.Boat
+    REASON: classloading
+  net.minecraft.world.entity.vehicle.VehicleEntity
+    REASON: classloading
+  net.minecraft.world.item.ItemStack
+    REASON: classloading
+  server.galaxyunderchaos.entity.AkBoat
+    REASON: classloading
+  server.galaxyunderchaos.item.ModBoatItem
+    REASON: classloading
+-- Uptime --
+Details:
+	JVM uptime: 71.043s
+	Wall uptime: 53.535s
+	High-res time: 65.857s
+	Client ticks: 544 ticks / 27.200s
+Stacktrace:
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.fillReport(Minecraft.java:2377) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.emergencySaveAndCrash(Minecraft.java:856) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:816) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:228) ~[forge-1.21.1-52.1.0_mapped_official_1.21.1.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:85) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/net.minecraftforge.fmlloader@1.21.1-52.1.0/net.minecraftforge.fml.loading.targets.CommonLaunchHandler.lambda$makeService$0(CommonLaunchHandler.java:69) ~[fmlloader-1.21.1-52.1.0.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:77) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:97) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:116) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:75) [modlauncher-10.2.4.jar!/:?]
+	at SECURE-BOOTSTRAP/cpw.mods.modlauncher@10.2.4/cpw.mods.modlauncher.BootstrapEntry.main(BootstrapEntry.java:17) [modlauncher-10.2.4.jar!/:?]
+	at net.minecraftforge.bootstrap@2.1.7/net.minecraftforge.bootstrap.Bootstrap.moduleMain(Bootstrap.java:188) [bootstrap-2.1.8.jar!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at net.minecraftforge.bootstrap.Bootstrap.bootstrapMain(Bootstrap.java:133) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.Bootstrap.start(Bootstrap.java:53) [bootstrap-2.1.8.jar:2.1.8]
+	at net.minecraftforge.bootstrap.ForgeBootstrap.main(ForgeBootstrap.java:19) [bootstrap-2.1.8.jar:2.1.8]
+Transformer Audit:
+  net.minecraft.client.Minecraft
+    REASON: classloading
+    PLUGIN: accesstransformer:BEFORE
+    PLUGIN: runtimedistcleaner:AFTER
+  net.minecraft.client.main.Main
+    REASON: classloading
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/17, l='ClientLevel', x=-3.62, y=83.69, z=-2.46]]
+	Chunk stats: 961, 36
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,83,0), Section: (at 0,3,0 in 0,5,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 191 game time, 191 day time
+	Server brand: forge
+	Server type: Integrated singleplayer server
+	Tracked entity count: 48
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21.1
+	Minecraft Version ID: 1.21.1
+	Operating System: Mac OS X (x86_64) version 15.4.1
+	Java Version: 21.0.6, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 194553088 bytes (185 MiB) / 822083584 bytes (784 MiB) up to 4294967296 bytes (4096 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz
+	Identifier: Intel64 Family 6 Model 126 Stepping 5
+	Microarchitecture: Ice Lake (Client)
+	Frequency (GHz): 2.30
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel Iris Plus Graphics
+	Graphics card #0 vendor: Intel
+	Graphics card #0 VRAM (MiB): 1536.00
+	Graphics card #0 deviceId: 0x8a53
+	Graphics card #0 versionInfo: Revision ID: 0x0007
+	Memory slot #0 capacity (MiB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.73
+	Memory slot #0 type: LPDDR4X
+	Memory slot #1 capacity (MiB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.73
+	Memory slot #1 type: LPDDR4X
+	Virtual memory max (MiB): 18432.00
+	Virtual memory used (MiB): 11992.50
+	Swap memory total (MiB): 2048.00
+	Swap memory used (MiB): 981.50
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 333431.41, total: 476802.03
+	Space in storage for workdir (MiB): available: 333431.41, total: 476802.03
+	JVM Flags: 1 total; -Xss1M
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.3.3+5
+	Backend API: Intel(R) Iris(TM) Plus Graphics OpenGL Engine GL version 4.1 INTEL-23.0.26, Intel Inc.
+	Window size: 1708x960
+	GFLW Platform: cocoa
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: <disabled>
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Universe: 400921fb54442d18
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Render Distance: 12/12 chunks
+	Resource Packs: vanilla, mod_resources
+	Current Language: en_us
+	Locale: en_US
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 8x Intel(R) Core(TM) i7-1068NG7 CPU @ 2.30GHz
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/17, l='ServerLevel[New World]', x=-3.62, y=83.69, z=-2.46]]
+	Active Data Packs: vanilla, mod:forge, mod:galaxyunderchaos (incompatible)
+	Available Data Packs: bundle, mod:forge, mod:galaxyunderchaos (incompatible), trade_rebalance, vanilla
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Experimental
+	World Seed: 8645097701260991455
+	ModLauncher: 10.2.4
+	ModLauncher launch target: forge_userdev_client
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		/ slf4jfixer PLUGINSERVICE 
+		/ runtimedistcleaner PLUGINSERVICE 
+		/ runtime_enum_extender PLUGINSERVICE 
+		/ object_holder_definalize PLUGINSERVICE 
+		/ capability_token_subclass PLUGINSERVICE 
+		/ accesstransformer PLUGINSERVICE 
+		/ eventbus PLUGINSERVICE 
+		/ mixin PLUGINSERVICE 
+		/ fml TRANSFORMATIONSERVICE 
+		/ mixin TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@52
+		javafml@52.1.0
+	Mod List: 
+		                                                  |Minecraft                     |minecraft                     |1.21.1              |DONE      |Manifest: NOSIGNATURE
+		                                                  |Forge                         |forge                         |52.1.0              |DONE      |Manifest: NOSIGNATURE
+		main                                              |Galaxy Under Chaos            |galaxyunderchaos              |0.0.1               |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 116614e6-329a-4d4b-adc6-e0e19eb54f6c
+	FML: 0.0
+	Forge: net.minecraftforge:52.1.0

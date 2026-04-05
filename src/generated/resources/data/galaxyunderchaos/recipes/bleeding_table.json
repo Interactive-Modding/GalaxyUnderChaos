@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "lightsaber",
+  "key": {
+    "#": {
+      "item": "minecraft:gray_concrete"
+    },
+    "C": {
+      "item": "minecraft:black_concrete"
+    },
+    "X": {
+      "item": "galaxyunderchaos:sith_holobook"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:bleeding_table"
+  },
+  "show_notification": true
+}

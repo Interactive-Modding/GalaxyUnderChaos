@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxyunderchaos:block/stripped_heart_berry_log",
+    "end": "galaxyunderchaos:block/stripped_heart_berry_log"
+  }
+}

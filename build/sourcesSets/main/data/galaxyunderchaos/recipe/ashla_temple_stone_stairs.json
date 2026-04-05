@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  #",
+        " ##",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:ashla_temple_stone"
+        }
+    },
+    "result": {
+        "id": "galaxyunderchaos:ashla_temple_stone_stairs",
+        "count": 4
+    },
+    "group": "misc"
+}

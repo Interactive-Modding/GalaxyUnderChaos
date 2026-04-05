@@ -1,0 +1,6 @@
+// 1.20.1	2026-03-05T01:26:44.5728243	Global Loot Modifiers : galaxyunderchaos
+e2a8902cefca65f05f599d9869586789e128f54f data/forge/loot_modifiers/global_loot_modifiers.json
+ca521b11797a6858b82dc78204fbc0957633a833 data/galaxyunderchaos/loot_modifiers/aegis_hilt_from_desert_pyramid.json
+39d00e0e3f02f0a753652550b3f6b99e378c774e data/galaxyunderchaos/loot_modifiers/aegis_hilt_from_jungle_temple.json
+94087f27b0bbcae962d78f52420a4cf63e5e7a2a data/galaxyunderchaos/loot_modifiers/shuura_from_oak_leaves.json
+49b79e3fc30a897482c04204fb5916ba301970d6 data/galaxyunderchaos/loot_modifiers/titanium_chromium_from_zombie.json

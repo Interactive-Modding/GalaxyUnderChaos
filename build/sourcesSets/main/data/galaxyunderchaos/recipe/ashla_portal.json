@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "hyperdrive",
+  "key": {
+    "#": {
+      "item": "minecraft:calcite"
+    },
+    "X": {
+      "item": "galaxyunderchaos:portal_item"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "galaxyunderchaos:ashla_portal"
+  }
+}

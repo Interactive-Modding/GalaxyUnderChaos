@@ -1,0 +1,13 @@
+{
+"type": "forge:add_spawns",
+"biomes": [
+"galaxyunderchaos:tython_forest",
+  "galaxyunderchaos:tython_mountains"
+],
+"spawners": {
+"type": "galaxyunderchaos:acid_spider",
+"maxCount": 3,
+"minCount": 1,
+"weight": 25
+}
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "misc",
+  "ingredient": {
+    "item": "galaxyunderchaos:ancient_temple_stone"
+  },
+  "result": "galaxyunderchaos:ancient_temple_stone_slab"
+}

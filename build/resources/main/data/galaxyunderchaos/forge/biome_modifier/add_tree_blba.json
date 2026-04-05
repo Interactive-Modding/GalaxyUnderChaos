@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "galaxyunderchaos:dantooine_plains",
+  "features": "galaxyunderchaos:blba_placed",
+  "step": "vegetal_decoration"
+}

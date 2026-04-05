@@ -1,0 +1,37 @@
+{
+  "type": "galaxyunderchaos:korriban_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 456789123,
+    "settings": "galaxyunderchaos:korriban_noise_settings",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:korriban_dry_canyon",
+          "parameters": {
+            "temperature": 1.2,
+            "humidity": 0.0,
+            "continentalness": 0.5,
+            "erosion": 0.5,
+            "depth": 0.0,
+            "weirdness": 0.0,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:korriban_sith_tomb",
+          "parameters": {
+            "temperature": 1.0,
+            "humidity": -0.2,
+            "continentalness": 0.7,
+            "erosion": 0.4,
+            "depth": 0.1,
+            "weirdness": 0.0,
+            "offset": 0.1
+          }
+        }
+      ]
+    }
+  }
+}

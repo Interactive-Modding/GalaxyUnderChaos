@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "galaxyunderchaos:ak_planks"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:ak_button"
+  }
+}

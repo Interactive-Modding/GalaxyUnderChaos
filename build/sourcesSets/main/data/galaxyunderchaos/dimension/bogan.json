@@ -1,0 +1,11 @@
+{
+    "type": "galaxyunderchaos:bogan_type",
+    "generator": {
+        "type": "minecraft:noise",
+        "biome_source": {
+            "type": "minecraft:fixed",
+            "biome": "galaxyunderchaos:bogan_biome"
+        },
+        "settings": "galaxyunderchaos:bogan_noise_settings"
+    }
+}

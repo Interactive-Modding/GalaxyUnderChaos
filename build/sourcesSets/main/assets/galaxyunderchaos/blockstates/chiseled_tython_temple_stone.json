@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "galaxyunderchaos:block/chiseled_tython_temple_stone",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "galaxyunderchaos:block/chiseled_tython_temple_stone",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "galaxyunderchaos:block/chiseled_tython_temple_stone"
+    },
+    "facing=west": {
+      "model": "galaxyunderchaos:block/chiseled_tython_temple_stone",
+      "y": 90
+    }
+  }
+}

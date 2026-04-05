@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:wingmaw_blade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wingmaw_fang": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_fang"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wingmaw_fang",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:wingmaw_blade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

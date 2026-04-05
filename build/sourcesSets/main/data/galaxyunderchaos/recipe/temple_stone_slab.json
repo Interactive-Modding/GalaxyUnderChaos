@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:temple_stone"
+        }
+    },
+    "result": {
+        "id": "galaxyunderchaos:temple_stone_slab",
+        "count": 6
+    },
+    "group": "misc"
+}

@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "galaxyunderchaos:ancient_temple_stone"
+    },
+    "result": {
+        "id": "galaxyunderchaos:ancient_temple_stone_pillar",
+        "count": 1
+    },
+    "group": "misc"
+}

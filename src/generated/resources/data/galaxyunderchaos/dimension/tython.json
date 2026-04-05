@@ -1,0 +1,48 @@
+{
+  "type": "galaxyunderchaos:tython_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:tython_forest",
+          "parameters": {
+            "continentalness": 0.4,
+            "depth": 0.3,
+            "erosion": 0.1,
+            "humidity": 0.8,
+            "offset": 0.2,
+            "temperature": 0.7,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:tython_plains",
+          "parameters": {
+            "continentalness": 0.3,
+            "depth": 0.5,
+            "erosion": 0.0,
+            "humidity": 0.6,
+            "offset": 0.0,
+            "temperature": 0.8,
+            "weirdness": 0.1
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:tython_mountains",
+          "parameters": {
+            "continentalness": 0.2,
+            "depth": 0.7,
+            "erosion": 0.2,
+            "humidity": 0.3,
+            "offset": 0.1,
+            "temperature": 0.5,
+            "weirdness": 0.1
+          }
+        }
+      ]
+    },
+    "settings": "galaxyunderchaos:tython_noise_settings"
+  }
+}

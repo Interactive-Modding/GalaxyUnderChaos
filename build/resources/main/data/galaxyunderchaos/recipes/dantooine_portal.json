@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hyperdrive",
+  "key": {
+    "#": {
+      "item": "minecraft:stripped_birch_log"
+    },
+    "X": {
+      "item": "galaxyunderchaos:portal_item"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dantooine_portal"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chromium_deepslate_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:chromium_deepslate_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:chromium_ingot_by_blasting_chromium_deepslate_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_chromium_deepslate_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:chromium_ingot_by_blasting_chromium_deepslate_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

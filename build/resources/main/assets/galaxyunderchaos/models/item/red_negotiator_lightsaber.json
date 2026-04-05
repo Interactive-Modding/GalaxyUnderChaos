@@ -1,0 +1,14 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+        "layer0": "galaxyunderchaos:item/negotiator_hilt"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "galaxyunderchaos:active": 1
+            },
+            "model": "galaxyunderchaos:item/red_negotiator_lightsaber_active"
+        }
+    ]
+}

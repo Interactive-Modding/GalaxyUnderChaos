@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "raw_wingmaw_meat",
+  "ingredient": {
+    "item": "galaxyunderchaos:raw_wingmaw_meat"
+  },
+  "result": "galaxyunderchaos:cooked_wingmaw_meat"
+}

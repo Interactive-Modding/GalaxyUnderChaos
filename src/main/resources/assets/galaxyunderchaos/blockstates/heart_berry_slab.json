@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/heart_berry_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/heart_berry_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/heart_berry_planks" }
+  }
+}

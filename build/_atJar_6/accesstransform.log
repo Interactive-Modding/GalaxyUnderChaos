@@ -1,0 +1,8 @@
+[12:45:32] [main/INFO]: Writing debug log file accesstransform.log
+[12:45:32] [main/INFO]: Access Transformer processor running version 8.2.1
+[12:45:32] [main/INFO]: Command line arguments [--inJar, /Users/dj17/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.16/forge-1.20.1-47.4.16-injected.jar, --outJar, /Users/dj17/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.16_mapped_official_1.20.1/forge-1.20.1-47.4.16_mapped_official_1.20.1.jar, --logFile, accesstransform.log, --atFile, /Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/build/_atJar_6/parent_at.cfg]
+[12:45:32] [main/INFO]: Reading from /Users/dj17/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.16/forge-1.20.1-47.4.16-injected.jar
+[12:45:32] [main/INFO]: Writing to /Users/dj17/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.16_mapped_official_1.20.1/forge-1.20.1-47.4.16_mapped_official_1.20.1.jar
+[12:45:32] [main/INFO]: Transformer file /Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/build/_atJar_6/parent_at.cfg
+[12:45:32] [main/WARN]: Found existing output jar /Users/dj17/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.16_mapped_official_1.20.1/forge-1.20.1-47.4.16_mapped_official_1.20.1.jar, overwriting
+[12:45:32] [main/DEBUG]: Loading access transformer parent_at.cfg from path /Users/dj17/Documents/GitHub/GalaxyUnderChaosMod/build/_atJar_6/parent_at.cfg

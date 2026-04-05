@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "misc",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:tython_temple_stone"
+    }
+  },
+  "pattern": [
+    "  #",
+    " ##",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "galaxyunderchaos:tython_temple_stone_stairs"
+  },
+  "show_notification": true
+}

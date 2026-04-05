@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "galaxyunderchaos:block/heart_berry_log"
+    },
+    "axis=z": {
+      "model": "galaxyunderchaos:block/heart_berry_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "galaxyunderchaos:block/heart_berry_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

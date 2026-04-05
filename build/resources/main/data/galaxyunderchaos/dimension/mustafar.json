@@ -1,0 +1,48 @@
+{
+  "type": "galaxyunderchaos:mustafar_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:mustafar_lava_field",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": 1.0,
+            "offset": 0.0,
+            "temperature": -0.5,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:mustafar_volcanic_plains",
+          "parameters": {
+            "continentalness": 0.2,
+            "depth": 0.2,
+            "erosion": 0.2,
+            "humidity": 0.8,
+            "offset": 0.1,
+            "temperature": 0.0,
+            "weirdness": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:mustafar_magma_lake",
+          "parameters": {
+            "continentalness": 0.3,
+            "depth": 0.3,
+            "erosion": 0.3,
+            "humidity": 0.7,
+            "offset": 0.2,
+            "temperature": 0.2,
+            "weirdness": 0.1
+          }
+        }
+      ]
+    },
+    "settings": "galaxyunderchaos:mustafar_noise_settings"
+  }
+}

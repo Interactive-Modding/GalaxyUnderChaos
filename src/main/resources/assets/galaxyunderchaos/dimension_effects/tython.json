@@ -1,0 +1,20 @@
+{
+  "fog_color": 12638463,
+  "sky_color": 8103167,
+  "water_color": 4159204,
+  "water_fog_color": 329011,
+  "music": {
+    "sound": "minecraft:music.overworld",
+    "min_delay": 12000,
+    "max_delay": 24000,
+    "replace_current_music": false
+  },
+  "mood_sound": {
+    "sound": "minecraft:ambient.cave",
+    "tick_delay": 6000,
+    "block_search_extent": 8,
+    "offset": 2.0
+  },
+  "sun_texture": "galaxyunderchaos:textures/environment/tython_ashla_bogan_sun.png",
+  "moon_texture": "galaxyunderchaos:textures/environment/tython_moon_phases.png"
+}

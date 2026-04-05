@@ -1,0 +1,36 @@
+{
+  "type": "galaxyunderchaos:malachor_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "galaxyunderchaos:malachor_noise_settings",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:malachor_upper_layer",
+          "parameters": {
+            "temperature": -0.8,
+            "humidity": 0.4,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "depth": 0.5,
+            "weirdness": -0.3,
+            "offset": 0.0
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:malachor_lower_surface",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.2,
+            "continentalness": 0.3,
+            "erosion": 0.1,
+            "depth": 0.1,
+            "weirdness": 0.0,
+            "offset": 0.1
+          }
+        }
+      ]
+    }
+  }
+}

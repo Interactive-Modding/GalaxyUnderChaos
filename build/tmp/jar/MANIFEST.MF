@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: galaxyunderchaos
+Specification-Vendor: Vitiate
+Specification-Version: 1
+Implementation-Title: GalaxyUnderChaosMod
+Implementation-Version: 0.0.2
+Implementation-Vendor: Vitiate
+Implementation-Timestamp: 2026-03-09T12:45:59-0400
+

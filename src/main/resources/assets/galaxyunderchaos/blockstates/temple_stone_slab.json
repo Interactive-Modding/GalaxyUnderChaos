@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/temple_stone_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/temple_stone_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/temple_stone" }
+  }
+}

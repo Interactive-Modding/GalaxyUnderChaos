@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "chest_boat",
+  "ingredients": [
+    {
+      "item": "minecraft:chest"
+    },
+    {
+      "item": "galaxyunderchaos:heart_berry_boat"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:heart_berry_chest_boat"
+  }
+}

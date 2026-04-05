@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:dark_temple_stone"
+        }
+    },
+    "result": {
+        "id": "galaxyunderchaos:dark_temple_stone_pillar",
+        "count": 2
+    },
+    "group": "misc"
+}

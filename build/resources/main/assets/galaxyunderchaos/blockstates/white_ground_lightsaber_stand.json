@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "galaxyunderchaos:block/white_ground_lightsaber_stand", "y": 0 },
+    "facing=south": { "model": "galaxyunderchaos:block/white_ground_lightsaber_stand", "y": 180 },
+    "facing=west":  { "model": "galaxyunderchaos:block/white_ground_lightsaber_stand", "y": 270 },
+    "facing=east":  { "model": "galaxyunderchaos:block/white_ground_lightsaber_stand", "y": 90 }
+  }
+}

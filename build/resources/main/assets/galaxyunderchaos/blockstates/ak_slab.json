@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/ak_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/ak_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/ak_planks" }
+  }
+}

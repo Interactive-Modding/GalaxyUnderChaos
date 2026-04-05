@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,part=foot": { "model": "galaxyunderchaos:block/jedi_coffin" },
+    "facing=south,part=foot": { "model": "galaxyunderchaos:block/jedi_coffin", "y": 180 },
+    "facing=west,part=foot":  { "model": "galaxyunderchaos:block/jedi_coffin", "y": 270 },
+    "facing=east,part=foot":  { "model": "galaxyunderchaos:block/jedi_coffin", "y": 90 },
+
+    "facing=north,part=head": { "model": "galaxyunderchaos:block/jedi_coffin_empty" },
+    "facing=south,part=head": { "model": "galaxyunderchaos:block/jedi_coffin_empty", "y": 180 },
+    "facing=west,part=head":  { "model": "galaxyunderchaos:block/jedi_coffin_empty", "y": 270 },
+    "facing=east,part=head":  { "model": "galaxyunderchaos:block/jedi_coffin_empty", "y": 90 }
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "key": {
+        "#": {
+            "item": "galaxyunderchaos:temple_stone"
+        }
+    },
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "result": {
+        "count": 6,
+        "id": "galaxyunderchaos:temple_stone_wall"
+    }
+}

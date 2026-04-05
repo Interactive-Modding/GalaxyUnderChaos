@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "snowy=false": { "model": "galaxyunderchaos:block/tython_grass" },
+    "snowy=true": { "model": "galaxyunderchaos:block/tython_grass_snow" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "galaxyunderchaos:block/tython_grass_top",
+    "bottom": "galaxyunderchaos:block/tython_dirt",
+    "side": "galaxyunderchaos:block/tython_grass_snow"
+  }
+}

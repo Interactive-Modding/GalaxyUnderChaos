@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/Darth-Vitiate/GalaxyUnderChaosMod/issues"
+
+[[mods]]
+modId="galaxyunderchaos"
+version="1.0.0"
+displayName="Galaxy Under Chaos"
+updateJSONURL="https://yourupdateurl/update.json"
+displayURL="https://github.com/Darth-Vitiate/GalaxyUnderChaosMod"
+credits="Thanks to all the contributors!"
+authors="Vitiate"
+description='''Example mod description.
+Newline characters can be used and will be replaced properly.'''
+
+[[dependencies.galaxyunderchaos]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.galaxyunderchaos]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.galaxyunderchaos]]
+modId="citadel"
+mandatory=true
+versionRange="[2.6.3,)"
+ordering="NONE"
+side="BOTH"

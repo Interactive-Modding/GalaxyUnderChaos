@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "galaxyunderchaos:block/pink_mushroom_block"
+  }
+}

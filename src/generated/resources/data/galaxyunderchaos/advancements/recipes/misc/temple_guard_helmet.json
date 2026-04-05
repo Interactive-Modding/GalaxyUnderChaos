@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_temple_guard_fabric": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_fabric"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "galaxyunderchaos:temple_guard_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_temple_guard_fabric",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "galaxyunderchaos:temple_guard_helmet"
+    ]
+  },
+  "sends_telemetry_event": false
+}
