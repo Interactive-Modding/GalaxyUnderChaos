@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxyunderchaos:block/cambylictus_log",
+    "end": "galaxyunderchaos:block/cambylictus_log_top"
+  }
+}

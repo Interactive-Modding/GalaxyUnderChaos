@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "galaxyunderchaos:dillia_planks"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_button"
+  },
+  "group": "wooden_button"
+}

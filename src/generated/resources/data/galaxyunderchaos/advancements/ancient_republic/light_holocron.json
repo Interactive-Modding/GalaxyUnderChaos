@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/light_datacron",
+  "criteria": {
+    "has_light_holocron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:jedi_holocron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.light_holocron.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:jedi_holocron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.light_holocron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_light_holocron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,7 +1,9 @@
 package server.galaxyunderchaos.worldgen;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -10,10 +12,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.HugeMushroomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,6 +25,8 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlace
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -41,6 +42,14 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> AK_TREE_KEY = registerKey("ak_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AK_TREE_PINE_KEY = registerKey("ak_tree_pine");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HEART_BERRY_KEY = registerKey("heart_berry_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DILLIA_TREE_KEY = registerKey("dillia_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BELLEW_FLOWER_KEY = registerKey("bellew_flower");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CAMBYLICTUS_TREE_KEY = registerKey("cambylictus_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PERLOTE_TREE_KEY = registerKey("perlote_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> RUTIGER_TREE_KEY = registerKey("rutiger_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> POLAR_TREE_KEY = registerKey("polar_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> NABOO_PINE_TREE_KEY = registerKey("naboo_pine_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> QUEENS_HEART_FLOWER_KEY = registerKey("queens_heart_flower");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_CRYSTAL_ORE_KEY = registerKey("blue_crystal_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_CRYSTAL_ORE_KEY = registerKey("orange_crystal_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GREEN_CRYSTAL_ORE_KEY = registerKey("green_crystal_ore");
@@ -128,11 +137,96 @@ public class ModConfiguredFeatures {
                 new OreConfiguration(List.of(OreConfiguration.target(stoneReplaceables, galaxyunderchaos.TURQUOISE_CRYSTAL_ORE.get().defaultBlockState())), 3, 0.0f));
 
         register(context, BLBA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(Blocks.STRIPPED_BIRCH_LOG),
+                BlockStateProvider.simple(galaxyunderchaos.BLBA_LOG.get()),
                 new DarkOakTrunkPlacer(12, 2, 1),
-                BlockStateProvider.simple(Blocks.OAK_LEAVES),
+                BlockStateProvider.simple(galaxyunderchaos.BLBA_LEAVES.get()),
                 new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
                 new ThreeLayersFeatureSize(1, 0, 1, 2, 1, OptionalInt.empty())).build());
+
+        register(context, BELLEW_FLOWER_KEY, Feature.FLOWER,
+                new RandomPatchConfiguration(
+                        5,
+                        3,
+                        1,
+                        PlacementUtils.onlyWhenEmpty(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(
+                                        BlockStateProvider.simple(galaxyunderchaos.BELLEW_FLOWER.get())
+                                )
+                        )
+                ));
+        register(context, DILLIA_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.DILLIA_LOG.get()),
+                new StraightTrunkPlacer(6, 2, 1),
+                BlockStateProvider.simple(galaxyunderchaos.DILLIA_LEAVES.get()),
+                new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 1), UniformInt.of(2, 3)),
+                new TwoLayersFeatureSize(1, 0, 2))
+                .ignoreVines()
+                .build());
+
+        register(context, QUEENS_HEART_FLOWER_KEY, Feature.FLOWER,
+                FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(galaxyunderchaos.QUEENS_HEART_FLOWER.get()))));
+
+        // Naboo swamp/Gungan Sacred Place: giant Cambylictus with lifted, tangled roots and heavy vines.
+        register(context, CAMBYLICTUS_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.CAMBYLICTUS_LOG.get()),
+                new DarkOakTrunkPlacer(10, 5, 3),
+                BlockStateProvider.simple(galaxyunderchaos.CAMBYLICTUS_LEAVES.get()),
+                new DarkOakFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0)),
+                new ThreeLayersFeatureSize(1, 0, 1, 2, 1, OptionalInt.empty()))
+                .dirt(BlockStateProvider.simple(Blocks.MUD))
+                .decorators(List.of(
+                        TrunkVineDecorator.INSTANCE,
+                        new LeaveVineDecorator(0.35F),
+                        new AlterGroundDecorator(BlockStateProvider.simple(Blocks.MUD))))
+                .build());
+
+        // Naboo eastern swamps: Perlote trees form muddy groves where slug-beetles live among the roots.
+        register(context, PERLOTE_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.PERLOTE_LOG.get()),
+                new StraightTrunkPlacer(7, 2, 2),
+                BlockStateProvider.simple(galaxyunderchaos.PERLOTE_LEAVES.get()),
+                new SpruceFoliagePlacer(UniformInt.of(2, 4), UniformInt.of(0, 1), UniformInt.of(2, 4)),
+                new TwoLayersFeatureSize(1, 0, 2))
+                .dirt(BlockStateProvider.simple(Blocks.MUD))
+                .decorators(List.of(
+                        TrunkVineDecorator.INSTANCE,
+                        new LeaveVineDecorator(0.35F),
+                        new AlterGroundDecorator(BlockStateProvider.simple(Blocks.MUD))))
+                .build());
+
+        // Naboo swamp: Rutiger stays small and delicate because its roots have a limited depth range.
+        register(context, RUTIGER_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.RUTIGER_LOG.get()),
+                new StraightTrunkPlacer(4, 1, 1),
+                BlockStateProvider.simple(galaxyunderchaos.RUTIGER_LEAVES.get()),
+                new SpruceFoliagePlacer(UniformInt.of(1, 2), UniformInt.of(0, 1), UniformInt.of(1, 2)),
+                new TwoLayersFeatureSize(1, 0, 1))
+                .dirt(BlockStateProvider.simple(Blocks.MUD))
+                .decorators(List.of(TrunkVineDecorator.INSTANCE))
+                .build());
+
+        // Naboo plains/Theed outskirts: pale formal Polar trees.
+        register(context, POLAR_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.POLAR_LOG.get()),
+                new StraightTrunkPlacer(7, 2, 1),
+                BlockStateProvider.simple(galaxyunderchaos.POLAR_LEAVES.get()),
+                new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 1), UniformInt.of(2, 3)),
+                new TwoLayersFeatureSize(1, 0, 2))
+                .ignoreVines()
+                .build());
+
+        // Naboo hills: taller pine-like tree variant for Legends pine references.
+        register(context, NABOO_PINE_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(galaxyunderchaos.NABOO_PINE_LOG.get()),
+                new GiantTrunkPlacer(11, 2, 8),
+                BlockStateProvider.simple(galaxyunderchaos.NABOO_PINE_LEAVES.get()),
+                new MegaPineFoliagePlacer(ConstantInt.of(0), ConstantInt.of(0), UniformInt.of(4, 7)),
+                new TwoLayersFeatureSize(1, 1, 2))
+                .dirt(BlockStateProvider.simple(Blocks.DIRT))
+                .decorators(List.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL))))
+                .build());
 
         register(context, HEART_BERRY_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(galaxyunderchaos.HEART_BERRY_LOG.get()),

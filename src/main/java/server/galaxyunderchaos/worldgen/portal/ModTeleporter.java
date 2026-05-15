@@ -1,7 +1,7 @@
 package server.galaxyunderchaos.worldgen.portal;
 
 import client.renderer.HyperspaceAnimation;
-import client.renderer.HyperspaceManager;
+import server.galaxyunderchaos.ship.HyperspaceJumpController;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -37,7 +37,7 @@ public class ModTeleporter {
         destinationWorld.getServer().execute(() -> finalEntity.setNoGravity(false)); // Re-enable gravity after a tick
 
         // Start the hyperspace cutscene
-        HyperspaceManager.startHyperspace(entity, destinationWorld, safePos, yaw);
+        HyperspaceJumpController.startHyperspace(entity, destinationWorld, safePos, yaw);
 
         return entity;
     }
@@ -95,6 +95,8 @@ public class ModTeleporter {
             entity.spawnAtLocation(galaxyunderchaos.NABOO_PORTAL_ITEM.get().getDefaultInstance());
         } else if (world.dimension() == ModDimensions.ILUM_LEVEL_KEY) {
             entity.spawnAtLocation(galaxyunderchaos.ILUM_PORTAL_ITEM.get().getDefaultInstance());
+        } else if (world.dimension() == ModDimensions.HOTH_LEVEL_KEY) {
+            entity.spawnAtLocation(galaxyunderchaos.HOTH_PORTAL_ITEM.get().getDefaultInstance());
         } else if (world.dimension() == ModDimensions.MUSTAFAR_LEVEL_KEY) {
             entity.spawnAtLocation(galaxyunderchaos.MUSTAFAR_PORTAL_ITEM.get().getDefaultInstance());
         } else if (world.dimension() == ModDimensions.DANTOOINE_LEVEL_KEY) {

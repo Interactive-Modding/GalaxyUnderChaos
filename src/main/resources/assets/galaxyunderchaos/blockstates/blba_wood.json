@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "galaxyunderchaos:block/blba_wood"
+    },
+    "axis=z": {
+      "model": "galaxyunderchaos:block/blba_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "galaxyunderchaos:block/blba_wood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

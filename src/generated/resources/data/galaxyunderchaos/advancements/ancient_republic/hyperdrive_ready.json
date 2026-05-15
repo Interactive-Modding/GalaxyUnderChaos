@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/navigation_matrix",
+  "criteria": {
+    "has_portal_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:portal_item"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.hyperdrive_ready.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:portal_item"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.hyperdrive_ready.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_portal_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

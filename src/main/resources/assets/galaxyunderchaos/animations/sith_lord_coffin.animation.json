@@ -1,0 +1,40 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "Open": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.5,
+      "bones": {
+        "bone2": {
+          "rotation": {
+            "0.0": { "vector": [0, 0, 0] },
+            "1.5": { "vector": [0, 17.5, 0], "easing": "easeInOutSine" }
+          },
+          "position": {
+            "0.0": { "vector": [0, 0, 0] },
+            "1.5": { "vector": [-2, 0, 4], "easing": "easeInOutQuad" }
+          }
+        }
+      },
+      "particle_effects": {
+        "0.0833": { "effect": "galaxyunderchaos:sith_coffin_particle", "locator": "locator" }
+      }
+    },
+    "Close": {
+      "loop": "hold_on_last_frame",
+      "animation_length": 1.5,
+      "bones": {
+        "bone2": {
+          "rotation": {
+            "0.0": { "vector": [0, 17.5, 0], "easing": "easeInOutSine" },
+            "1.5": { "vector": [0, 0, 0], "easing": "easeInOutSine" }
+          },
+          "position": {
+            "0.0": { "vector": [-2, 0, 4], "easing": "easeInOutQuad" },
+            "1.5": { "vector": [0, 0, 0], "easing": "easeInOutQuad" }
+          }
+        }
+      }
+    }
+  }
+}

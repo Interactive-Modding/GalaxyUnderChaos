@@ -1,2 +1,47 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
+src/main/resources/.DS_Store
+src/main/resources/assets/.DS_Store
+src/main/resources/assets/galaxyunderchaos/models/.DS_Store
+src/main/java/client/.DS_Store
+src/main/java/server/galaxyunderchaos/.DS_Store
+src/main/resources/assets/galaxyunderchaos/textures/entity/.DS_Store
+src/main/java/server/galaxyunderchaos/entity/.DS_Store
+src/main/resources/assets/galaxyunderchaos/models/.DS_Store
 .DS_Store
-/run
+src/main/resources/assets/galaxyunderchaos/textures/entity/.DS_Store
+src/main/resources/assets/galaxyunderchaos/textures/.DS_Store
+src/generated/resources/data/galaxyunderchaos/worldgen/.DS_Store
+src/generated/resources/data/galaxyunderchaos/worldgen/.DS_Store
+src/main/java/server/galaxyunderchaos/.DS_Store
+src/main/java/server/galaxyunderchaos/.DS_Store
+src/main/java/server/galaxyunderchaos/.DS_Store
+/run-data
+/dimension
+/dimension_type
+/noise_settings
+/worldgen
+/.claude

@@ -13,7 +13,8 @@ public enum BladeModifierCrystal {
     CRACKED("cracked"),
     INVERTING("inverting"),
     FINE_CUT("fine_cut"),
-    PRISMATIC("prismatic");
+    PRISMATIC("prismatic"),
+    FORCE_WHIP("force_whip");
 
     private final String serializedName;
 

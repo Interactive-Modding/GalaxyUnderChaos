@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/compressed_focus",
+  "criteria": {
+    "has_cracked": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_cracked"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.cracked_focus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:focusing_crystal_cracked"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.cracked_focus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cracked"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

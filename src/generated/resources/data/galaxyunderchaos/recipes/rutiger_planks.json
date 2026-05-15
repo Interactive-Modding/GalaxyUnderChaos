@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:rutiger_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:rutiger_planks",
+    "count": 4
+  }
+}

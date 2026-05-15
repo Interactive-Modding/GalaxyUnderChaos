@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "galaxyunderchaos:tython_jedaii_battlegrounds",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 48,
+    "separation": 12,
+    "salt": 1936191129
+  }
+}

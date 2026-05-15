@@ -91,5 +91,122 @@
     "sounds": [
       "galaxyunderchaos:acid_spider_attack"
     ]
+  },
+  "force_cast": {
+    "subtitle": "sounds.galaxyunderchaos.force_cast",
+    "sounds": [
+      "galaxyunderchaos:force/cast"
+    ]
+  },
+  "force_cast_dark": {
+    "subtitle": "sounds.galaxyunderchaos.force_cast_dark",
+    "sounds": [
+      "galaxyunderchaos:force/cast_dark"
+    ]
+  },
+  "force_cast_fail": {
+    "subtitle": "sounds.galaxyunderchaos.force_cast_fail",
+    "sounds": [
+      "galaxyunderchaos:force/cast_fail"
+    ]
+  },
+  "force_heal": {
+    "subtitle": "sounds.galaxyunderchaos.force_heal",
+    "sounds": [
+      "galaxyunderchaos:force/heal"
+    ]
+  },
+  "force_lightning_start": {
+    "subtitle": "sounds.galaxyunderchaos.force_lightning",
+    "sounds": [
+      "galaxyunderchaos:force/lightning4"
+    ]
+  },
+  "force_lightning_loop": {
+    "subtitle": "sounds.galaxyunderchaos.force_lightning",
+    "sounds": [
+      {
+        "name": "galaxyunderchaos:force/lightning1",
+        "stream": false
+      }
+    ]
+  },
+  "force_stealth_on": {
+    "subtitle": "sounds.galaxyunderchaos.force_stealth_on",
+    "sounds": [
+      "galaxyunderchaos:force/stealth"
+    ]
+  },
+  "force_stealth_off": {
+    "subtitle": "sounds.galaxyunderchaos.force_stealth_off",
+    "sounds": [
+      {
+        "name": "galaxyunderchaos:force/stealth",
+        "pitch": 1.1
+      }
+    ]
+  },
+  "ambient_force_fortify": {
+    "subtitle": "sounds.galaxyunderchaos.ambient_force_fortify",
+    "sounds": [
+      "galaxyunderchaos:ambient/force/fortify"
+    ]
+  },
+  "ambient_force_stealth": {
+    "subtitle": "sounds.galaxyunderchaos.ambient_force_stealth",
+    "sounds": [
+      "galaxyunderchaos:ambient/force/stealth"
+    ]
+  },
+  "ambient_force_stasis": {
+    "subtitle": "sounds.galaxyunderchaos.ambient_force_stasis",
+    "sounds": [
+      "galaxyunderchaos:ambient/force/stasis"
+    ]
+  },
+  "ambient_force_energy_resist": {
+    "subtitle": "sounds.galaxyunderchaos.ambient_force_energy_resist",
+    "sounds": [
+      "galaxyunderchaos:ambient/force/energy_resist"
+    ]
+  },
+  "holocron_open": {
+    "subtitle": "sounds.galaxyunderchaos.holocron_open",
+    "sounds": [
+      "galaxyunderchaos:block/holocron/open"
+    ]
+  },
+  "holocron_unlock": {
+    "subtitle": "sounds.galaxyunderchaos.holocron_unlock",
+    "sounds": [
+      "galaxyunderchaos:block/holocron/unlock"
+    ]
+  },
+  "holocron_invest": {
+    "subtitle": "sounds.galaxyunderchaos.holocron_invest",
+    "sounds": [
+      "galaxyunderchaos:block/holocron/invest"
+    ]
+  },
+  "ship_engine_start": {
+    "subtitle": "sounds.galaxyunderchaos.ship_engine_start",
+    "sounds": [
+      "galaxyunderchaos:ship_on"
+    ]
+  },
+  "ship_engine_loop": {
+    "subtitle": "sounds.galaxyunderchaos.ship_engine_loop",
+    "sounds": [
+      {
+        "name": "galaxyunderchaos:ship_running",
+        "stream": false
+      }
+    ]
+  },
+  "ship_engine_stop": {
+    "subtitle": "sounds.galaxyunderchaos.ship_engine_stop",
+    "sounds": [
+      "galaxyunderchaos:ship_off"
+    ]
   }
 }

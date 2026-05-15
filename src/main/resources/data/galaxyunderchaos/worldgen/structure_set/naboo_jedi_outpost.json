@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "galaxyunderchaos:naboo_jedi_outpost",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 48,
+    "separation": 12,
+    "salt": 770820276
+  }
+}

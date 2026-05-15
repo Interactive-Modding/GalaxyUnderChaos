@@ -1,0 +1,24 @@
+{
+  "type": "galaxyunderchaos:hoth_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "galaxyunderchaos:hoth_biome",
+          "parameters": {
+            "continentalness": 0.0,
+            "depth": 0.0,
+            "erosion": 0.0,
+            "humidity": 0.9,
+            "offset": 0.0,
+            "temperature": -1.0,
+            "weirdness": 0.0
+          }
+        }
+      ]
+    },
+    "settings": "galaxyunderchaos:hoth_noise_settings"
+  }
+}

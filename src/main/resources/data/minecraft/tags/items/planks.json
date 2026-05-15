@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:heart_berry_planks",
-	  "galaxyunderchaos:ak_planks"
+    "galaxyunderchaos:heart_berry_planks",
+    "galaxyunderchaos:ak_planks",
+    "galaxyunderchaos:blba_planks",
+    "galaxyunderchaos:dillia_planks",
+    "galaxyunderchaos:cambylictus_planks",
+    "galaxyunderchaos:perlote_planks",
+    "galaxyunderchaos:rutiger_planks",
+    "galaxyunderchaos:polar_planks",
+    "galaxyunderchaos:naboo_pine_planks"
   ]
 }

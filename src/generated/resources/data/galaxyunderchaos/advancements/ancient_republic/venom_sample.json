@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/acid_forged_plate",
+  "criteria": {
+    "has_venom": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:acidic_venom_sac"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.venom_sample.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:acidic_venom_sac"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.venom_sample.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_venom"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

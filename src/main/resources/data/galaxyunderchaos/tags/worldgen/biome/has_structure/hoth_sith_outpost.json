@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:hoth_biome",
+      "required": false
+    }
+  ]
+}

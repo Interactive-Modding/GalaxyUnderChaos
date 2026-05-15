@@ -1,0 +1,109 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "white_lightsaber",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:custom_lightsaber"
+        }
+      ]
+    },
+    {
+      "name": "ancient_saber_parts_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "ak_tree_resources",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ak_log"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ak_planks"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ak_sapling"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ak_leaves"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:heart_berry"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:heart_berry_sapling"
+        }
+      ]
+    },
+    {
+      "name": "bones_and_creature_remains",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 4.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone_block"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:raw_wingmaw_meat"
+        }
+      ]
+    },
+    {
+      "name": "white_kyber_focus",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:white_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_datacron"
+        }
+      ]
+    }
+  ]
+}

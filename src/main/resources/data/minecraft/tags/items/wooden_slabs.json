@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_slab",
-	  "galaxyunderchaos:heart_berry_slab"
+    "galaxyunderchaos:ak_slab",
+    "galaxyunderchaos:heart_berry_slab",
+    "galaxyunderchaos:blba_slab",
+    "galaxyunderchaos:dillia_slab",
+    "galaxyunderchaos:cambylictus_slab",
+    "galaxyunderchaos:perlote_slab",
+    "galaxyunderchaos:rutiger_slab",
+    "galaxyunderchaos:polar_slab",
+    "galaxyunderchaos:naboo_pine_slab"
   ]
 }

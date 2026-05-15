@@ -31,16 +31,16 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
                                 EntityPredicate.Builder.entity()).build()
                 }, galaxyunderchaos.SHUURA.get()));
 
-        this.add("aegis_hilt_from_jungle_temple",
-                new AddItemModifier(new LootItemCondition[] {
-                        new LootTableIdCondition.Builder(new ResourceLocation("chests/jungle_temple"))
-                                .and(LootItemRandomChanceCondition.randomChance(0.10f)).build()
-                }, galaxyunderchaos.AEGIS_HILT.get()));
-        this.add("aegis_hilt_from_desert_pyramid",
-                new AddItemModifier(new LootItemCondition[] {
-                        new LootTableIdCondition.Builder(new ResourceLocation("chests/desert_pyramid"))
-                                .and(LootItemRandomChanceCondition.randomChance(0.10f)).build()
-    }, galaxyunderchaos.AEGIS_HILT.get()));
+//        this.add("aegis_hilt_from_jungle_temple",
+//                new AddItemModifier(new LootItemCondition[] {
+//                        new LootTableIdCondition.Builder(new ResourceLocation("chests/jungle_temple"))
+//                                .and(LootItemRandomChanceCondition.randomChance(0.10f)).build()
+//                }, galaxyunderchaos.AEGIS_HILT.get()));
+//        this.add("aegis_hilt_from_desert_pyramid",
+//                new AddItemModifier(new LootItemCondition[] {
+//                        new LootTableIdCondition.Builder(new ResourceLocation("chests/desert_pyramid"))
+//                                .and(LootItemRandomChanceCondition.randomChance(0.10f)).build()
+//    }, galaxyunderchaos.AEGIS_HILT.get()));
 
         add("titanium_chromium_from_zombie", new AddItemModifier(new LootItemCondition[] {
                 new LootTableIdCondition.Builder(new ResourceLocation("entities/zombie"))

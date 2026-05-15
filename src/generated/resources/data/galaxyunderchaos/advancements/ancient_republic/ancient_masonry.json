@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/tython_stonework",
+  "criteria": {
+    "has_ancient_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ancient_temple_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ancient_masonry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ancient_temple_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ancient_masonry.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ancient_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

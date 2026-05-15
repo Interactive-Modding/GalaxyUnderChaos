@@ -24,7 +24,9 @@ public final class ModularLightsaberData {
     public static final String BLADE_COLOR_TAG = "BladeColor";
     public static final String PRIMARY_HILT_ID_TAG = "PrimaryHiltId";
     public static final String BLADE_MODIFIERS_TAG = "BladeModifiers";
+    public static final String PART_COLORS_TAG = "PartColors";
     public static final int MAX_BLADE_MODIFIERS = 2;
+    public static final int DEFAULT_PART_COLOR = 0xFFFFFF;
     private static final String ACTIVE_TAG = "LightsaberActive";
 
     private ModularLightsaberData() {
@@ -46,12 +48,18 @@ public final class ModularLightsaberData {
     }
 
     public static void applyPreset(ItemStack stack, String bladeColor, String legacyHiltId) {
+        applyPreset(stack, bladeColor, legacyHiltId, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR);
+    }
+
+    public static void applyPreset(ItemStack stack, String bladeColor, String legacyHiltId,
+                                   int emitterColor, int switchColor, int gripColor, int pommelColor) {
         CompoundTag data = getOrCreateDataTag(stack);
         data.putString(BLADE_COLOR_TAG, bladeColor);
         data.putString(PRIMARY_HILT_ID_TAG, legacyHiltId);
         for (LightsaberPartType type : LightsaberPartType.values()) {
             data.putString(type.getSerializedName(), legacyHiltId);
         }
+        writePartColors(data, emitterColor, switchColor, gripColor, pommelColor);
 
         AdvancedLightsaberLegacyHilts.LegacyHiltSpec spec = getLegacySpec(legacyHiltId);
         if (spec != null) {
@@ -62,6 +70,12 @@ public final class ModularLightsaberData {
     }
 
     public static void applyAssembly(ItemStack stack, String bladeColor, String emitter, String switchSection, String grip, String pommel) {
+        applyAssembly(stack, bladeColor, emitter, switchSection, grip, pommel,
+                DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR);
+    }
+
+    public static void applyAssembly(ItemStack stack, String bladeColor, String emitter, String switchSection, String grip, String pommel,
+                                     int emitterColor, int switchColor, int gripColor, int pommelColor) {
         CompoundTag data = getOrCreateDataTag(stack);
         data.putString(BLADE_COLOR_TAG, bladeColor);
         data.putString(PRIMARY_HILT_ID_TAG, emitter);
@@ -69,6 +83,7 @@ public final class ModularLightsaberData {
         data.putString(LightsaberPartType.SWITCH_SECTION.getSerializedName(), switchSection);
         data.putString(LightsaberPartType.GRIP.getSerializedName(), grip);
         data.putString(LightsaberPartType.POMMEL.getSerializedName(), pommel);
+        writePartColors(data, emitterColor, switchColor, gripColor, pommelColor);
         writeBladeModifiers(data, Collections.emptySet());
     }
 
@@ -100,6 +115,57 @@ public final class ModularLightsaberData {
             return data.getString(type.getSerializedName());
         }
         return fallback;
+    }
+
+    public static int clampPartColor(int color) {
+        return color & 0xFFFFFF;
+    }
+
+    public static int getDefaultPartColor(LightsaberPartType type) {
+        return DEFAULT_PART_COLOR;
+    }
+
+    public static int getPartColor(ItemStack stack, LightsaberPartType type) {
+        return getPartColor(getDataTag(stack), type);
+    }
+
+    public static int getPartColor(@Nullable CompoundTag data, LightsaberPartType type) {
+        if (data != null && data.contains(PART_COLORS_TAG, Tag.TAG_COMPOUND)) {
+            CompoundTag colors = data.getCompound(PART_COLORS_TAG);
+            if (colors.contains(type.getSerializedName(), Tag.TAG_INT)) {
+                return clampPartColor(colors.getInt(type.getSerializedName()));
+            }
+        }
+        return getDefaultPartColor(type);
+    }
+
+    public static void setPartColor(ItemStack stack, LightsaberPartType type, int color) {
+        writePartColor(getOrCreateDataTag(stack), type, color);
+    }
+
+    public static void writePartColor(CompoundTag data, LightsaberPartType type, int color) {
+        CompoundTag colors = data.contains(PART_COLORS_TAG, Tag.TAG_COMPOUND)
+                ? data.getCompound(PART_COLORS_TAG)
+                : new CompoundTag();
+        colors.putInt(type.getSerializedName(), clampPartColor(color));
+        data.put(PART_COLORS_TAG, colors);
+    }
+
+    public static void writePartColors(CompoundTag data, int emitterColor, int switchColor, int gripColor, int pommelColor) {
+        writePartColor(data, LightsaberPartType.EMITTER, emitterColor);
+        writePartColor(data, LightsaberPartType.SWITCH_SECTION, switchColor);
+        writePartColor(data, LightsaberPartType.GRIP, gripColor);
+        writePartColor(data, LightsaberPartType.POMMEL, pommelColor);
+    }
+
+    public static void applyPartColors(ItemStack stack, int emitterColor, int switchColor, int gripColor, int pommelColor) {
+        writePartColors(getOrCreateDataTag(stack), emitterColor, switchColor, gripColor, pommelColor);
+    }
+
+    public static void copyPartColors(CompoundTag fromData, CompoundTag toData) {
+        for (LightsaberPartType type : LightsaberPartType.values()) {
+            writePartColor(toData, type, getPartColor(fromData, type));
+        }
     }
 
     public static Map<LightsaberPartType, String> getPartFamilies(ItemStack stack, String fallback) {
@@ -214,18 +280,49 @@ public final class ModularLightsaberData {
     public static boolean shouldRenderSecondBlade(ItemStack stack, String fallbackFamily) {
         String primary = getPrimaryHiltId(stack, fallbackFamily);
         AdvancedLightsaberLegacyHilts.LegacyHiltSpec spec = getLegacySpec(primary);
-        return spec != null && spec.doubleBladed();
+        if (spec == null || !spec.doubleBladed()) {
+            return false;
+        }
+
+        if (stack.getItem() instanceof server.galaxyunderchaos.item.DoubleLightsaberItem) {
+            return false;
+        }
+
+        CompoundTag data = getDataTag(stack);
+        if (data == null) {
+            return false;
+        }
+
+        for (LightsaberPartType type : LightsaberPartType.values()) {
+            if (!primary.equals(getPartFamily(stack, type, fallbackFamily))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public static ItemStack createCustomLightsaber(String bladeColor, String emitter, String switchSection, String grip, String pommel) {
+        return createCustomLightsaber(bladeColor, emitter, switchSection, grip, pommel,
+                DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR);
+    }
+
+    public static ItemStack createCustomLightsaber(String bladeColor, String emitter, String switchSection, String grip, String pommel,
+                                                   int emitterColor, int switchColor, int gripColor, int pommelColor) {
         ItemStack result = new ItemStack(galaxyunderchaos.CUSTOM_LIGHTSABER.get());
-        applyAssembly(result, bladeColor, emitter, switchSection, grip, pommel);
+        applyAssembly(result, bladeColor, emitter, switchSection, grip, pommel, emitterColor, switchColor, gripColor, pommelColor);
         return result;
     }
 
     public static ItemStack createCustomLightsaberFromPreset(String bladeColor, String legacyHiltId) {
+        return createCustomLightsaberFromPreset(bladeColor, legacyHiltId,
+                DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR, DEFAULT_PART_COLOR);
+    }
+
+    public static ItemStack createCustomLightsaberFromPreset(String bladeColor, String legacyHiltId,
+                                                             int emitterColor, int switchColor, int gripColor, int pommelColor) {
         ItemStack result = new ItemStack(galaxyunderchaos.CUSTOM_LIGHTSABER.get());
-        applyPreset(result, bladeColor, legacyHiltId);
+        applyPreset(result, bladeColor, legacyHiltId, emitterColor, switchColor, gripColor, pommelColor);
         return result;
     }
 

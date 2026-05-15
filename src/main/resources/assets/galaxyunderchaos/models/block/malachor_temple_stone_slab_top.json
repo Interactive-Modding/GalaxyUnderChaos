@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/malachor_temple_stone",
+    "top": "galaxyunderchaos:block/malachor_temple_stone",
+    "side": "galaxyunderchaos:block/malachor_temple_stone"
+  }
+}

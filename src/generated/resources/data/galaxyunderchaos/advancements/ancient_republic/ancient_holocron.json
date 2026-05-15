@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/ancient_datacron",
+  "criteria": {
+    "has_ancient_holocron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ancient_holocron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ancient_holocron.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ancient_holocron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ancient_holocron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ancient_holocron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

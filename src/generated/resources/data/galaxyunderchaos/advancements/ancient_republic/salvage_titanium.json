@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/salvage_chromium",
+  "criteria": {
+    "has_titanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:titanium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.salvage_titanium.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:titanium_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.salvage_titanium.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_titanium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

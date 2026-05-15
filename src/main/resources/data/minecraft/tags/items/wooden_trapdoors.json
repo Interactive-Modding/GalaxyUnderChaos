@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_trapdoor",
-	  "galaxyunderchaos:heart_berry_trapdoor"
+    "galaxyunderchaos:ak_trapdoor",
+    "galaxyunderchaos:heart_berry_trapdoor",
+    "galaxyunderchaos:blba_trapdoor",
+    "galaxyunderchaos:dillia_trapdoor",
+    "galaxyunderchaos:cambylictus_trapdoor",
+    "galaxyunderchaos:perlote_trapdoor",
+    "galaxyunderchaos:rutiger_trapdoor",
+    "galaxyunderchaos:polar_trapdoor",
+    "galaxyunderchaos:naboo_pine_trapdoor"
   ]
 }

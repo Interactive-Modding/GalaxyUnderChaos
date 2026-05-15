@@ -1,3 +1,16 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * This file is part of Galaxy Under Chaos.
+ * It contains code, data, model geometry, behavior, or compatibility logic
+ * copied, translated, ported, adapted from, or created to support content
+ * derived from Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille
+ * and Void Adept.
+ *
+ * Modifications for Galaxy Under Chaos / Minecraft Forge 1.20.1 by
+ *  Vitiate and contributors.
+ */
+
 package server.galaxyunderchaos.lightsaber;
 
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +58,7 @@ public final class LegacyLightsaberTabulaAssets {
         addFamily(result, "prodigal_son", "emitter_prodigal_son", "switch_section_prodigal_son", "body_prodigal_son", "pommel_prodigal_son");
         addFamily(result, "redeemer", "emitter_redeemer", "switch_section_redeemer", "body_redeemer", "pommel_redeemer");
         addFamily(result, "vaid", "emitter_vaid", "switch_section_vaid", "body_vaid", "pommel_vaid");
+        addFamily(result, "vaid_ancient", "emitter_vaid", "switch_section_vaid", "body_vaid", "pommel_vaid");
         return Map.copyOf(result);
     }
 
@@ -53,6 +67,7 @@ public final class LegacyLightsaberTabulaAssets {
         result.put("fulcrum", rl("fulcrum"));
         result.put("mandalorian", rl("mandalorian"));
         result.put("vaid", rl("vaid"));
+        result.put("vaid_ancient", rl("vaid"));
         result.put("generic_fisk", rl("fisks_lightsaber"));
         return Map.copyOf(result);
     }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/naboo_pine_planks",
+    "side": "galaxyunderchaos:block/naboo_pine_planks",
+    "top": "galaxyunderchaos:block/naboo_pine_planks"
+  }
+}

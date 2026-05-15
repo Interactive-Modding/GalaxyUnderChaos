@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_ashla",
+  "criteria": {
+    "to_bogan": {
+      "conditions": {
+        "to": "galaxyunderchaos:bogan"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_bogan.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:bogan_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_bogan.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_bogan"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/root",
+  "criteria": {
+    "has_chitin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:chitin_fragments"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.chitin_fragments.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:chitin_fragments"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.chitin_fragments.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_chitin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

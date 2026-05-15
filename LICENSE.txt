@@ -1,0 +1,10 @@
+Galaxy Under Chaos is licensed under the GNU Lesser General Public License v3.0 only (LGPL-3.0-only), unless a file or bundled third-party notice states otherwise.
+
+Full license texts:
+- LICENSE / COPYING.LESSER: GNU Lesser General Public License v3.0
+- COPYING: GNU General Public License v3.0, incorporated by LGPL-3.0
+
+This project includes modified and ported portions of Advanced Lightsabers 1.2:
+https://github.com/FiskFille/AdvancedLightsabers
+
+Advanced Lightsabers is licensed under LGPL-3.0. Its notices are preserved in NOTICE.md and THIRD_PARTY_NOTICES.md.

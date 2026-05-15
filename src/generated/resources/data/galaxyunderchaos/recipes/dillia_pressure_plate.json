@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:dillia_planks"
+    }
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_pressure_plate"
+  },
+  "show_notification": true,
+  "group": "wooden_pressure_plate"
+}

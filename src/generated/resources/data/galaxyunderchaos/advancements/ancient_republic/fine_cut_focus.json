@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/inverting_focus",
+  "criteria": {
+    "has_fine_cut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_fine_cut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.fine_cut_focus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:focusing_crystal_fine_cut"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.fine_cut_focus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_fine_cut"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

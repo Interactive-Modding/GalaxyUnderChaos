@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/root",
+  "criteria": {
+    "has_chromium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:chromium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.salvage_chromium.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:chromium_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.salvage_chromium.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_chromium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

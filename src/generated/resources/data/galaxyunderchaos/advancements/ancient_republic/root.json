@@ -1,0 +1,30 @@
+{
+  "criteria": {
+    "join": {
+      "conditions": {},
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:jedi_datacron"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "join"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

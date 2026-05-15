@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/rutiger_planks",
+    "side": "galaxyunderchaos:block/rutiger_planks",
+    "top": "galaxyunderchaos:block/rutiger_planks"
+  }
+}

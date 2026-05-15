@@ -33,7 +33,6 @@ public class LightsaberPartItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Level level, java.util.List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.literal(partType.getDisplayName() + ": " + familyId));
-        tooltip.add(Component.literal("Drop on the Lightsaber Crafting Table with the other sections and a kyber crystal."));
         super.appendHoverText(stack, level, tooltip, flag);
     }
 

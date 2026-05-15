@@ -1,0 +1,15 @@
+{
+  "name": "galaxyunderchaos:ilum_kyber_cave_nexus",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "galaxyunderchaos:ilum_nexus",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

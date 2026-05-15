@@ -8,12 +8,16 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import server.galaxyunderchaos.block.GroundSaberStandBlock;
 import server.galaxyunderchaos.entity.GroundSaberStandBlockEntity;
 
-import static com.mojang.math.Axis.*;
+import static com.mojang.math.Axis.XN;
+import static com.mojang.math.Axis.XP;
+import static com.mojang.math.Axis.YN;
+import static com.mojang.math.Axis.YP;
+import static com.mojang.math.Axis.ZP;
 
 public class GroundSaberStandRenderer implements BlockEntityRenderer<GroundSaberStandBlockEntity> {
 
@@ -31,31 +35,48 @@ public class GroundSaberStandRenderer implements BlockEntityRenderer<GroundSaber
                        int light,
                        int overlay) {
 
-        if (stand.isEmpty()) return;
+        if (stand.isEmpty()) {
+            return;
+        }
 
         pose.pushPose();
 
         BlockState state = stand.getBlockState();
         Direction facing = state.getValue(GroundSaberStandBlock.FACING);
+        AttachFace face = state.getValue(GroundSaberStandBlock.FACE);
 
-        switch (facing) {
-            case EAST  -> pose.translate(-0.18D, 0.0D, 0.017D);
-            case WEST  -> pose.translate(0.02D, 0.0D, 0.183D);
-            case NORTH, SOUTH -> {}
+        pose.translate(0.5D, 0.5D, 0.5D);
+
+        float yRot = switch (facing) {
+            case NORTH -> 0.0F;
+            case WEST  -> 90.0F;
+            case SOUTH -> 180.0F;
+            case EAST  -> 270.0F;
+            default    -> 0.0F;
+        };
+        pose.mulPose(YP.rotationDegrees(yRot));
+        pose.mulPose(XP.rotationDegrees(90.0F));
+        pose.translate(-0.5D, -0.5D, -0.5D);
+
+        if (face == AttachFace.WALL) {
+            pose.mulPose(XP.rotationDegrees(90.0F));
+            pose.translate(0.60D, 0.8D, 0.78D);
+            switch (facing){
+                case NORTH, SOUTH -> {
+                    pose.translate(0.0D, 0.0D, -2.0D);
+                }
+                case EAST, WEST -> {
+                        pose.translate(0.0D, 0.0D, -2.0D);
+                    }
+            }
+        } else {
+            pose.translate(0.60D, 0.8D, 0.6D);
+
         }
 
-// 2. NOW apply your original saber rotations
-        pose.translate(0.58D, 0.07D, 0.4D);
         pose.mulPose(YN.rotationDegrees(90.0F));
         pose.mulPose(XN.rotationDegrees(90.0F));
         pose.mulPose(ZP.rotationDegrees(135.0F));
-
-// 3. NOW apply Z rotation for facing EAST/WEST
-        switch (facing) {
-            case EAST  -> pose.mulPose(ZP.rotationDegrees(90));
-            case WEST  -> pose.mulPose(ZP.rotationDegrees(270));
-            default -> {}
-        }
 
         itemRenderer.renderStatic(
                 stand.getItem(),
@@ -70,6 +91,4 @@ public class GroundSaberStandRenderer implements BlockEntityRenderer<GroundSaber
 
         pose.popPose();
     }
-
-
 }

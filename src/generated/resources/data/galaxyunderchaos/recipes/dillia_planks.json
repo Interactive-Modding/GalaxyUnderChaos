@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:dillia_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_planks",
+    "count": 4
+  }
+}

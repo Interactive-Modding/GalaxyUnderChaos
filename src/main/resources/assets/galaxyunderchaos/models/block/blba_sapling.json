@@ -1,8 +1,7 @@
-
 {
   "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "galaxyunderchaos:block/ak_sapling"
-  }
+    "cross": "galaxyunderchaos:block/blba_sapling"
+  },
+  "render_type": "cutout"
 }

@@ -1,0 +1,170 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "folded": {
+      "animation_length": 3,
+      "bones": {
+        "leftRocket": {
+          "position": {
+            "vector": [
+              -7,
+              0,
+              0
+            ]
+          }
+        },
+        "leftWing": {
+          "rotation": {
+            "vector": [
+              0,
+              92.5,
+              0
+            ]
+          },
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "Cockpit": {
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "rightRocket": {
+          "position": {
+            "vector": [
+              7,
+              0,
+              0
+            ]
+          }
+        },
+        "rightWing": {
+          "rotation": {
+            "vector": [
+              0,
+              -92.5,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "unfolded": {
+      "animation_length": 3,
+      "bones": {
+        "leftRocket": {
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "Cockpit": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.novadive.idle": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {}
+    },
+    "animation.novadive.folded": {
+      "animation_length": 3,
+      "bones": {
+        "leftRocket": {
+          "position": {
+            "vector": [
+              -7,
+              0,
+              0
+            ]
+          }
+        },
+        "leftWing": {
+          "rotation": {
+            "vector": [
+              0,
+              92.5,
+              0
+            ]
+          },
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "Cockpit": {
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "rightRocket": {
+          "position": {
+            "vector": [
+              7,
+              0,
+              0
+            ]
+          }
+        },
+        "rightWing": {
+          "rotation": {
+            "vector": [
+              0,
+              -92.5,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.novadive.unfolded": {
+      "animation_length": 3,
+      "bones": {
+        "leftRocket": {
+          "position": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "Cockpit": {
+          "rotation": {
+            "vector": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

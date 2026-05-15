@@ -39,6 +39,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                      "bogan_temple_stone_slab",
                      "dark_temple_stone_slab",
                      "heart_berry_slab",
+                     "korriban_temple_stone_slab",
                      "temple_stone_slab",
                      "tython_temple_stone_slab" ->
                         this.add(block, createSlabItemTable(block));
@@ -63,6 +64,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 }
 
                 case "dark_temple_stone_holobook" -> {
+                    Item drop = getItem("sith_holobook");
+                    this.add(block,
+                            createSilkTouchDispatchTable(
+                                    block,
+                                    applyExplosionDecay(block,
+                                            LootItem.lootTableItem(drop)
+                                                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(3)))
+                                    )
+                            )
+                    );
+                }
+
+                case "korriban_temple_stone_holobook" -> {
                     Item drop = getItem("sith_holobook");
                     this.add(block,
                             createSilkTouchDispatchTable(
@@ -119,6 +133,34 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 }
                 case "heart_berry_fruit_leaves" -> {
                     Block sapling = getBlock("heart_berry_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "blba_leaves" -> {
+                    Block sapling = getBlock("blba_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "dillia_leaves" -> {
+                    Block sapling = getBlock("dillia_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "cambylictus_leaves" -> {
+                    Block sapling = getBlock("cambylictus_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "perlote_leaves" -> {
+                    Block sapling = getBlock("perlote_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "rutiger_leaves" -> {
+                    Block sapling = getBlock("rutiger_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "polar_leaves" -> {
+                    Block sapling = getBlock("polar_sapling");
+                    this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
+                }
+                case "naboo_pine_leaves" -> {
+                    Block sapling = getBlock("naboo_pine_sapling");
                     this.add(block, createLeavesDrops(block, sapling, NORMAL_LEAVES_SAPLING_CHANCES));
                 }
                 default -> this.dropSelf(block);

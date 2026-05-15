@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:dillia_planks"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_trapdoor",
+    "count": 2
+  },
+  "show_notification": true,
+  "group": "wooden_trapdoor"
+}

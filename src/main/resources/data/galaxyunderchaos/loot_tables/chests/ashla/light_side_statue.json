@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "light_kyber_crystals_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:blue_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:green_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:yellow_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:cyan_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:white_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:light_blue_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:arctic_blue_kyber"
+        }
+      ]
+    },
+    {
+      "name": "temple_guard_fabric_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:temple_guard_fabric"
+        }
+      ]
+    },
+    {
+      "name": "light_side_context",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 1.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holocron"
+        }
+      ]
+    }
+  ]
+}

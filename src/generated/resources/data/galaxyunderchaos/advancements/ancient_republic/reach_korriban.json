@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_mustafar",
+  "criteria": {
+    "to_korriban": {
+      "conditions": {
+        "to": "galaxyunderchaos:korriban"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_korriban.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:korriban_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_korriban.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_korriban"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

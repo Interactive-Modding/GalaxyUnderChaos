@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_plasma_blade",
+  "criteria": {
+    "has_double_saber": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:double_lightsaber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.double_blade.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:double_lightsaber"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.double_blade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_double_saber"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/perlote_planks",
+    "side": "galaxyunderchaos:block/perlote_planks",
+    "top": "galaxyunderchaos:block/perlote_planks"
+  }
+}

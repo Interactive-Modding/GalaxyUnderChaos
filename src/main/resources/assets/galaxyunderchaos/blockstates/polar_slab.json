@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/polar_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/polar_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/polar_planks" }
+  }
+}

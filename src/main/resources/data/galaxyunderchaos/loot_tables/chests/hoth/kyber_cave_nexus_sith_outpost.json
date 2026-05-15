@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "dark_side_saber_parts_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "dark_outpost_supplies",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:red_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_holobook"
+        }
+      ]
+    }
+  ]
+}

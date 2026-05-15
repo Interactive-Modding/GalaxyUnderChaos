@@ -1,0 +1,67 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "dark_side_saber_forms",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:makashi_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:shien_djem_so_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:juyo_vaapad_holobook"
+        }
+      ]
+    },
+    {
+      "name": "dark_side_saber_parts_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "dark_temple_lore",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_holocron"
+        }
+      ]
+    }
+  ]
+}

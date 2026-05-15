@@ -82,7 +82,7 @@ public class HeartBerryBoat extends Boat {
 
         public Block getPlanks() { return this.planks; }
 
-        public static final EnumCodec<Type> CODEC =
+        public static final net.minecraft.util.StringRepresentable.EnumCodec<Type> CODEC =
                 net.minecraft.util.StringRepresentable.fromEnum(Type::values);
         public static Type byName(String name)  { return CODEC.byName(name, HEART_BERRY); }
         public static Type byId(int id)         { return values()[id < 0 || id >= values().length ? 0 : id]; }

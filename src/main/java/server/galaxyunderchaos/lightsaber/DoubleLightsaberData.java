@@ -46,6 +46,7 @@ public final class DoubleLightsaberData {
         end.putString(ModularLightsaberData.PRIMARY_HILT_ID_TAG, ModularLightsaberData.getPrimaryHiltId(source, fallbackFamily));
         for (LightsaberPartType type : LightsaberPartType.values()) {
             end.putString(type.getSerializedName(), ModularLightsaberData.getPartFamily(source, type, fallbackFamily));
+            ModularLightsaberData.writePartColor(end, type, ModularLightsaberData.getPartColor(source, type));
         }
         ModularLightsaberData.writeBladeModifiers(end, ModularLightsaberData.getBladeModifiers(source));
         return end;
@@ -93,8 +94,10 @@ public final class DoubleLightsaberData {
         CompoundTag data = ModularLightsaberData.getOrCreateDataTag(renderStack);
         data.putString(ModularLightsaberData.BLADE_COLOR_TAG, getBladeColor(doubleStack, upper, "red"));
         data.putString(ModularLightsaberData.PRIMARY_HILT_ID_TAG, getPrimaryHiltId(doubleStack, upper, fallback));
+        CompoundTag end = getEndTag(doubleStack, upper);
         for (LightsaberPartType type : LightsaberPartType.values()) {
             data.putString(type.getSerializedName(), getPartFamily(doubleStack, upper, type, fallback));
+            ModularLightsaberData.writePartColor(data, type, ModularLightsaberData.getPartColor(end, type));
         }
         ModularLightsaberData.writeBladeModifiers(data, getBladeModifiers(doubleStack, upper));
         renderStack.getOrCreateTag().putBoolean("LightsaberActive", active);

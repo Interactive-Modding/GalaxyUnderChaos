@@ -33,6 +33,10 @@ public class ModDimensions {
     public static final ResourceKey<Level> NABOO_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo"));
     public static final ResourceKey<DimensionType> NABOO_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_type"));
 
+    public static final ResourceKey<LevelStem> HOTH_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth"));
+    public static final ResourceKey<Level> HOTH_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth"));
+    public static final ResourceKey<DimensionType> HOTH_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_type"));
+
     public static final ResourceKey<LevelStem> ILUM_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum"));
     public static final ResourceKey<Level> ILUM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum"));
     public static final ResourceKey<DimensionType> ILUM_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_type"));
@@ -67,6 +71,7 @@ public class ModDimensions {
 
     public static final ResourceKey<NoiseGeneratorSettings> TYTHON_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_noise_settings"));
     public static final ResourceKey<NoiseGeneratorSettings> NABOO_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> HOTH_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_noise_settings"));
     public static final ResourceKey<NoiseGeneratorSettings> ILUM_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_noise_settings"));
     public static final ResourceKey<NoiseGeneratorSettings> MUSTAFAR_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_noise_settings"));
     public static final ResourceKey<NoiseGeneratorSettings> OSSUS_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_noise_settings"));
@@ -80,6 +85,7 @@ public class ModDimensions {
         context.register(ASHLA_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.8f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(BOGAN_DIM_TYPE, new DimensionType(OptionalLong.of(18000), false, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)));
         context.register(DANTOOINE_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 7)));
+        context.register(HOTH_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(ILUM_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(KORRIBAN_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "overworld"), 0.1f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)));
         context.register(MALACHOR_DIM_TYPE, new DimensionType(OptionalLong.of(18000), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
@@ -99,7 +105,9 @@ public class ModDimensions {
                         new Climate.ParameterList<>(List.of(
                                 Pair.of(Climate.parameters(0.70F, 0.80F, 0.40F, 0.10F, 0.30F, 0.00F, 0.20F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_FOREST)),
                                 Pair.of(Climate.parameters(0.80F, 0.60F, 0.30F, 0.00F, 0.50F, 0.10F, 0.00F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_PLAINS)),
-                                Pair.of(Climate.parameters(0.50F, 0.30F, 0.20F, 0.20F, 0.70F, 0.10F, 0.10F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_MOUNTAINS))
+                                Pair.of(Climate.parameters(0.50F, 0.30F, 0.20F, 0.20F, 0.70F, 0.10F, 0.10F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_MOUNTAINS)),
+                                Pair.of(Climate.parameters(0.60F, 0.85F, 0.20F, 0.60F, -0.10F, 0.20F, 0.00F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_LAKE)),
+                                Pair.of(Climate.parameters(0.55F, 0.90F, 0.10F, 0.70F, -0.35F, 0.00F, 0.00F), biomeRegistry.getOrThrow(ModBiomes.TYTHON_OCEAN))
                         ))
                 ),
                 noiseGenSettings.getOrThrow(TYTHON_NOISE)
@@ -121,10 +129,13 @@ public class ModDimensions {
         NoiseBasedChunkGenerator nabooChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(
                         new Climate.ParameterList<>(List.of(
-                                Pair.of(Climate.parameters(0.7F, 0.7F, 0.3F, 0.2F, 0.125F, 0.3F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_BIOME)),
-                                Pair.of(Climate.parameters(0.9F, 0.9F, 0.2F, 0.4F, 0.05F, 0.2F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_SWAMP)),
-                                Pair.of(Climate.parameters(0.8F, 0.4F, 0.6F, 0.3F, 0.1F, 0.1F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_PLAINS)),
-                                Pair.of(Climate.parameters(0.3F, 0.7F, 0.6F, 0.2F, -0.2F, 0.0F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_OCEAN))
+                                // Naboo climate channels are now actual noise fields from ModNoiseSettings.
+                                // Keep the points separated mainly by continentalness + humidity so
+                                // ocean/coast/swamp/plains/forest line up predictably.
+                                Pair.of(Climate.parameters(0.72F, 0.78F, 0.25F, -0.10F, 0.0F, 0.10F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_BIOME)),
+                                Pair.of(Climate.parameters(0.82F, 0.95F, -0.12F, 0.35F, 0.0F, 0.20F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_SWAMP)),
+                                Pair.of(Climate.parameters(0.78F, 0.42F, 0.58F, 0.10F, 0.0F, -0.05F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_PLAINS)),
+                                Pair.of(Climate.parameters(0.68F, 0.70F, -0.72F, -0.20F, 0.0F, -0.15F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.NABOO_OCEAN))
                         ))
                 ),
                 noiseGenSettings.getOrThrow(NABOO_NOISE)
@@ -141,6 +152,16 @@ public class ModDimensions {
                 noiseGenSettings.getOrThrow(ILUM_NOISE)
         );
         context.register(ILUM_KEY, new LevelStem(dimTypes.getOrThrow(ILUM_DIM_TYPE), ilumChunkGenerator));
+
+        NoiseBasedChunkGenerator hothChunkGenerator = new NoiseBasedChunkGenerator(
+                MultiNoiseBiomeSource.createFromList(
+                        new Climate.ParameterList<>(List.of(
+                                Pair.of(Climate.parameters(-1.0F, 0.9F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), biomeRegistry.getOrThrow(ModBiomes.HOTH_BIOME))
+                                ))
+                ),
+                noiseGenSettings.getOrThrow(HOTH_NOISE)
+        );
+        context.register(HOTH_KEY, new LevelStem(dimTypes.getOrThrow(HOTH_DIM_TYPE), hothChunkGenerator));
 
         NoiseBasedChunkGenerator mustafarChunkGenerator = new NoiseBasedChunkGenerator(
                 MultiNoiseBiomeSource.createFromList(

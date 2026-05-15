@@ -1,3 +1,4 @@
+
 package server.galaxyunderchaos.block;
 
 import net.minecraft.core.BlockPos;
@@ -6,24 +7,34 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
+import server.galaxyunderchaos.entity.LightsaberCraftingTableBlockEntity;
 import server.galaxyunderchaos.item.DoubleLightsaberItem;
 import server.galaxyunderchaos.item.HiltItem;
 import server.galaxyunderchaos.item.LightsaberItem;
@@ -37,7 +48,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-public class LightsaberCraftingTableBlock extends Block {
+public class LightsaberCraftingTableBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.Plane.HORIZONTAL);
     private static final VoxelShape NORTH_SHAPE = Block.box(-8, 0.1, 0.1, 24, 16, 17);
     private static final VoxelShape WEST_SHAPE = Block.box(0.1, 0.1, -8, 17, 16, 24);
@@ -64,6 +75,33 @@ public class LightsaberCraftingTableBlock extends Block {
             case WEST -> WEST_SHAPE;
             default -> NORTH_SHAPE;
         };
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new LightsaberCraftingTableBlockEntity(pos, state);
+    }
+
+    @Override
+    public MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        return blockEntity instanceof MenuProvider provider ? provider : null;
+    }
+
+    @Override
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof LightsaberCraftingTableBlockEntity tableBlockEntity) {
+                NetworkHooks.openScreen(serverPlayer, tableBlockEntity, pos);
+            }
+        }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -112,7 +150,8 @@ public class LightsaberCraftingTableBlock extends Block {
         }
 
         ItemEntity kyberEntity = findKyber(nearbyItems);
-        if (kyberEntity == null) {
+        ItemEntity circuitryEntity = findCircuitry(nearbyItems);
+        if (kyberEntity == null || circuitryEntity == null) {
             super.stepOn(level, pos, state, entity);
             return;
         }
@@ -121,6 +160,7 @@ public class LightsaberCraftingTableBlock extends Block {
             ItemStack result = LightsaberCrafting.craftLightsaber(triggerEntity.getItem(), kyberEntity.getItem());
             if (!result.isEmpty()) {
                 consumeOne(triggerEntity);
+                consumeOne(circuitryEntity);
                 consumeOne(kyberEntity);
                 spawnCraftedResult(level, pos, result);
                 spawnCraftingParticles(level, pos);
@@ -142,6 +182,7 @@ public class LightsaberCraftingTableBlock extends Block {
                 consumeOne(switchSection);
                 consumeOne(grip);
                 consumeOne(pommel);
+                consumeOne(circuitryEntity);
                 consumeOne(kyberEntity);
                 spawnCraftedResult(level, pos, result);
                 spawnCraftingParticles(level, pos);
@@ -157,7 +198,7 @@ public class LightsaberCraftingTableBlock extends Block {
                 pos.getX() + 0.5D,
                 pos.getY() + 1.0D,
                 pos.getZ() + 0.5D,
-                result.copy());
+                server.galaxyunderchaos.lightsaber.LightsaberCraftingTableLogic.activatePreview(result));
         entity.setDeltaMovement(0.0D, 0.05D, 0.0D);
         level.addFreshEntity(entity);
     }
@@ -170,7 +211,6 @@ public class LightsaberCraftingTableBlock extends Block {
         }
     }
 
-
     @Nullable
     private ItemEntity findOtherCraftableLightsaber(List<ItemEntity> entities, ItemEntity exclude) {
         for (ItemEntity entity : entities) {
@@ -179,6 +219,17 @@ public class LightsaberCraftingTableBlock extends Block {
             }
             if (server.galaxyunderchaos.lightsaber.DoubleLightsaberData.canCreateFrom(entity.getItem())
                     && server.galaxyunderchaos.lightsaber.DoubleLightsaberData.canCreateFrom(exclude.getItem())) {
+                return entity;
+            }
+        }
+        return null;
+    }
+
+
+    @Nullable
+    private ItemEntity findCircuitry(List<ItemEntity> entities) {
+        for (ItemEntity entity : entities) {
+            if (server.galaxyunderchaos.lightsaber.LightsaberCraftingTableLogic.isCircuitry(entity.getItem())) {
                 return entity;
             }
         }
@@ -254,16 +305,8 @@ public class LightsaberCraftingTableBlock extends Block {
 
     @Override
     public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        pTooltipComponents.add(Component.translatable("tooltip.galaxyunderchaos.lightsaber_crafting_table.tooltip"));
-        pTooltipComponents.add(Component.literal("Drop two finished legacy/custom sabers to combine them into a double-bladed staff."));
-        pTooltipComponents.add(Component.literal("Or drop a legacy hilt + kyber, or emitter + switch + grip + pommel + kyber."));
-        pTooltipComponents.add(Component.literal("Finished sabers can also take up to two focusing crystals as blade modifiers."));
+        pTooltipComponents.add(Component.literal("Right-click to use the Saber Forge-style assembly GUI."));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pTooltipFlag);
-    }
-
-    @Override
-    public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
     }
 
     @Override
@@ -287,9 +330,14 @@ public class LightsaberCraftingTableBlock extends Block {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof LightsaberCraftingTableBlockEntity tableBlockEntity) {
+                Containers.dropContents(level, pos, tableBlockEntity);
+                level.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, level, pos, newState, isMoving);
         }
     }
 

@@ -20,7 +20,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-import server.galaxyunderchaos.entity.CoffinBlockEntity;
+import server.galaxyunderchaos.entity.SithTombBlockEntity;
 
 public class SithCoffinBlock extends AbstractCoffinBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -40,7 +40,7 @@ public class SithCoffinBlock extends AbstractCoffinBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.LOWER ? new CoffinBlockEntity(pos, state) : null;
+        return state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.LOWER ? new SithTombBlockEntity(pos, state) : null;
     }
 
     @Override

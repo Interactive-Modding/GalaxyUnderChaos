@@ -71,7 +71,8 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    implementation fg.deobf("curse.maven:citadel-331936:${citadel_file_id}")
+    implementation fg.deobf("curse.maven:geckolib-388172:7553267")
+    runtimeOnly fg.deobf("curse.maven:dynamic-lights-227874:4861183")
     implementation fg.deobf("curse.maven:jei-238222:6075247")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

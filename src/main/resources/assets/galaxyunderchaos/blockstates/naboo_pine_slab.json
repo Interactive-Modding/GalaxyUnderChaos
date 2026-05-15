@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/naboo_pine_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/naboo_pine_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/naboo_pine_planks" }
+  }
+}

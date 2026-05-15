@@ -8,49 +8,49 @@
         {
           "biome": "galaxyunderchaos:naboo_biome",
           "parameters": {
-            "continentalness": 0.3,
-            "depth": 0.125,
-            "erosion": 0.2,
-            "humidity": 0.7,
+            "continentalness": 0.25,
+            "depth": 0.0,
+            "erosion": -0.1,
+            "humidity": 0.7799,
             "offset": 0.0,
-            "temperature": 0.7,
-            "weirdness": 0.3
+            "temperature": 0.72,
+            "weirdness": 0.1
           }
         },
         {
           "biome": "galaxyunderchaos:naboo_swamp",
           "parameters": {
-            "continentalness": 0.2,
-            "depth": 0.05,
-            "erosion": 0.4,
-            "humidity": 0.9,
+            "continentalness": -0.12,
+            "depth": 0.0,
+            "erosion": 0.35,
+            "humidity": 0.95,
             "offset": 0.0,
-            "temperature": 0.9,
+            "temperature": 0.82,
             "weirdness": 0.2
           }
         },
         {
           "biome": "galaxyunderchaos:naboo_plains",
           "parameters": {
-            "continentalness": 0.6,
-            "depth": 0.1,
-            "erosion": 0.3,
-            "humidity": 0.4,
+            "continentalness": 0.58,
+            "depth": 0.0,
+            "erosion": 0.1,
+            "humidity": 0.42,
             "offset": 0.0,
-            "temperature": 0.8,
-            "weirdness": 0.1
+            "temperature": 0.7799,
+            "weirdness": -0.05
           }
         },
         {
           "biome": "galaxyunderchaos:naboo_ocean",
           "parameters": {
-            "continentalness": 0.6,
-            "depth": -0.2,
-            "erosion": 0.2,
+            "continentalness": -0.72,
+            "depth": 0.0,
+            "erosion": -0.2,
             "humidity": 0.7,
             "offset": 0.0,
-            "temperature": 0.3,
-            "weirdness": 0.0
+            "temperature": 0.68,
+            "weirdness": -0.15
           }
         }
       ]

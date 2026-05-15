@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "galaxyunderchaos:hoth_sith_outpost",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 44,
+    "separation": 10,
+    "salt": 1361471337
+  }
+}

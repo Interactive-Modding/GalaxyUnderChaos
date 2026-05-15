@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/fang_blade",
+  "criteria": {
+    "has_wingmaw_hilt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_hilt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.frontier_hilt.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:wingmaw_hilt"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.frontier_hilt.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_wingmaw_hilt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -40,6 +40,30 @@
             "temperature": 0.5,
             "weirdness": 0.1
           }
+        },
+        {
+          "biome": "galaxyunderchaos:tython_lake",
+          "parameters": {
+            "continentalness": 0.2,
+            "depth": -0.1,
+            "erosion": 0.6,
+            "humidity": 0.85,
+            "offset": 0.0,
+            "temperature": 0.6,
+            "weirdness": 0.2
+          }
+        },
+        {
+          "biome": "galaxyunderchaos:tython_ocean",
+          "parameters": {
+            "continentalness": 0.1,
+            "depth": -0.35,
+            "erosion": 0.7,
+            "humidity": 0.9,
+            "offset": 0.0,
+            "temperature": 0.55,
+            "weirdness": 0.0
+          }
         }
       ]
     },

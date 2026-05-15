@@ -1,0 +1,53 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/temple_chambers",
+  "criteria": {
+    "has_dark_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:sith_guard_statue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_light_statue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:jedi_guard_statue",
+              "galaxyunderchaos:jedi_guard_statue_stone",
+              "galaxyunderchaos:jedi_guard_statue_stone_2"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.statue_recovery.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:jedi_guard_statue"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.statue_recovery.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_light_statue",
+      "has_dark_statue"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

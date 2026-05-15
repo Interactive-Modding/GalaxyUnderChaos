@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_iv_tempest",
+  "criteria": {
+    "has_shien_djem_so_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:shien_djem_so_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_v_answer.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:shien_djem_so_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_v_answer.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_shien_djem_so_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

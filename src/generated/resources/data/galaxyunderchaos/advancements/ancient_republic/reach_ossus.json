@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_dantooine",
+  "criteria": {
+    "to_ossus": {
+      "conditions": {
+        "to": "galaxyunderchaos:ossus"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ossus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ossus_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ossus.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_ossus"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

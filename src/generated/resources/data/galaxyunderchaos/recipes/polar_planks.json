@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:polar_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:polar_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "light_side_saber_parts_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "jedi_outpost_supplies",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:blue_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:green_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holobook"
+        }
+      ]
+    }
+  ]
+}

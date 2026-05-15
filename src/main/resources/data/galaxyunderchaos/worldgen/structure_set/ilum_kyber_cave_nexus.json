@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "galaxyunderchaos:ilum_kyber_cave_nexus",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 10,
+    "salt": 646783309
+  }
+}

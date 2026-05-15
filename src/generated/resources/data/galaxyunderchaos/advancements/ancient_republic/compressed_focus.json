@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_kyber",
+  "criteria": {
+    "has_compressed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_compressed"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.compressed_focus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:focusing_crystal_compressed"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.compressed_focus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_compressed"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

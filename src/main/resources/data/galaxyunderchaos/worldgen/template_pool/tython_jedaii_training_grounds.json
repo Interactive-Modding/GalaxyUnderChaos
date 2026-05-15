@@ -1,0 +1,15 @@
+{
+  "name": "galaxyunderchaos:tython_jedaii_training_grounds",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "galaxyunderchaos:ancient_training_grounds",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

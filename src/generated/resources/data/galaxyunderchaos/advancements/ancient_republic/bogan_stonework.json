@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_bogan",
+  "criteria": {
+    "has_bogan_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:bogan_temple_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.bogan_stonework.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:bogan_temple_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.bogan_stonework.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bogan_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

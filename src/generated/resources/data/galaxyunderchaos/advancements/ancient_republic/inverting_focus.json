@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/cracked_focus",
+  "criteria": {
+    "has_inverting": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_inverting"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.inverting_focus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:focusing_crystal_inverting"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.inverting_focus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_inverting"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

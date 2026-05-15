@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/cambylictus_planks",
+    "side": "galaxyunderchaos:block/cambylictus_planks",
+    "top": "galaxyunderchaos:block/cambylictus_planks"
+  }
+}

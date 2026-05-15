@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:ossus_forest",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:ossus_plains",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:ossus_mountains",
+      "required": false
+    }
+  ]
+}

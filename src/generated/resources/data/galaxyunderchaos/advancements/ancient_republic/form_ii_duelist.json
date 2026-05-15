@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_i_foundation",
+  "criteria": {
+    "has_makashi_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:makashi_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_ii_duelist.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:makashi_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_ii_duelist.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_makashi_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

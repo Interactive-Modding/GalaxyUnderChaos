@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_pressure_plate",
-	  "galaxyunderchaos:heart_berry_pressure_plate"
+    "galaxyunderchaos:ak_pressure_plate",
+    "galaxyunderchaos:heart_berry_pressure_plate",
+    "galaxyunderchaos:blba_pressure_plate",
+    "galaxyunderchaos:dillia_pressure_plate",
+    "galaxyunderchaos:cambylictus_pressure_plate",
+    "galaxyunderchaos:perlote_pressure_plate",
+    "galaxyunderchaos:rutiger_pressure_plate",
+    "galaxyunderchaos:polar_pressure_plate",
+    "galaxyunderchaos:naboo_pine_pressure_plate"
   ]
 }

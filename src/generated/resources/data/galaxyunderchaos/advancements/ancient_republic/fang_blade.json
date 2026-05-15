@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/wingmaw_field_notes",
+  "criteria": {
+    "has_wingmaw_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_blade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.fang_blade.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:wingmaw_blade"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.fang_blade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_wingmaw_blade"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,15 @@
+{
+  "name": "galaxyunderchaos:ashla_kyber_cave",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "galaxyunderchaos:ashla_crystal_cove",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_malachor",
+  "criteria": {
+    "has_malachite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:malachite_obsidian"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.malachite_obsidian.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:malachite_obsidian"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.malachite_obsidian.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_malachite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

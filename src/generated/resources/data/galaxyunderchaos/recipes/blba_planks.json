@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:blba_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:blba_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/root",
+  "criteria": {
+    "has_dark_datacron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:sith_datacron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.dark_datacron.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:sith_datacron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.dark_datacron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_datacron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

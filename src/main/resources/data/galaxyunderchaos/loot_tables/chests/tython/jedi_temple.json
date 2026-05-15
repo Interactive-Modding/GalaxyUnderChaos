@@ -1,0 +1,75 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "light_side_saber_parts_max_3",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "temple_guard_fabric_max_3",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:temple_guard_fabric"
+        }
+      ]
+    },
+    {
+      "name": "light_datacrons_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_datacron",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_datacron"
+        }
+      ]
+    },
+    {
+      "name": "jedi_context",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 1.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holocron"
+        }
+      ]
+    }
+  ]
+}

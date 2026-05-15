@@ -1,0 +1,71 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "light_side_saber_forms",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:shii_cho_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:soresu_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ataru_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:niman_holobook"
+        }
+      ]
+    },
+    {
+      "name": "light_side_saber_parts_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "library_lore",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:jedi_holocron"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/naboo_pine_door_bottom",
+    "top": "galaxyunderchaos:block/naboo_pine_door_top"
+  }
+}

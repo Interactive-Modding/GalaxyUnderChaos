@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_malachor",
+  "criteria": {
+    "to_ashla": {
+      "conditions": {
+        "to": "galaxyunderchaos:ashla"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ashla.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ashla_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ashla.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_ashla"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

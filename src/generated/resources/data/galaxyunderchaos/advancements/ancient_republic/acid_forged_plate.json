@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/chitin_fragments",
+  "criteria": {
+    "has_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:acid_forged_plate"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.acid_forged_plate.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:acid_forged_plate"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.acid_forged_plate.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_plate"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

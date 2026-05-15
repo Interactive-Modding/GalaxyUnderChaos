@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/salvage_chromium",
+  "criteria": {
+    "has_blue_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:blue_crystal_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.crystal_ore_survey.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:blue_crystal_ore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.crystal_ore_survey.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_blue_ore"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

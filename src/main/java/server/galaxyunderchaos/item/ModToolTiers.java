@@ -9,7 +9,7 @@ import server.galaxyunderchaos.galaxyunderchaos;
 public class ModToolTiers {
     public static final Tier LIGHTSABER = new ForgeTier(4, 2500, 10f, 20,
             20, ModTags.Blocks.NEEDS_LIGHTSABER_TOOL,
-            () -> Ingredient.of(galaxyunderchaos.AEGIS_HILT.get()));
+            () -> Ingredient.of(galaxyunderchaos.INTERNAL_LIGHTSABER_CIRCUITRY.get()));
     public static final Tier DAGGER = new ForgeTier(2, 340, 3f, 20,
             20, ModTags.Blocks.NEEDS_DAGGER_TOOL,
             () -> Ingredient.of(galaxyunderchaos.WINGMAW_HILT.get()));

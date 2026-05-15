@@ -38,10 +38,16 @@ public class LightsaberFormNetworking {
                 SwitchLightsaberFormPacket::handle,
                 java.util.Optional.of(NetworkDirection.PLAY_TO_SERVER));
 
-        NETWORK.registerMessage(id, ToggleLightsaberPacket.class,
+        NETWORK.registerMessage(id++, ToggleLightsaberPacket.class,
                 ToggleLightsaberPacket::encode,
                 ToggleLightsaberPacket::decode,
                 ToggleLightsaberPacket::handle,
+                java.util.Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        NETWORK.registerMessage(id, LightsaberCustomizationColorPacket.class,
+                LightsaberCustomizationColorPacket::encode,
+                LightsaberCustomizationColorPacket::decode,
+                LightsaberCustomizationColorPacket::handle,
                 java.util.Optional.of(NetworkDirection.PLAY_TO_SERVER));
     }
 

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_korriban",
+  "criteria": {
+    "has_korriban_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:korriban_temple_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.korriban_stonework.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:korriban_temple_stone"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.korriban_stonework.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_korriban_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

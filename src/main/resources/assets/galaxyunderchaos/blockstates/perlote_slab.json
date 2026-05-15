@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/perlote_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/perlote_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/perlote_planks" }
+  }
+}

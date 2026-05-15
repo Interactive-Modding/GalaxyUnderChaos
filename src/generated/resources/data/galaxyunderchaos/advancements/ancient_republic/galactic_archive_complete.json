@@ -1,0 +1,113 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/chart_the_routes",
+  "criteria": {
+    "has_ancient_datacron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ancient_datacron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_custom_saber": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:custom_lightsaber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_form_vii": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juyo_vaapad_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_navigation_computer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:navigation_computer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_prismatic": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_prismatic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_settlement": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:heart_berry_chest_boat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.galactic_archive_complete.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ancient_datacron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.galactic_archive_complete.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_navigation_computer"
+    ],
+    [
+      "has_custom_saber"
+    ],
+    [
+      "has_ancient_datacron"
+    ],
+    [
+      "has_prismatic"
+    ],
+    [
+      "has_form_vii"
+    ],
+    [
+      "has_settlement"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

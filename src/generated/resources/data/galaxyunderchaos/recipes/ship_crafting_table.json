@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ship",
+  "key": {
+    "#": {
+      "item": "minecraft:gray_concrete"
+    },
+    "C": {
+      "item": "minecraft:light_gray_concrete"
+    },
+    "X": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "#X#",
+    "#X#"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:ship_crafting_table"
+  },
+  "show_notification": true
+}

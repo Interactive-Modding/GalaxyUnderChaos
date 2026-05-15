@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_iii_shelter",
+  "criteria": {
+    "has_ataru_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ataru_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_iv_tempest.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ataru_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_iv_tempest.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ataru_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

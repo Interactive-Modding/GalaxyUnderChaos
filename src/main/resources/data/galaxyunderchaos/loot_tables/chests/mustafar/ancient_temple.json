@@ -1,0 +1,81 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "ancient_holocrons_max_1",
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_holocron"
+        }
+      ]
+    },
+    {
+      "name": "ancient_holobooks_max_6",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2.0,
+        "max": 6.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:shii_cho_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:makashi_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:niman_holobook"
+        }
+      ]
+    },
+    {
+      "name": "white_kyber_crystals_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:white_kyber"
+        }
+      ]
+    },
+    {
+      "name": "ancient_temple_extra",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_datacron"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:white_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bone"
+        }
+      ]
+    }
+  ]
+}

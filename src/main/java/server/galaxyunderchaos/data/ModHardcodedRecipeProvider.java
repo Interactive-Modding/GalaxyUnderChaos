@@ -25,6 +25,13 @@ import java.util.concurrent.CompletableFuture;
 public class ModHardcodedRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final TagKey<Item> AK_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "ak_logs"));
     private static final TagKey<Item> HEART_BERRY_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "heart_berry_logs"));
+    private static final TagKey<Item> BLBA_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "blba_logs"));
+    private static final TagKey<Item> DILLIA_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "dillia_logs"));
+    private static final TagKey<Item> CAMBYLICTUS_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "cambylictus_logs"));
+    private static final TagKey<Item> PERLOTE_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "perlote_logs"));
+    private static final TagKey<Item> RUTIGER_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "rutiger_logs"));
+    private static final TagKey<Item> POLAR_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "polar_logs"));
+    private static final TagKey<Item> NABOO_PINE_LOGS = ItemTags.create(new ResourceLocation(galaxyunderchaos.MODID, "naboo_pine_logs"));
 
     public ModHardcodedRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput);
@@ -36,12 +43,21 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
         addSmeltingAndBlasting(recipeOutput, galaxyunderchaos.CHITIN_FRAGMENTS.get(), galaxyunderchaos.ACID_FORGED_PLATE.get(), "chitin_fragments", 0.25f, 200, 100);
 
         addWoodSet(recipeOutput, "ak", galaxyunderchaos.AK_PLANKS.get(), AK_LOGS, galaxyunderchaos.AK_BOAT.get(), galaxyunderchaos.AK_CHEST_BOAT.get(), galaxyunderchaos.AK_BUTTON.get(), galaxyunderchaos.AK_DOOR_BLOCK.get(), galaxyunderchaos.AK_FENCE_BLOCK.get(), galaxyunderchaos.AK_FENCE_GATE.get(), galaxyunderchaos.AK_HANGING_SIGN.get(), galaxyunderchaos.AK_PRESSURE_PLATE.get(), galaxyunderchaos.AK_SIGN.get(), galaxyunderchaos.AK_SLAB.get(), galaxyunderchaos.AK_STAIRS.get(), galaxyunderchaos.AK_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_AK_LOG.get());
-        addWoodSet(recipeOutput, "heart_berry", galaxyunderchaos.HEART_BERRY_PLANKS.get(), HEART_BERRY_LOGS, galaxyunderchaos.HEART_BERRY_BOAT.get(), galaxyunderchaos.HEART_BERRY_CHEST_BOAT.get(), galaxyunderchaos.HEART_BERRY_BUTTON.get(), galaxyunderchaos.HEART_BERRY_DOOR_BLOCK.get(), galaxyunderchaos.HEART_BERRY_FENCE_BLOCK.get(), galaxyunderchaos.HEART_BERRY_FENCE_GATE.get(), galaxyunderchaos.HEART_BERRY_HANGING_SIGN.get(), galaxyunderchaos.HEART_BERRY_PRESSURE_PLATE.get(), galaxyunderchaos.HEART_BERRY_SIGN.get(), galaxyunderchaos.HEART_BERRY_SLAB.get(), galaxyunderchaos.HEART_BERRY_STAIRS.get(), galaxyunderchaos.HEART_BERRY_DOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_HEART_BERRY_LOG.get());
+        addWoodSet(recipeOutput, "heart_berry", galaxyunderchaos.HEART_BERRY_PLANKS.get(), HEART_BERRY_LOGS, galaxyunderchaos.HEART_BERRY_BOAT.get(), galaxyunderchaos.HEART_BERRY_CHEST_BOAT.get(), galaxyunderchaos.HEART_BERRY_BUTTON.get(), galaxyunderchaos.HEART_BERRY_DOOR_BLOCK.get(), galaxyunderchaos.HEART_BERRY_FENCE_BLOCK.get(), galaxyunderchaos.HEART_BERRY_FENCE_GATE.get(), galaxyunderchaos.HEART_BERRY_HANGING_SIGN.get(), galaxyunderchaos.HEART_BERRY_PRESSURE_PLATE.get(), galaxyunderchaos.HEART_BERRY_SIGN.get(), galaxyunderchaos.HEART_BERRY_SLAB.get(), galaxyunderchaos.HEART_BERRY_STAIRS.get(), galaxyunderchaos.HEART_BERRY_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_HEART_BERRY_LOG.get());
+        addWoodSet(recipeOutput, "blba", galaxyunderchaos.BLBA_PLANKS.get(), BLBA_LOGS, galaxyunderchaos.BLBA_BOAT.get(), galaxyunderchaos.BLBA_CHEST_BOAT.get(), galaxyunderchaos.BLBA_BUTTON.get(), galaxyunderchaos.BLBA_DOOR_BLOCK.get(), galaxyunderchaos.BLBA_FENCE_BLOCK.get(), galaxyunderchaos.BLBA_FENCE_GATE.get(), galaxyunderchaos.BLBA_HANGING_SIGN.get(), galaxyunderchaos.BLBA_PRESSURE_PLATE.get(), galaxyunderchaos.BLBA_SIGN.get(), galaxyunderchaos.BLBA_SLAB.get(), galaxyunderchaos.BLBA_STAIRS.get(), galaxyunderchaos.BLBA_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_BLBA_LOG.get());
+        addWoodSet(recipeOutput, "dillia", galaxyunderchaos.DILLIA_PLANKS.get(), DILLIA_LOGS, galaxyunderchaos.DILLIA_BOAT.get(), galaxyunderchaos.DILLIA_CHEST_BOAT.get(), galaxyunderchaos.DILLIA_BUTTON.get(), galaxyunderchaos.DILLIA_DOOR_BLOCK.get(), galaxyunderchaos.DILLIA_FENCE_BLOCK.get(), galaxyunderchaos.DILLIA_FENCE_GATE.get(), galaxyunderchaos.DILLIA_HANGING_SIGN.get(), galaxyunderchaos.DILLIA_PRESSURE_PLATE.get(), galaxyunderchaos.DILLIA_SIGN.get(), galaxyunderchaos.DILLIA_SLAB.get(), galaxyunderchaos.DILLIA_STAIRS.get(), galaxyunderchaos.DILLIA_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_DILLIA_LOG.get());
+        addWoodSet(recipeOutput, "cambylictus", galaxyunderchaos.CAMBYLICTUS_PLANKS.get(), CAMBYLICTUS_LOGS, galaxyunderchaos.CAMBYLICTUS_BOAT.get(), galaxyunderchaos.CAMBYLICTUS_CHEST_BOAT.get(), galaxyunderchaos.CAMBYLICTUS_BUTTON.get(), galaxyunderchaos.CAMBYLICTUS_DOOR_BLOCK.get(), galaxyunderchaos.CAMBYLICTUS_FENCE_BLOCK.get(), galaxyunderchaos.CAMBYLICTUS_FENCE_GATE.get(), galaxyunderchaos.CAMBYLICTUS_HANGING_SIGN.get(), galaxyunderchaos.CAMBYLICTUS_PRESSURE_PLATE.get(), galaxyunderchaos.CAMBYLICTUS_SIGN.get(), galaxyunderchaos.CAMBYLICTUS_SLAB.get(), galaxyunderchaos.CAMBYLICTUS_STAIRS.get(), galaxyunderchaos.CAMBYLICTUS_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_CAMBYLICTUS_LOG.get());
+        addWoodSet(recipeOutput, "perlote", galaxyunderchaos.PERLOTE_PLANKS.get(), PERLOTE_LOGS, galaxyunderchaos.PERLOTE_BOAT.get(), galaxyunderchaos.PERLOTE_CHEST_BOAT.get(), galaxyunderchaos.PERLOTE_BUTTON.get(), galaxyunderchaos.PERLOTE_DOOR_BLOCK.get(), galaxyunderchaos.PERLOTE_FENCE_BLOCK.get(), galaxyunderchaos.PERLOTE_FENCE_GATE.get(), galaxyunderchaos.PERLOTE_HANGING_SIGN.get(), galaxyunderchaos.PERLOTE_PRESSURE_PLATE.get(), galaxyunderchaos.PERLOTE_SIGN.get(), galaxyunderchaos.PERLOTE_SLAB.get(), galaxyunderchaos.PERLOTE_STAIRS.get(), galaxyunderchaos.PERLOTE_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_PERLOTE_LOG.get());
+        addWoodSet(recipeOutput, "rutiger", galaxyunderchaos.RUTIGER_PLANKS.get(), RUTIGER_LOGS, galaxyunderchaos.RUTIGER_BOAT.get(), galaxyunderchaos.RUTIGER_CHEST_BOAT.get(), galaxyunderchaos.RUTIGER_BUTTON.get(), galaxyunderchaos.RUTIGER_DOOR_BLOCK.get(), galaxyunderchaos.RUTIGER_FENCE_BLOCK.get(), galaxyunderchaos.RUTIGER_FENCE_GATE.get(), galaxyunderchaos.RUTIGER_HANGING_SIGN.get(), galaxyunderchaos.RUTIGER_PRESSURE_PLATE.get(), galaxyunderchaos.RUTIGER_SIGN.get(), galaxyunderchaos.RUTIGER_SLAB.get(), galaxyunderchaos.RUTIGER_STAIRS.get(), galaxyunderchaos.RUTIGER_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_RUTIGER_LOG.get());
+        addWoodSet(recipeOutput, "polar", galaxyunderchaos.POLAR_PLANKS.get(), POLAR_LOGS, galaxyunderchaos.POLAR_BOAT.get(), galaxyunderchaos.POLAR_CHEST_BOAT.get(), galaxyunderchaos.POLAR_BUTTON.get(), galaxyunderchaos.POLAR_DOOR_BLOCK.get(), galaxyunderchaos.POLAR_FENCE_BLOCK.get(), galaxyunderchaos.POLAR_FENCE_GATE.get(), galaxyunderchaos.POLAR_HANGING_SIGN.get(), galaxyunderchaos.POLAR_PRESSURE_PLATE.get(), galaxyunderchaos.POLAR_SIGN.get(), galaxyunderchaos.POLAR_SLAB.get(), galaxyunderchaos.POLAR_STAIRS.get(), galaxyunderchaos.POLAR_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_POLAR_LOG.get());
+        addWoodSet(recipeOutput, "naboo_pine", galaxyunderchaos.NABOO_PINE_PLANKS.get(), NABOO_PINE_LOGS, galaxyunderchaos.NABOO_PINE_BOAT.get(), galaxyunderchaos.NABOO_PINE_CHEST_BOAT.get(), galaxyunderchaos.NABOO_PINE_BUTTON.get(), galaxyunderchaos.NABOO_PINE_DOOR_BLOCK.get(), galaxyunderchaos.NABOO_PINE_FENCE_BLOCK.get(), galaxyunderchaos.NABOO_PINE_FENCE_GATE.get(), galaxyunderchaos.NABOO_PINE_HANGING_SIGN.get(), galaxyunderchaos.NABOO_PINE_PRESSURE_PLATE.get(), galaxyunderchaos.NABOO_PINE_SIGN.get(), galaxyunderchaos.NABOO_PINE_SLAB.get(), galaxyunderchaos.NABOO_PINE_STAIRS.get(), galaxyunderchaos.NABOO_PINE_TRAPDOOR_BLOCK.get(), galaxyunderchaos.STRIPPED_NABOO_PINE_LOG.get());
 
         addStoneBuildingRecipes(recipeOutput, "ancient_temple_stone", galaxyunderchaos.ANCIENT_TEMPLE_STONE.get(), galaxyunderchaos.ANCIENT_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.ANCIENT_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.ANCIENT_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.ANCIENT_TEMPLE_STONE_WALL.get());
         addStoneBuildingRecipes(recipeOutput, "ashla_temple_stone", galaxyunderchaos.ASHLA_TEMPLE_STONE.get(), galaxyunderchaos.ASHLA_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.ASHLA_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.ASHLA_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.ASHLA_TEMPLE_STONE_WALL.get());
         addStoneBuildingRecipes(recipeOutput, "bogan_temple_stone", galaxyunderchaos.BOGAN_TEMPLE_STONE.get(), galaxyunderchaos.BOGAN_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.BOGAN_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.BOGAN_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.BOGAN_TEMPLE_STONE_WALL.get());
         addStoneBuildingRecipes(recipeOutput, "dark_temple_stone", galaxyunderchaos.DARK_TEMPLE_STONE.get(), galaxyunderchaos.DARK_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.DARK_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.DARK_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.DARK_TEMPLE_STONE_WALL.get());
+        addStoneBuildingRecipes(recipeOutput, "korriban_temple_stone", galaxyunderchaos.KORRIBAN_TEMPLE_STONE.get(), galaxyunderchaos.KORRIBAN_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.KORRIBAN_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.KORRIBAN_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.KORRIBAN_TEMPLE_STONE_WALL.get());
+        addStoneBuildingRecipes(recipeOutput, "malachor_temple_stone", galaxyunderchaos.MALACHOR_TEMPLE_STONE.get(), galaxyunderchaos.MALACHOR_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.MALACHOR_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.MALACHOR_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.MALACHOR_TEMPLE_STONE_WALL.get());
         addStoneBuildingRecipes(recipeOutput, "temple_stone", galaxyunderchaos.TEMPLE_STONE.get(), galaxyunderchaos.TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.TEMPLE_STONE_SLAB.get(), galaxyunderchaos.TEMPLE_STONE_WALL.get());
         addStoneBuildingRecipes(recipeOutput, "tython_temple_stone", galaxyunderchaos.TYTHON_TEMPLE_STONE.get(), galaxyunderchaos.TYTHON_TEMPLE_STONE_PILLAR.get(), galaxyunderchaos.TYTHON_TEMPLE_STONE_STAIRS.get(), galaxyunderchaos.TYTHON_TEMPLE_STONE_SLAB.get(), galaxyunderchaos.TYTHON_TEMPLE_STONE_WALL.get());
 
@@ -63,15 +79,50 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
                 .unlockedBy(getHasName(galaxyunderchaos.JEDI_HOLOBOOK.get()), has(galaxyunderchaos.JEDI_HOLOBOOK.get()))
                 .save(recipeOutput, modLoc("temple_stone_holobook"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.KORRIBAN_TEMPLE_STONE_HOLOBOOK.get())
+                .pattern("###")
+                .pattern("GGG")
+                .pattern("###")
+                .define('#', galaxyunderchaos.KORRIBAN_TEMPLE_STONE.get())
+                .define('G', galaxyunderchaos.SITH_HOLOBOOK.get())
+                .unlockedBy(getHasName(galaxyunderchaos.SITH_HOLOBOOK.get()), has(galaxyunderchaos.SITH_HOLOBOOK.get()))
+                .save(recipeOutput, modLoc("korriban_temple_stone_holobook"));
+
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.TYTHON_TEMPLE_STONE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.CHISELED_TYTHON_TEMPLE_STONE.get())
                 .group("misc")
                 .unlockedBy(getHasName(galaxyunderchaos.TYTHON_TEMPLE_STONE.get()), has(galaxyunderchaos.TYTHON_TEMPLE_STONE.get()))
                 .save(recipeOutput, modLoc("chiseled_tython_temple_stone_stonecutter"));
 
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.MALACHOR_TEMPLE_STONE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get())
+                .group("misc")
+                .unlockedBy(getHasName(galaxyunderchaos.MALACHOR_TEMPLE_STONE.get()), has(galaxyunderchaos.MALACHOR_TEMPLE_STONE.get()))
+                .save(recipeOutput, modLoc("malachor_temple_stone_crystalline_stonecutter"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS.get())
+                .group("misc")
+                .unlockedBy(getHasName(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), has(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()))
+                .save(recipeOutput, modLoc("malachor_temple_stone_glass_stonecutter"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_2.get())
+                .group("misc")
+                .unlockedBy(getHasName(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), has(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()))
+                .save(recipeOutput, modLoc("malachor_temple_stone_glass_2_stonecutter"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_3.get())
+                .group("misc")
+                .unlockedBy(getHasName(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), has(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()))
+                .save(recipeOutput, modLoc("malachor_temple_stone_glass_3_stonecutter"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_4.get())
+                .group("misc")
+                .unlockedBy(getHasName(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()), has(galaxyunderchaos.MALACHOR_TEMPLE_STONE_CRYSTALLINE.get()))
+                .save(recipeOutput, modLoc("malachor_temple_stone_glass_4_stonecutter"));
+
         addPortal(recipeOutput, "ashla_portal", galaxyunderchaos.ASHLA_PORTAL_ITEM.get(), Items.CALCITE);
         addPortal(recipeOutput, "bogan_portal", galaxyunderchaos.BOGAN_PORTAL_ITEM.get(), Items.BLACKSTONE);
         addPortal(recipeOutput, "dantooine_portal", galaxyunderchaos.DANTOOINE_PORTAL_ITEM.get(), Items.STRIPPED_BIRCH_LOG);
-        addPortal(recipeOutput, "ilum_portal", galaxyunderchaos.ILUM_PORTAL_ITEM.get(), Items.SNOWBALL);
+        addPortal(recipeOutput, "hoth_portal", galaxyunderchaos.HOTH_PORTAL_ITEM.get(), Items.SNOWBALL);
+        addPortal(recipeOutput, "ilum_portal", galaxyunderchaos.ILUM_PORTAL_ITEM.get(), Items.SNOW);
         addPortal(recipeOutput, "korriban_portal", galaxyunderchaos.KORRIBAN_PORTAL_ITEM.get(), Items.RED_SAND);
         addPortal(recipeOutput, "malachor_portal", galaxyunderchaos.MALACHOR_PORTAL_ITEM.get(), Items.DEAD_BUSH);
         addPortal(recipeOutput, "mustafar_portal", galaxyunderchaos.MUSTAFAR_PORTAL_ITEM.get(), Items.BASALT);
@@ -100,6 +151,18 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
                 .group("lightsaber")
                 .unlockedBy(getHasName(galaxyunderchaos.ANCIENT_HOLOBOOK.get()), has(galaxyunderchaos.ANCIENT_HOLOBOOK.get()))
                 .save(recipeOutput, modLoc("lightsaber_crafting_table"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.SHIP_CRAFTING_TABLE.get())
+                .pattern("CCC")
+                .pattern("#X#")
+                .pattern("#X#")
+                .define('#', Items.GRAY_CONCRETE)
+                .define('X', Items.DIAMOND)
+                .define('C', Items.LIGHT_GRAY_CONCRETE)
+                .group("ship")
+                .unlockedBy(getHasName(Items.DIAMOND), has(Items.DIAMOND))
+                .save(recipeOutput, modLoc("ship_crafting_table"));
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.NAVIGATION_COMPUTER.get())
                 .pattern("CCC")
@@ -154,6 +217,37 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
                 .define('P', Items.GOLD_INGOT)
                 .unlockedBy(getHasName(galaxyunderchaos.TEMPLE_GUARD_FABRIC.get()), has(galaxyunderchaos.TEMPLE_GUARD_FABRIC.get()))
                 .save(recipeOutput, modLoc("temple_guard_boots"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.SITH_GUARD_HELMET.get())
+                .pattern("SSS")
+                .pattern("P P")
+                .define('S', galaxyunderchaos.SITH_GUARD_FABRIC.get())
+                .define('P', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(galaxyunderchaos.SITH_GUARD_FABRIC.get()), has(galaxyunderchaos.SITH_GUARD_FABRIC.get()))
+                .save(recipeOutput, modLoc("sith_guard_helmet"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.SITH_GUARD_CHESTPLATE.get())
+                .pattern("P P")
+                .pattern("SPS")
+                .pattern("SSS")
+                .define('S', galaxyunderchaos.SITH_GUARD_FABRIC.get())
+                .define('P', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(galaxyunderchaos.SITH_GUARD_FABRIC.get()), has(galaxyunderchaos.SITH_GUARD_FABRIC.get()))
+                .save(recipeOutput, modLoc("sith_guard_chestplate"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.SITH_GUARD_LEGGINGS.get())
+                .pattern("SSS")
+                .pattern("S S")
+                .pattern("P P")
+                .define('S', galaxyunderchaos.SITH_GUARD_FABRIC.get())
+                .define('P', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(galaxyunderchaos.SITH_GUARD_FABRIC.get()), has(galaxyunderchaos.SITH_GUARD_FABRIC.get()))
+                .save(recipeOutput, modLoc("sith_guard_leggings"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.SITH_GUARD_BOOTS.get())
+                .pattern("S S")
+                .pattern("P P")
+                .define('S', galaxyunderchaos.SITH_GUARD_FABRIC.get())
+                .define('P', Items.GOLD_INGOT)
+                .unlockedBy(getHasName(galaxyunderchaos.SITH_GUARD_FABRIC.get()), has(galaxyunderchaos.SITH_GUARD_FABRIC.get()))
+                .save(recipeOutput, modLoc("sith_guard_boots"));
 
         addSmeltingAndBlasting(recipeOutput, galaxyunderchaos.CHROMIUM_DEEPSLATE_ORE.get(), galaxyunderchaos.CHROMIUM_INGOT.get(), "chromium", 0.25f, 200, 100);
         addSmeltingAndBlasting(recipeOutput, galaxyunderchaos.CHROMIUM_ORE.get(), galaxyunderchaos.CHROMIUM_INGOT.get(), "chromium", 0.25f, 200, 100);
@@ -301,6 +395,73 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
                 .group("wooden_trapdoor")
                 .unlockedBy(getHasName(planks), has(planks))
                 .save(recipeOutput, modLoc(namePrefix + "_trapdoor"));
+    }
+
+    private void addBasicWoodSet(Consumer<FinishedRecipe> recipeOutput, String namePrefix, ItemLike planks, TagKey<Item> logsTag) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, planks, 4)
+                .requires(logsTag)
+                .group("planks")
+                .unlockedBy(getHasName(planks), has(logsTag))
+                .save(recipeOutput, modLoc(namePrefix + "_planks"));
+    }
+
+    private void addDilliaBuildingRecipes(Consumer<FinishedRecipe> recipeOutput) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, galaxyunderchaos.DILLIA_BUTTON.get())
+                .requires(galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_button")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_button"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, galaxyunderchaos.DILLIA_DOOR_BLOCK.get(), 3)
+                .pattern("##")
+                .pattern("##")
+                .pattern("##")
+                .define('#', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_door")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_door"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, galaxyunderchaos.DILLIA_FENCE_BLOCK.get(), 3)
+                .pattern("W#W")
+                .pattern("W#W")
+                .define('#', Items.STICK)
+                .define('W', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_fence")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_fence"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, galaxyunderchaos.DILLIA_FENCE_GATE.get())
+                .pattern("#W#")
+                .pattern("#W#")
+                .define('#', Items.STICK)
+                .define('W', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_fence_gate")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_fence_gate"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, galaxyunderchaos.DILLIA_PRESSURE_PLATE.get())
+                .pattern("##")
+                .define('#', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_pressure_plate")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_pressure_plate"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.DILLIA_SLAB.get(), 6)
+                .pattern("###")
+                .define('#', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_slab")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_slab"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, galaxyunderchaos.DILLIA_STAIRS.get(), 4)
+                .pattern("#  ")
+                .pattern("## ")
+                .pattern("###")
+                .define('#', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_stairs")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, galaxyunderchaos.DILLIA_TRAPDOOR_BLOCK.get(), 2)
+                .pattern("###")
+                .pattern("###")
+                .define('#', galaxyunderchaos.DILLIA_PLANKS.get())
+                .group("wooden_trapdoor")
+                .unlockedBy(getHasName(galaxyunderchaos.DILLIA_PLANKS.get()), has(galaxyunderchaos.DILLIA_PLANKS.get()))
+                .save(recipeOutput, modLoc("dillia_trapdoor"));
     }
 
     private void addStoneBuildingRecipes(Consumer<FinishedRecipe> recipeOutput, String namePrefix, ItemLike base, ItemLike pillar, ItemLike stairs, ItemLike slab, ItemLike wall) {

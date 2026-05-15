@@ -1,24 +1,19 @@
 package client.renderer;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.util.FastColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LightBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.TickEvent.RenderTickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import server.galaxyunderchaos.item.LightsaberItem;
 
-@Mod.EventBusSubscriber(modid = "galaxyunderchaos", value = Dist.CLIENT)
+/**
+ * Client-side color helpers shared by the lightsaber renderers.
+ *
+ * IMPORTANT:
+ * This class intentionally no longer places/removes vanilla LightBlock blocks.
+ * The old render-tick light-block workaround could replace the block above the
+ * player and then remove it later, which is what made active sabers delete
+ * blocks. World illumination should now be handled by an installed dynamic
+ * lighting mod such as AtomicStryker's Dynamic Lights instead of by writing
+ * temporary blocks into the client world.
+ */
 public class ClientEventSubscriber {
-    private static BlockPos lastPos;
-
     /**
      * Legacy compatibility only.
      * Do NOT use these as the saber blade render source anymore.
@@ -29,6 +24,8 @@ public class ClientEventSubscriber {
     public static int getGlowColor(String bladeColor) {
         return switch (bladeColor) {
             case "red"          -> 0xFFE20830;
+            case "deep_blue"    -> 0xFF0000FF;
+            case "medium_blue"  -> 0xFF006BFF;
             case "light_blue"   -> 0xFF2985D0;
             case "green"        -> 0xFF00FF00;
             case "yellow"       -> 0xFFFFE600;
@@ -47,56 +44,22 @@ public class ClientEventSubscriber {
             case "dark_blue"    -> 0xFF06244F;
             case "maroon"       -> 0xFF800000;
             case "deep_violet"  -> 0xFF460178;
+            case "indigo"       -> 0xFF5D00FF;
+            case "mint_green"   -> 0xFF00FF9B;
             case "arctic_blue"  -> 0xFFB0E1E8;
             case "rose_pink"    -> 0xFFFABBD7;
             default             -> 0xFFFFFFFF;
         };
     }
 
-    @SubscribeEvent
-    public static void onRenderTick(RenderTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-
-        Minecraft minecraft = Minecraft.getInstance();
-        LocalPlayer player = minecraft.player;
-        if (player == null || minecraft.level == null) return;
-
-        ItemStack mainStack = player.getMainHandItem();
-        ItemStack offStack = player.getOffhandItem();
-
-        boolean mainActive = mainStack.getItem() instanceof LightsaberItem lsMain && lsMain.isActive(mainStack);
-        boolean offActive = offStack.getItem() instanceof LightsaberItem lsOff && lsOff.isActive(offStack);
-
-        ItemStack activeStack;
-        if (mainActive) {
-            activeStack = mainStack;
-        } else if (offActive) {
-            activeStack = offStack;
-        } else {
-            if (lastPos != null) {
-                minecraft.level.removeBlock(lastPos, false);
-                lastPos = null;
-            }
-            glowR = glowG = glowB = 1f;
-            return;
-        }
-
-        BlockPos lightPos = player.blockPosition().above(1);
-
-        BlockState lightState = Blocks.LIGHT
-                .defaultBlockState()
-                .setValue(LightBlock.LEVEL, LightsaberItem.getLightLevel(activeStack));
-        minecraft.level.setBlock(lightPos, lightState, 2);
-
-        if (lastPos != null && !lastPos.equals(lightPos)) {
-            minecraft.level.removeBlock(lastPos, false);
-        }
-        lastPos = lightPos;
-
-        // Legacy compatibility only. Blade renderers should not read these anymore.
-        int argb = getGlowColor(LightsaberItem.getBladeColor(activeStack));
+    public static void setLegacyGlowColor(String bladeColor) {
+        int argb = getGlowColor(bladeColor);
         glowR = FastColor.ARGB32.red(argb) / 255f;
         glowG = FastColor.ARGB32.green(argb) / 255f;
         glowB = FastColor.ARGB32.blue(argb) / 255f;
+    }
+
+    public static void resetLegacyGlowColor() {
+        glowR = glowG = glowB = 1f;
     }
 }

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/legacy_hilt",
+  "criteria": {
+    "has_custom_saber": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:custom_lightsaber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.first_plasma_blade.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:custom_lightsaber"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.first_plasma_blade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_custom_saber"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

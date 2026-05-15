@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "misc",
+  "ingredient": {
+    "item": "galaxyunderchaos:malachor_temple_stone"
+  },
+  "result": "galaxyunderchaos:malachor_temple_stone_slab"
+}

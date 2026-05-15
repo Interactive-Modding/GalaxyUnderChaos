@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "galaxyunderchaos:block/cambylictus_pressure_plate"
+    },
+    "powered=true": {
+      "model": "galaxyunderchaos:block/cambylictus_pressure_plate_down"
+    }
+  }
+}

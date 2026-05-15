@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_ossus",
+  "criteria": {
+    "to_ilum": {
+      "conditions": {
+        "to": "galaxyunderchaos:ilum"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ilum.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ilum_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_ilum.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_ilum"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

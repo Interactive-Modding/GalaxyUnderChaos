@@ -23,6 +23,7 @@ public class ModCarvers {
 
     public static final ResourceKey<ConfiguredWorldCarver<?>> TYTHON_CAVES = carverKey("tython_caves");
     public static final ResourceKey<ConfiguredWorldCarver<?>> NABOO_CAVES = carverKey("naboo_caves");
+    public static final ResourceKey<ConfiguredWorldCarver<?>> HOTH_CAVES = carverKey("hoth_caves");
     public static final ResourceKey<ConfiguredWorldCarver<?>> ILUM_CAVES = carverKey("ilum_caves");
     public static final ResourceKey<ConfiguredWorldCarver<?>> MUSTAFAR_CAVES = carverKey("mustafar_caves");
     public static final ResourceKey<ConfiguredWorldCarver<?>> OSSUS_CAVES = carverKey("ossus_caves");
@@ -53,6 +54,7 @@ public class ModCarvers {
                 TYTHON_CAVES,
                 NABOO_CAVES,
                 ILUM_CAVES,
+                HOTH_CAVES,
                 MUSTAFAR_CAVES,
                 OSSUS_CAVES,
                 ASHLA_CAVES,

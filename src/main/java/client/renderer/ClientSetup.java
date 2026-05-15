@@ -16,6 +16,7 @@ public class ClientSetup {
     public static void onRenderGuiOverlay(CustomizeGuiOverlayEvent event) { // ✅ Correct event type
         //System.out.println("Rendering Hyperspace Overlay..."); // Debugging
         hyperspaceOverlay.render(event.getGuiGraphics(), 0, 0, event.getPartialTick());
+        ForceAlignmentOverlay.render(event.getGuiGraphics(), event.getPartialTick());
     }
 
     public static void setup() {

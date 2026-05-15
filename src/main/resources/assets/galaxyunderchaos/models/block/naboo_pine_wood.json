@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxyunderchaos:block/naboo_pine_log",
+    "end": "galaxyunderchaos:block/naboo_pine_log"
+  }
+}

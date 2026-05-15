@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:naboo_biome",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:naboo_plains",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "render_type": "minecraft:translucent",
+  "ambientocclusion": false,
+  "textures": {
+    "all": "galaxyunderchaos:block/malachor_temple_stone_glass_3"
+  }
+}

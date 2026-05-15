@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "W": {
+      "item": "galaxyunderchaos:dillia_planks"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_fence_gate"
+  },
+  "show_notification": true,
+  "group": "wooden_fence_gate"
+}

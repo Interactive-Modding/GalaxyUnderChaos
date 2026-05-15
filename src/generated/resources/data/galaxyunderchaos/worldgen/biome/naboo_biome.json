@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.6,
+  "downfall": 0.82,
   "effects": {
     "fog_color": 12638463,
     "foliage_color": 8367671,
@@ -74,11 +74,9 @@
     [
       "minecraft:glow_lichen",
       "minecraft:patch_tall_grass_2",
-      "minecraft:flower_default",
-      "minecraft:forest_flowers"
-    ],
-    [
-      "minecraft:freeze_top_layer"
+      "galaxyunderchaos:cambylictus_placed",
+      "galaxyunderchaos:perlote_placed",
+      "galaxyunderchaos:rutiger_placed"
     ]
   ],
   "has_precipitation": true,
@@ -181,5 +179,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.84
 }

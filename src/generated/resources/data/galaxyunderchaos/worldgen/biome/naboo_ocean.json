@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.4,
+  "downfall": 0.78,
   "effects": {
     "fog_color": 14083839,
     "foliage_color": 8367671,
@@ -17,9 +17,9 @@
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 5358054,
-    "water_color": 2995897,
-    "water_fog_color": 3983048
+    "sky_color": 7907327,
+    "water_color": 4566514,
+    "water_fog_color": 2701311
   },
   "features": [
     [],
@@ -38,7 +38,10 @@
     [
       "minecraft:ore_coal_upper",
       "minecraft:ore_iron_upper",
-      "minecraft:ore_gold"
+      "minecraft:ore_gold",
+      "minecraft:disk_sand",
+      "minecraft:disk_clay",
+      "minecraft:disk_gravel"
     ],
     [
       "minecraft:glow_lichen"
@@ -46,11 +49,7 @@
     [],
     [
       "minecraft:seagrass_simple",
-      "minecraft:seagrass_normal",
-      "minecraft:kelp_cold"
-    ],
-    [
-      "minecraft:freeze_top_layer"
+      "minecraft:seagrass_normal"
     ]
   ],
   "has_precipitation": true,
@@ -75,6 +74,18 @@
         "maxCount": 6,
         "minCount": 3,
         "weight": 10
+      },
+      {
+        "type": "minecraft:tropical_fish",
+        "maxCount": 16,
+        "minCount": 8,
+        "weight": 25
+      },
+      {
+        "type": "minecraft:pufferfish",
+        "maxCount": 3,
+        "minCount": 1,
+        "weight": 4
       }
     ],
     "water_creature": [
@@ -92,5 +103,5 @@
       }
     ]
   },
-  "temperature": 0.3
+  "temperature": 0.86
 }

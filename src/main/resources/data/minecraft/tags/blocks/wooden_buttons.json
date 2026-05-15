@@ -2,6 +2,13 @@
   "replace": false,
   "values": [
     "galaxyunderchaos:ak_button",
-	  "galaxyunderchaos:heart_berry_button"
+    "galaxyunderchaos:heart_berry_button",
+    "galaxyunderchaos:blba_button",
+    "galaxyunderchaos:dillia_button",
+    "galaxyunderchaos:cambylictus_button",
+    "galaxyunderchaos:perlote_button",
+    "galaxyunderchaos:rutiger_button",
+    "galaxyunderchaos:polar_button",
+    "galaxyunderchaos:naboo_pine_button"
   ]
 }

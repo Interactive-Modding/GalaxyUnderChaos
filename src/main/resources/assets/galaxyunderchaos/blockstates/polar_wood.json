@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "galaxyunderchaos:block/polar_wood"
+    },
+    "axis=z": {
+      "model": "galaxyunderchaos:block/polar_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "galaxyunderchaos:block/polar_wood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

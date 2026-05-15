@@ -2,31 +2,31 @@
   "type": "minecraft:add",
   "argument1": {
     "type": "minecraft:y_clamped_gradient",
-    "from_value": 1.2,
+    "from_value": 1.5,
     "from_y": -64,
-    "to_value": -1.2,
+    "to_value": -1.5,
     "to_y": 220
   },
   "argument2": {
     "type": "minecraft:add",
     "argument1": {
       "type": "minecraft:mul",
-      "argument1": 0.75,
+      "argument1": 1.2,
       "argument2": {
         "type": "minecraft:noise",
         "noise": "galaxyunderchaos:ilum_terrain",
-        "xz_scale": 0.9,
-        "y_scale": 0.6
+        "xz_scale": 1.5,
+        "y_scale": 1.2
       }
     },
     "argument2": {
       "type": "minecraft:mul",
-      "argument1": 0.5,
+      "argument1": 0.85,
       "argument2": {
         "type": "minecraft:noise",
         "noise": "galaxyunderchaos:ilum_terrain",
-        "xz_scale": 0.4,
-        "y_scale": 0.2
+        "xz_scale": 0.65,
+        "y_scale": 0.325
       }
     }
   }

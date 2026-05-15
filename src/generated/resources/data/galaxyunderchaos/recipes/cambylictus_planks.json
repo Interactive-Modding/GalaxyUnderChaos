@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:cambylictus_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:cambylictus_planks",
+    "count": 4
+  }
+}

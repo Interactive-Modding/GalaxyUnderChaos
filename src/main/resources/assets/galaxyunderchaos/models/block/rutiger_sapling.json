@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "galaxyunderchaos:block/rutiger_sapling"
+  },
+  "render_type": "cutout"
+}

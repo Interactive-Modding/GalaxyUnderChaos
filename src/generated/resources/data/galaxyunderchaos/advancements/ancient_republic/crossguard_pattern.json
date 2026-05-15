@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_plasma_blade",
+  "criteria": {
+    "has_knighted_hilt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:knighted_hilt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.crossguard_pattern.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:knighted_hilt"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.crossguard_pattern.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_knighted_hilt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

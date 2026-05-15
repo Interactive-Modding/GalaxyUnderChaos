@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:dantooine_plains",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:dantooine_forest",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:dantooine_hills",
+      "required": false
+    }
+  ]
+}

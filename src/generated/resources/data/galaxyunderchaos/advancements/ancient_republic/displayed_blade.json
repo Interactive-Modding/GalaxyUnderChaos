@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_plasma_blade",
+  "criteria": {
+    "has_stand": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ground_lightsaber_stand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.displayed_blade.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ground_lightsaber_stand"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.displayed_blade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_stand"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,13 +1,33 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * This file is part of Galaxy Under Chaos.
+ * It contains code, data, model geometry, behavior, or compatibility logic
+ * copied, translated, ported, adapted from, or created to support content
+ * derived from Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille
+ * and Void Adept.
+ *
+ * Modifications for Galaxy Under Chaos / Minecraft Forge 1.20.1 by
+ *  Vitiate and contributors.
+ */
+
 package client.renderer;
 
+import client.renderer.ship.ShipItemRendererHelper;
+
 import client.renderer.lightsaber.LegacyLightsaberBladeRenderer;
+import client.renderer.lightsaber.LightsaberColorResolver;
+import client.renderer.lightsaber.legacy.LegacyRenderStates;
 import client.renderer.lightsaber.legacy.LegacyJavaLightsaberModels;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -27,12 +47,72 @@ import java.util.function.Consumer;
 
 public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
     private static final float PIXEL = 1.0F / 16.0F;
-    private static final float BLADE_LENGTH = 1.55F;
-    private static final float DOUBLE_BLADE_LENGTH = 1.45F;
-    private static final float CROSSGUARD_BLADE_LENGTH = 0.38F;
+    /** AdvancedLightsabers-1.2 used ModelLightsaberBlade(38) for normal blades. */
+    private static final float BLADE_LENGTH = 38.0F * PIXEL;
+
+    /** Slightly shorter per side so a double saber still reads as a staff without covering the whole screen. */
+    private static final float DOUBLE_BLADE_LENGTH = 34.0F * PIXEL;
+
+    /** AdvancedLightsabers-1.2 used ModelLightsaberBlade(4) for crossguard vents. */
+    private static final float CROSSGUARD_BLADE_LENGTH = 4.0F * PIXEL;
+
+    private static final Object INDICATOR_TYPE_LOCK = new Object();
+    private static RenderType colorIndicatorType;
 
     public ModItemRenderer() {
         super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+    }
+
+    private static RenderType colorIndicatorType() {
+        RenderType type = colorIndicatorType;
+        if (type == null) {
+            synchronized (INDICATOR_TYPE_LOCK) {
+                type = colorIndicatorType;
+                if (type == null) {
+                    type = RenderType.create(
+                            "guc_lightsaber_color_indicator",
+                            DefaultVertexFormat.POSITION_COLOR,
+                            VertexFormat.Mode.QUADS,
+                            64,
+                            false,
+                            true,
+                            RenderType.CompositeState.builder()
+                                    .setShaderState(LegacyRenderStates.positionColorShader())
+                                    .setTransparencyState(LegacyRenderStates.noTransparency())
+                                    .setCullState(LegacyRenderStates.noCull())
+                                    .setLightmapState(LegacyRenderStates.noLightmap())
+                                    .setOverlayState(LegacyRenderStates.noOverlay())
+                                    .setWriteMaskState(LegacyRenderStates.colorDepthWrite())
+                                    .createCompositeState(false)
+                    );
+                    colorIndicatorType = type;
+                }
+            }
+        }
+        return type;
+    }
+
+
+    private static final class PreviewRendererHolder {
+        private static final ModItemRenderer INSTANCE = new ModItemRenderer();
+    }
+
+    public static void renderForgePreview(ItemStack stack,
+                                          PoseStack poseStack,
+                                          MultiBufferSource buffer,
+                                          int light) {
+        renderForgePreview(stack, poseStack, buffer, light, OverlayTexture.NO_OVERLAY);
+    }
+
+    public static void renderForgePreview(ItemStack stack,
+                                          PoseStack poseStack,
+                                          MultiBufferSource buffer,
+                                          int light,
+                                          int overlay) {
+        if (stack.isEmpty()) {
+            return;
+        }
+        PreviewRendererHolder.INSTANCE.renderPreviewItem(stack, poseStack, buffer, light, overlay);
     }
 
     @Override
@@ -42,6 +122,11 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                              MultiBufferSource buffer,
                              int light,
                              int overlay) {
+        if (ShipItemRendererHelper.canRender(stack)) {
+            ShipItemRendererHelper.renderShipItem(stack, displayContext, poseStack, buffer, light);
+            return;
+        }
+
         if (stack.getItem() instanceof LightsaberPartItem partItem) {
             renderPartItem(partItem, displayContext, poseStack, buffer, light, overlay);
             return;
@@ -55,12 +140,131 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         if (stack.getItem() instanceof DoubleLightsaberItem doubleItem) {
             renderDoubleLightsaber(stack, doubleItem, displayContext, poseStack, buffer, light, overlay);
+            if (displayContext == ItemDisplayContext.GUI) {
+                renderInventoryColorIndicator(DoubleLightsaberData.getBladeColor(stack, true, "white"),
+                        DoubleLightsaberData.getBladeColor(stack, false, "white"),
+                        poseStack, buffer);
+            }
             return;
         }
 
         if (stack.getItem() instanceof LightsaberItem lightsaberItem) {
+            String resolvedBladeColor = LightsaberItem.getBladeColor(stack);
             renderFullHilt(stack, lightsaberItem.getHiltId(stack), lightsaberItem.isActive(stack),
-                    LightsaberItem.getBladeColor(stack), displayContext, poseStack, buffer, light, overlay);
+                    resolvedBladeColor, displayContext, poseStack, buffer, light, overlay);
+            if (displayContext == ItemDisplayContext.GUI) {
+                renderInventoryColorIndicator(resolvedBladeColor, null, poseStack, buffer);
+            }
+        }
+    }
+
+    private void renderInventoryColorIndicator(String primaryColor,
+                                               String secondaryColor,
+                                               PoseStack poseStack,
+                                               MultiBufferSource buffer) {
+        LightsaberColorResolver.BladeTint primary = LightsaberColorResolver.resolve(primaryColor);
+        LightsaberColorResolver.BladeTint secondary = secondaryColor == null ? null : LightsaberColorResolver.resolve(secondaryColor);
+        RenderType type = colorIndicatorType();
+        VertexConsumer consumer = buffer.getBuffer(type);
+
+        poseStack.pushPose();
+        // Draw in the item-GUI coordinate space, separate from the hilt transform, matching
+        // Advanced Lightsabers' small top-left blade-color swatch instead of a durability bar.
+        poseStack.translate(0.0F, 1.0F, 0.0F);
+
+        if (secondary == null) {
+            emitColorTriangle(consumer, poseStack.last(),
+                    0.00F, 0.00F,
+                    0.27F, 0.00F,
+                    0.00F, -0.27F,
+                    primary.red(), primary.green(), primary.blue());
+        } else {
+            emitColorTriangle(consumer, poseStack.last(),
+                    0.00F, 0.00F,
+                    0.27F, 0.00F,
+                    0.135F, -0.135F,
+                    primary.red(), primary.green(), primary.blue());
+            emitColorTriangle(consumer, poseStack.last(),
+                    0.00F, -0.27F,
+                    0.135F, -0.135F,
+                    0.00F, 0.00F,
+                    secondary.red(), secondary.green(), secondary.blue());
+        }
+
+        poseStack.popPose();
+        flushIfPossible(buffer, type);
+    }
+
+    private void emitColorTriangle(VertexConsumer consumer,
+                                   PoseStack.Pose pose,
+                                   float x1, float y1,
+                                   float x2, float y2,
+                                   float x3, float y3,
+                                   float red, float green, float blue) {
+        // RenderType uses quads, so the triangle is emitted as a degenerate quad.
+        consumer.vertex(pose.pose(), x1, y1, 0.0F).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x2, y2, 0.0F).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x3, y3, 0.0F).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x3, y3, 0.0F).color(red, green, blue, 1.0F).endVertex();
+    }
+
+    private static void flushIfPossible(MultiBufferSource buffer, RenderType type) {
+        if (buffer instanceof MultiBufferSource.BufferSource source) {
+            source.endBatch(type);
+        }
+    }
+
+    private void renderPreviewItem(ItemStack stack,
+                                   PoseStack poseStack,
+                                   MultiBufferSource buffer,
+                                   int light,
+                                   int overlay) {
+        if (stack.getItem() instanceof LightsaberPartItem partItem) {
+            float heightPixels = ModularLightsaberData.getLegacyHeight(partItem.getFamilyId(), partItem.getPartType());
+            float offset = heightPixels * (isLowerPart(partItem.getPartType()) ? -1.0F : 1.0F) * 0.5F * PIXEL;
+            poseStack.pushPose();
+            poseStack.translate(0.0F, offset, 0.0F);
+            boolean rendered = LegacyJavaLightsaberModels.renderPart(
+                    partItem.getFamilyId(),
+                    partItem.getPartType(),
+                    resolveLightsaberTexture(partItem.getFamilyId(), partItem.getPartType()),
+                    poseStack,
+                    buffer,
+                    light,
+                    overlay
+            );
+            if (!rendered) {
+                renderSegmentBox(
+                        poseStack,
+                        buffer,
+                        resolveLightsaberTexture(partItem.getFamilyId(), partItem.getPartType()),
+                        0.0F,
+                        heightPixels * PIXEL,
+                        getHalfWidth(partItem.getPartType()),
+                        getHalfDepth(partItem.getPartType()),
+                        light,
+                        overlay
+                );
+            }
+            poseStack.popPose();
+            return;
+        }
+
+        if (stack.getItem() instanceof HiltItem hiltItem) {
+            renderAssembledSaberCore(stack, hiltItem.getHiltId(), false, hiltItem.getDefaultBladeColor(),
+                    poseStack, buffer, light, overlay, true, BLADE_LENGTH);
+            return;
+        }
+
+        if (stack.getItem() instanceof DoubleLightsaberItem doubleItem) {
+            renderDoubleEnd(stack, true, doubleItem.isActive(stack), poseStack, buffer, light, overlay);
+            renderDoubleEnd(stack, false, doubleItem.isActive(stack), poseStack, buffer, light, overlay);
+            return;
+        }
+
+        if (stack.getItem() instanceof LightsaberItem lightsaberItem) {
+            renderAssembledSaberCore(stack, lightsaberItem.getHiltId(stack), lightsaberItem.isActive(stack),
+                    LightsaberItem.getBladeColor(stack), poseStack, buffer, light, overlay, true, BLADE_LENGTH);
         }
     }
 
@@ -77,6 +281,31 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
         }
 
         return preferred;
+    }
+
+    private boolean renderTintedLegacyPart(String familyId,
+                                           LightsaberPartType type,
+                                           int color,
+                                           PoseStack poseStack,
+                                           MultiBufferSource buffer,
+                                           int light,
+                                           int overlay) {
+        float red = ((color >> 16) & 255) / 255.0F;
+        float green = ((color >> 8) & 255) / 255.0F;
+        float blue = (color & 255) / 255.0F;
+        return LegacyJavaLightsaberModels.renderPart(
+                familyId,
+                type,
+                resolveLightsaberTexture(familyId, type),
+                poseStack,
+                buffer,
+                light,
+                overlay,
+                red,
+                green,
+                blue,
+                1.0F
+        );
     }
 
     private void renderPartItem(LightsaberPartItem partItem,
@@ -224,10 +453,20 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         switch (displayContext) {
             case FIRST_PERSON_RIGHT_HAND -> {
-                poseStack.translate(1.0F, 0.0F, 0.0F);
-                poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+                // Advanced Lightsabers equipped-first-person transform.
+                poseStack.mulPose(Axis.YP.rotationDegrees(-100.0F));
+                poseStack.mulPose(Axis.XP.rotationDegrees(-150.0F));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(5.0F));
+                poseStack.translate(0.0F, 0.275F, 0.85F);
+                displayScale = 0.20F;
             }
-            case FIRST_PERSON_LEFT_HAND -> poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+            case FIRST_PERSON_LEFT_HAND -> {
+                poseStack.mulPose(Axis.YP.rotationDegrees(100.0F));
+                poseStack.mulPose(Axis.XP.rotationDegrees(-150.0F));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(-5.0F));
+                poseStack.translate(0.0F, 0.275F, 0.85F);
+                displayScale = 0.20F;
+            }
             case THIRD_PERSON_RIGHT_HAND, THIRD_PERSON_LEFT_HAND -> {
                 poseStack.translate(0.5F, 0.4F, 0.55F);
                 poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
@@ -282,12 +521,17 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
 
         boolean renderedAnything = false;
 
+        int emitterColor = ModularLightsaberData.getPartColor(stack, LightsaberPartType.EMITTER);
+        int switchColor = ModularLightsaberData.getPartColor(stack, LightsaberPartType.SWITCH_SECTION);
+        int gripColor = ModularLightsaberData.getPartColor(stack, LightsaberPartType.GRIP);
+        int pommelColor = ModularLightsaberData.getPartColor(stack, LightsaberPartType.POMMEL);
+
         poseStack.pushPose();
         poseStack.translate(0.0F, -(switchHeightPx * PIXEL), 0.0F);
-        renderedAnything |= LegacyJavaLightsaberModels.renderPart(
+        renderedAnything |= renderTintedLegacyPart(
                 emitterFamily,
                 LightsaberPartType.EMITTER,
-                resolveLightsaberTexture(emitterFamily, LightsaberPartType.EMITTER),
+                emitterColor,
                 poseStack,
                 buffer,
                 light,
@@ -295,20 +539,20 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
         );
         poseStack.popPose();
 
-        renderedAnything |= LegacyJavaLightsaberModels.renderPart(
+        renderedAnything |= renderTintedLegacyPart(
                 switchFamily,
                 LightsaberPartType.SWITCH_SECTION,
-                resolveLightsaberTexture(switchFamily, LightsaberPartType.SWITCH_SECTION),
+                switchColor,
                 poseStack,
                 buffer,
                 light,
                 overlay
         );
 
-        renderedAnything |= LegacyJavaLightsaberModels.renderPart(
+        renderedAnything |= renderTintedLegacyPart(
                 gripFamily,
                 LightsaberPartType.GRIP,
-                resolveLightsaberTexture(gripFamily, LightsaberPartType.GRIP),
+                gripColor,
                 poseStack,
                 buffer,
                 light,
@@ -330,10 +574,10 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
             poseStack.translate(0.0F, gripHeightPx * PIXEL, 0.0F);
         }
 
-        renderedAnything |= LegacyJavaLightsaberModels.renderPart(
+        renderedAnything |= renderTintedLegacyPart(
                 pommelFamily,
                 LightsaberPartType.POMMEL,
-                resolveLightsaberTexture(pommelFamily, LightsaberPartType.POMMEL),
+                pommelColor,
                 poseStack,
                 buffer,
                 light,
@@ -351,6 +595,10 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                     switchHeightPx * PIXEL,
                     gripHeightPx * PIXEL,
                     pommelHeightPx * PIXEL,
+                    emitterColor,
+                    switchColor,
+                    gripColor,
+                    pommelColor,
                     poseStack,
                     buffer,
                     light,
@@ -408,16 +656,20 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                                              float switchHeight,
                                              float gripHeight,
                                              float pommelHeight,
+                                             int emitterColor,
+                                             int switchColor,
+                                             int gripColor,
+                                             int pommelColor,
                                              PoseStack poseStack,
                                              MultiBufferSource buffer,
                                              int light,
                                              int overlay) {
         float totalHeight = emitterHeight + switchHeight + gripHeight + pommelHeight;
         float cursor = -totalHeight / 2.0F;
-        cursor = renderSegmentAtCursor(poseStack, buffer, emitterFamily, LightsaberPartType.EMITTER, cursor, emitterHeight, light, overlay);
-        cursor = renderSegmentAtCursor(poseStack, buffer, switchFamily, LightsaberPartType.SWITCH_SECTION, cursor, switchHeight, light, overlay);
-        cursor = renderSegmentAtCursor(poseStack, buffer, gripFamily, LightsaberPartType.GRIP, cursor, gripHeight, light, overlay);
-        renderSegmentAtCursor(poseStack, buffer, pommelFamily, LightsaberPartType.POMMEL, cursor, pommelHeight, light, overlay);
+        cursor = renderSegmentAtCursor(poseStack, buffer, emitterFamily, LightsaberPartType.EMITTER, cursor, emitterHeight, emitterColor, light, overlay);
+        cursor = renderSegmentAtCursor(poseStack, buffer, switchFamily, LightsaberPartType.SWITCH_SECTION, cursor, switchHeight, switchColor, light, overlay);
+        cursor = renderSegmentAtCursor(poseStack, buffer, gripFamily, LightsaberPartType.GRIP, cursor, gripHeight, gripColor, light, overlay);
+        renderSegmentAtCursor(poseStack, buffer, pommelFamily, LightsaberPartType.POMMEL, cursor, pommelHeight, pommelColor, light, overlay);
     }
 
     private float renderSegmentAtCursor(PoseStack poseStack,
@@ -426,11 +678,12 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                                         LightsaberPartType type,
                                         float cursor,
                                         float height,
+                                        int color,
                                         int light,
                                         int overlay) {
         float center = cursor + (height / 2.0F);
         renderSegmentBox(poseStack, buffer, resolveLightsaberTexture(familyId, type), center, height,
-                getHalfWidth(type), getHalfDepth(type), light, overlay);
+                getHalfWidth(type), getHalfDepth(type), color, light, overlay);
         return cursor + height;
     }
 
@@ -456,9 +709,26 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                                   float halfDepth,
                                   int light,
                                   int overlay) {
+        renderSegmentBox(poseStack, buffer, texture, centerY, height, halfWidth, halfDepth,
+                ModularLightsaberData.DEFAULT_PART_COLOR, light, overlay);
+    }
+
+    private void renderSegmentBox(PoseStack poseStack,
+                                  MultiBufferSource buffer,
+                                  ResourceLocation texture,
+                                  float centerY,
+                                  float height,
+                                  float halfWidth,
+                                  float halfDepth,
+                                  int color,
+                                  int light,
+                                  int overlay) {
         VertexConsumer consumer = buffer.getBuffer(RenderType.entityCutoutNoCull(texture));
         emitBox(poseStack, consumer, centerY, height, halfWidth, halfDepth,
-                1.0F, 1.0F, 1.0F, 1.0F, light, overlay);
+                ((color >> 16) & 255) / 255.0F,
+                ((color >> 8) & 255) / 255.0F,
+                (color & 255) / 255.0F,
+                1.0F, light, overlay);
     }
 
     private void renderLegacyCrossguardBlades(ItemStack stack,

@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_hoth",
+  "criteria": {
+    "to_naboo": {
+      "conditions": {
+        "to": "galaxyunderchaos:naboo"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_naboo.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:naboo_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_naboo.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_naboo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

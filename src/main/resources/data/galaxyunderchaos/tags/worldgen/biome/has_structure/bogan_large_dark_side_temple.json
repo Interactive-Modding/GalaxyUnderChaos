@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:bogan_biome",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/fine_cut_focus",
+  "criteria": {
+    "has_prismatic": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:focusing_crystal_prismatic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.prismatic_focus.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:focusing_crystal_prismatic"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.prismatic_focus.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_prismatic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

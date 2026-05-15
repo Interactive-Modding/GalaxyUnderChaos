@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "galaxyunderchaos:dillia_planks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_stairs",
+    "count": 4
+  },
+  "show_notification": true,
+  "group": "wooden_stairs"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "galaxyunderchaos:perlote_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxyunderchaos:perlote_planks",
+    "count": 4
+  }
+}

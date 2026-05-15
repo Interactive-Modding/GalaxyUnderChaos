@@ -1,0 +1,71 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "large_dark_datacron_amount_max_6",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 3.0,
+        "max": 6.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_datacron",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_datacron"
+        }
+      ]
+    },
+    {
+      "name": "dark_kyber_crystals_max_4",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 4.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:red_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:blood_orange_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:maroon_kyber"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:deep_violet_kyber"
+        }
+      ]
+    },
+    {
+      "name": "nexus_gold",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_nugget"
+        }
+      ]
+    }
+  ]
+}

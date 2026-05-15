@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/displayed_blade",
+  "criteria": {
+    "has_white_stand": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:white_ground_lightsaber_stand"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.archival_display.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:white_ground_lightsaber_stand"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.archival_display.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_stand"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

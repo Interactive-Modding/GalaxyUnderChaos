@@ -1,0 +1,52 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/shadow_masonry",
+  "criteria": {
+    "has_dark_coffin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:sith_coffin",
+              "galaxyunderchaos:sith_lord_coffin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_light_coffin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:jedi_coffin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.sealed_sarcophagi.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:sith_coffin"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.sealed_sarcophagi.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_light_coffin",
+      "has_dark_coffin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

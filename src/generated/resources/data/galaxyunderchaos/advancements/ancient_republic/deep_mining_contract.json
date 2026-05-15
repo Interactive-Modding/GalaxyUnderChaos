@@ -1,0 +1,51 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/crystal_ore_survey",
+  "criteria": {
+    "has_deepslate_chromium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:chromium_deepslate_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_deepslate_titanium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:titanium_deepslate_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.deep_mining_contract.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:titanium_deepslate_ore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.deep_mining_contract.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_deepslate_chromium",
+      "has_deepslate_titanium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

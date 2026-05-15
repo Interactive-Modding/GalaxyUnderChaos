@@ -126,7 +126,7 @@ public final class LightsaberStanceController {
     //  THIRD PERSON — HUMANOID POSE
     // ═══════════════════════════════════════════════════════════════════
 
-    public static void applyHumanoidPose(HumanoidModel<?> model, LivingEntity entity, float ageInTicks) {
+    public static void applyHumanoidPose(HumanoidModel<?> model, LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks) {
         if (isLocalFirstPerson(entity)) {
             return;
         }
@@ -138,6 +138,14 @@ public final class LightsaberStanceController {
 
         LightsaberForm form = getSelectedForm(entity);
         boolean blocking = isBlocking(entity, context);
+        float partialTick = ageInTicks - (float) Math.floor(ageInTicks);
+
+        // No unlocked/selected form: use Advanced Lightsabers' original baseline arm pose.
+        // Learned forms keep the newer GUC form-specific keyframes below.
+        if (form == null && !blocking) {
+            applyAdvancedLegacyHumanoidPose(model, entity, context, limbSwingAmount, partialTick);
+            return;
+        }
 
         // Tick the swing tracker for this entity
         LightsaberSwingTracker.ensureTicked(entity);
@@ -155,7 +163,6 @@ public final class LightsaberStanceController {
                 profile.supportInward(), profile.supportLift(), supportBlend, context.style(), profile.twoHanded());
 
         // Apply attack animation (keyframe-driven)
-        float partialTick = ageInTicks - (float) Math.floor(ageInTicks);
         float attackProgress = blocking ? 0.0F : LightsaberSwingTracker.getProgress(entity, partialTick);
 
         if (attackProgress > 0.0F) {
@@ -200,6 +207,12 @@ public final class LightsaberStanceController {
         WieldStyle style = resolveStyle(entity, stack);
         LightsaberForm form = getSelectedForm(entity);
         boolean blocking = context != null && isBlocking(entity, context);
+
+        // No unlocked/selected form: use Advanced Lightsabers' baseline equipped-item swing.
+        if (form == null && !blocking) {
+            applyAdvancedLegacyFirstPersonPose(poseStack, entity, stack, hand, partialTick);
+            return;
+        }
 
         // Tick tracker and get extended progress
         LightsaberSwingTracker.ensureTicked(entity);
@@ -526,6 +539,108 @@ public final class LightsaberStanceController {
         return new ItemProfile(-3F, -14F, -14F * handSign, 0.01F, 0.06F, -0.02F, base.scale());
     }
 
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  ADVANCED LIGHTSABERS BASELINE PORT — NO SELECTED FORM
+    // ═══════════════════════════════════════════════════════════════════
+
+    private static void applyAdvancedLegacyHumanoidPose(HumanoidModel<?> model,
+                                                        LivingEntity entity,
+                                                        SaberContext context,
+                                                        float limbSwingAmount,
+                                                        float partialTick) {
+        if (entity.isCrouching()) {
+            return;
+        }
+
+        float walkBlend = Mth.clamp(limbSwingAmount, 0.0F, 1.0F);
+        float readyBlend = 1.0F - walkBlend;
+        float swing = entity.getAttackAnim(partialTick);
+        float swingBlade = (swing > 0.5F ? 1.0F - swing : swing) * 2.0F;
+        HumanoidArm primaryArm = context.primaryArm();
+        ModelPart primary = getArm(model, primaryArm);
+
+        if (context.style() == WieldStyle.STAFF) {
+            primary.xRot = primary.xRot * walkBlend - ((float) Math.PI / 2.5F) * readyBlend;
+            primary.yRot = primary.yRot * walkBlend + (primary.yRot * 0.5F - mirror(primaryArm, (float) Math.PI / 15.0F)) * readyBlend;
+            primary.xRot -= swingBlade;
+            primary.yRot += mirror(primaryArm, swingBlade);
+            model.body.yRot = Mth.lerp(readyBlend * 0.12F, model.body.yRot, mirror(primaryArm, 0.06F));
+            return;
+        }
+
+        if (context.style() == WieldStyle.DUAL) {
+            ModelPart support = getArm(model, opposite(primaryArm));
+            applyAdvancedLegacySingleArm(primary, primaryArm, walkBlend, readyBlend, true);
+            applyAdvancedLegacySingleArm(support, opposite(primaryArm), walkBlend, readyBlend, true);
+            primary.xRot -= swingBlade;
+            primary.yRot += mirror(primaryArm, -0.40F * swingBlade);
+            support.xRot -= swingBlade * 1.20F;
+            support.yRot += mirror(opposite(primaryArm), 0.65F * swingBlade);
+            return;
+        }
+
+        ModelPart support = getArm(model, opposite(primaryArm));
+        applyAdvancedLegacySingleArm(primary, primaryArm, walkBlend, readyBlend, true);
+
+        float supportWalkBlend = walkBlend > 0.5F ? 1.0F : walkBlend * 2.0F;
+        float supportReadyBlend = 1.0F - supportWalkBlend;
+        support.xRot = support.xRot * supportWalkBlend - 1.0F * supportReadyBlend;
+        support.yRot = support.yRot * supportWalkBlend + (support.yRot * 0.5F + mirror(opposite(primaryArm), -0.75F)) * supportReadyBlend;
+        support.zRot = support.zRot * supportWalkBlend + (support.zRot * 0.5F) * supportReadyBlend;
+        support.x += primaryArm == HumanoidArm.RIGHT ? -0.5F * readyBlend : 0.5F * readyBlend;
+
+        primary.xRot -= swingBlade;
+        primary.yRot += mirror(primaryArm, -0.40F * swingBlade);
+        support.xRot -= swingBlade * 1.60F;
+        support.yRot += mirror(opposite(primaryArm), 0.90F * swingBlade);
+    }
+
+    private static void applyAdvancedLegacySingleArm(ModelPart arm,
+                                                     HumanoidArm side,
+                                                     float walkBlend,
+                                                     float readyBlend,
+                                                     boolean shiftGrip) {
+        arm.xRot = arm.xRot * walkBlend - 1.0F * readyBlend;
+        arm.yRot = arm.yRot * walkBlend + (arm.yRot * 0.5F - mirror(side, 0.5F)) * readyBlend;
+        arm.zRot = arm.zRot * walkBlend + (arm.zRot * 0.5F - mirror(side, 0.2F)) * readyBlend;
+        if (shiftGrip) {
+            arm.x += side == HumanoidArm.RIGHT ? 0.5F * readyBlend : -0.5F * readyBlend;
+        }
+    }
+
+    private static void applyAdvancedLegacyFirstPersonPose(PoseStack poseStack,
+                                                           LivingEntity entity,
+                                                           ItemStack stack,
+                                                           InteractionHand hand,
+                                                           float partialTick) {
+        float walk = Mth.clamp(entity.walkAnimation.speed(partialTick), 0.0F, 1.0F);
+        float swing = entity.getAttackAnim(partialTick);
+        float swingBlade = (swing > 0.5F ? 1.0F - swing : swing) * 2.0F;
+        float ready = 1.0F - walk;
+        boolean leftHand = hand == InteractionHand.OFF_HAND;
+        float handSign = leftHand ? -1.0F : 1.0F;
+
+        if (stack.getItem() instanceof DoubleLightsaberItem) {
+            poseStack.mulPose(Axis.XP.rotationDegrees(-10.0F * walk));
+            poseStack.translate(handSign * 0.15F * ready, 0.0F, 0.0F);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(82.0F * ready * handSign));
+            poseStack.mulPose(Axis.XP.rotationDegrees(-5.0F * ready));
+            if (swing > 0.0F) {
+                poseStack.mulPose(Axis.ZP.rotationDegrees(-360.0F * swing * handSign));
+            }
+            return;
+        }
+
+        if (!entity.isCrouching()) {
+            poseStack.mulPose(Axis.YP.rotationDegrees(-30.0F * ready * handSign));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(-10.0F * ready * handSign));
+            poseStack.translate(handSign * 0.05F * ready, 0.05F * ready, 0.0F);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(-140.0F * swingBlade * handSign));
+            poseStack.mulPose(Axis.XP.rotationDegrees(-80.0F * swingBlade));
+        }
+    }
+
     // ═══════════════════════════════════════════════════════════════════
     //  HELPER METHODS
     // ═══════════════════════════════════════════════════════════════════
@@ -635,6 +750,10 @@ public final class LightsaberStanceController {
         if (style == WieldStyle.SINGLE && twoHanded) {
             part.x += arm == HumanoidArm.RIGHT ? 0.20F : -0.20F;
             part.z -= 0.38F;
+        } else if (style == WieldStyle.STAFF) {
+            part.x += arm == HumanoidArm.RIGHT ? 0.12F : -0.12F;
+            part.z -= 0.28F;
+            part.y += 0.10F;
         }
     }
 

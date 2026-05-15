@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_plasma_blade",
+  "criteria": {
+    "has_shii_cho_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:shii_cho_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_i_foundation.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:shii_cho_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_i_foundation.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_shii_cho_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

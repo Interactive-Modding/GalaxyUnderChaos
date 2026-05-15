@@ -1,0 +1,64 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/chitin_fragments",
+  "criteria": {
+    "has_fang": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_fang"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_feather": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_feather"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_hide": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:wingmaw_hide"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.wingmaw_field_notes.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:wingmaw_feather"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.wingmaw_field_notes.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hide",
+      "has_fang",
+      "has_feather"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

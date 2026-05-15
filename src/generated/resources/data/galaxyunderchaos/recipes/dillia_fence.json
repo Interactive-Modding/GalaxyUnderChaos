@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "W": {
+      "item": "galaxyunderchaos:dillia_planks"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:dillia_fence",
+    "count": 3
+  },
+  "show_notification": true,
+  "group": "wooden_fence"
+}

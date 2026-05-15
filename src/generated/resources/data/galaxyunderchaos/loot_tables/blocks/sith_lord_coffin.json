@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_lord_coffin"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "galaxyunderchaos:blocks/sith_lord_coffin"
+}

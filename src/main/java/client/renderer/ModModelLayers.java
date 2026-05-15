@@ -9,6 +9,14 @@ public class ModModelLayers {
             new ResourceLocation(galaxyunderchaos.MODID, "boat/ak"), "main");
     public static final ModelLayerLocation AK_CHEST_BOAT_LAYER = new ModelLayerLocation(
             new ResourceLocation(galaxyunderchaos.MODID, "chest_boat/ak"), "main");
+    public static final ModelLayerLocation DILLIA_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(galaxyunderchaos.MODID, "boat/dillia"), "main");
+    public static final ModelLayerLocation DILLIA_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(galaxyunderchaos.MODID, "chest_boat/dillia"), "main");
+    public static final ModelLayerLocation NABOO_PINE_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(galaxyunderchaos.MODID, "boat/naboo_pine"), "main");
+    public static final ModelLayerLocation NABOO_PINE_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(galaxyunderchaos.MODID, "chest_boat/naboo_pine"), "main");
     public static final ModelLayerLocation HEART_BERRY_BOAT_LAYER = new ModelLayerLocation(
             new ResourceLocation(galaxyunderchaos.MODID, "boat/heart_berry"), "main");
     public static final ModelLayerLocation HEART_BERRY_CHEST_BOAT_LAYER = new ModelLayerLocation(

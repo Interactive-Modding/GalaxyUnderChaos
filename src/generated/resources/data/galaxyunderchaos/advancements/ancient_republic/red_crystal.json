@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/first_kyber",
+  "criteria": {
+    "has_red": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:red_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.red_crystal.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:red_kyber"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.red_crystal.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_red"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "galaxyunderchaos:block/korriban_temple_stone",
+    "top": "galaxyunderchaos:block/korriban_temple_stone",
+    "side": "galaxyunderchaos:block/korriban_temple_stone"
+  }
+}

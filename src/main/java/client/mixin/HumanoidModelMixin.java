@@ -1,5 +1,6 @@
 package client.mixin;
 
+import client.renderer.ForceHandAnimationHandler;
 import client.renderer.lightsaber.LightsaberStanceController;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,6 +20,8 @@ public abstract class HumanoidModelMixin {
                                            float netHeadYaw,
                                            float headPitch,
                                            CallbackInfo ci) {
-        LightsaberStanceController.applyHumanoidPose((HumanoidModel<?>) (Object) this, entity, ageInTicks);
+        HumanoidModel<?> model = (HumanoidModel<?>) (Object) this;
+        LightsaberStanceController.applyHumanoidPose(model, entity, limbSwing, limbSwingAmount, ageInTicks);
+        ForceHandAnimationHandler.applyHumanoidPose(model, entity, ageInTicks, netHeadYaw, headPitch);
     }
 }

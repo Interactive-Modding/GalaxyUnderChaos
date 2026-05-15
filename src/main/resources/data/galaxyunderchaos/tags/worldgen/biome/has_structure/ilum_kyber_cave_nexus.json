@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:ilum_biome",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:ilum_biome_forest",
+      "required": false
+    }
+  ]
+}

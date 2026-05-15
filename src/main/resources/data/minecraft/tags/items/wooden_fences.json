@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_fence",
-	  "galaxyunderchaos:heart_berry_fence"
+    "galaxyunderchaos:ak_fence",
+    "galaxyunderchaos:heart_berry_fence",
+    "galaxyunderchaos:blba_fence",
+    "galaxyunderchaos:dillia_fence",
+    "galaxyunderchaos:cambylictus_fence",
+    "galaxyunderchaos:perlote_fence",
+    "galaxyunderchaos:rutiger_fence",
+    "galaxyunderchaos:polar_fence",
+    "galaxyunderchaos:naboo_pine_fence"
   ]
 }

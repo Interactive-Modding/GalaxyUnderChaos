@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxyunderchaos:block/rutiger_log",
+    "end": "galaxyunderchaos:block/rutiger_log_top"
+  }
+}

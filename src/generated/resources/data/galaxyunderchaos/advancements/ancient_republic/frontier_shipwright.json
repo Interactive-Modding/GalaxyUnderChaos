@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/ak_timber",
+  "criteria": {
+    "has_ak_boat": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ak_boat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.frontier_shipwright.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ak_boat"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.frontier_shipwright.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ak_boat"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

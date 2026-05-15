@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/tempered_alloy",
+  "criteria": {
+    "has_navigation_computer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:navigation_computer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.navigation_matrix.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:navigation_computer"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.navigation_matrix.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_navigation_computer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

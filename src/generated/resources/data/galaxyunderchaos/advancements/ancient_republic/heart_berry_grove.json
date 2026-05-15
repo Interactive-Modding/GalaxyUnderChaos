@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_ossus",
+  "criteria": {
+    "has_sapling": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:heart_berry_sapling"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.heart_berry_grove.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:heart_berry_sapling"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.heart_berry_grove.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sapling"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

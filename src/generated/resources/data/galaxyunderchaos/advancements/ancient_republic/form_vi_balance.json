@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_v_answer",
+  "criteria": {
+    "has_niman_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:niman_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_vi_balance.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:niman_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_vi_balance.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_niman_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

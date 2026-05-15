@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/tempered_alloy",
+  "criteria": {
+    "has_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:lightsaber_crafting_table"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.forge_table.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:lightsaber_crafting_table"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.forge_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

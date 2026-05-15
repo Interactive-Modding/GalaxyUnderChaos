@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_tython",
+  "criteria": {
+    "has_ak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ak_log"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ak_timber.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ak_log"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.ak_timber.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ak_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

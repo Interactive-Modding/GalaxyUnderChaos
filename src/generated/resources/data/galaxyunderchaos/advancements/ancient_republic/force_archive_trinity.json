@@ -1,0 +1,68 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/ancient_holocron",
+  "criteria": {
+    "has_ancient_force_holocron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ancient_force_holocron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dark_force_holocron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:sith_force_holocron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_light_force_holocron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:jedi_force_holocron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.force_archive_trinity.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:ancient_force_holocron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.force_archive_trinity.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_light_force_holocron"
+    ],
+    [
+      "has_dark_force_holocron"
+    ],
+    [
+      "has_ancient_force_holocron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

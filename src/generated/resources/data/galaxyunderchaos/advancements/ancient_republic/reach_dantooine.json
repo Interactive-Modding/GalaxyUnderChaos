@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_tython",
+  "criteria": {
+    "to_dantooine": {
+      "conditions": {
+        "to": "galaxyunderchaos:dantooine"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_dantooine.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:dantooine_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_dantooine.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_dantooine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,9 +1,14 @@
 {
+  "replace": false,
   "entries": [
     "galaxyunderchaos:titanium_chromium_from_zombie",
     "galaxyunderchaos:shuura_from_oak_leaves",
-    "galaxyunderchaos:aegis_hilt_from_jungle_temple",
-    "galaxyunderchaos:aegis_hilt_from_desert_pyramid"
-  ],
-  "replace": false
+    "galaxyunderchaos:shuura_from_overworld_chests",
+    "galaxyunderchaos:novadive_blueprint_from_desert_pyramid",
+    "galaxyunderchaos:novadive_blueprint_from_mineshaft_minecart",
+    "galaxyunderchaos:novadive_blueprint_from_overworld_chests",
+    "galaxyunderchaos:flashfire_blueprint_from_desert_pyramid",
+    "galaxyunderchaos:flashfire_blueprint_from_mineshaft_minecart",
+    "galaxyunderchaos:flashfire_blueprint_from_overworld_chests"
+  ]
 }

@@ -1,0 +1,961 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/legacy_hilt",
+  "criteria": {
+    "has_arena_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:arena_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arena_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:arena_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arena_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:arena_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arena_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:arena_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_droideka_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:droideka_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_droideka_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:droideka_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_droideka_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:droideka_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_droideka_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:droideka_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fulcrum_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fulcrum_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fulcrum_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fulcrum_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fulcrum_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fulcrum_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fulcrum_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fulcrum_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fury_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fury_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fury_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fury_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fury_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fury_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fury_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:fury_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_graflex_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:graflex_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_graflex_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:graflex_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_graflex_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:graflex_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_graflex_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:graflex_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_imperial_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:imperial_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_imperial_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:imperial_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_imperial_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:imperial_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_imperial_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:imperial_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juggernaut_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juggernaut_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juggernaut_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juggernaut_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juggernaut_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juggernaut_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juggernaut_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juggernaut_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_knighted_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:knighted_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_knighted_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:knighted_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_knighted_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:knighted_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_knighted_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:knighted_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mandalorian_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mandalorian_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mandalorian_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mandalorian_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mandalorian_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mandalorian_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mandalorian_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mandalorian_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mauler_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mauler_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mauler_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mauler_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mauler_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mauler_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mauler_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mauler_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mechanical_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mechanical_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mechanical_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mechanical_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mechanical_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mechanical_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_mechanical_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:mechanical_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_prodigal_son_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:prodigal_son_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_prodigal_son_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:prodigal_son_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_prodigal_son_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:prodigal_son_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_prodigal_son_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:prodigal_son_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rebel_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:rebel_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rebel_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:rebel_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rebel_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:rebel_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rebel_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:rebel_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reborn_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:reborn_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reborn_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:reborn_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reborn_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:reborn_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_reborn_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:reborn_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_redeemer_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:redeemer_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_redeemer_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:redeemer_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_redeemer_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:redeemer_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_redeemer_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:redeemer_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_temple_guard_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_temple_guard_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_temple_guard_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_temple_guard_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_ancient_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_ancient_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_ancient_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_ancient_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_ancient_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_ancient_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_ancient_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_ancient_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_emitter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_emitter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_grip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_grip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_pommel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_pommel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_vaid_switch_section": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:vaid_switch_section"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.modular_parts.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:graflex_emitter"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.modular_parts.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_arena_emitter",
+      "has_arena_switch_section",
+      "has_arena_grip",
+      "has_arena_pommel",
+      "has_droideka_emitter",
+      "has_droideka_switch_section",
+      "has_droideka_grip",
+      "has_droideka_pommel",
+      "has_fulcrum_emitter",
+      "has_fulcrum_switch_section",
+      "has_fulcrum_grip",
+      "has_fulcrum_pommel",
+      "has_fury_emitter",
+      "has_fury_switch_section",
+      "has_fury_grip",
+      "has_fury_pommel",
+      "has_graflex_emitter",
+      "has_graflex_switch_section",
+      "has_graflex_grip",
+      "has_graflex_pommel",
+      "has_imperial_emitter",
+      "has_imperial_switch_section",
+      "has_imperial_grip",
+      "has_imperial_pommel",
+      "has_juggernaut_emitter",
+      "has_juggernaut_switch_section",
+      "has_juggernaut_grip",
+      "has_juggernaut_pommel",
+      "has_knighted_emitter",
+      "has_knighted_switch_section",
+      "has_knighted_grip",
+      "has_knighted_pommel",
+      "has_mandalorian_emitter",
+      "has_mandalorian_switch_section",
+      "has_mandalorian_grip",
+      "has_mandalorian_pommel",
+      "has_mauler_emitter",
+      "has_mauler_switch_section",
+      "has_mauler_grip",
+      "has_mauler_pommel",
+      "has_mechanical_emitter",
+      "has_mechanical_switch_section",
+      "has_mechanical_grip",
+      "has_mechanical_pommel",
+      "has_prodigal_son_emitter",
+      "has_prodigal_son_switch_section",
+      "has_prodigal_son_grip",
+      "has_prodigal_son_pommel",
+      "has_rebel_emitter",
+      "has_rebel_switch_section",
+      "has_rebel_grip",
+      "has_rebel_pommel",
+      "has_reborn_emitter",
+      "has_reborn_switch_section",
+      "has_reborn_grip",
+      "has_reborn_pommel",
+      "has_redeemer_emitter",
+      "has_redeemer_switch_section",
+      "has_redeemer_grip",
+      "has_redeemer_pommel",
+      "has_temple_guard_emitter",
+      "has_temple_guard_switch_section",
+      "has_temple_guard_grip",
+      "has_temple_guard_pommel",
+      "has_vaid_emitter",
+      "has_vaid_switch_section",
+      "has_vaid_grip",
+      "has_vaid_pommel",
+      "has_vaid_ancient_emitter",
+      "has_vaid_ancient_switch_section",
+      "has_vaid_ancient_grip",
+      "has_vaid_ancient_pommel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

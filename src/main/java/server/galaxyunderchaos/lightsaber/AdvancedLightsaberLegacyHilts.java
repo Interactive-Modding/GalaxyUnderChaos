@@ -1,3 +1,16 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * This file is part of Galaxy Under Chaos.
+ * It contains code, data, model geometry, behavior, or compatibility logic
+ * copied, translated, ported, adapted from, or created to support content
+ * derived from Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille
+ * and Void Adept.
+ *
+ * Modifications for Galaxy Under Chaos / Minecraft Forge 1.20.1 by
+ *  Vitiate and contributors.
+ */
+
 package server.galaxyunderchaos.lightsaber;
 
 import java.util.LinkedHashMap;
@@ -27,13 +40,17 @@ public final class AdvancedLightsaberLegacyHilts {
         hilts.put("juggernaut", new LegacyHiltSpec("juggernaut", "red", 14.7F, 12.4F, 16.0F, 7.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         hilts.put("knighted", new LegacyHiltSpec("knighted", "red", 12.6F, 8.4F, 20.0F, 13.3F, false, true, 0.0F, 0.083F, 0.23F, new float[0], new BladeModifierCrystal[] {BladeModifierCrystal.CRACKED}));
         hilts.put("mandalorian", new LegacyHiltSpec("mandalorian", "white", 12.55F, 2.87F, 26.0F, 7.45F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[] {BladeModifierCrystal.INVERTING, BladeModifierCrystal.FINE_CUT}));
-        hilts.put("mauler", new LegacyHiltSpec("mauler", "red", 18.0F, 12.0F, 21.6F, 0.25F, true, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
+        hilts.put("mauler", new LegacyHiltSpec("mauler", "red", 18.0F, 12.0F, 21.6F, 0.25F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         hilts.put("mechanical", new LegacyHiltSpec("mechanical", "red", 16.0F, 8.8F, 16.0F, 2.5F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         hilts.put("prodigal_son", new LegacyHiltSpec("prodigal_son", "green", 31.0F, 8.4F, 13.3F, 2.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         hilts.put("rebel", new LegacyHiltSpec("rebel", "medium_blue", 12.9F, 7.0F, 20.0F, 6.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[] {BladeModifierCrystal.COMPRESSED}));
         hilts.put("reborn", new LegacyHiltSpec("reborn", "purple", 14.86F, 10.0F, 19.0F, 6.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         hilts.put("redeemer", new LegacyHiltSpec("redeemer", "deep_blue", 30.0F, 8.0F, 12.3F, 1.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
+        hilts.put("temple_guard", new LegacyHiltSpec("temple_guard", "yellow", 12.0F, 8.0F, 22.0F, 6.0F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
+        hilts.put("arena", new LegacyHiltSpec("arena", "blue", 17.5F, 11.1F, 14.7F, 5.6F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
+        // Vaid regular is the modern Vaid.  Only the ancient variant is a separate hilt entry.
         hilts.put("vaid", new LegacyHiltSpec("vaid", "purple", 18.5F, 9.2F, 22.37F, 6.6F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
+        hilts.put("vaid_ancient", new LegacyHiltSpec("vaid_ancient", "deep_violet", 18.5F, 9.2F, 22.37F, 6.6F, false, false, 0.0F, 0.0F, 0.0F, new float[0], new BladeModifierCrystal[0]));
         return Map.copyOf(hilts);
     }
 

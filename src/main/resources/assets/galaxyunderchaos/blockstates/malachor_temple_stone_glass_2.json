@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "galaxyunderchaos:block/malachor_temple_stone_glass_2",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "galaxyunderchaos:block/malachor_temple_stone_glass_2",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "galaxyunderchaos:block/malachor_temple_stone_glass_2"
+    },
+    "facing=west": {
+      "model": "galaxyunderchaos:block/malachor_temple_stone_glass_2",
+      "y": 90
+    }
+  }
+}

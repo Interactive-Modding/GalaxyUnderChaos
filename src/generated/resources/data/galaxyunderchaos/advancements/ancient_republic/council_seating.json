@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/ancient_masonry",
+  "criteria": {
+    "has_council_chair": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:council_chair_1"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.council_seating.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:council_chair_1"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.council_seating.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_council_chair"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

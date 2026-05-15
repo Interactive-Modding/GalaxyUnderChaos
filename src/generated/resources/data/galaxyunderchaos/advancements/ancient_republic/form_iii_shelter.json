@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_ii_duelist",
+  "criteria": {
+    "has_soresu_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:soresu_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_iii_shelter.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:soresu_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.form_iii_shelter.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_soresu_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

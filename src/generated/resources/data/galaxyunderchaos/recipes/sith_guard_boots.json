@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:gold_ingot"
+    },
+    "S": {
+      "item": "galaxyunderchaos:sith_guard_fabric"
+    }
+  },
+  "pattern": [
+    "S S",
+    "P P"
+  ],
+  "result": {
+    "item": "galaxyunderchaos:sith_guard_boots"
+  },
+  "show_notification": true
+}

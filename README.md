@@ -1,37 +1,45 @@
-# GalaxyUnderChaosMod
+# Galaxy Under Chaos
 
-## Licensing Notice
+Galaxy Under Chaos is a Minecraft Forge mod.
 
-This project includes code and assets adapted from Advanced Lightsabers:
+## License
+
+Galaxy Under Chaos 1.0 for Minecraft Forge 1.20.1 is licensed under the GNU Lesser General Public License v3.0 only (LGPL-3.0-only), unless a file or bundled third-party notice states otherwise.
+
+This release includes code, model geometry, Tabula assets, textures, selected sounds, hilt metadata, and behavior ported or adapted from Advanced Lightsabers 1.2:
+
 https://github.com/FiskFille/AdvancedLightsabers
 
-Original Advanced Lightsabers authors:
+Original Advanced Lightsabers author / credits listed by the original metadata:
 - FiskFille
-- Void [NXM]
+- Void Adept
 
-Advanced Lightsabers is distributed under the GNU Lesser General Public License v3.0 (LGPL-3.0).
+Advanced Lightsabers is licensed under LGPL-3.0. All Advanced Lightsabers-derived portions in Galaxy Under Chaos remain under LGPL-3.0-only.
 
-All code and assets in this project that are derived from Advanced Lightsabers remain subject to the LGPL-3.0.
-Unless otherwise noted, original code and original assets created for GalaxyUnderChaosMod are also distributed under LGPL-3.0.
+See:
+- `LICENSE`
+- `COPYING`
+- `COPYING.LESSER`
+- `NOTICE.md`
+- `THIRD_PARTY_NOTICES.md`
+- `AL_DERIVED_FILES.md`
+- `docs/LGPL_COMPLIANCE_REVIEW.md`
 
-A copy of the LGPL-3.0 and GPL-3.0 license texts should be included with this project distribution.
+## Source availability
+
+If you distribute a compiled Galaxy Under Chaos jar containing the Advanced Lightsabers-derived systems, publish the complete corresponding source for that released jar. The recommended release practice is to create a GitHub source tag matching each jar release.
 
 ## Disclaimer
 
-This project is not affiliated with or endorsed by Lucasfilm Ltd. or The Walt Disney Company.
-Star Wars and all related names, characters, and properties are trademarks of their respective owners.
+This project is not affiliated with or endorsed by Lucasfilm Ltd., The Walt Disney Company, Mojang, Microsoft, Minecraft Forge, or their affiliates. Star Wars and all related properties are trademarks of their respective owners. Minecraft is a trademark of Microsoft/Mojang.
 
 ## Credits
 
-### Project Lead
-Vitiate
+### Galaxy Under Chaos
 
-### Developer
-Vitiate
+- Project lead: Vitiate 
+- Contributors, modelers, sound designers, texture artists, and concept artists: see project credits and commit history.
 
-### Modelers / Sound Designers / Texture Artists / Concept Artists
-- Zth404
-- Tato
+### Third-party derived content
 
-### Bug Testers
-- [add names here]
+- Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille and Void Adept, licensed under LGPL-3.0.

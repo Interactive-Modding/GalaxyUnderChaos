@@ -22,7 +22,10 @@ public class MalachorPortalItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
-            BlockPos playerPos = serverPlayer.blockPosition(); // Get the player's current position
+            if (!HyperdriveUseHelper.canUseHyperdrive(serverPlayer)) {
+                return InteractionResultHolder.fail(player.getItemInHand(hand));
+            }
+            BlockPos playerPos = HyperdriveUseHelper.getJumpPosition(serverPlayer); // Get the ship/current jump position
             handleMalachorPortal(serverPlayer, playerPos);
             return InteractionResultHolder.success(player.getItemInHand(hand));
         }
@@ -36,8 +39,8 @@ public class MalachorPortalItem extends Item {
                     Level.OVERWORLD : ModDimensions.MALACHOR_LEVEL_KEY;
 
             ServerLevel targetServerLevel = minecraftServer.getLevel(targetDimension);
-            if (targetServerLevel != null && !player.isPassenger()) {
-                player.teleportTo(targetServerLevel, pPos.getX(), pPos.getY(), pPos.getZ(), player.getYRot(), player.getXRot());
+            if (targetServerLevel != null) {
+                HyperdriveUseHelper.beginHyperspaceJump(player, targetServerLevel, pPos);
             }
         }
     }

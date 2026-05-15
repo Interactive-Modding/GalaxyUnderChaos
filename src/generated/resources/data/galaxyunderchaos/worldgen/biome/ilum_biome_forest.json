@@ -70,6 +70,14 @@
       "minecraft:disk_clay",
       "minecraft:disk_gravel",
       "minecraft:ore_emerald",
+      "galaxyunderchaos:amber_crystal_ore",
+      "galaxyunderchaos:gold_crystal_ore",
+      "galaxyunderchaos:light_blue_crystal_ore",
+      "galaxyunderchaos:dark_blue_crystal_ore",
+      "galaxyunderchaos:deep_violet_crystal_ore",
+      "galaxyunderchaos:arctic_blue_crystal_ore",
+      "galaxyunderchaos:rose_pink_crystal_ore",
+      "galaxyunderchaos:turquoise_crystal_ore",
       "galaxyunderchaos:blue_crystal_ore",
       "galaxyunderchaos:orange_crystal_ore",
       "galaxyunderchaos:green_crystal_ore",
@@ -79,8 +87,7 @@
       "galaxyunderchaos:magenta_crystal_ore",
       "galaxyunderchaos:purple_crystal_ore",
       "galaxyunderchaos:pink_crystal_ore",
-      "galaxyunderchaos:lime_green_crystal_ore",
-      "galaxyunderchaos:turquoise_crystal_ore"
+      "galaxyunderchaos:lime_green_crystal_ore"
     ],
     [
       "minecraft:ore_infested"

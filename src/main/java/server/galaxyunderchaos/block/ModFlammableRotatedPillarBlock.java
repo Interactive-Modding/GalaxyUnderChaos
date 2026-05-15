@@ -37,16 +37,54 @@ public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
             if(state.is(galaxyunderchaos.AK_LOG.get())) {
                 return galaxyunderchaos.STRIPPED_AK_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
             if(state.is(galaxyunderchaos.AK_WOOD.get())) {
                 return galaxyunderchaos.STRIPPED_AK_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-        }
-        if(context.getItemInHand().getItem() instanceof AxeItem) {
+            if(state.is(galaxyunderchaos.BLBA_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_BLBA_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.BLBA_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_BLBA_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.DILLIA_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_DILLIA_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.DILLIA_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_DILLIA_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.CAMBYLICTUS_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_CAMBYLICTUS_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.CAMBYLICTUS_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_CAMBYLICTUS_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.PERLOTE_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_PERLOTE_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.PERLOTE_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_PERLOTE_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.RUTIGER_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_RUTIGER_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.RUTIGER_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_RUTIGER_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.POLAR_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_POLAR_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.POLAR_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_POLAR_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.NABOO_PINE_LOG.get())) {
+                return galaxyunderchaos.STRIPPED_NABOO_PINE_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
+            if(state.is(galaxyunderchaos.NABOO_PINE_WOOD.get())) {
+                return galaxyunderchaos.STRIPPED_NABOO_PINE_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            }
             if(state.is(galaxyunderchaos.HEART_BERRY_LOG.get())) {
                 return galaxyunderchaos.STRIPPED_HEART_BERRY_LOG.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }
-
             if(state.is(galaxyunderchaos.HEART_BERRY_WOOD.get())) {
                 return galaxyunderchaos.STRIPPED_HEART_BERRY_WOOD.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
             }

@@ -25,6 +25,7 @@ import server.galaxyunderchaos.worldgen.ModPlacedFeatures;
 
 public class ModBiomes {
     public static final ResourceKey<Biome> NABOO_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_biome"));
+    public static final ResourceKey<Biome> HOTH_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_biome"));
     public static final ResourceKey<Biome> ILUM_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_biome"));
     public static final ResourceKey<Biome> ILUM_BIOME_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_biome_forest"));
     public static final ResourceKey<Biome> MUSTAFAR_LAVA_FIELD = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_lava_field"));
@@ -45,6 +46,8 @@ public class ModBiomes {
     public static final ResourceKey<Biome> TYTHON_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_forest"));
     public static final ResourceKey<Biome> TYTHON_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_plains"));
     public static final ResourceKey<Biome> TYTHON_MOUNTAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_mountains"));
+    public static final ResourceKey<Biome> TYTHON_LAKE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_lake"));
+    public static final ResourceKey<Biome> TYTHON_OCEAN = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_ocean"));
     public static final ResourceKey<Biome> DANTOOINE_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_plains"));
     public static final ResourceKey<Biome> DANTOOINE_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_forest"));
     public static final ResourceKey<Biome> DANTOOINE_HILLS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_hills"));
@@ -55,6 +58,7 @@ public class ModBiomes {
 
     public static void bootstrap(BootstapContext<Biome> context) {
         context.register(NABOO_BIOME, createNabooBiome(context));
+        context.register(HOTH_BIOME, createHothBiome(context));
         context.register(ILUM_BIOME, createIlumBiome(context));
         context.register(ILUM_BIOME_FOREST, createIlumBiomeForest(context));
         context.register(MUSTAFAR_LAVA_FIELD, createMustafarLavaField(context));
@@ -75,6 +79,8 @@ public class ModBiomes {
         context.register(TYTHON_FOREST, createTythonForest(context));
         context.register(TYTHON_PLAINS, createTythonPlains(context));
         context.register(TYTHON_MOUNTAINS, createTythonMountains(context));
+        context.register(TYTHON_LAKE, createTythonLake(context));
+        context.register(TYTHON_OCEAN, createTythonOcean(context));
         context.register(DANTOOINE_PLAINS, createDantooinePlains(context));
         context.register(DANTOOINE_FOREST, createDantooineForest(context));
         context.register(DANTOOINE_HILLS, createDantooineHills(context));
@@ -285,14 +291,9 @@ public class ModBiomes {
         generation.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.SPRING_LAVA));
 
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(CavePlacements.GLOW_LICHEN));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.FLOWER_FOREST_FLOWERS));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.TREES_FLOWER_FOREST));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.FLOWER_FLOWER_FOREST));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_GRASS_BADLANDS));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.BROWN_MUSHROOM_NORMAL));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.RED_MUSHROOM_NORMAL));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_SUGAR_CANE));
-        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_PUMPKIN));
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(ModPlacedFeatures.DILLIA_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(ModPlacedFeatures.BELLEW_FLOWER_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_GRASS_FOREST));
 
         generation.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
 
@@ -916,6 +917,102 @@ public class ModBiomes {
                         .build())
                 .build();
     }
+    private static Biome createTythonLake(BootstapContext<Biome> context) {
+
+        HolderGetter<PlacedFeature> features = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(features, carvers);
+
+        gen.addCarver(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CAVE));
+        gen.addCarver(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CAVE_EXTRA_UNDERGROUND));
+
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_DIRT));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_GRAVEL));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_COAL_UPPER));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_IRON_UPPER));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(CavePlacements.UNDERWATER_MAGMA));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_SAND));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_CLAY));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_GRAVEL));
+
+        gen.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, features.getOrThrow(MiscOverworldPlacements.SPRING_WATER));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(AquaticPlacements.SEAGRASS_SIMPLE));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(AquaticPlacements.SEAGRASS_NORMAL));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(VegetationPlacements.PATCH_SUGAR_CANE));
+        gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, features.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+        spawns.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.COD, 10, 3, 6));
+        spawns.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 1, 4));
+        spawns.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
+
+        return new Biome.BiomeBuilder()
+                .temperature(0.65F)
+                .downfall(0.7F)
+                .hasPrecipitation(true)
+                .generationSettings(gen.build())
+                .mobSpawnSettings(spawns.build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .skyColor(46578)
+                        .fogColor(12638463)
+                        .waterColor(2069949)
+                        .waterFogColor(329011)
+                        .grassColorOverride(7505193)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .build())
+                .build();
+    }
+
+    private static Biome createTythonOcean(BootstapContext<Biome> context) {
+
+        HolderGetter<PlacedFeature> features = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
+
+        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder(features, carvers);
+
+        gen.addCarver(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CAVE));
+        gen.addCarver(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CAVE_EXTRA_UNDERGROUND));
+        gen.addCarver(GenerationStep.Carving.AIR, carvers.getOrThrow(Carvers.CANYON));
+
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_DIRT));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_GRAVEL));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_COAL_UPPER));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_IRON_UPPER));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(OrePlacements.ORE_GOLD));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(CavePlacements.UNDERWATER_MAGMA));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_SAND));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_CLAY));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(MiscOverworldPlacements.DISK_GRAVEL));
+
+        gen.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, features.getOrThrow(MiscOverworldPlacements.SPRING_WATER));
+        gen.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, features.getOrThrow(MiscOverworldPlacements.SPRING_LAVA));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(AquaticPlacements.SEAGRASS_NORMAL));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(AquaticPlacements.KELP_COLD));
+        gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, features.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+        spawns.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.COD, 10, 3, 6));
+        spawns.addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 1, 1, 4));
+        spawns.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
+
+        return new Biome.BiomeBuilder()
+                .temperature(0.55F)
+                .downfall(0.8F)
+                .hasPrecipitation(true)
+                .generationSettings(gen.build())
+                .mobSpawnSettings(spawns.build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .skyColor(46578)
+                        .fogColor(12638463)
+                        .waterColor(2069949)
+                        .waterFogColor(329011)
+                        .grassColorOverride(7505193)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .build())
+                .build();
+    }
+
     private static Biome createKorribanDryCanyon(BootstapContext<Biome> context) {
 
         HolderGetter<PlacedFeature> placedFeatureHolder = context.lookup(Registries.PLACED_FEATURE);
@@ -1025,14 +1122,17 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(gen);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(gen);
         BiomeDefaultFeatures.addDefaultSprings(gen);
-        BiomeDefaultFeatures.addSurfaceFreezing(gen);
 
         BiomeDefaultFeatures.addDefaultOres(gen);
         BiomeDefaultFeatures.addDefaultSoftDisks(gen);
 
         BiomeDefaultFeatures.addPlainGrass(gen);
-        BiomeDefaultFeatures.addDefaultFlowers(gen);
-        BiomeDefaultFeatures.addForestFlowers(gen);
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.CAMBYLICTUS_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.PERLOTE_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.RUTIGER_PLACED_KEY));
 
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
@@ -1041,8 +1141,8 @@ public class ModBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.8F)
-                .downfall(0.6F)
+                .temperature(0.84F)
+                .downfall(0.82F)
                 .generationSettings(gen.build())
                 .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
@@ -1069,16 +1169,17 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(gen);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(gen);
         BiomeDefaultFeatures.addDefaultSprings(gen);
-        BiomeDefaultFeatures.addSurfaceFreezing(gen);
 
         BiomeDefaultFeatures.addDefaultOres(gen);
         BiomeDefaultFeatures.addDefaultSoftDisks(gen);
 
         BiomeDefaultFeatures.addPlainGrass(gen);
-        BiomeDefaultFeatures.addDefaultFlowers(gen);
-
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                placed.getOrThrow(VegetationPlacements.TREES_PLAINS));
+                placed.getOrThrow(ModPlacedFeatures.POLAR_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.NABOO_PINE_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.QUEENS_HEART_FLOWER_PLACED_KEY));
 
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
@@ -1087,8 +1188,8 @@ public class ModBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.8F)
-                .downfall(0.4F)
+                .temperature(0.82F)
+                .downfall(0.62F)
                 .generationSettings(gen.build())
                 .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
@@ -1137,17 +1238,18 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION,
                 placed.getOrThrow(CavePlacements.GLOW_LICHEN));
 
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                placed.getOrThrow(MiscOverworldPlacements.DISK_SAND));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                placed.getOrThrow(MiscOverworldPlacements.DISK_CLAY));
+        gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
+                placed.getOrThrow(MiscOverworldPlacements.DISK_GRAVEL));
+
+        // Naboo oceans are warm and biologically active, so stack several seagrass passes.
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                 placed.getOrThrow(AquaticPlacements.SEAGRASS_SIMPLE));
-
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
                 placed.getOrThrow(AquaticPlacements.SEAGRASS_NORMAL));
-
-        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                placed.getOrThrow(AquaticPlacements.KELP_COLD));
-
-        gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION,
-                placed.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
 
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
@@ -1162,20 +1264,24 @@ public class ModBiomes {
 
         spawns.addSpawn(MobCategory.WATER_CREATURE,
                 new MobSpawnSettings.SpawnerData(EntityType.DOLPHIN, 1, 1, 2));
+        spawns.addSpawn(MobCategory.WATER_AMBIENT,
+                new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 16));
+        spawns.addSpawn(MobCategory.WATER_AMBIENT,
+                new MobSpawnSettings.SpawnerData(EntityType.PUFFERFISH, 4, 1, 3));
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.3f)
-                .downfall(0.4f)
+                .temperature(0.86f)
+                .downfall(0.78f)
                 .generationSettings(gen.build())
                 .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .fogColor(14083839)
                         .grassColorOverride(5676610)
                         .foliageColorOverride(8367671)
-                        .waterColor(2995897)
-                        .waterFogColor(3983048)
-                        .skyColor(5358054)
+                        .waterColor(4566514)
+                        .waterFogColor(2701311)
+                        .skyColor(7907327)
                         .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                         .build())
                 .build();
@@ -1192,13 +1298,21 @@ public class ModBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(gen);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(gen);
         BiomeDefaultFeatures.addDefaultSprings(gen);
-        BiomeDefaultFeatures.addSurfaceFreezing(gen);
 
         BiomeDefaultFeatures.addDefaultOres(gen);
         BiomeDefaultFeatures.addDefaultSoftDisks(gen);
 
         BiomeDefaultFeatures.addSwampVegetation(gen);
-        BiomeDefaultFeatures.addDefaultFlowers(gen);
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.CAMBYLICTUS_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.PERLOTE_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(ModPlacedFeatures.RUTIGER_PLACED_KEY));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(VegetationPlacements.PATCH_LARGE_FERN));
+        gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
+                placed.getOrThrow(VegetationPlacements.PATCH_SUGAR_CANE));
 
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
@@ -1209,8 +1323,8 @@ public class ModBiomes {
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
-                .temperature(0.8F)
-                .downfall(0.9F)
+                .temperature(0.88F)
+                .downfall(1.0F)
                 .generationSettings(gen.build())
                 .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
@@ -1762,6 +1876,14 @@ public class ModBiomes {
 
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_EMERALD));
 
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.AMBER_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.GOLD_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.LIGHT_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.DARK_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.DEEP_VIOLET_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ARCTIC_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ROSE_PINK_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.TURQUOISE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.BLUE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ORANGE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.GREEN_CRYSTAL_ORE_PLACED_KEY));
@@ -1772,7 +1894,91 @@ public class ModBiomes {
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.PURPLE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.PINK_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.LIME_GREEN_CRYSTAL_ORE_PLACED_KEY));
-        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.TURQUOISE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, placedFeatureHolder.getOrThrow(OrePlacements.ORE_INFESTED));
+
+        generation.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.SPRING_WATER));
+        generation.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.SPRING_LAVA));
+        generation.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.SPRING_LAVA_FROZEN));
+
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(CavePlacements.GLOW_LICHEN));
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_SUGAR_CANE));
+        generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_PUMPKIN));
+
+        generation.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
+                .temperature(-1.0f)
+                .downfall(2.0f)
+                .generationSettings(generation.build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
+                        .skyColor(15462399)
+                        .fogColor(12638463)
+                        .waterColor(13622258)
+                        .waterFogColor(11250623)
+                        .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
+                        .backgroundMusic(new Music(SoundEvents.MUSIC_BIOME_SNOWY_SLOPES, 12000, 24000, false))
+                        .build())
+                .build();
+    }
+    private static Biome createHothBiome(BootstapContext<Biome> context) {
+        HolderGetter<PlacedFeature> placedFeatureHolder = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> carverHolder = context.lookup(Registries.CONFIGURED_CARVER);
+
+        BiomeGenerationSettings.Builder generation = new BiomeGenerationSettings.Builder(placedFeatureHolder, carverHolder);
+
+        generation.addCarver(GenerationStep.Carving.AIR, carverHolder.getOrThrow(Carvers.CAVE));
+        generation.addCarver(GenerationStep.Carving.AIR, carverHolder.getOrThrow(Carvers.CAVE_EXTRA_UNDERGROUND));
+        generation.addCarver(GenerationStep.Carving.AIR, carverHolder.getOrThrow(Carvers.CANYON));
+
+        generation.addFeature(GenerationStep.Decoration.LAKES, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_UNDERGROUND));
+        generation.addFeature(GenerationStep.Decoration.LAKES, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.LAKE_LAVA_SURFACE));
+
+        generation.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, placedFeatureHolder.getOrThrow(CavePlacements.AMETHYST_GEODE));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, placedFeatureHolder.getOrThrow(CavePlacements.MONSTER_ROOM));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, placedFeatureHolder.getOrThrow(CavePlacements.MONSTER_ROOM_DEEP));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIRT));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_GRAVEL));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_GRANITE_UPPER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_GRANITE_LOWER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIORITE_UPPER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIORITE_LOWER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_ANDESITE_UPPER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_ANDESITE_LOWER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_TUFF));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_COAL_UPPER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_COAL_LOWER));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_IRON_UPPER));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_IRON_MIDDLE));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_IRON_SMALL));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_GOLD));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_GOLD_LOWER));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_REDSTONE));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_REDSTONE_LOWER));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIAMOND));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIAMOND_LARGE));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_DIAMOND_BURIED));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_LAPIS));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_LAPIS_BURIED));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_COPPER));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(CavePlacements.UNDERWATER_MAGMA));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.DISK_SAND));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.DISK_CLAY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.DISK_GRAVEL));
+
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_EMERALD));
 
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, placedFeatureHolder.getOrThrow(OrePlacements.ORE_INFESTED));
 
@@ -1802,6 +2008,7 @@ public class ModBiomes {
                         .build())
                 .build();
     }
+
     private static Biome createIlumBiomeForest(BootstapContext<Biome> context) {
         HolderGetter<PlacedFeature> placedFeatureHolder = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> carverHolder = context.lookup(Registries.CONFIGURED_CARVER);
@@ -1860,6 +2067,14 @@ public class ModBiomes {
 
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(OrePlacements.ORE_EMERALD));
 
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.AMBER_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.GOLD_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.LIGHT_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.DARK_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.DEEP_VIOLET_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ARCTIC_BLUE_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ROSE_PINK_CRYSTAL_ORE_PLACED_KEY));
+        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.TURQUOISE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.BLUE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.ORANGE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.GREEN_CRYSTAL_ORE_PLACED_KEY));
@@ -1870,7 +2085,6 @@ public class ModBiomes {
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.PURPLE_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.PINK_CRYSTAL_ORE_PLACED_KEY));
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.LIME_GREEN_CRYSTAL_ORE_PLACED_KEY));
-        generation.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, placedFeatureHolder.getOrThrow(ModPlacedFeatures.TURQUOISE_CRYSTAL_ORE_PLACED_KEY));
 
         generation.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, placedFeatureHolder.getOrThrow(OrePlacements.ORE_INFESTED));
 

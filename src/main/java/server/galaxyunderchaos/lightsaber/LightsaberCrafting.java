@@ -49,6 +49,15 @@ public class LightsaberCrafting {
     }
 
     public static ItemStack craftLightsaber(ItemStack hilt, ItemStack kyberCrystal) {
+        return craftLightsaber(hilt, kyberCrystal,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR);
+    }
+
+    public static ItemStack craftLightsaber(ItemStack hilt, ItemStack kyberCrystal,
+                                            int emitterColor, int switchColor, int gripColor, int pommelColor) {
         if (hilt.isEmpty() || kyberCrystal.isEmpty()) {
             return ItemStack.EMPTY;
         }
@@ -66,7 +75,7 @@ public class LightsaberCrafting {
         if (hilt.getItem() instanceof HiltItem hiltItem) {
             String hiltId = hiltItem.getHiltId();
             if (ModularLightsaberData.isLegacyFamily(hiltId)) {
-                return ModularLightsaberData.createCustomLightsaberFromPreset(bladeColor, hiltId);
+                return ModularLightsaberData.createCustomLightsaberFromPreset(bladeColor, hiltId, emitterColor, switchColor, gripColor, pommelColor);
             }
         }
 
@@ -74,6 +83,15 @@ public class LightsaberCrafting {
     }
 
     public static ItemStack craftLightsaber(ItemStack emitter, ItemStack switchSection, ItemStack grip, ItemStack pommel, ItemStack kyberCrystal) {
+        return craftLightsaber(emitter, switchSection, grip, pommel, kyberCrystal,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR,
+                ModularLightsaberData.DEFAULT_PART_COLOR);
+    }
+
+    public static ItemStack craftLightsaber(ItemStack emitter, ItemStack switchSection, ItemStack grip, ItemStack pommel, ItemStack kyberCrystal,
+                                            int emitterColor, int switchColor, int gripColor, int pommelColor) {
         if (!(emitter.getItem() instanceof LightsaberPartItem emitterItem)
                 || !(switchSection.getItem() instanceof LightsaberPartItem switchItem)
                 || !(grip.getItem() instanceof LightsaberPartItem gripItem)
@@ -103,7 +121,11 @@ public class LightsaberCrafting {
                 emitterItem.getFamilyId(),
                 switchItem.getFamilyId(),
                 gripItem.getFamilyId(),
-                pommelItem.getFamilyId()
+                pommelItem.getFamilyId(),
+                emitterColor,
+                switchColor,
+                gripColor,
+                pommelColor
         );
     }
 }

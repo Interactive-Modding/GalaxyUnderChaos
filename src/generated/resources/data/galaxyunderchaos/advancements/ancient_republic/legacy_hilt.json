@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/internal_circuitry",
+  "criteria": {
+    "has_hilt": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:graflex_hilt"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.legacy_hilt.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:graflex_hilt"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.legacy_hilt.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hilt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

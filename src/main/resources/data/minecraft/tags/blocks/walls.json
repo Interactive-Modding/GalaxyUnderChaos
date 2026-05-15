@@ -5,6 +5,9 @@
     "galaxyunderchaos:ashla_temple_stone_wall",
     "galaxyunderchaos:bogan_temple_stone_wall",
     "galaxyunderchaos:ancient_temple_stone_wall",
-    "galaxyunderchaos:dark_temple_stone_wall"
-  ]
+    "galaxyunderchaos:dark_temple_stone_wall",
+    "galaxyunderchaos:korriban_temple_stone_wall",
+    "galaxyunderchaos:malachor_temple_stone_wall"
+  ],
+  "replace": false
 }

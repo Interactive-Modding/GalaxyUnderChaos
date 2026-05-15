@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxyunderchaos:block/dillia_log",
+    "end": "galaxyunderchaos:block/dillia_log"
+  }
+}

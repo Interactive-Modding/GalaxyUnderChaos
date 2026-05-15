@@ -1,0 +1,300 @@
+# Advanced Lightsabers-Derived File Review
+This review was prepared for the Galaxy Under Chaos 1.0 / Minecraft Forge 1.20.1 source tree.
+It is a practical compliance manifest, not a legal opinion.
+## High-confidence derived source files
+These source files contain data, model geometry, renderer/animation compatibility logic, or behavior ported/adapted from Advanced Lightsabers or created to support the ported Advanced Lightsabers content.
+- `src/main/java/client/model/lightsaber/legacy/ModelArenaPartBase.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyArena.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyDroideka.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyFulcrum.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyFury.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyGraflex.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyImperial.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyJuggernaut.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyKnighted.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMandalorian.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMauler.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMechanical.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyProdigalSon.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyRebel.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyReborn.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyRedeemer.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyTempleGuard.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyVaid.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterArena.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterDroideka.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterFulcrum.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterFury.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterGraflex.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterImperial.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterJuggernaut.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterKnighted.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMandalorian.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMauler.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMechanical.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterProdigalSon.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterRebel.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterReborn.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterRedeemer.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterTempleGuard.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterVaid.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelArena.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelDroideka.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelFulcrum.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelFury.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelGraflex.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelImperial.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelJuggernaut.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelKnighted.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMandalorian.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMauler.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMechanical.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelProdigalSon.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelRebel.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelReborn.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelRedeemer.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelTempleGuard.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelVaid.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionArena.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionDroideka.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionFulcrum.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionFury.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionGraflex.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionImperial.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionJuggernaut.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionKnighted.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMandalorian.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMauler.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMechanical.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionProdigalSon.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionRebel.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionReborn.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionRedeemer.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionTempleGuard.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionVaid.java`
+- `src/main/java/client/model/lightsaber/legacy/ModelTempleGuardPartBase.java`
+- `src/main/java/client/renderer/ForceHandAnimationHandler.java`
+- `src/main/java/client/renderer/ModItemRenderer.java`
+- `src/main/java/client/renderer/lightsaber/LegacyLightsaberBladeRenderer.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyGL.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyJavaLightsaberModels.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyModelBase.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyModelRenderer.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyRenderSession.java`
+- `src/main/java/client/renderer/lightsaber/legacy/LegacyRenderStates.java`
+- `src/main/java/server/galaxyunderchaos/lightsaber/AdvancedLightsaberLegacyHilts.java`
+- `src/main/java/server/galaxyunderchaos/lightsaber/LegacyLightsaberTabulaAssets.java`
+
+## Strong Java similarity findings
+The following Java files showed strong shingle overlap with Advanced Lightsabers model classes. This is expected for ported/generated hilt model geometry.
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyDroideka.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyDroideka.java` — containment `0.610`, Jaccard `0.439`, shared shingles `1971`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyFulcrum.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyFulcrum.java` — containment `0.646`, Jaccard `0.477`, shared shingles `1976`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyFury.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyFury.java` — containment `0.651`, Jaccard `0.482`, shared shingles `356`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyGraflex.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyGraflex.java` — containment `0.616`, Jaccard `0.445`, shared shingles `403`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyImperial.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyImperial.java` — containment `0.601`, Jaccard `0.430`, shared shingles `1172`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyJuggernaut.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyJuggernaut.java` — containment `0.603`, Jaccard `0.431`, shared shingles `302`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyKnighted.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyKnighted.java` — containment `0.648`, Jaccard `0.479`, shared shingles `425`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMandalorian.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyMandalorian.java` — containment `0.668`, Jaccard `0.501`, shared shingles `263`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMauler.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyMauler.java` — containment `0.587`, Jaccard `0.415`, shared shingles `1494`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyMechanical.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyMechanical.java` — containment `0.595`, Jaccard `0.423`, shared shingles `1006`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyProdigalSon.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyProdigalSon.java` — containment `0.617`, Jaccard `0.446`, shared shingles `795`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyRebel.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyRebel.java` — containment `0.615`, Jaccard `0.444`, shared shingles `292`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyReborn.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyReborn.java` — containment `0.648`, Jaccard `0.479`, shared shingles `444`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyRedeemer.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyRedeemer.java` — containment `0.576`, Jaccard `0.404`, shared shingles `858`
+- `src/main/java/client/model/lightsaber/legacy/ModelBodyVaid.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelBodyVaid.java` — containment `0.595`, Jaccard `0.424`, shared shingles `1260`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterDroideka.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterDroideka.java` — containment `0.612`, Jaccard `0.441`, shared shingles `320`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterFulcrum.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterFulcrum.java` — containment `0.625`, Jaccard `0.454`, shared shingles `960`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterFury.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterFury.java` — containment `0.593`, Jaccard `0.421`, shared shingles `1285`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterGraflex.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterGraflex.java` — containment `0.617`, Jaccard `0.446`, shared shingles `1180`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterImperial.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterImperial.java` — containment `0.583`, Jaccard `0.411`, shared shingles `786`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterJuggernaut.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterJuggernaut.java` — containment `0.599`, Jaccard `0.428`, shared shingles `1570`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterKnighted.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterKnighted.java` — containment `0.614`, Jaccard `0.443`, shared shingles `1491`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMandalorian.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterMandalorian.java` — containment `0.591`, Jaccard `0.419`, shared shingles `508`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMauler.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterMauler.java` — containment `0.593`, Jaccard `0.421`, shared shingles `2378`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterMechanical.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterMechanical.java` — containment `0.619`, Jaccard `0.448`, shared shingles `697`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterProdigalSon.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterProdigalSon.java` — containment `0.607`, Jaccard `0.436`, shared shingles `2777`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterRebel.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterRebel.java` — containment `0.616`, Jaccard `0.445`, shared shingles `1035`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterReborn.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterReborn.java` — containment `0.592`, Jaccard `0.420`, shared shingles `1381`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterRedeemer.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterRedeemer.java` — containment `0.608`, Jaccard `0.437`, shared shingles `2623`
+- `src/main/java/client/model/lightsaber/legacy/ModelEmitterVaid.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelEmitterVaid.java` — containment `0.618`, Jaccard `0.447`, shared shingles `1144`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelDroideka.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelDroideka.java` — containment `0.617`, Jaccard `0.446`, shared shingles `1227`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelFulcrum.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelFulcrum.java` — containment `0.631`, Jaccard `0.461`, shared shingles `1101`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelFury.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelFury.java` — containment `0.587`, Jaccard `0.416`, shared shingles `1679`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelGraflex.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelGraflex.java` — containment `0.598`, Jaccard `0.426`, shared shingles `533`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelImperial.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelImperial.java` — containment `0.602`, Jaccard `0.431`, shared shingles `1064`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelJuggernaut.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelJuggernaut.java` — containment `0.621`, Jaccard `0.450`, shared shingles `499`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelKnighted.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelKnighted.java` — containment `0.623`, Jaccard `0.452`, shared shingles `1029`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMandalorian.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelMandalorian.java` — containment `0.662`, Jaccard `0.495`, shared shingles `531`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMauler.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelMauler.java` — containment `0.581`, Jaccard `0.409`, shared shingles `470`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelMechanical.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelMechanical.java` — containment `0.583`, Jaccard `0.411`, shared shingles `760`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelProdigalSon.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelProdigalSon.java` — containment `0.608`, Jaccard `0.437`, shared shingles `318`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelRebel.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelRebel.java` — containment `0.605`, Jaccard `0.434`, shared shingles `1046`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelReborn.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelReborn.java` — containment `0.593`, Jaccard `0.422`, shared shingles `927`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelRedeemer.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelRedeemer.java` — containment `0.608`, Jaccard `0.437`, shared shingles `318`
+- `src/main/java/client/model/lightsaber/legacy/ModelPommelVaid.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelPommelVaid.java` — containment `0.595`, Jaccard `0.424`, shared shingles `1168`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionDroideka.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionDroideka.java` — containment `0.596`, Jaccard `0.424`, shared shingles `903`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionFulcrum.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionFulcrum.java` — containment `0.656`, Jaccard `0.489`, shared shingles `938`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionFury.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionFury.java` — containment `0.612`, Jaccard `0.441`, shared shingles `745`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionGraflex.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionGraflex.java` — containment `0.564`, Jaccard `0.392`, shared shingles `235`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionImperial.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionImperial.java` — containment `0.607`, Jaccard `0.435`, shared shingles `893`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionJuggernaut.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionJuggernaut.java` — containment `0.590`, Jaccard `0.419`, shared shingles `848`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionKnighted.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionKnighted.java` — containment `0.597`, Jaccard `0.426`, shared shingles `681`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMandalorian.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionMandalorian.java` — containment `0.638`, Jaccard `0.469`, shared shingles `588`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMauler.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionMauler.java` — containment `0.593`, Jaccard `0.420`, shared shingles `766`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionMechanical.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionMechanical.java` — containment `0.523`, Jaccard `0.354`, shared shingles `266`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionProdigalSon.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionProdigalSon.java` — containment `0.594`, Jaccard `0.422`, shared shingles `209`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionRebel.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionRebel.java` — containment `0.602`, Jaccard `0.431`, shared shingles `477`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionReborn.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionReborn.java` — containment `0.554`, Jaccard `0.384`, shared shingles `1406`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionRedeemer.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionRedeemer.java` — containment `0.612`, Jaccard `0.441`, shared shingles `603`
+- `src/main/java/client/model/lightsaber/legacy/ModelSwitchSectionVaid.java` <= `src/main/java/com/fiskmods/lightsabers/client/model/lightsaber/ModelSwitchSectionVaid.java` — containment `0.587`, Jaccard `0.416`, shared shingles `478`
+
+## Exact binary/resource matches
+These files are byte-for-byte matches to Advanced Lightsabers files, after namespace/path relocation.
+- `src/main/resources/assets/galaxyunderchaos/sounds/force/lightning1.ogg` <= `src/main/resources/assets/lightsabers/sounds/force/lightning1.ogg` — 37189 bytes
+- `src/main/resources/assets/galaxyunderchaos/sounds/force/lightning4.ogg` <= `src/main/resources/assets/lightsabers/sounds/force/lightning4.ogg` — 43026 bytes
+- `src/main/resources/assets/galaxyunderchaos/sounds/force/stealth.ogg` <= `src/main/resources/assets/lightsabers/sounds/force/stealth.ogg` — 23690 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_droideka.tbl` <= `assetdump/tabula/lightsabers/Body (Droideka).tbl` — 4391 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_fulcrum.tbl` <= `assetdump/tabula/lightsabers/Body (Fulcrum).tbl` — 4452 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_fury.tbl` <= `assetdump/tabula/lightsabers/Body (Fury).tbl` — 1213 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_graflex.tbl` <= `assetdump/tabula/lightsabers/Body (Graflex).tbl` — 1413 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_juggernaut.tbl` <= `assetdump/tabula/lightsabers/Body (Juggernaut).tbl` — 1146 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_knighted.tbl` <= `assetdump/tabula/lightsabers/Body (Knighted).tbl` — 1400 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_mandalorian.tbl` <= `assetdump/tabula/lightsabers/Body (Mandalorian).tbl` — 1113 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_mauler.tbl` <= `assetdump/tabula/lightsabers/Body (Mauler).tbl` — 3216 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_mechanical.tbl` <= `assetdump/tabula/lightsabers/Body (Mechanical).tbl` — 2465 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_prodigal_son.tbl` <= `assetdump/tabula/lightsabers/Body (Prodigal Son).tbl` — 2000 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_redeemer.tbl` <= `assetdump/tabula/lightsabers/Body (Redeemer).tbl` — 2058 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/body_vaid.tbl` <= `assetdump/tabula/lightsabers/Body (Vaid).tbl` — 4103 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/dooku_emitter_piece.tbl` <= `assetdump/tabula/lightsabers/Dooku Emitter piece.tbl` — 1284 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_dooku.tbl` <= `assetdump/tabula/lightsabers/Emitter (Dooku).tbl` — 3884 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_droideka.tbl` <= `assetdump/tabula/lightsabers/Emitter (Droideka).tbl` — 1206 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_fulcrum.tbl` <= `assetdump/tabula/lightsabers/Emitter (Fulcrum).tbl` — 2628 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_fury.tbl` <= `assetdump/tabula/lightsabers/Emitter (Fury).tbl` — 3148 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_graflex.tbl` <= `assetdump/tabula/lightsabers/Emitter (Graflex).tbl` — 3173 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_juggernaut.tbl` <= `assetdump/tabula/lightsabers/Emitter (Juggernaut).tbl` — 3766 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_knighted.tbl` <= `assetdump/tabula/lightsabers/Emitter (Knighted).tbl` — 3604 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_mandalorian.tbl` <= `assetdump/tabula/lightsabers/Emitter (Mandalorian).tbl` — 1806 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_mauler.tbl` <= `assetdump/tabula/lightsabers/Emitter (Mauler).tbl` — 4810 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_mechanical.tbl` <= `assetdump/tabula/lightsabers/Emitter (Mechanical).tbl` — 2564 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_prodigal_son.tbl` <= `assetdump/tabula/lightsabers/Emitter (Prodigal Son).tbl` — 5483 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_redeemer.tbl` <= `assetdump/tabula/lightsabers/Emitter (Redeemer).tbl` — 5165 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_sidious.tbl` <= `assetdump/tabula/lightsabers/Emitter (Sidious).tbl` — 271 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/emitter_vaid.tbl` <= `assetdump/tabula/lightsabers/Emitter (Vaid).tbl` — 2923 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/fisks_lightsaber.tbl` <= `assetdump/tabula/lightsabers/Fisk's Lightsaber.tbl` — 7841 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/fulcrum.tbl` <= `assetdump/tabula/lightsabers/Fulcrum.tbl` — 8600 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/mandalorian.tbl` <= `assetdump/tabula/lightsabers/Mandalorian.tbl` — 3921 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_droideka.tbl` <= `assetdump/tabula/lightsabers/Pommel (Droideka).tbl` — 2835 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_fulcrum.tbl` <= `assetdump/tabula/lightsabers/Pommel (Fulcrum).tbl` — 2995 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_fury.tbl` <= `assetdump/tabula/lightsabers/Pommel (Fury).tbl` — 3623 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_graflex.tbl` <= `assetdump/tabula/lightsabers/Pommel (Graflex).tbl` — 1670 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_juggernaut.tbl` <= `assetdump/tabula/lightsabers/Pommel (Juggernaut).tbl` — 1640 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_knighted.tbl` <= `assetdump/tabula/lightsabers/Pommel (Knighted).tbl` — 2592 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_mandalorian.tbl` <= `assetdump/tabula/lightsabers/Pommel (Mandalorian).tbl` — 1689 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_mauler.tbl` <= `assetdump/tabula/lightsabers/Pommel (Mauler).tbl` — 1415 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_mechanical.tbl` <= `assetdump/tabula/lightsabers/Pommel (Mechanical).tbl` — 1821 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_prodigal_son.tbl` <= `assetdump/tabula/lightsabers/Pommel (Prodigal Son).tbl` — 1153 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_redeemer.tbl` <= `assetdump/tabula/lightsabers/Pommel (Redeemer).tbl` — 1149 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/pommel_vaid.tbl` <= `assetdump/tabula/lightsabers/Pommel (Vaid).tbl` — 2837 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_dooku.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Dooku).tbl` — 968 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_droideka.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Droideka).tbl` — 2321 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_fulcrum.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Fulcrum).tbl` — 2324 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_fury.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Fury).tbl` — 1849 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_graflex.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Graflex).tbl` — 1606 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_juggernaut.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Juggernaut).tbl` — 2333 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_knighted.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Knighted).tbl` — 2083 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_mandalorian.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Mandalorian).tbl` — 1994 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_mauler.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Mauler).tbl` — 2043 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_mechanical.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Mechanical).tbl` — 1225 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_prodigal_son.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Prodigal Son).tbl` — 1211 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_redeemer.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Redeemer).tbl` — 1865 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/switch_section_vaid.tbl` <= `assetdump/tabula/lightsabers/Switch Section (Vaid).tbl` — 1636 bytes
+- `src/main/resources/assets/galaxyunderchaos/tabula/lightsabers/vaid.tbl` <= `assetdump/tabula/lightsabers/Vaid.tbl` — 6985 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/gui/container/force_holocron.png` <= `src/main/resources/assets/lightsabers/textures/gui/container/force_power_selector.png` — 1894 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_droideka.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_droideka.png` — 570 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_fulcrum.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_fulcrum.png` — 488 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_fury.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_fury.png` — 250 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_graflex.png` — 317 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_imperial.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_imperial.png` — 2954 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_juggernaut.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_juggernaut.png` — 247 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_knighted.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_knighted.png` — 360 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_mandalorian.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_mandalorian.png` — 356 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_mauler.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_mauler.png` — 1441 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_mechanical.png` — 2910 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_prodigal_son.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_prodigal_son.png` — 284 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_rebel.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_rebel.png` — 3012 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_reborn.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/reborn.png` — 15539 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_redeemer.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_redeemer.png` — 296 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_vaid.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_vaid_modern.png` — 2492 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_vaid_ancient.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_vaid_ancient.png` — 2495 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/body_vaid_modern.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/body_vaid_modern.png` — 2492 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/droideka.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_droideka.png` — 250 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_droideka.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_droideka.png` — 250 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_fulcrum.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_fulcrum.png` — 432 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_fury.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_fury.png` — 437 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_graflex.png` — 862 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_imperial.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_imperial.png` — 2889 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_juggernaut.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_juggernaut.png` — 639 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_knighted.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_knighted.png` — 411 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_mandalorian.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mandalorian.png` — 352 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_mauler.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mauler.png` — 689 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mechanical.png` — 1575 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_prodigal_son.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_prodigal_son.png` — 423 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_rebel.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_rebel.png` — 2932 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_reborn.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/reborn.png` — 15539 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_redeemer.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_redeemer.png` — 408 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_vaid.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_vaid_modern.png` — 360 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_vaid_ancient.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_vaid_ancient.png` — 371 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/emitter_vaid_modern.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_vaid_modern.png` — 360 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/fulcrum.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_fulcrum.png` — 432 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/fury.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_fury.png` — 437 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_graflex.png` — 862 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/imperial.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_imperial.png` — 2889 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/juggernaut.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_juggernaut.png` — 639 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/knighted.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_knighted.png` — 411 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/mandalorian.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mandalorian.png` — 352 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/mauler.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mauler.png` — 689 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_mechanical.png` — 1575 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_droideka.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_droideka.png` — 318 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_fulcrum.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_fulcrum.png` — 460 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_fury.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_fury.png` — 411 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_graflex.png` — 319 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_mechanical.png` — 319 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_imperial.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_imperial.png` — 2933 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_juggernaut.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_juggernaut.png` — 332 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_knighted.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_knighted.png` — 378 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_mandalorian.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_mandalorian.png` — 337 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_mauler.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_mauler.png` — 222 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_graflex.png` — 319 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_mechanical.png` — 319 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_prodigal_son.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_prodigal_son.png` — 219 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_rebel.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_rebel.png` — 2954 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_reborn.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/reborn.png` — 15539 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_redeemer.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_redeemer.png` — 214 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_vaid.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_vaid_modern.png` — 342 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_vaid_ancient.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_vaid_ancient.png` — 354 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/pommel_vaid_modern.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/pommel_vaid_modern.png` — 342 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/prodigal_son.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_prodigal_son.png` — 423 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/rebel.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_rebel.png` — 2932 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/reborn.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/reborn.png` — 15539 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/redeemer.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_redeemer.png` — 408 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_droideka.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_droideka.png` — 349 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_fulcrum.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_fulcrum.png` — 311 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_fury.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_fury.png` — 1264 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_graflex.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_graflex.png` — 939 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_imperial.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_imperial.png` — 2820 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_juggernaut.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_juggernaut.png` — 434 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_knighted.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_knighted.png` — 619 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_mandalorian.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_mandalorian.png` — 415 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_mauler.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_mauler.png` — 1115 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_mechanical.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_mechanical.png` — 1311 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_prodigal_son.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_prodigal_son.png` — 1211 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_rebel.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_rebel.png` — 2941 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_reborn.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/reborn.png` — 15539 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_redeemer.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_redeemer.png` — 685 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_vaid.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_vaid_modern.png` — 949 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_vaid_ancient.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_vaid_ancient.png` — 949 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/switch_section_vaid_modern.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/switch_section_vaid_modern.png` — 949 bytes
+- `src/main/resources/assets/galaxyunderchaos/textures/models/lightsaber/vaid.png` <= `src/main/resources/assets/lightsabers/textures/models/lightsaber/emitter_vaid_modern.png` — 360 bytes
+
+## Practical conclusion
+Because the tree contains exact copied resources and ported/adapted Java/model content, treat the distributed 1.20.1 release as LGPL-covered for the Advanced Lightsabers-derived portions. The simplest safe publication path is to publish the complete corresponding source for the released jar.

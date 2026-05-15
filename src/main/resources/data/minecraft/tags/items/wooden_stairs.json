@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_stairs",
-	  "galaxyunderchaos:heart_berry_stairs"
+    "galaxyunderchaos:ak_stairs",
+    "galaxyunderchaos:heart_berry_stairs",
+    "galaxyunderchaos:blba_stairs",
+    "galaxyunderchaos:dillia_stairs",
+    "galaxyunderchaos:cambylictus_stairs",
+    "galaxyunderchaos:perlote_stairs",
+    "galaxyunderchaos:rutiger_stairs",
+    "galaxyunderchaos:polar_stairs",
+    "galaxyunderchaos:naboo_pine_stairs"
   ]
 }

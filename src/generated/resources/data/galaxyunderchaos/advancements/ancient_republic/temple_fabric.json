@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/root",
+  "criteria": {
+    "has_temple_fabric": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:temple_guard_fabric"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.temple_fabric.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:temple_guard_fabric"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.temple_fabric.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_temple_fabric"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

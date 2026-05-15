@@ -20,6 +20,15 @@ public class CustomArmor {
             () -> galaxyunderchaos.TEMPLE_GUARD_FABRIC.get(),
             new int[]{3, 6, 8, 3}
     );
+    public static final ArmorMaterial SITH_GUARD_ARMOR_MATERIAL = register(
+            "sith_guard",
+            15,
+            4f,
+            0.1f,
+            () -> galaxyunderchaos.SITH_GUARD_FABRIC.get(),
+            new int[]{3, 6, 8, 3}
+    );
+
 
     private static ArmorMaterial register(String name,
                                           int enchantability,

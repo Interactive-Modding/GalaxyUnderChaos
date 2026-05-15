@@ -1,3 +1,16 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * This file is part of Galaxy Under Chaos.
+ * It contains code, data, model geometry, behavior, or compatibility logic
+ * copied, translated, ported, adapted from, or created to support content
+ * derived from Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille
+ * and Void Adept.
+ *
+ * Modifications for Galaxy Under Chaos / Minecraft Forge 1.20.1 by
+ *  Vitiate and contributors.
+ */
+
 package client.renderer.lightsaber.legacy;
 
 import client.model.lightsaber.legacy.*;
@@ -30,16 +43,35 @@ public final class LegacyJavaLightsaberModels {
                                      MultiBufferSource buffer,
                                      int packedLight,
                                      int packedOverlay) {
+        return renderPart(familyId, type, texture, poseStack, buffer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    public static boolean renderPart(String familyId,
+                                     LightsaberPartType type,
+                                     ResourceLocation texture,
+                                     PoseStack poseStack,
+                                     MultiBufferSource buffer,
+                                     int packedLight,
+                                     int packedOverlay,
+                                     float red,
+                                     float green,
+                                     float blue,
+                                     float alpha) {
         LegacyModelBase model = getModel(familyId, type);
         if (model == null) {
             return false;
         }
-        VertexConsumer consumer = buffer.getBuffer(RenderType.entityCutoutNoCull(texture));
-        LegacyRenderSession.begin(poseStack, consumer, packedLight, packedOverlay);
+        poseStack.pushPose();
         try {
-            model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+            VertexConsumer consumer = buffer.getBuffer(RenderType.entityCutoutNoCull(texture));
+            LegacyRenderSession.begin(poseStack, consumer, packedLight, packedOverlay, red, green, blue, alpha);
+            try {
+                model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+            } finally {
+                LegacyRenderSession.end();
+            }
         } finally {
-            LegacyRenderSession.end();
+            poseStack.popPose();
         }
         return true;
     }
@@ -65,7 +97,10 @@ public final class LegacyJavaLightsaberModels {
         put(map, "rebel", new ModelEmitterRebel(), new ModelSwitchSectionRebel(), new ModelBodyRebel(), new ModelPommelRebel());
         put(map, "reborn", new ModelEmitterReborn(), new ModelSwitchSectionReborn(), new ModelBodyReborn(), new ModelPommelReborn());
         put(map, "redeemer", new ModelEmitterRedeemer(), new ModelSwitchSectionRedeemer(), new ModelBodyRedeemer(), new ModelPommelRedeemer());
+        put(map, "temple_guard", new ModelEmitterTempleGuard(), new ModelSwitchSectionTempleGuard(), new ModelBodyTempleGuard(), new ModelPommelTempleGuard());
+        put(map, "arena", new ModelEmitterArena(), new ModelSwitchSectionArena(), new ModelBodyArena(), new ModelPommelArena());
         put(map, "vaid", new ModelEmitterVaid(), new ModelSwitchSectionVaid(), new ModelBodyVaid(), new ModelPommelVaid());
+        put(map, "vaid_ancient", new ModelEmitterVaid(), new ModelSwitchSectionVaid(), new ModelBodyVaid(), new ModelPommelVaid());
         return map;
     }
 

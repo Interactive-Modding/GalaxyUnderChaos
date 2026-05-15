@@ -1,0 +1,128 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/form_vii_ferocity",
+  "criteria": {
+    "has_ataru_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:ataru_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juyo_vaapad_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:juyo_vaapad_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_makashi_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:makashi_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_niman_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:niman_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shien_djem_so_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:shien_djem_so_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shii_cho_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:shii_cho_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_soresu_holobook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:soresu_holobook"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.all_forms.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:juyo_vaapad_holobook"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.all_forms.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_shii_cho_holobook"
+    ],
+    [
+      "has_makashi_holobook"
+    ],
+    [
+      "has_soresu_holobook"
+    ],
+    [
+      "has_ataru_holobook"
+    ],
+    [
+      "has_shien_djem_so_holobook"
+    ],
+    [
+      "has_niman_holobook"
+    ],
+    [
+      "has_juyo_vaapad_holobook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

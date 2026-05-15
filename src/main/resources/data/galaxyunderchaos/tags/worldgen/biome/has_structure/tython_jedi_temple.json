@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:tython_forest",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:tython_plains",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:tython_mountains",
+      "required": false
+    }
+  ]
+}

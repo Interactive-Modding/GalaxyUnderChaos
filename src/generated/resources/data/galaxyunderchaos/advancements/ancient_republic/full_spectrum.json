@@ -1,0 +1,338 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/prismatic_focus",
+  "criteria": {
+    "has_amber": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:amber_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_arctic_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:arctic_blue_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blood_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:blood_orange_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:blue_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cyan": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:cyan_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dark_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:dark_blue_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_deep_violet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:deep_violet_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_gold": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:gold_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_green": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:green_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_light_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:light_blue_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lime_green": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:lime_green_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magenta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:magenta_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_maroon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:maroon_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:orange_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pink": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:pink_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_purple": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:purple_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:red_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rose_pink": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:rose_pink_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_turquoise": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:turquoise_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_white": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:white_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_yellow": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:yellow_kyber"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.full_spectrum.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:rose_pink_kyber"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.full_spectrum.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_red"
+    ],
+    [
+      "has_blue"
+    ],
+    [
+      "has_orange"
+    ],
+    [
+      "has_green"
+    ],
+    [
+      "has_yellow"
+    ],
+    [
+      "has_cyan"
+    ],
+    [
+      "has_white"
+    ],
+    [
+      "has_magenta"
+    ],
+    [
+      "has_purple"
+    ],
+    [
+      "has_pink"
+    ],
+    [
+      "has_lime_green"
+    ],
+    [
+      "has_turquoise"
+    ],
+    [
+      "has_blood_orange"
+    ],
+    [
+      "has_amber"
+    ],
+    [
+      "has_gold"
+    ],
+    [
+      "has_light_blue"
+    ],
+    [
+      "has_dark_blue"
+    ],
+    [
+      "has_maroon"
+    ],
+    [
+      "has_deep_violet"
+    ],
+    [
+      "has_arctic_blue"
+    ],
+    [
+      "has_rose_pink"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

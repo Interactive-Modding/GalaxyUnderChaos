@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:mustafar_lava_field",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:mustafar_volcanic_plains",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:mustafar_magma_lake",
+      "required": false
+    }
+  ]
+}

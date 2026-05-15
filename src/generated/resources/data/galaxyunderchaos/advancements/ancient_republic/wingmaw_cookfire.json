@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/wingmaw_field_notes",
+  "criteria": {
+    "has_cooked_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:cooked_wingmaw_meat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.wingmaw_cookfire.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:cooked_wingmaw_meat"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.wingmaw_cookfire.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooked_meat"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

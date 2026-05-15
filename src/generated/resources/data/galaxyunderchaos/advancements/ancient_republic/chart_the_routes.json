@@ -1,0 +1,122 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/reach_bogan",
+  "criteria": {
+    "to_ashla": {
+      "conditions": {
+        "to": "galaxyunderchaos:ashla"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_bogan": {
+      "conditions": {
+        "to": "galaxyunderchaos:bogan"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_dantooine": {
+      "conditions": {
+        "to": "galaxyunderchaos:dantooine"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_hoth": {
+      "conditions": {
+        "to": "galaxyunderchaos:hoth"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_ilum": {
+      "conditions": {
+        "to": "galaxyunderchaos:ilum"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_korriban": {
+      "conditions": {
+        "to": "galaxyunderchaos:korriban"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_malachor": {
+      "conditions": {
+        "to": "galaxyunderchaos:malachor"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_mustafar": {
+      "conditions": {
+        "to": "galaxyunderchaos:mustafar"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_naboo": {
+      "conditions": {
+        "to": "galaxyunderchaos:naboo"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_ossus": {
+      "conditions": {
+        "to": "galaxyunderchaos:ossus"
+      },
+      "trigger": "minecraft:changed_dimension"
+    },
+    "to_tython": {
+      "conditions": {
+        "to": "galaxyunderchaos:tython"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.chart_the_routes.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:navigation_computer"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.chart_the_routes.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_tython"
+    ],
+    [
+      "to_dantooine"
+    ],
+    [
+      "to_ossus"
+    ],
+    [
+      "to_ilum"
+    ],
+    [
+      "to_hoth"
+    ],
+    [
+      "to_naboo"
+    ],
+    [
+      "to_mustafar"
+    ],
+    [
+      "to_korriban"
+    ],
+    [
+      "to_malachor"
+    ],
+    [
+      "to_ashla"
+    ],
+    [
+      "to_bogan"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

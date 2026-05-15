@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.9,
+  "downfall": 1.0,
   "effects": {
     "fog_color": 12638463,
     "foliage_color": 6975545,
@@ -80,10 +80,11 @@
       "minecraft:patch_waterlily",
       "minecraft:brown_mushroom_swamp",
       "minecraft:red_mushroom_swamp",
-      "minecraft:flower_default"
-    ],
-    [
-      "minecraft:freeze_top_layer"
+      "galaxyunderchaos:cambylictus_placed",
+      "galaxyunderchaos:perlote_placed",
+      "galaxyunderchaos:rutiger_placed",
+      "minecraft:patch_large_fern",
+      "minecraft:patch_sugar_cane"
     ]
   ],
   "has_precipitation": true,
@@ -167,5 +168,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.88
 }

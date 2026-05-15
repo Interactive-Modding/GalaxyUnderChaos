@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,part=foot": { "model": "galaxyunderchaos:block/sith_lord_coffin" },
+    "facing=east,part=foot":  { "model": "galaxyunderchaos:block/sith_lord_coffin" },
+    "facing=south,part=foot": { "model": "galaxyunderchaos:block/sith_lord_coffin" },
+    "facing=west,part=foot":  { "model": "galaxyunderchaos:block/sith_lord_coffin" },
+
+    "facing=north,part=head": { "model": "galaxyunderchaos:block/sith_lord_coffin_empty" },
+    "facing=east,part=head":  { "model": "galaxyunderchaos:block/sith_lord_coffin_empty" },
+    "facing=south,part=head": { "model": "galaxyunderchaos:block/sith_lord_coffin_empty" },
+    "facing=west,part=head":  { "model": "galaxyunderchaos:block/sith_lord_coffin_empty" }
+  }
+}

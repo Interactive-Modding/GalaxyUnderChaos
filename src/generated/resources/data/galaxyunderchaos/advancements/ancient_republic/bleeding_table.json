@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/red_crystal",
+  "criteria": {
+    "has_bleeding_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:bleeding_table"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.bleeding_table.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:bleeding_table"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.bleeding_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bleeding_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

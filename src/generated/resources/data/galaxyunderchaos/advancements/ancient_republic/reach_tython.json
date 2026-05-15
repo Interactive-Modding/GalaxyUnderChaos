@@ -1,0 +1,32 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/hyperdrive_ready",
+  "criteria": {
+    "to_tython": {
+      "conditions": {
+        "to": "galaxyunderchaos:tython"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_tython.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:tython_portal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.reach_tython.title"
+    }
+  },
+  "requirements": [
+    [
+      "to_tython"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

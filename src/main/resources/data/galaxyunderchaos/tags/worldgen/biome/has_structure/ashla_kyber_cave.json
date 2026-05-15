@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:ashla_biome",
+      "required": false
+    }
+  ]
+}

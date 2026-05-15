@@ -11,8 +11,9 @@ import java.util.List;
 public class LightsaberFormCapabilityManager {
     public static void syncCapability(ServerPlayer player) {
         player.getCapability(LightsaberFormProvider.LIGHTSABER_FORM_CAPABILITY).ifPresent(cap -> {
-            LightsaberFormNetworking.sendToPlayer(player, new SyncLightsaberFormPacket(cap.getSelectedForm()));
+            LightsaberFormNetworking.sendToPlayer(player, new SyncLightsaberFormPacket(cap.getSelectedForm(), cap.getGuardStamina(), cap.getMaxGuardStamina(), cap.getStaminaVisibleTicks()));
             LightsaberFormEffects.applyEffects(player, cap.getSelectedForm());
+            cap.clearDirty();
         });
     }
 

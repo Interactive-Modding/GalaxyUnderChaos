@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/salvage_titanium",
+  "criteria": {
+    "has_alloy": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:titanium_chromium_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.tempered_alloy.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:titanium_chromium_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.tempered_alloy.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_alloy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

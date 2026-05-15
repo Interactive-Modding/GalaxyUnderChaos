@@ -1,0 +1,38 @@
+{
+  "parent": "galaxyunderchaos:ancient_republic/forge_table",
+  "criteria": {
+    "has_circuitry": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "galaxyunderchaos:internal_lightsaber_circuitry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.internal_circuitry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "galaxyunderchaos:internal_lightsaber_circuitry"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.galaxyunderchaos.ancient_republic.internal_circuitry.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_circuitry"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

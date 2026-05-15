@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:malachor_upper_layer",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:malachor_lower_surface",
+      "required": false
+    }
+  ]
+}

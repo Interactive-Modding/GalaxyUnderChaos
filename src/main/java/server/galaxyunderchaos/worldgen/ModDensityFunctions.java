@@ -17,6 +17,7 @@ public class ModDensityFunctions {
 
     public static final ResourceKey<DensityFunction> TYTHON_TERRAIN    = densityKey("tython_terrain");
     public static final ResourceKey<DensityFunction> NABOO_TERRAIN      = densityKey("naboo_terrain");
+    public static final ResourceKey<DensityFunction> HOTH_TERRAIN       = densityKey("hoth_terrain");
     public static final ResourceKey<DensityFunction> ILUM_TERRAIN       = densityKey("ilum_terrain");
     public static final ResourceKey<DensityFunction> MUSTAFAR_TERRAIN   = densityKey("mustafar_terrain");
     public static final ResourceKey<DensityFunction> OSSUS_TERRAIN      = densityKey("ossus_terrain");
@@ -61,17 +62,17 @@ public class ModDensityFunctions {
                     0.65, 0.40,  // slightly higher y-scale for cliff definition
                     0.55,        // much higher amplitude = tall land above sea level
                     0.25, 0.35,  // stronger secondary pass for cliff faces
-                    -64, 130,    // higher ceiling pushes land up well above water
+                    -64, 200,    // raised ceiling keeps normal terrain dry while valleys can become lakes/oceans
                     1.6          // softer gradient = allows cliffs and overhangs
             )),
 
-            // NABOO — flat plains and shallow seas, very gentle terrain
+            // NABOO — broad warm seas, coastal swamps, dry inland plains/forests
             Map.entry(NABOO_TERRAIN, new PlanetDensity(
                     ModNoises.NABOO_TERRAIN,
-                    0.4, 0.2,   // low frequency = wide flat plains
+                    0.4, 0.2,   // low frequency = wide flat plains and broad basins
                     0.20,       // low amplitude = flat
                     0.10, 0.10, // very subtle hills
-                    -64, 80,    // low surface ceiling keeps terrain flat
+                    -64, 220,   // base surface around y=78; ocean continentalness carves below sea level
                     3.0         // steeper gradient = flatter plains
             )),
 
@@ -79,6 +80,14 @@ public class ModDensityFunctions {
             // Much higher ceiling and softer gradient so mountains can truly tower.
             Map.entry(ILUM_TERRAIN, new PlanetDensity(
                     ModNoises.ILUM_TERRAIN,
+                    1.5, 1.2,   // higher xz frequency = sharper jagged peaks
+                    1.2,       // higher amplitude = much taller mountains
+                    0.65, 0.85, // stronger secondary layer for dramatic ridges
+                    -64, 220,   // much higher ceiling for soaring peaks
+                    1.5         // very soft gradient = mountains can truly soar
+            )),
+            Map.entry(HOTH_TERRAIN, new PlanetDensity(
+                    ModNoises.HOTH_TERRAIN,
                     0.9, 0.6,   // higher xz frequency = sharper jagged peaks
                     0.75,       // higher amplitude = much taller mountains
                     0.40, 0.50, // stronger secondary layer for dramatic ridges
@@ -102,7 +111,7 @@ public class ModDensityFunctions {
                     0.5, 0.35,
                     0.40,
                     0.20, 0.25,
-                    -64, 110,
+                    -64, 190,
                     1.8
             )),
 
@@ -112,7 +121,7 @@ public class ModDensityFunctions {
                     0.35, 0.20, // very low freq = wide gentle meadows
                     0.22,
                     0.12, 0.12,
-                    -64, 85,
+                    -64, 150,
                     2.8         // steep gradient = stays flat and pastoral
             )),
 
@@ -122,7 +131,7 @@ public class ModDensityFunctions {
                     0.75, 0.50, // high freq = chaotic pitted surface
                     0.50,
                     0.35, 0.30,
-                    -64, 95,
+                    -64, 160,
                     1.6         // softer gradient = deep chasms possible
             )),
 
@@ -153,7 +162,7 @@ public class ModDensityFunctions {
                     0.40, 0.22,
                     0.22,
                     0.12, 0.12,
-                    -64, 85,
+                    -64, 170,
                     2.6
             ))
     );

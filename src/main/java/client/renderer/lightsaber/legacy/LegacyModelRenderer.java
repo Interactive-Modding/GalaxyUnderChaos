@@ -1,3 +1,16 @@
+/*
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
+ * This file is part of Galaxy Under Chaos.
+ * It contains code, data, model geometry, behavior, or compatibility logic
+ * copied, translated, ported, adapted from, or created to support content
+ * derived from Advanced Lightsabers 1.2 by FiskFille, credited to FiskFille
+ * and Void Adept.
+ *
+ * Modifications for Galaxy Under Chaos / Minecraft Forge 1.20.1 by
+ *  Vitiate and contributors.
+ */
+
 package client.renderer.lightsaber.legacy;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -87,6 +100,7 @@ public class LegacyModelRenderer {
             float maxY = (y + dy + delta) * scale;
             float maxZ = (z + dz + delta) * scale;
 
+
             if (mirror) {
                 float t = minX;
                 minX = maxX;
@@ -121,10 +135,16 @@ public class LegacyModelRenderer {
                                      float uMin, float vMin, float uMax, float vMax,
                                      float nx, float ny, float nz,
                                      int light, int overlay) {
-            consumer.vertex(pose.pose(), x1, y1, z1).color(1.0F, 1.0F, 1.0F, 1.0F).uv(uMin, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x2, y2, z2).color(1.0F, 1.0F, 1.0F, 1.0F).uv(uMin, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x3, y3, z3).color(1.0F, 1.0F, 1.0F, 1.0F).uv(uMax, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x4, y4, z4).color(1.0F, 1.0F, 1.0F, 1.0F).uv(uMax, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
+            LegacyRenderSession session = LegacyRenderSession.get();
+            float red = session == null ? 1.0F : session.red();
+            float green = session == null ? 1.0F : session.green();
+            float blue = session == null ? 1.0F : session.blue();
+            float alpha = session == null ? 1.0F : session.alpha();
+
+            consumer.vertex(pose.pose(), x1, y1, z1).color(red, green, blue, alpha).uv(uMin, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
+            consumer.vertex(pose.pose(), x2, y2, z2).color(red, green, blue, alpha).uv(uMin, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
+            consumer.vertex(pose.pose(), x3, y3, z3).color(red, green, blue, alpha).uv(uMax, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
+            consumer.vertex(pose.pose(), x4, y4, z4).color(red, green, blue, alpha).uv(uMax, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
         }
     }
 }

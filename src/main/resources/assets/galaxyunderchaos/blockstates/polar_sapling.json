@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "galaxyunderchaos:block/polar_sapling"
+    },
+    "stage=1": {
+      "model": "galaxyunderchaos:block/polar_sapling"
+    }
+  }
+}

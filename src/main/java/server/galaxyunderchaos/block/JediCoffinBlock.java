@@ -7,7 +7,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,18 +25,22 @@ public class JediCoffinBlock extends AbstractCoffinBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BedPart DEFAULT_PART = BedPart.FOOT;
 
+    private static final VoxelShape NORTH_SOUTH_SHAPE = Block.box(0.0D, 0.1D, 0.0D, 16.0D, 13.0D, 16.0D);
+    private static final VoxelShape EAST_WEST_SHAPE = Block.box(0.0D, 0.1D, 0.0D, 16.0D, 13.0D, 16.0D);
+
     public JediCoffinBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(BlockStateProperties.BED_PART, DEFAULT_PART));
     }
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return Block.box(0, 0.1, 0, 16, 16, 16);
+        Direction facing = state.getValue(FACING);
+        return facing.getAxis() == Direction.Axis.X ? EAST_WEST_SHAPE : NORTH_SOUTH_SHAPE;
     }
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return state.getValue(BlockStateProperties.BED_PART) == BedPart.FOOT
-                ? RenderShape.MODEL
+                ? RenderShape.ENTITYBLOCK_ANIMATED
                 : RenderShape.INVISIBLE;
     }
 

@@ -23,6 +23,7 @@ public abstract class AbstractCoffinBlock extends BaseEntityBlock {
         BlockEntity blockEntity = level.getBlockEntity(mainPos);
         if (blockEntity instanceof CoffinBlockEntity coffin) {
             if (!level.isClientSide) {
+                coffin.onOpenedBy(player, level, mainPos);
                 player.openMenu((MenuProvider) coffin);
             }
             level.playSound(null, mainPos, ModSounds.TOMB_SOUND.get(), net.minecraft.sounds.SoundSource.BLOCKS, 1.0f, 1.0f);

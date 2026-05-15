@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "galaxyunderchaos:block/rutiger_slab" },
+    "type=top": { "model": "galaxyunderchaos:block/rutiger_slab_top" },
+    "type=double": { "model": "galaxyunderchaos:block/rutiger_planks" }
+  }
+}

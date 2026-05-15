@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "galaxyunderchaos:block/jedi_guard_statue_stone_2"
+    },
+    "facing=east": {
+      "model": "galaxyunderchaos:block/jedi_guard_statue_stone_2",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "galaxyunderchaos:block/jedi_guard_statue_stone_2",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "galaxyunderchaos:block/jedi_guard_statue_stone_2",
+      "y": 270
+    }
+  }
+}

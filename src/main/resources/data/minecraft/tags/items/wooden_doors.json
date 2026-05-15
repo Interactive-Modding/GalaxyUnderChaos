@@ -1,7 +1,14 @@
 {
   "replace": false,
   "values": [
-	  "galaxyunderchaos:ak_door",
-	  "galaxyunderchaos:heart_berry_door"
+    "galaxyunderchaos:ak_door",
+    "galaxyunderchaos:heart_berry_door",
+    "galaxyunderchaos:blba_door",
+    "galaxyunderchaos:dillia_door",
+    "galaxyunderchaos:cambylictus_door",
+    "galaxyunderchaos:perlote_door",
+    "galaxyunderchaos:rutiger_door",
+    "galaxyunderchaos:polar_door",
+    "galaxyunderchaos:naboo_pine_door"
   ]
 }

@@ -14,6 +14,7 @@ public class ModNoises {
     public static final ResourceKey<NormalNoise.NoiseParameters> TYTHON_TERRAIN = noiseKey("tython_terrain");
     public static final ResourceKey<NormalNoise.NoiseParameters> NABOO_TERRAIN = noiseKey("naboo_terrain");
     public static final ResourceKey<NormalNoise.NoiseParameters> ILUM_TERRAIN = noiseKey("ilum_terrain");
+    public static final ResourceKey<NormalNoise.NoiseParameters> HOTH_TERRAIN = noiseKey("hoth_terrain");
     public static final ResourceKey<NormalNoise.NoiseParameters> MUSTAFAR_TERRAIN = noiseKey("mustafar_terrain");
     public static final ResourceKey<NormalNoise.NoiseParameters> OSSUS_TERRAIN = noiseKey("ossus_terrain");
     public static final ResourceKey<NormalNoise.NoiseParameters> ASHLA_TERRAIN = noiseKey("ashla_terrain");
@@ -26,6 +27,7 @@ public class ModNoises {
             Map.entry(TYTHON_TERRAIN, new NormalNoise.NoiseParameters(-7, 1.0, 1.0, 0.6, 0.3)),
             Map.entry(NABOO_TERRAIN, new NormalNoise.NoiseParameters(-6, 1.0, 0.8, 0.4, 0.2)),
             Map.entry(ILUM_TERRAIN, new NormalNoise.NoiseParameters(-9, 1.2, 1.0, 0.7, 0.3)),
+            Map.entry(HOTH_TERRAIN, new NormalNoise.NoiseParameters(-9, 1.2, 1.0, 0.7, 0.3)),
             Map.entry(MUSTAFAR_TERRAIN, new NormalNoise.NoiseParameters(-5, 1.4, 1.1, 0.9, 0.5)),
             Map.entry(OSSUS_TERRAIN, new NormalNoise.NoiseParameters(-7, 1.0, 0.9, 0.5, 0.2)),
             Map.entry(ASHLA_TERRAIN, new NormalNoise.NoiseParameters(-8, 0.8, 0.7, 0.4, 0.2)),
