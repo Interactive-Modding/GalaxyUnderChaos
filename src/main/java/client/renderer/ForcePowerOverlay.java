@@ -62,7 +62,7 @@ public class ForcePowerOverlay {
             }
 
             if (selectedPower != null) {
-                drawCenterAbilityIcon(graphics, cx, cy, selectedPower);
+                drawCenterAbilityIcon(graphics, mc, cx, cy, selectedPower);
             }
         });
     }
@@ -103,7 +103,7 @@ public class ForcePowerOverlay {
         }
     }
 
-    private static void drawCenterAbilityIcon(GuiGraphics graphics, int cx, int cy, ForcePower power) {
+    private static void drawCenterAbilityIcon(GuiGraphics graphics, Minecraft mc, int cx, int cy, ForcePower power) {
         int x = cx - 8;
         int y = cy - 8;
 
@@ -113,5 +113,13 @@ public class ForcePowerOverlay {
         graphics.fill(cx - 11, cy + 10, cx + 11, cy + 11, 0x66E34B4B);
 
         graphics.blit(FORCE_HUD_ICONS, x, y, power.iconX() * 16, power.iconY() * 16, 16, 16, 256, 256);
+
+        if (power.useCost() > 0.0F) {
+            String cost = Integer.toString((int) power.useCost());
+            int textY = cy + 15;
+            int textWidth = mc.font.width(cost);
+            graphics.fill(cx - textWidth / 2 - 3, textY - 1, cx + textWidth / 2 + 3, textY + 9, 0xAA05080D);
+            graphics.drawCenteredString(mc.font, cost, cx, textY, 0xFF7EF7FF);
+        }
     }
 }

@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import server.galaxyunderchaos.entity.forceuser.ForceUserEntity;
+import server.galaxyunderchaos.entity.forceuser.ForceUserSpecies;
 import server.galaxyunderchaos.galaxyunderchaos;
 
 public class ForceUserEyeLayer extends RenderLayer<ForceUserEntity, ForceUserLayeredModel> {
@@ -32,6 +33,12 @@ public class ForceUserEyeLayer extends RenderLayer<ForceUserEntity, ForceUserLay
     }
 
     private EyeOverlay resolveEyeTexture(ForceUserEntity entity) {
+        if (entity.getSpecies() == ForceUserSpecies.CHISS_MALE || entity.getSpecies() == ForceUserSpecies.CHISS_FEMALE) {
+            // Chiss red eyes are painted directly onto chiss_male/chiss_female.
+            // Do not apply Jedi/Sith eye overlays here, or Chiss get the wrong colored/tinted layer.
+            return null;
+        }
+
         boolean jediOriginalSpecies = entity.getSpecies().usesEmbeddedJediOriginalRobe();
         String originSuffix = jediOriginalSpecies ? "jedi_og" : "sith_og";
 

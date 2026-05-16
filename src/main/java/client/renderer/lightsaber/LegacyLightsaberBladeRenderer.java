@@ -405,9 +405,13 @@ public final class LegacyLightsaberBladeRenderer {
             emitCurvedBladeTip(poseStack, consumer, bladeLength, TIP_SIZE * whipWidth, TIP_LENGTH, coreRed, coreGreen, coreBlue, 1.0F, whipTick, whipAttackSwing);
         } else {
             applyInnerCrystalTransforms(poseStack, modifiers, crossguard, false);
-            emitBladeBody(poseStack, consumer, bladeLength, coreRed, coreGreen, coreBlue, 1.0F);
-            poseStack.translate(0.0F, -bladeLength, 0.0F);
-            emitLegacyTip(poseStack, consumer, TIP_SIZE, TIP_LENGTH, coreRed, coreGreen, coreBlue, 1.0F);
+            if (modifiers.contains(BladeModifierCrystal.FINE_CUT)) {
+                emitFineCutInnerBlade(poseStack, consumer, bladeLength, coreRed, coreGreen, coreBlue, 1.0F);
+            } else {
+                emitBladeBody(poseStack, consumer, bladeLength, coreRed, coreGreen, coreBlue, 1.0F);
+                poseStack.translate(0.0F, -bladeLength, 0.0F);
+                emitLegacyTip(poseStack, consumer, TIP_SIZE, TIP_LENGTH, coreRed, coreGreen, coreBlue, 1.0F);
+            }
         }
         poseStack.popPose();
     }
@@ -685,6 +689,87 @@ public final class LegacyLightsaberBladeRenderer {
                 exMax, ey, ezMin,
                 exMax, ey, ezMax,
                 red, green, blue, alpha);
+    }
+
+    private static void emitFineCutInnerBlade(PoseStack poseStack,
+                                             VertexConsumer consumer,
+                                             float bladeLength,
+                                             float red,
+                                             float green,
+                                             float blue,
+                                             float alpha) {
+        /*
+         * Advanced Lightsabers did not draw Fine Cut as a normal rounded/capped
+         * blade.  It adds a flat faceted cutting wedge along the front and a
+         * chisel-like tip, then draws the straight core without the rounded cone.
+         * Porting that geometry fixes the "wrong" oval/rounded Fine Cut look.
+         */
+        Matrix4f pose = poseStack.last().pose();
+        float f = BODY_HALF * 2.0F;
+        float length = bladeLength * 0.70F;
+        float edge = f * 1.5F;
+        float edgeAngle = -f * 1.5F;
+        float length1 = bladeLength * 0.30F;
+        float edge1 = f / 2.0F;
+        float tip = f * 1.5F;
+
+        emitQuad(consumer, pose,
+                -f / 2.0F, -length, f / 2.0F,
+                0.0F, -length, edge,
+                0.0F, edgeAngle, edge,
+                -f / 2.0F, -f, f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                f / 2.0F, -length, f / 2.0F,
+                0.0F, -length, edge,
+                0.0F, edgeAngle, edge,
+                f / 2.0F, -f, f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                f / 2.0F, -f, f / 2.0F,
+                0.0F, edgeAngle, edge,
+                0.0F, edgeAngle, edge,
+                -f / 2.0F, -f, f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                -f / 2.0F, -length, f / 2.0F,
+                -f / 2.0F, -length1 - length, edge1,
+                0.0F, -length1 - length, edge1,
+                0.0F, -length, edge,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                f / 2.0F, -length, f / 2.0F,
+                f / 2.0F, -length1 - length, edge1,
+                0.0F, -length1 - length, edge1,
+                0.0F, -length, edge,
+                red, green, blue, alpha);
+
+        emitQuad(consumer, pose,
+                -f / 2.0F, -bladeLength, f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                -f / 2.0F, -bladeLength, -f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                f / 2.0F, -bladeLength, f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                f / 2.0F, -bladeLength, -f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                -f / 2.0F, -bladeLength, -f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                f / 2.0F, -bladeLength, -f / 2.0F,
+                red, green, blue, alpha);
+        emitQuad(consumer, pose,
+                -f / 2.0F, -bladeLength, f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                0.0F, -tip - bladeLength, -f / 2.0F,
+                f / 2.0F, -bladeLength, f / 2.0F,
+                red, green, blue, alpha);
+
+        emitBladeBody(poseStack, consumer, bladeLength, red, green, blue, alpha);
     }
 
     private static void emitBladeBody(PoseStack poseStack,

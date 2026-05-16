@@ -30,7 +30,8 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
     private static final EntityDataAccessor<Boolean> RETURNING = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> DAMAGE = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> RETURN_SPEED = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.FLOAT);
-    private static final int MAX_LIFE = 40;
+    private static final EntityDataAccessor<Integer> OUTBOUND_TICKS = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> MAX_LIFE_TICKS = SynchedEntityData.defineId(ThrownLightsaberEntity.class, EntityDataSerializers.INT);
 
     private final Set<Integer> hitEntityIds = new HashSet<>();
 
@@ -54,6 +55,8 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
         this.entityData.define(RETURNING, false);
         this.entityData.define(DAMAGE, 6.0F);
         this.entityData.define(RETURN_SPEED, 1.2F);
+        this.entityData.define(OUTBOUND_TICKS, 10);
+        this.entityData.define(MAX_LIFE_TICKS, 40);
     }
 
     @Override
@@ -61,7 +64,7 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
         if (!isReturning()) {
             super.tick();
             updateRotationFromMotion();
-            if (this.tickCount >= 10) {
+            if (this.tickCount >= getOutboundTicks()) {
                 setReturning(true);
             }
         } else {
@@ -83,11 +86,26 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
             checkReturningHits();
         }
 
-        if (this.tickCount >= MAX_LIFE) {
+        if (this.tickCount >= getMaxLifeTicks()) {
             setReturning(true);
         }
     }
 
+    public void setOutboundTicks(int outboundTicks) {
+        this.entityData.set(OUTBOUND_TICKS, Math.max(4, outboundTicks));
+    }
+
+    public int getOutboundTicks() {
+        return Math.max(4, this.entityData.get(OUTBOUND_TICKS));
+    }
+
+    public void setMaxLifeTicks(int maxLifeTicks) {
+        this.entityData.set(MAX_LIFE_TICKS, Math.max(getOutboundTicks() + 10, maxLifeTicks));
+    }
+
+    public int getMaxLifeTicks() {
+        return Math.max(getOutboundTicks() + 10, this.entityData.get(MAX_LIFE_TICKS));
+    }
 
     private void updateRotationFromMotion() {
         Vec3 motion = getDeltaMovement();
@@ -168,6 +186,8 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
         tag.putBoolean("Returning", isReturning());
         tag.putFloat("Damage", this.entityData.get(DAMAGE));
         tag.putFloat("ReturnSpeed", this.entityData.get(RETURN_SPEED));
+        tag.putInt("OutboundTicks", getOutboundTicks());
+        tag.putInt("MaxLifeTicks", getMaxLifeTicks());
     }
 
     @Override
@@ -179,6 +199,12 @@ public class ThrownLightsaberEntity extends ThrowableItemProjectile {
         this.entityData.set(RETURNING, tag.getBoolean("Returning"));
         this.entityData.set(DAMAGE, tag.getFloat("Damage"));
         this.entityData.set(RETURN_SPEED, tag.getFloat("ReturnSpeed"));
+        if (tag.contains("OutboundTicks")) {
+            setOutboundTicks(tag.getInt("OutboundTicks"));
+        }
+        if (tag.contains("MaxLifeTicks")) {
+            setMaxLifeTicks(tag.getInt("MaxLifeTicks"));
+        }
     }
 
     @Override

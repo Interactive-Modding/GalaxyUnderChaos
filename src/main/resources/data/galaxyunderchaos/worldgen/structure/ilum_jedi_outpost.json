@@ -12,12 +12,6 @@
           "weight": 6,
           "minCount": 1,
           "maxCount": 2
-        },
-        {
-          "type": "galaxyunderchaos:jedi_master",
-          "weight": 1,
-          "minCount": 1,
-          "maxCount": 1
         }
       ]
     }

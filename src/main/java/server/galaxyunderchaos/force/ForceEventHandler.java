@@ -74,6 +74,9 @@ public class ForceEventHandler {
             cap.tickAlignmentFlash();
             cap.tickVisual();
             ForcePowerHandler.tickUsingPower(player, cap);
+            if (player.tickCount % 10 == 0) {
+                ForcePowerHandler.tickSightHighlights(player);
+            }
             if (player.tickCount % 5 == 0 && cap.getMaxForce() > 0) {
                 float regen = cap.getRegenPerSecond() / 4.0F;
                 if (ModEffects.hasAnyForceEffect(player, ForcePower.MEDITATION1, ForcePower.MEDITATION2, ForcePower.MEDITATION3)) {
@@ -101,9 +104,10 @@ public class ForceEventHandler {
                 attacker.push(attacker.getX() - player.getX(), 0.25D, attacker.getZ() - player.getZ());
                 net.minecraft.world.effect.MobEffect reboundEffect = ModEffects.getForceEffect(ForcePower.REBOUND);
                 if (reboundEffect != null) {
-                    player.addEffect(new MobEffectInstance(reboundEffect, 40, 0, false, true, true));
+                    player.addEffect(new MobEffectInstance(reboundEffect, 40, 0, false, false, true));
                 }
                 attacker.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 2, false, false, false));
+                ForcePowerHandler.spawnReboundVisual(player, attacker);
                 player.displayClientMessage(Component.literal("Force Rebound triggered."), true);
                 ForceCapabilityManager.sync(player);
             }

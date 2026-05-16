@@ -100,6 +100,7 @@ public final class LegacyJavaLightsaberModels {
         put(map, "temple_guard", new ModelEmitterTempleGuard(), new ModelSwitchSectionTempleGuard(), new ModelBodyTempleGuard(), new ModelPommelTempleGuard());
         put(map, "arena", new ModelEmitterArena(), new ModelSwitchSectionArena(), new ModelBodyArena(), new ModelPommelArena());
         put(map, "vaid", new ModelEmitterVaid(), new ModelSwitchSectionVaid(), new ModelBodyVaid(), new ModelPommelVaid());
+        put(map, "vaid_modern", new ModelEmitterVaid(), new ModelSwitchSectionVaid(), new ModelBodyVaid(), new ModelPommelVaid());
         put(map, "vaid_ancient", new ModelEmitterVaid(), new ModelSwitchSectionVaid(), new ModelBodyVaid(), new ModelPommelVaid());
         return map;
     }

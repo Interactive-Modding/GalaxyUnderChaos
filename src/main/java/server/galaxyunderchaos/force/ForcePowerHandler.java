@@ -1,7 +1,5 @@
 package server.galaxyunderchaos.force;
 
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,8 +12,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
 import server.galaxyunderchaos.effect.ModEffects;
+import server.galaxyunderchaos.entity.ForceAbilityEffectEntity;
 import server.galaxyunderchaos.entity.ForceBeamEffectEntity;
 import server.galaxyunderchaos.entity.ForcePushWaveEntity;
 import server.galaxyunderchaos.entity.ThrownLightsaberEntity;
@@ -214,6 +212,7 @@ public final class ForcePowerHandler {
             addHiddenVanillaEffect(player, MobEffects.ABSORPTION, 200, absorbAmplifier - 1);
         }
         cap.beginVisual(effectPower, 8, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_HEAL, 18, 1.20F);
         playCastSound(player, ModSounds.FORCE_HEAL.get(), 1.0F);
         return true;
     }
@@ -224,6 +223,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(player, MobEffects.DAMAGE_RESISTANCE, duration, amplifier);
         addHiddenVanillaEffect(player, MobEffects.DAMAGE_BOOST, duration, 0);
         cap.beginVisual(effectPower, 8, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_FORTIFY, 20, 1.30F);
         playCastSound(player, ModSounds.AMBIENT_FORCE_FORTIFY.get(), 1.0F);
         return true;
     }
@@ -240,7 +240,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(target, MobEffects.WEAKNESS, duration, amplifier);
         addHiddenVanillaEffect(target, MobEffects.DIG_SLOWDOWN, duration, amplifier + 1);
         target.hurt(player.damageSources().magic(), 1.0F + amplifier);
-//        spawnConnectionParticles(player, target, ParticleTypes.END_ROD);
+        spawnTargetAbilityEffect(player, target, ForceAbilityEffectEntity.KIND_STUN, Math.max(12, duration), 1.10F);
         cap.beginVisual(effectPower, 7, ForceCapability.VISUAL_RIGHT_ARM);
         playCastSound(player, ModSounds.AMBIENT_FORCE_STASIS.get(), 1.1F);
         return true;
@@ -256,7 +256,6 @@ public final class ForcePowerHandler {
         cap.addForce(12.0F + tier * 8.0F);
         addForceEffect(target, tier > 1 ? ForcePower.DRAIN3 : tier > 0 ? ForcePower.DRAIN2 : ForcePower.DRAIN1, 80 + tier * 40, tier);
         addHiddenVanillaEffect(target, MobEffects.WEAKNESS, 80 + tier * 40, tier);
-//        spawnConnectionParticles(player, target, new DustParticleOptions(new Vector3f(0.6F, 0.1F, 0.8F), 1.1F));
         spawnBeam(player, target, ForceBeamEffectEntity.KIND_DRAIN, 7);
         cap.beginVisual(tier > 1 ? ForcePower.DRAIN3 : tier > 0 ? ForcePower.DRAIN2 : ForcePower.DRAIN1, 7, ForceCapability.VISUAL_RIGHT_ARM | ForceCapability.VISUAL_DRAIN);
         playCastSound(player, ModSounds.FORCE_CAST_DARK.get(), 0.9F);
@@ -301,9 +300,6 @@ public final class ForcePowerHandler {
         addForceEffect(target, tier > 1 ? ForcePower.LIGHTNING3 : tier > 0 ? ForcePower.LIGHTNING2 : ForcePower.LIGHTNING1, 12 + tier * 12, tier);
         addHiddenVanillaEffect(target, MobEffects.MOVEMENT_SLOWDOWN, 12 + tier * 12, 4);
 
-//        if (player.tickCount % 2 == 0) {
-//            spawnConnectionParticles(player, target, ParticleTypes.ELECTRIC_SPARK);
-//        }
 
         spawnBeam(player, target, ForceBeamEffectEntity.KIND_LIGHTNING, lifeTicks);
         if (!sustained) {
@@ -323,7 +319,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(target, MobEffects.LEVITATION, 10 + tier * 10, 0);
         addHiddenVanillaEffect(target, MobEffects.WEAKNESS, 80 + tier * 20, tier + 1);
         addHiddenVanillaEffect(target, MobEffects.MOVEMENT_SLOWDOWN, 80 + tier * 20, 4);
-        spawnConnectionParticles(player, target, new DustParticleOptions(new Vector3f(0.95F, 0.1F, 0.1F), 1.0F));
+        spawnTargetAbilityEffect(player, target, ForceAbilityEffectEntity.KIND_WOUND, 16 + tier * 6, 1.05F);
         cap.beginVisual(effectPower, 7, ForceCapability.VISUAL_RIGHT_ARM);
         playCastSound(player, ModSounds.FORCE_CAST_DARK.get(), 1.2F);
         return true;
@@ -334,6 +330,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(player, MobEffects.INVISIBILITY, duration, 0);
         addHiddenVanillaEffect(player, MobEffects.MOVEMENT_SPEED, duration, 0);
         cap.beginVisual(ForcePower.STEALTH, 8, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_STEALTH, 22, 1.20F);
         playCastSound(player, ModSounds.FORCE_STEALTH_ON.get(), 1.0F);
         return true;
     }
@@ -343,20 +340,61 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(player, MobEffects.MOVEMENT_SPEED, duration, amplifier);
         addHiddenVanillaEffect(player, MobEffects.JUMP, duration, amplifier);
         cap.beginVisual(ForcePower.SPEED, 6, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_SPEED, 14, 1.15F);
         playCastSound(player, ModSounds.FORCE_CAST.get(), 1.15F);
         return true;
     }
 
     private static boolean sight(ServerPlayer player, ForceCapability cap, int duration, int amplifier) {
-        addForceEffect(player, amplifier > 1 ? ForcePower.SIGHT3 : amplifier > 0 ? ForcePower.SIGHT2 : ForcePower.SIGHT1, duration, amplifier);
+        ForcePower effectPower = amplifier > 1 ? ForcePower.SIGHT3 : amplifier > 0 ? ForcePower.SIGHT2 : ForcePower.SIGHT1;
+        addForceEffect(player, effectPower, duration, amplifier);
         addHiddenVanillaEffect(player, MobEffects.NIGHT_VISION, duration, 0);
-        List<LivingEntity> targets = ForceTargeting.findTargetsAlongRay(player, 24.0D + amplifier * 6.0D, 4.0D + amplifier);
-        for (LivingEntity target : targets) {
-            addHiddenVanillaEffect(target, MobEffects.GLOWING, 80 + amplifier * 40, 0);
-        }
-        cap.beginVisual(amplifier > 1 ? ForcePower.SIGHT3 : amplifier > 0 ? ForcePower.SIGHT2 : ForcePower.SIGHT1, 6, ForceCapability.VISUAL_RIGHT_ARM);
+
+        // Force Sight is a perception/highlight power, not a forward cast beam.
+        // It intentionally does not spawn a ForceAbilityEffectEntity renderer.
+        // Every living entity in a radius around the player is highlighted, regardless of facing direction.
+        applySightHighlights(player, amplifier, 100 + amplifier * 50);
+
+        cap.beginVisual(effectPower, 4, ForceCapability.VISUAL_RIGHT_ARM);
         playCastSound(player, ModSounds.FORCE_CAST.get(), 1.25F);
         return true;
+    }
+
+    public static void tickSightHighlights(ServerPlayer player) {
+        int amplifier = getActiveSightAmplifier(player);
+        if (amplifier >= 0) {
+            applySightHighlights(player, amplifier, 30 + amplifier * 10);
+        }
+    }
+
+    private static int getActiveSightAmplifier(ServerPlayer player) {
+        if (hasForceEffect(player, ForcePower.SIGHT3)) {
+            return 2;
+        }
+        if (hasForceEffect(player, ForcePower.SIGHT2)) {
+            return 1;
+        }
+        if (hasForceEffect(player, ForcePower.SIGHT1)) {
+            return 0;
+        }
+        return -1;
+    }
+
+    private static boolean hasForceEffect(LivingEntity entity, ForcePower power) {
+        net.minecraft.world.effect.MobEffect effect = ModEffects.getForceEffect(power);
+        return effect != null && entity.hasEffect(effect);
+    }
+
+    private static void applySightHighlights(ServerPlayer player, int amplifier, int glowDuration) {
+        double radius = 18.0D + amplifier * 8.0D;
+        List<LivingEntity> targets = player.level().getEntitiesOfClass(
+                LivingEntity.class,
+                player.getBoundingBox().inflate(radius),
+                target -> target != player && target.isAlive() && target.distanceToSqr(player) <= radius * radius
+        );
+        for (LivingEntity target : targets) {
+            addHiddenVanillaEffect(target, MobEffects.GLOWING, glowDuration, 0);
+        }
     }
 
     private static boolean meditation(ServerPlayer player, ForceCapability cap, int duration, int amplifier) {
@@ -365,6 +403,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(player, MobEffects.DAMAGE_RESISTANCE, duration, 0);
         cap.addForce(20.0F + amplifier * 15.0F);
         cap.beginVisual(amplifier > 1 ? ForcePower.MEDITATION3 : amplifier > 0 ? ForcePower.MEDITATION2 : ForcePower.MEDITATION1, 8, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_MEDITATION, 26, 1.45F);
         playCastSound(player, ModSounds.FORCE_CAST.get(), 0.85F);
         return true;
     }
@@ -374,6 +413,7 @@ public final class ForcePowerHandler {
         addHiddenVanillaEffect(player, MobEffects.FIRE_RESISTANCE, duration, 0);
         addHiddenVanillaEffect(player, MobEffects.DAMAGE_RESISTANCE, duration, amplifier);
         cap.beginVisual(amplifier > 1 ? ForcePower.RESIST3 : amplifier > 0 ? ForcePower.RESIST2 : ForcePower.RESIST1, 6, ForceCapability.VISUAL_RIGHT_ARM);
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_RESIST, 20, 1.35F);
         playCastSound(player, ModSounds.AMBIENT_FORCE_ENERGY_RESIST.get(), 1.0F);
         return true;
     }
@@ -409,12 +449,15 @@ public final class ForcePowerHandler {
         }
 
         ThrownLightsaberEntity thrown = new ThrownLightsaberEntity(player.level(), player, thrownStack, damage, returnSpeed);
+        boolean secondTier = returnSpeed > 1.2F;
+        thrown.setOutboundTicks(secondTier ? 20 : 10);
+        thrown.setMaxLifeTicks(secondTier ? 80 : 40);
         thrown.setPos(player.getX(), player.getEyeY() - 0.15D, player.getZ());
-        thrown.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.8F, 0.0F);
+        thrown.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, secondTier ? 2.0F : 1.8F, 0.0F);
         player.level().addFreshEntity(thrown);
-        player.getCooldowns().addCooldown(thrownStack.getItem(), 20);
+        player.getCooldowns().addCooldown(thrownStack.getItem(), secondTier ? 30 : 20);
         player.swing(InteractionHand.MAIN_HAND);
-        cap.beginVisual(returnSpeed > 1.2F ? ForcePower.THROW2 : ForcePower.THROW1, 8, ForceCapability.VISUAL_RIGHT_ARM);
+        cap.beginVisual(secondTier ? ForcePower.THROW2 : ForcePower.THROW1, 6, ForceCapability.VISUAL_RIGHT_ARM);
         playCastSound(player, ModSounds.LIGHTSABER_SWING.get(), 1.1F);
         return true;
     }
@@ -422,7 +465,7 @@ public final class ForcePowerHandler {
     private static void addForceEffect(LivingEntity entity, ForcePower power, int duration, int amplifier) {
         net.minecraft.world.effect.MobEffect effect = ModEffects.getForceEffect(power);
         if (effect != null) {
-            entity.addEffect(new MobEffectInstance(effect, duration, amplifier, false, true, true));
+            entity.addEffect(new MobEffectInstance(effect, duration, amplifier, false, false, true));
         }
     }
 
@@ -452,18 +495,25 @@ public final class ForcePowerHandler {
         player.level().playSound(null, player.blockPosition(), sound, SoundSource.PLAYERS, 0.8F, pitch);
     }
 
-    private static void spawnConnectionParticles(ServerPlayer player, LivingEntity target, net.minecraft.core.particles.ParticleOptions particle) {
-        if (!(player.level() instanceof ServerLevel level)) {
+    private static void spawnSelfAbilityEffect(ServerPlayer player, int kind, int lifeTicks, float radius) {
+        spawnAbilityEffect(player, player, kind, lifeTicks, radius);
+    }
+
+    private static void spawnTargetAbilityEffect(ServerPlayer player, LivingEntity target, int kind, int lifeTicks, float radius) {
+        spawnAbilityEffect(player, target, kind, lifeTicks, radius);
+    }
+
+    public static void spawnReboundVisual(ServerPlayer player, LivingEntity attacker) {
+        spawnSelfAbilityEffect(player, ForceAbilityEffectEntity.KIND_REBOUND, 14, 1.75F);
+        if (attacker != null) {
+            spawnTargetAbilityEffect(player, attacker, ForceAbilityEffectEntity.KIND_REBOUND, 10, 1.10F);
+        }
+    }
+
+    private static void spawnAbilityEffect(ServerPlayer player, LivingEntity anchor, int kind, int lifeTicks, float radius) {
+        if (!(player.level() instanceof ServerLevel level) || anchor == null) {
             return;
         }
-        Vec3 start = player.getEyePosition();
-        Vec3 end = target.getBoundingBox().getCenter();
-        Vec3 delta = end.subtract(start);
-        int steps = Math.max(6, Mth.floor(delta.length() * 4.0D));
-        for (int i = 0; i <= steps; i++) {
-            double t = i / (double) steps;
-            Vec3 pos = start.add(delta.scale(t));
-            level.sendParticles(particle, pos.x, pos.y, pos.z, 1, 0.01D, 0.01D, 0.01D, 0.0D);
-        }
+        level.addFreshEntity(new ForceAbilityEffectEntity(level, player, anchor == player ? null : anchor, kind, lifeTicks, radius));
     }
 }

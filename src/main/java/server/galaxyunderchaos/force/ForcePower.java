@@ -106,6 +106,55 @@ public enum ForcePower {
         return tier;
     }
 
+    public String description() {
+        return switch (this) {
+            case FORCE_SENSITIVITY -> "Awakens access to Force energy, holocrons, datacrons, and trained abilities.";
+            case LIGHT_SIDE -> "Commits the student toward light-side teachings and unlocks light techniques.";
+            case DARK_SIDE -> "Commits the student toward dark-side teachings and unlocks aggressive techniques.";
+            case NEUTRAL -> "Unlocks neutral utility powers and ancient cross-discipline progression.";
+            case FORCE_LEVEL1 -> "Raises the user's Force training baseline to Level I.";
+            case FORCE_LEVEL2 -> "Raises maximum Force reserves and prepares stronger tiered abilities.";
+            case FORCE_LEVEL3 -> "Advanced Force training; requires completing Padawan/Apprentice training first.";
+            case FORCE_LEVEL4 -> "Expert Force training; requires completing Padawan/Apprentice training first.";
+            case FORCE_LEVEL5 -> "Master-level Force training for the end of the holocron progression.";
+            case HEAL1 -> "Restores a small amount of health and briefly regenerates wounds.";
+            case HEAL2 -> "Restores more health and applies stronger regeneration.";
+            case HEAL3 -> "Major heal with regeneration and a short absorption buffer.";
+            case FORTIFY1 -> "Temporarily increases resistance and melee strength.";
+            case FORTIFY2 -> "Longer fortification with stronger resistance.";
+            case FORTIFY3 -> "Maximum fortification duration and protection.";
+            case STUN1 -> "Briefly locks down a target with slowness, weakness, and mining fatigue.";
+            case STUN2 -> "Stuns a target longer and applies stronger control.";
+            case STUN3 -> "Strongest stun tier with the longest control window.";
+            case DRAIN1 -> "Damages a target, heals the caster, and restores Force energy.";
+            case DRAIN2 -> "Drains more health and returns more Force energy.";
+            case DRAIN3 -> "Maximum drain damage, healing, and Force return.";
+            case LIGHTNING1 -> "Hold to channel damaging lightning at the aimed target.";
+            case LIGHTNING2 -> "Longer-range lightning with higher sustained damage.";
+            case LIGHTNING3 -> "Highest-damage lightning channel with the strongest target lock.";
+            case WOUND1 -> "Crushes a target with damage, weakness, slowing, and a short lift.";
+            case WOUND2 -> "Deals heavier dark-side wound damage and longer debuffs.";
+            case WOUND3 -> "Maximum wound damage and control pressure.";
+            case STEALTH -> "Turns the user invisible and increases movement speed temporarily.";
+            case SPEED -> "Boosts movement and jumping for rapid repositioning.";
+            case REBOUND -> "Passive technique that can reflect pressure back when triggered by combat logic.";
+            case SIGHT1 -> "Reveals nearby living entities and grants night vision.";
+            case SIGHT2 -> "Reveals entities across a wider area for longer.";
+            case SIGHT3 -> "Largest Force Sight radius and longest reveal duration.";
+            case MEDITATION1 -> "Restores Force energy and adds regeneration/resistance while focused.";
+            case MEDITATION2 -> "Restores more Force energy and improves the meditation effects.";
+            case MEDITATION3 -> "Strongest meditation recovery and longest focus duration.";
+            case THROW1 -> "Throws an active lightsaber forward, then returns it to the user.";
+            case THROW2 -> "Throws the saber farther and longer before it returns.";
+            case RESIST1 -> "Creates an energy-resistance buffer against fire and incoming damage.";
+            case RESIST2 -> "Longer and stronger energy resistance.";
+            case RESIST3 -> "Maximum duration energy-resistance protection.";
+            case PUSH1 -> "Knocks targets backward in front of the user.";
+            case PUSH2 -> "Pushes farther with more force and damage.";
+            case PUSH3 -> "Maximum push range, knockback, and impact damage.";
+        };
+    }
+
     public static ForcePower byId(String id) {
         return id == null ? null : BY_ID.get(id);
     }

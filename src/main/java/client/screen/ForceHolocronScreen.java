@@ -265,6 +265,15 @@ public class ForceHolocronScreen extends AbstractContainerScreen<ForceHolocronMe
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 RenderSystem.disableBlend();
 
+                if (power.useCost() > 0.0F) {
+                    String costBadge = Integer.toString((int) power.useCost());
+                    int badgeWidth = Math.max(10, this.font.width(costBadge) + 4);
+                    int badgeX = x + NODE_SIZE - badgeWidth + 2;
+                    int badgeY = y + NODE_SIZE - 4;
+                    graphics.fill(badgeX - 1, badgeY - 1, badgeX + badgeWidth, badgeY + 8, 0xDD020509);
+                    graphics.drawString(this.font, costBadge, badgeX + 1, badgeY, unlocked || available ? 0xFF7EF7FF : 0xFF6E8B92, false);
+                }
+
                 if (hovered) {
                     graphics.drawCenteredString(this.font,
                             Component.literal(shortLabel(power)).withStyle(style -> style.withColor(0xFFF1F2FF)),
@@ -413,27 +422,39 @@ public class ForceHolocronScreen extends AbstractContainerScreen<ForceHolocronMe
                 lines.add(Component.literal(hovered.displayName()).withStyle(style -> style.withFont(ALT_FONT).withBold(true)));
                 lines.add(Component.literal(sideLine(hovered.side()) + " • " + typeLine(hovered)).withStyle(style -> style.withColor(0xFFD9D9E6)));
 
+                lines.add(Component.literal(hovered.description()).withStyle(style -> style.withColor(0xFFBFC4D0)));
+
+                if (hovered.useCost() > 0) {
+                    lines.add(Component.literal("Use cost: " + (int) hovered.useCost() + " Force energy").withStyle(style -> style.withColor(0xFF7EF7FF)));
+                } else if (hovered.isSelectable()) {
+                    lines.add(Component.literal("Use cost: Passive / no direct cast cost").withStyle(style -> style.withColor(0xFF7EF7FF)));
+                }
+
+                if (ForceHolocronLogic.requiresCompletedStudentTraining(hovered)) {
+                    String levelText = hovered == ForcePower.FORCE_LEVEL3 || hovered == ForcePower.FORCE_LEVEL4
+                            ? "Force Level III and IV require apprentice/Padawan training first."
+                            : "Master-level progression requires apprentice/Padawan training first.";
+                    lines.add(Component.literal(levelText).withStyle(style -> style.withColor(0xFFFFC35A)));
+                }
+
                 if (cap.hasPower(hovered)) {
                     lines.add(Component.literal(hovered.isSelectable() ? "Unlocked — click again to select." : "Unlocked branch knowledge."));
                 } else if (!ForceHolocronLogic.hasPrerequisites(menu.getSide(), cap, hovered)) {
                     lines.add(Component.literal(ForceHolocronLogic.requiresCompletedStudentTraining(hovered)
-                            ? "Requires fully training a Padawan or apprentice first."
-                            : "Requires earlier knowledge from its branch."));
+                            ? "Requirement missing: finish training a Padawan/Apprentice."
+                            : "Requirement missing: earlier knowledge from this branch."));
                 } else {
                     int cost = ForceHolocronLogic.getDatacronCost(menu.getSide(), hovered);
                     if (cost <= 0) {
                         lines.add(Component.literal("Click to unlock branch knowledge."));
                     } else {
                         ForceSide bank = ForceHolocronLogic.getDatacronBank(menu.getSide());
-                        lines.add(Component.literal("Cost: " + cost + " " + bankLabel(bank) + " datacrons"));
+                        lines.add(Component.literal("Unlock cost: " + cost + " " + bankLabel(bank) + " datacrons"));
                         lines.add(Component.literal("Stored: " + cap.getDatacrons(bank)));
                         lines.add(Component.literal(cap.getDatacrons(bank) >= cost ? "Ready to unlock." : "More datacrons required."));
                     }
                 }
 
-                if (hovered.useCost() > 0) {
-                    lines.add(Component.literal("Force cost: " + (int) hovered.useCost()));
-                }
                 if (menu.getSide() == ForceSide.NEUTRAL) {
                     lines.add(Component.literal("Ancient holocrons can master Light and Dark traditions."));
                 }

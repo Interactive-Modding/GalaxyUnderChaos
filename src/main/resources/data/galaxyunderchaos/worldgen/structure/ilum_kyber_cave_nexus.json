@@ -3,7 +3,19 @@
   "biomes": "#galaxyunderchaos:has_structure/ilum_kyber_cave_nexus",
   "step": "surface_structures",
   "terrain_adaptation": "none",
-  "spawn_overrides": {},
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "galaxyunderchaos:jedi_master",
+          "weight": 1,
+          "minCount": 1,
+          "maxCount": 1
+        }
+      ]
+    }
+  },
   "start_pool": "galaxyunderchaos:ilum_kyber_cave_nexus",
   "size": 1,
   "start_height": {

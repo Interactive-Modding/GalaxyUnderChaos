@@ -1688,6 +1688,12 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
                     .clientTrackingRange(64)
                     .updateInterval(1)
                     .build("force_push_wave"));
+    public static final RegistryObject<EntityType<ForceAbilityEffectEntity>> FORCE_ABILITY_EFFECT =
+            ENTITY_TYPES.register("force_ability_effect", () -> EntityType.Builder.<ForceAbilityEffectEntity>of(ForceAbilityEffectEntity::new, MobCategory.MISC)
+                    .sized(0.1F, 0.1F)
+                    .clientTrackingRange(64)
+                    .updateInterval(1)
+                    .build("force_ability_effect"));
     public static final RegistryObject<EntityType<ThrownLightsaberEntity>> THROWN_LIGHTSABER =
             ENTITY_TYPES.register("thrown_lightsaber", () -> EntityType.Builder.<ThrownLightsaberEntity>of(ThrownLightsaberEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F)
@@ -1822,6 +1828,7 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
         EntityRenderers.register(galaxyunderchaos.SEAT.get(), SeatRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FORCE_BEAM_EFFECT.get(), ForceBeamEffectRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FORCE_PUSH_WAVE.get(), ForcePushWaveRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.FORCE_ABILITY_EFFECT.get(), ForceAbilityEffectRenderer::new);
         EntityRenderers.register(galaxyunderchaos.THROWN_LIGHTSABER.get(), ThrownLightsaberRenderer::new);
         EntityRenderers.register(galaxyunderchaos.NOVADIVE_ENTITY.get(), NovadiveRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FLASHFIRE_ENTITY.get(), FlashfireRenderer::new);

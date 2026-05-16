@@ -93,58 +93,151 @@ public class LegacyModelRenderer {
     private record LegacyBox(int texU, int texV, float x, float y, float z, int dx, int dy, int dz,
                              float delta, boolean mirror, float texWidth, float texHeight) {
         void render(PoseStack poseStack, VertexConsumer consumer, int light, int overlay, float scale) {
-            float minX = (x - delta) * scale;
-            float minY = (y - delta) * scale;
-            float minZ = (z - delta) * scale;
-            float maxX = (x + dx + delta) * scale;
-            float maxY = (y + dy + delta) * scale;
-            float maxZ = (z + dz + delta) * scale;
+            float x0 = (x - delta) * scale;
+            float y0 = (y - delta) * scale;
+            float z0 = (z - delta) * scale;
+            float x1 = (x + dx + delta) * scale;
+            float y1 = (y + dy + delta) * scale;
+            float z1 = (z + dz + delta) * scale;
 
-
+            // Vanilla 1.7-1.12 ModelBox mirrors by swapping the X bounds before the
+            // PositionTextureVertex/TexturedQuad objects are built, then reversing each
+            // quad's face. Mechanical's emitter uses several mirrored boxes, so using a
+            // simplified modern cube mapper makes its button/guard UVs look like the
+            // wrong texture even though the PNG itself is correct.
             if (mirror) {
-                float t = minX;
-                minX = maxX;
-                maxX = t;
+                float t = x0;
+                x0 = x1;
+                x1 = t;
             }
 
-            float u0 = texU / texWidth;
-            float u1 = (texU + dz) / texWidth;
-            float u2 = (texU + dz + dx) / texWidth;
-            float u3 = (texU + dz + dx + dz) / texWidth;
-            float u4 = (texU + dz + dx + dz + dx) / texWidth;
-            float v0 = texV / texHeight;
-            float v1 = (texV + dz) / texHeight;
-            float v2 = (texV + dz + dy) / texHeight;
+            Vertex v000 = new Vertex(x0, y0, z0);
+            Vertex v100 = new Vertex(x1, y0, z0);
+            Vertex v110 = new Vertex(x1, y1, z0);
+            Vertex v010 = new Vertex(x0, y1, z0);
+            Vertex v001 = new Vertex(x0, y0, z1);
+            Vertex v101 = new Vertex(x1, y0, z1);
+            Vertex v111 = new Vertex(x1, y1, z1);
+            Vertex v011 = new Vertex(x0, y1, z1);
+
+            float u0 = texU;
+            float u1 = texU + dz;
+            float u2 = texU + dz + dx;
+            float u3 = texU + dz + dx + dx;
+            float u4 = texU + dz + dx + dz;
+            float u5 = texU + dz + dx + dz + dx;
+            float v0 = texV;
+            float v1 = texV + dz;
+            float v2 = texV + dz + dy;
 
             PoseStack.Pose pose = poseStack.last();
 
-            emitQuad(consumer, pose, minX, minY, maxZ, minX, maxY, maxZ, maxX, maxY, maxZ, maxX, minY, maxZ, u1, v1, u2, v2, 0, 0, 1, light, overlay);
-            emitQuad(consumer, pose, maxX, minY, minZ, maxX, maxY, minZ, minX, maxY, minZ, minX, minY, minZ, u3, v1, u4, v2, 0, 0, -1, light, overlay);
-            emitQuad(consumer, pose, minX, minY, minZ, minX, maxY, minZ, minX, maxY, maxZ, minX, minY, maxZ, u0, v1, u1, v2, -1, 0, 0, light, overlay);
-            emitQuad(consumer, pose, maxX, minY, maxZ, maxX, maxY, maxZ, maxX, maxY, minZ, maxX, minY, minZ, u2, v1, u3, v2, 1, 0, 0, light, overlay);
-            emitQuad(consumer, pose, minX, minY, minZ, minX, minY, maxZ, maxX, minY, maxZ, maxX, minY, minZ, u1, v0, u2, v1, 0, -1, 0, light, overlay);
-            emitQuad(consumer, pose, minX, maxY, maxZ, minX, maxY, minZ, maxX, maxY, minZ, maxX, maxY, maxZ, u2, v0, u3, v1, 0, 1, 0, light, overlay);
+            // Exact 1.12 ModelBox quad order and UV orientation:
+            // x+, x-, y-, y+, z-, z+.  Do not rotate these into a generic cube strip;
+            // AL's hilt sheets rely on the original TexturedQuad orientation.
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u2, v1, u4, v2,
+                    v101, v100, v110, v111);
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u0, v1, u1, v2,
+                    v000, v001, v011, v010);
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u1, v0, u2, v1,
+                    v101, v001, v000, v100);
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u2, v0, u3, v1,
+                    v110, v010, v011, v111);
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u1, v1, u2, v2,
+                    v100, v000, v010, v110);
+            emitTexturedQuad(consumer, pose, light, overlay, mirror, texWidth, texHeight, u4, v1, u5, v2,
+                    v001, v101, v111, v011);
         }
 
-        private static void emitQuad(VertexConsumer consumer,
-                                     PoseStack.Pose pose,
-                                     float x1, float y1, float z1,
-                                     float x2, float y2, float z2,
-                                     float x3, float y3, float z3,
-                                     float x4, float y4, float z4,
-                                     float uMin, float vMin, float uMax, float vMax,
-                                     float nx, float ny, float nz,
-                                     int light, int overlay) {
+        private static void emitTexturedQuad(VertexConsumer consumer,
+                                             PoseStack.Pose pose,
+                                             int light,
+                                             int overlay,
+                                             boolean flipFace,
+                                             float texWidth,
+                                             float texHeight,
+                                             float uMin,
+                                             float vMin,
+                                             float uMax,
+                                             float vMax,
+                                             Vertex a,
+                                             Vertex b,
+                                             Vertex c,
+                                             Vertex d) {
+            Vertex[] vertices = {a, b, c, d};
+            float[] us = {
+                    uMax / texWidth,
+                    uMin / texWidth,
+                    uMin / texWidth,
+                    uMax / texWidth
+            };
+            float[] vs = {
+                    vMin / texHeight,
+                    vMin / texHeight,
+                    vMax / texHeight,
+                    vMax / texHeight
+            };
+
+            if (flipFace) {
+                reverse(vertices);
+                reverse(us);
+                reverse(vs);
+            }
+
+            float[] normal = calculateNormal(vertices);
             LegacyRenderSession session = LegacyRenderSession.get();
             float red = session == null ? 1.0F : session.red();
             float green = session == null ? 1.0F : session.green();
             float blue = session == null ? 1.0F : session.blue();
             float alpha = session == null ? 1.0F : session.alpha();
 
-            consumer.vertex(pose.pose(), x1, y1, z1).color(red, green, blue, alpha).uv(uMin, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x2, y2, z2).color(red, green, blue, alpha).uv(uMin, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x3, y3, z3).color(red, green, blue, alpha).uv(uMax, vMin).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
-            consumer.vertex(pose.pose(), x4, y4, z4).color(red, green, blue, alpha).uv(uMax, vMax).overlayCoords(overlay).uv2(light).normal(pose.normal(), nx, ny, nz).endVertex();
+            for (int i = 0; i < 4; i++) {
+                Vertex vertex = vertices[i];
+                consumer.vertex(pose.pose(), vertex.x, vertex.y, vertex.z)
+                        .color(red, green, blue, alpha)
+                        .uv(us[i], vs[i])
+                        .overlayCoords(overlay)
+                        .uv2(light)
+                        .normal(pose.normal(), normal[0], normal[1], normal[2])
+                        .endVertex();
+            }
         }
+
+        private static float[] calculateNormal(Vertex[] vertices) {
+            float ax = vertices[1].x - vertices[0].x;
+            float ay = vertices[1].y - vertices[0].y;
+            float az = vertices[1].z - vertices[0].z;
+            float bx = vertices[2].x - vertices[0].x;
+            float by = vertices[2].y - vertices[0].y;
+            float bz = vertices[2].z - vertices[0].z;
+
+            float nx = ay * bz - az * by;
+            float ny = az * bx - ax * bz;
+            float nz = ax * by - ay * bx;
+            float len = (float) Math.sqrt(nx * nx + ny * ny + nz * nz);
+            if (len < 1.0E-6F) {
+                return new float[]{0.0F, 1.0F, 0.0F};
+            }
+            return new float[]{nx / len, ny / len, nz / len};
+        }
+
+        private static void reverse(Vertex[] values) {
+            for (int i = 0, j = values.length - 1; i < j; i++, j--) {
+                Vertex t = values[i];
+                values[i] = values[j];
+                values[j] = t;
+            }
+        }
+
+        private static void reverse(float[] values) {
+            for (int i = 0, j = values.length - 1; i < j; i++, j--) {
+                float t = values[i];
+                values[i] = values[j];
+                values[j] = t;
+            }
+        }
+    }
+
+    private record Vertex(float x, float y, float z) {
     }
 }

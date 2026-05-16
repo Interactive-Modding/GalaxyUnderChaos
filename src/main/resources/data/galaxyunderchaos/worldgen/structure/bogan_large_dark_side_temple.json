@@ -4,7 +4,7 @@
   "step": "surface_structures",
   "terrain_adaptation": "none",
   "spawn_overrides": {
-    "monster": {
+    "creature": {
       "bounding_box": "piece",
       "spawns": [
         {
@@ -12,6 +12,12 @@
           "weight": 8,
           "minCount": 1,
           "maxCount": 3
+        },
+        {
+          "type": "galaxyunderchaos:sith_apprentice",
+          "weight": 8,
+          "minCount": 1,
+          "maxCount": 4
         },
         {
           "type": "galaxyunderchaos:sith_lord",

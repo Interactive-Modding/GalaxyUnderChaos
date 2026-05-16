@@ -37,6 +37,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import server.galaxyunderchaos.entity.ForceAbilityEffectEntity;
 import server.galaxyunderchaos.entity.ForceBeamEffectEntity;
 import server.galaxyunderchaos.entity.ForcePushWaveEntity;
 import server.galaxyunderchaos.force.ForceCapability;
@@ -76,7 +77,10 @@ public class ForceUserEntity extends PathfinderMob {
 
     public ForceUserEntity(EntityType<? extends ForceUserEntity> type, Level level) {
         super(type, level);
-        this.setPersistenceRequired();
+        // Do not mark every naturally-spawned Force user as persistent.
+        // Structure spawn overrides can roll these mobs repeatedly; making all of
+        // them persistent caused Sith to accumulate permanently around every Sith
+        // spawn location. Bonded students are still made persistent in bindToMaster().
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -286,7 +290,8 @@ public class ForceUserEntity extends PathfinderMob {
     private boolean tryUsePower(ForcePower power, LivingEntity target) {
         return switch (power) {
             case HEAL1, HEAL2, HEAL3 -> castHeal();
-            case FORTIFY1, FORTIFY2, FORTIFY3, RESIST1, RESIST2, RESIST3 -> castFortify();
+            case FORTIFY1, FORTIFY2, FORTIFY3 -> castFortify();
+            case RESIST1, RESIST2, RESIST3 -> castResist();
             case STUN1, STUN2, STUN3 -> castStun(target);
             case DRAIN1, DRAIN2, DRAIN3 -> castDrain(target);
             case LIGHTNING1, LIGHTNING2, LIGHTNING3 -> castLightning(target);
@@ -302,36 +307,48 @@ public class ForceUserEntity extends PathfinderMob {
             return false;
         }
         this.heal(6.0F);
-        this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0, false, true, true));
+        this.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0, false, false, false));
+        spawnAbilityEffect(this, ForceAbilityEffectEntity.KIND_HEAL, 18, 1.20F);
         this.level().playSound(null, this.blockPosition(), ModSounds.FORCE_HEAL.get(), SoundSource.HOSTILE, 0.8F, 1.0F);
         return true;
     }
 
     private boolean castFortify() {
-        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 160, 0, false, true, true));
-        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 0, false, true, true));
+        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 160, 0, false, false, false));
+        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 120, 0, false, false, false));
+        spawnAbilityEffect(this, ForceAbilityEffectEntity.KIND_FORTIFY, 20, 1.30F);
         this.level().playSound(null, this.blockPosition(), ModSounds.AMBIENT_FORCE_FORTIFY.get(), SoundSource.HOSTILE, 0.75F, 1.0F);
         return true;
     }
 
+    private boolean castResist() {
+        this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 160, 0, false, false, false));
+        this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 160, 0, false, false, false));
+        spawnAbilityEffect(this, ForceAbilityEffectEntity.KIND_RESIST, 24, 1.50F);
+        this.level().playSound(null, this.blockPosition(), ModSounds.AMBIENT_FORCE_ENERGY_RESIST.get(), SoundSource.HOSTILE, 0.75F, 1.0F);
+        return true;
+    }
+
     private boolean castSpeed() {
-        this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 140, 1, false, true, true));
-        this.addEffect(new MobEffectInstance(MobEffects.JUMP, 140, 0, false, true, true));
+        this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 140, 1, false, false, false));
+        this.addEffect(new MobEffectInstance(MobEffects.JUMP, 140, 0, false, false, false));
+        spawnAbilityEffect(this, ForceAbilityEffectEntity.KIND_SPEED, 14, 1.15F);
         this.level().playSound(null, this.blockPosition(), ModSounds.FORCE_CAST.get(), SoundSource.HOSTILE, 0.75F, 1.15F);
         return true;
     }
 
     private boolean castStun(LivingEntity target) {
-        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 3, false, true, true));
-        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 0, false, true, true));
+        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 3, false, false, false));
+        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 0, false, false, false));
         target.hurt(this.damageSources().magic(), 2.0F);
+        spawnAbilityEffect(target, ForceAbilityEffectEntity.KIND_STUN, 60, 1.10F);
         this.level().playSound(null, this.blockPosition(), ModSounds.AMBIENT_FORCE_STASIS.get(), SoundSource.HOSTILE, 0.8F, 1.05F);
         return true;
     }
 
     private boolean castDrain(LivingEntity target) {
         target.hurt(this.damageSources().indirectMagic(this, this), 5.0F);
-        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0, false, true, true));
+        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 0, false, false, false));
         this.heal(4.0F);
         spawnBeam(target, ForceBeamEffectEntity.KIND_DRAIN, 7);
         this.level().playSound(null, this.blockPosition(), ModSounds.FORCE_CAST_DARK.get(), SoundSource.HOSTILE, 0.8F, 0.95F);
@@ -343,7 +360,7 @@ public class ForceUserEntity extends PathfinderMob {
         target.hurt(this.damageSources().indirectMagic(this, this), 4.0F);
         target.setDeltaMovement(0.0D, Math.min(target.getDeltaMovement().y, 0.0D), 0.0D);
         target.hurtMarked = true;
-        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3, false, true, true));
+        target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 3, false, false, false));
         spawnBeam(target, ForceBeamEffectEntity.KIND_LIGHTNING, 6);
         this.level().playSound(null, this.blockPosition(), ModSounds.FORCE_LIGHTNING_START.get(), SoundSource.HOSTILE, 0.85F, 1.0F);
         return true;
@@ -351,8 +368,9 @@ public class ForceUserEntity extends PathfinderMob {
 
     private boolean castWound(LivingEntity target) {
         target.hurt(this.damageSources().magic(), 4.0F);
-        target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 12, 0, false, true, true));
-        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 1, false, true, true));
+        target.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 12, 0, false, false, false));
+        target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 1, false, false, false));
+        spawnAbilityEffect(target, ForceAbilityEffectEntity.KIND_WOUND, 18, 1.05F);
         this.level().playSound(null, this.blockPosition(), ModSounds.FORCE_CAST_DARK.get(), SoundSource.HOSTILE, 0.85F, 1.1F);
         return true;
     }
@@ -372,6 +390,12 @@ public class ForceUserEntity extends PathfinderMob {
     private void spawnBeam(LivingEntity target, int kind, int lifeTicks) {
         if (this.level() instanceof ServerLevel serverLevel) {
             serverLevel.addFreshEntity(new ForceBeamEffectEntity(serverLevel, this, target, kind, lifeTicks));
+        }
+    }
+
+    private void spawnAbilityEffect(LivingEntity anchor, int kind, int lifeTicks, float radius) {
+        if (this.level() instanceof ServerLevel serverLevel && anchor != null) {
+            serverLevel.addFreshEntity(new ForceAbilityEffectEntity(serverLevel, this, anchor == this ? null : anchor, kind, lifeTicks, radius));
         }
     }
 
@@ -761,6 +785,9 @@ public class ForceUserEntity extends PathfinderMob {
         this.studentAgeTicks = tag.getInt("StudentAgeTicks");
         this.fullyTrainedHandled = tag.getBoolean("FullyTrainedHandled");
         this.masterUuid = tag.hasUUID("Master") ? tag.getUUID("Master") : null;
+        if (this.masterUuid != null) {
+            this.setPersistenceRequired();
+        }
         this.entityData.set(DATA_FOLLOW_MASTER, !tag.contains("FollowMaster") || tag.getBoolean("FollowMaster"));
 
         ForceUserSpecies species = ForceUserSpecies.byId(tag.getString("Species"));

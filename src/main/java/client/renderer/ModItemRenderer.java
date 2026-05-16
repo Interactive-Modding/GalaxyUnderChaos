@@ -39,6 +39,7 @@ import server.galaxyunderchaos.item.HiltItem;
 import server.galaxyunderchaos.item.LightsaberItem;
 import server.galaxyunderchaos.item.LightsaberPartItem;
 import server.galaxyunderchaos.lightsaber.AdvancedLightsaberLegacyHilts;
+import server.galaxyunderchaos.lightsaber.BladeModifierCrystal;
 import server.galaxyunderchaos.lightsaber.DoubleLightsaberData;
 import server.galaxyunderchaos.lightsaber.LightsaberPartType;
 import server.galaxyunderchaos.lightsaber.ModularLightsaberData;
@@ -141,9 +142,14 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
         if (stack.getItem() instanceof DoubleLightsaberItem doubleItem) {
             renderDoubleLightsaber(stack, doubleItem, displayContext, poseStack, buffer, light, overlay);
             if (displayContext == ItemDisplayContext.GUI) {
-                renderInventoryColorIndicator(DoubleLightsaberData.getBladeColor(stack, true, "white"),
+                renderInventoryColorIndicator(
+                        DoubleLightsaberData.getBladeColor(stack, true, "white"),
                         DoubleLightsaberData.getBladeColor(stack, false, "white"),
-                        poseStack, buffer);
+                        DoubleLightsaberData.getBladeModifiers(stack, true).contains(BladeModifierCrystal.INVERTING),
+                        DoubleLightsaberData.getBladeModifiers(stack, false).contains(BladeModifierCrystal.INVERTING),
+                        poseStack,
+                        buffer
+                );
             }
             return;
         }
@@ -153,13 +159,22 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
             renderFullHilt(stack, lightsaberItem.getHiltId(stack), lightsaberItem.isActive(stack),
                     resolvedBladeColor, displayContext, poseStack, buffer, light, overlay);
             if (displayContext == ItemDisplayContext.GUI) {
-                renderInventoryColorIndicator(resolvedBladeColor, null, poseStack, buffer);
+                renderInventoryColorIndicator(
+                        resolvedBladeColor,
+                        null,
+                        ModularLightsaberData.hasBladeModifier(stack, BladeModifierCrystal.INVERTING),
+                        false,
+                        poseStack,
+                        buffer
+                );
             }
         }
     }
 
     private void renderInventoryColorIndicator(String primaryColor,
                                                String secondaryColor,
+                                               boolean primaryInverting,
+                                               boolean secondaryInverting,
                                                PoseStack poseStack,
                                                MultiBufferSource buffer) {
         LightsaberColorResolver.BladeTint primary = LightsaberColorResolver.resolve(primaryColor);
@@ -170,25 +185,61 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
         poseStack.pushPose();
         // Draw in the item-GUI coordinate space, separate from the hilt transform, matching
         // Advanced Lightsabers' small top-left blade-color swatch instead of a durability bar.
+        // Inverting crystals keep the regular blade-color triangle and draw a smaller black
+        // triangle over it, matching AL's inventory marker instead of replacing the color.
         poseStack.translate(0.0F, 1.0F, 0.0F);
+
+        final float size = 0.27F;
+        final float invertedSize = size / 1.5F;
+        final float invertedOffset = invertedSize / 8.0F;
 
         if (secondary == null) {
             emitColorTriangle(consumer, poseStack.last(),
                     0.00F, 0.00F,
-                    0.27F, 0.00F,
-                    0.00F, -0.27F,
+                    size, 0.00F,
+                    0.00F, -size,
+                    0.0F,
                     primary.red(), primary.green(), primary.blue());
+
+            if (primaryInverting) {
+                emitColorTriangle(consumer, poseStack.last(),
+                        invertedOffset, -invertedOffset,
+                        invertedOffset + invertedSize, -invertedOffset,
+                        invertedOffset, -(invertedOffset + invertedSize),
+                        0.001F,
+                        0.0F, 0.0F, 0.0F);
+            }
         } else {
             emitColorTriangle(consumer, poseStack.last(),
                     0.00F, 0.00F,
-                    0.27F, 0.00F,
-                    0.135F, -0.135F,
+                    size, 0.00F,
+                    size * 0.5F, -size * 0.5F,
+                    0.0F,
                     primary.red(), primary.green(), primary.blue());
             emitColorTriangle(consumer, poseStack.last(),
-                    0.00F, -0.27F,
-                    0.135F, -0.135F,
+                    0.00F, -size,
+                    size * 0.5F, -size * 0.5F,
                     0.00F, 0.00F,
+                    0.0F,
                     secondary.red(), secondary.green(), secondary.blue());
+
+            if (primaryInverting) {
+                emitColorTriangle(consumer, poseStack.last(),
+                        invertedOffset, -invertedOffset,
+                        invertedOffset + invertedSize, -invertedOffset,
+                        invertedOffset + invertedSize * 0.5F, -(invertedOffset + invertedSize * 0.5F),
+                        0.001F,
+                        0.0F, 0.0F, 0.0F);
+            }
+
+            if (secondaryInverting) {
+                emitColorTriangle(consumer, poseStack.last(),
+                        invertedOffset, -(invertedOffset + invertedSize),
+                        invertedOffset + invertedSize * 0.5F, -(invertedOffset + invertedSize * 0.5F),
+                        invertedOffset, -invertedOffset,
+                        0.001F,
+                        0.0F, 0.0F, 0.0F);
+            }
         }
 
         poseStack.popPose();
@@ -200,12 +251,13 @@ public class ModItemRenderer extends BlockEntityWithoutLevelRenderer {
                                    float x1, float y1,
                                    float x2, float y2,
                                    float x3, float y3,
+                                   float z,
                                    float red, float green, float blue) {
         // RenderType uses quads, so the triangle is emitted as a degenerate quad.
-        consumer.vertex(pose.pose(), x1, y1, 0.0F).color(red, green, blue, 1.0F).endVertex();
-        consumer.vertex(pose.pose(), x2, y2, 0.0F).color(red, green, blue, 1.0F).endVertex();
-        consumer.vertex(pose.pose(), x3, y3, 0.0F).color(red, green, blue, 1.0F).endVertex();
-        consumer.vertex(pose.pose(), x3, y3, 0.0F).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x1, y1, z).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x2, y2, z).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x3, y3, z).color(red, green, blue, 1.0F).endVertex();
+        consumer.vertex(pose.pose(), x3, y3, z).color(red, green, blue, 1.0F).endVertex();
     }
 
     private static void flushIfPossible(MultiBufferSource buffer, RenderType type) {

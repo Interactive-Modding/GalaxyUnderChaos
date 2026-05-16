@@ -14,6 +14,18 @@
           "maxCount": 4
         },
         {
+          "type": "galaxyunderchaos:jedi_padawan",
+          "weight": 8,
+          "minCount": 1,
+          "maxCount": 2
+        },
+        {
+          "type": "galaxyunderchaos:jedi_temple_guard",
+          "weight": 2,
+          "minCount": 1,
+          "maxCount": 2
+        },
+        {
           "type": "galaxyunderchaos:jedi_master",
           "weight": 2,
           "minCount": 1,

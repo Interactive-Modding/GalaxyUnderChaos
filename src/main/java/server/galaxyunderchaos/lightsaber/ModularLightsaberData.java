@@ -253,17 +253,28 @@ public final class ModularLightsaberData {
         };
     }
 
+    private static String getLegacyTextureFamilyId(String familyId) {
+        // The Advanced Lightsabers Vaid assets are split into ancient/modern sheets.
+        // In GUC, plain "vaid" is the regular/modern hilt, so do not resolve it to
+        // the low-detail compatibility placeholders named emitter_vaid/body_vaid/etc.
+        if ("vaid".equals(familyId)) {
+            return "vaid_modern";
+        }
+        return familyId;
+    }
+
     public static ResourceLocation getPreferredPartTexture(String familyId, LightsaberPartType type) {
+        String textureFamilyId = getLegacyTextureFamilyId(familyId);
         return new ResourceLocation(
                 galaxyunderchaos.MODID,
-                "textures/models/lightsaber/" + type.getLegacyTexturePrefix() + "_" + familyId + ".png"
+                "textures/models/lightsaber/" + type.getLegacyTexturePrefix() + "_" + textureFamilyId + ".png"
         );
     }
 
     public static ResourceLocation getFamilyTexture(String familyId) {
         return new ResourceLocation(
                 galaxyunderchaos.MODID,
-                "textures/models/lightsaber/" + familyId + ".png"
+                "textures/models/lightsaber/" + getLegacyTextureFamilyId(familyId) + ".png"
         );
     }
 

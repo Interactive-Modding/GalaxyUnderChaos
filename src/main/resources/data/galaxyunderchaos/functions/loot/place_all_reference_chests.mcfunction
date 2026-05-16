@@ -13,6 +13,5 @@ setblock ~8 ~ ~2 minecraft:chest{LootTable:"galaxyunderchaos:chests/hoth/kyber_c
 setblock ~10 ~ ~2 minecraft:chest{LootTable:"galaxyunderchaos:chests/dantooine/jedi_enclave"} replace
 setblock ~0 ~ ~4 minecraft:chest{LootTable:"galaxyunderchaos:chests/ossus/jedi_library"} replace
 setblock ~2 ~ ~4 minecraft:chest{LootTable:"galaxyunderchaos:chests/korriban/sith_tombs"} replace
-setblock ~4 ~ ~4 minecraft:chest{LootTable:"galaxyunderchaos:chests/korriban/massive_sith_temple"} replace
 setblock ~6 ~ ~4 minecraft:chest{LootTable:"galaxyunderchaos:chests/malachor/massive_sith_temple"} replace
 setblock ~8 ~ ~4 minecraft:chest{LootTable:"galaxyunderchaos:chests/mustafar/ancient_temple"} replace

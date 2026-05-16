@@ -4,14 +4,14 @@
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
   "spawn_overrides": {
-    "monster": {
+    "creature": {
       "bounding_box": "piece",
       "spawns": [
         {
           "type": "galaxyunderchaos:sith_lord",
           "weight": 1,
           "minCount": 1,
-          "maxCount": 1
+          "maxCount": 2
         }
       ]
     }
