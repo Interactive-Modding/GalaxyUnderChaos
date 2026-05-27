@@ -2,13 +2,17 @@
   "structures": [
     {
       "structure": "galaxyunderchaos:naboo_jedi_outpost",
-      "weight": 1
+      "weight": 2
+    },
+    {
+      "structure": "galaxyunderchaos:naboo_mustafar_cult_cave",
+      "weight": 3
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 48,
-    "separation": 12,
+    "spacing": 44,
+    "separation": 14,
     "salt": 770820276
   }
 }

@@ -2,7 +2,8 @@ package server.galaxyunderchaos.entity.forceuser;
 
 public enum ForceUserSide {
     LIGHT,
-    DARK;
+    DARK,
+    NEUTRAL;
 
     public boolean isDark() {
         return this == DARK;
@@ -12,8 +13,28 @@ public enum ForceUserSide {
         return this == LIGHT;
     }
 
+    public boolean isNeutral() {
+        return this == NEUTRAL;
+    }
+
+    public boolean isAlignedAgainstDark() {
+        return this == LIGHT || this == NEUTRAL;
+    }
+
     public String serializedName() {
-        return this == DARK ? "sith" : "jedi";
+        return switch (this) {
+            case DARK -> "sith";
+            case NEUTRAL -> "neutral";
+            case LIGHT -> "jedi";
+        };
+    }
+
+    public server.galaxyunderchaos.force.ForceSide toCapabilitySide() {
+        return switch (this) {
+            case DARK -> server.galaxyunderchaos.force.ForceSide.DARK;
+            case NEUTRAL -> server.galaxyunderchaos.force.ForceSide.NEUTRAL;
+            case LIGHT -> server.galaxyunderchaos.force.ForceSide.LIGHT;
+        };
     }
 
     public static ForceUserSide byName(String name, ForceUserSide fallback) {
@@ -27,6 +48,7 @@ public enum ForceUserSide {
         }
         return switch (name.toLowerCase(java.util.Locale.ROOT)) {
             case "dark", "sith" -> DARK;
+            case "neutral", "ancient", "force_user", "force-user" -> NEUTRAL;
             case "light", "jedi" -> LIGHT;
             default -> null;
         };

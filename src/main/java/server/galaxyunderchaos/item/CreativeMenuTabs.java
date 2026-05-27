@@ -291,6 +291,7 @@ public class CreativeMenuTabs {
                     .icon(() -> new ItemStack(SHUURA.get()))
                     .title(Component.translatable("creativetab.galaxyunderchaos.galaxy_under_chaos_items"))
                     .displayItems((parameters, output) -> {
+                        output.accept(GalacticGuideBookItem.createGuideStack());
                         output.accept(CHROMIUM_INGOT.get());
                         output.accept(TITANIUM_INGOT.get());
                         output.accept(TITANIUM_CHROMIUM_INGOT.get());
@@ -338,6 +339,7 @@ public class CreativeMenuTabs {
                         output.accept(FOCUSING_CRYSTAL_FINE_CUT.get());
                         output.accept(FOCUSING_CRYSTAL_PRISMATIC.get());
                         output.accept(FOCUSING_CRYSTAL_FORCE_WHIP.get());
+                        output.accept(FORCE_SHACKLES.get());
                         output.accept(JEDI_HOLOBOOK.get());
                         output.accept(SHII_CHO_HOLOBOOK.get());
                         output.accept(MAKASHI_HOLBOOK.get());
@@ -379,14 +381,18 @@ public class CreativeMenuTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ACID_SPIDER_SPAWN_EGG.get());
                         output.accept(WINGMAW_SPAWN_EGG.get());
+                        output.accept(VONSKR_SPAWN_EGG.get());
                         output.accept(JEDI_FORCE_USER_SPAWN_EGG.get());
                         output.accept(SITH_FORCE_USER_SPAWN_EGG.get());
                         output.accept(SITH_GHOST_SPAWN_EGG.get());
                         output.accept(SITH_LORD_GHOST_SPAWN_EGG.get());
                         output.accept(SITH_LORD_SPAWN_EGG.get());
                         output.accept(JEDI_MASTER_SPAWN_EGG.get());
+                        output.accept(NEUTRAL_FORCE_USER_SPAWN_EGG.get());
+                        output.accept(NEUTRAL_MASTER_SPAWN_EGG.get());
                         output.accept(SITH_APPRENTICE_SPAWN_EGG.get());
                         output.accept(JEDI_PADAWAN_SPAWN_EGG.get());
+                        output.accept(NEUTRAL_PADAWAN_SPAWN_EGG.get());
                         output.accept(JEDI_TEMPLE_GUARD_SPAWN_EGG.get());
                         output.accept(SITH_GUARD_SPAWN_EGG.get());
                         output.accept(NOVADIVE_BLUEPRINT.get());
@@ -410,6 +416,11 @@ public class CreativeMenuTabs {
                         output.accept(TYTHON_JEDI_IDLE_TORSO_STATUE.get());
                         output.accept(TYTHON_JEDI_IDLE_LEG_1_STATUE.get());
                         output.accept(TYTHON_JEDI_IDLE_LEG_2_STATUE.get());
+                        output.accept(KORRIBAN_IDLE_HEAD_STATUE.get());
+                        output.accept(KORRIBAN_CROSSED_TORSO_STATUE.get());
+                        output.accept(KORRIBAN_IDLE_TORSO_STATUE.get());
+                        output.accept(KORRIBAN_IDLE_LEG_1_STATUE.get());
+                        output.accept(KORRIBAN_IDLE_LEG_2_STATUE.get());
                         output.accept(SITH_GUARD_STATUE_ITEM.get());
                         output.accept(COUNCIL_CHAIR_1_ITEM.get());
                         output.accept(COUNCIL_CHAIR_2_ITEM.get());

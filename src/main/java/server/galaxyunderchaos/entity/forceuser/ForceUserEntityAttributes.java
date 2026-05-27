@@ -18,8 +18,11 @@ public final class ForceUserEntityAttributes {
         event.put(galaxyunderchaos.SITH_LORD_GHOST.get(), ForceUserEntity.createBossAttributes().build());
         event.put(galaxyunderchaos.SITH_LORD.get(), ForceUserEntity.createBossAttributes().build());
         event.put(galaxyunderchaos.JEDI_MASTER.get(), ForceUserEntity.createBossAttributes().build());
+        event.put(galaxyunderchaos.NEUTRAL_FORCE_USER.get(), ForceUserEntity.createAttributes().build());
+        event.put(galaxyunderchaos.NEUTRAL_MASTER.get(), ForceUserEntity.createBossAttributes().build());
         event.put(galaxyunderchaos.SITH_APPRENTICE.get(), ForceUserEntity.createAttributes().build());
         event.put(galaxyunderchaos.JEDI_PADAWAN.get(), ForceUserEntity.createAttributes().build());
+        event.put(galaxyunderchaos.NEUTRAL_PADAWAN.get(), ForceUserEntity.createAttributes().build());
         event.put(galaxyunderchaos.JEDI_TEMPLE_GUARD.get(), ForceUserEntity.createAttributes().build());
         event.put(galaxyunderchaos.SITH_GUARD.get(), ForceUserEntity.createAttributes().build());
     }

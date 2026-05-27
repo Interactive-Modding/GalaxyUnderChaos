@@ -2,12 +2,16 @@
   "structures": [
     {
       "structure": "galaxyunderchaos:mustafar_ancient_temple",
-      "weight": 1
+      "weight": 2
+    },
+    {
+      "structure": "galaxyunderchaos:mustafar_bleeding_table_cave",
+      "weight": 3
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 72,
+    "spacing": 56,
     "separation": 20,
     "salt": 1827107004
   }

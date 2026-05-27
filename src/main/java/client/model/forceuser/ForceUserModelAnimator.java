@@ -49,14 +49,27 @@ public final class ForceUserModelAnimator {
         float armLeft = Mth.cos(limbSwing * 0.6662F) * 0.85F * walk;
 
         if (rotatedTorso) {
-            // These models are built sideways in local space; xRot causes the crossed-leg/crossed-arm bug.
+            // These meshes are authored under a torso yawed ~90 degrees. Child local Z
+            // becomes the visual forward/back swing axis, so use zRot for limbs while
+            // keeping the torso itself free of the crouch/lean z-roll bug.
             applySideAxisWalk(rightLeg, leftLeg, rightArm, leftArm, legRight, legLeft, armRight, armLeft);
         } else {
             applyVanillaAxisWalk(rightLeg, leftLeg, rightArm, leftArm, legRight, legLeft, armRight, armLeft);
         }
 
-        boolean saberDrawn = entity instanceof ForceUserEntity forceUser && forceUser.isSaberDrawn();
-        boolean casting = entity instanceof ForceUserEntity forceUser && forceUser.getCastingPowerTicks() > 0;
+        ForceUserEntity forceUser = entity instanceof ForceUserEntity f ? f : null;
+        if (forceUser != null && forceUser.getRespectBowTicks() > 0) {
+            float bow = Math.min(1.0F, forceUser.getRespectBowTicks() / 10.0F);
+            if (head != null) {
+                head.xRot += 0.42F * bow;
+            }
+            if (torso != null && !rotatedTorso) {
+                torso.xRot += 0.08F * bow;
+            }
+        }
+
+        boolean saberDrawn = forceUser != null && forceUser.isSaberDrawn();
+        boolean casting = forceUser != null && forceUser.getCastingPowerTicks() > 0;
         float attack = entity instanceof LivingEntity living ? living.getAttackAnim(0.0F) : 0.0F;
 
         if (saberDrawn) {
@@ -95,22 +108,22 @@ public final class ForceUserModelAnimator {
         if (rightLeg != null) {
             rightLeg.xRot += 0.0F;
             rightLeg.yRot += 0.0F;
-            rightLeg.zRot += -legRight;
+            rightLeg.zRot += legRight;
         }
         if (leftLeg != null) {
             leftLeg.xRot += 0.0F;
             leftLeg.yRot += 0.0F;
-            leftLeg.zRot += -legLeft;
+            leftLeg.zRot += legLeft;
         }
         if (rightArm != null) {
             rightArm.xRot += 0.0F;
             rightArm.yRot += 0.0F;
-            rightArm.zRot += -armRight;
+            rightArm.zRot += armRight;
         }
         if (leftArm != null) {
             leftArm.xRot += 0.0F;
             leftArm.yRot += 0.0F;
-            leftArm.zRot += -armLeft;
+            leftArm.zRot += armLeft;
         }
     }
 
@@ -187,7 +200,9 @@ public final class ForceUserModelAnimator {
         float swing = attack > 0.0F ? Mth.sin(Mth.sqrt(attack) * Mth.PI) : 0.0F;
 
         if (torso != null) {
-            torso.xRot += crouching ? 0.10F : 0.02F;
+            if (!rotatedTorso) {
+                torso.xRot += crouching ? 0.10F : 0.02F;
+            }
             torso.yRot += 0.055F * swing;
         }
 
@@ -223,7 +238,7 @@ public final class ForceUserModelAnimator {
 
     private static void applyForceCastPose(ModelPart rightArm, ModelPart leftArm, ModelPart torso, float ageInTicks, boolean rotatedTorso) {
         float pulse = Mth.sin(ageInTicks * 0.35F) * 0.06F;
-        if (torso != null) {
+        if (torso != null && !rotatedTorso) {
             torso.xRot += -0.02F;
         }
 

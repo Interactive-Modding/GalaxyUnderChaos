@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "galaxyunderchaos:large_single_template",
   "biomes": "#galaxyunderchaos:has_structure/ossus_jedi_library",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
@@ -28,12 +28,12 @@
       ]
     }
   },
-  "start_pool": "galaxyunderchaos:ossus_jedi_library",
-  "size": 1,
+  "template": "galaxyunderchaos:ossus_library",
   "start_height": {
     "absolute": 0
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "max_distance_from_center": 80,
-  "use_expansion_hack": false
+  "center_template": true,
+  "y_offset": 0,
+  "random_rotation": false
 }

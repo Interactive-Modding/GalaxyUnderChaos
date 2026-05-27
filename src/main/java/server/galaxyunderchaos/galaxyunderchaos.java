@@ -61,6 +61,7 @@ import server.galaxyunderchaos.entity.*;
 import server.galaxyunderchaos.entity.forceuser.ForceUserEntity;
 import server.galaxyunderchaos.event.LightsaberFormEventHandler;
 import server.galaxyunderchaos.force.ForceNetworking;
+import server.galaxyunderchaos.force.ForceSide;
 import server.galaxyunderchaos.item.*;
 import server.galaxyunderchaos.lightsaber.AdvancedLightsaberLegacyHilts;
 import server.galaxyunderchaos.lightsaber.LightsaberFormNetworking;
@@ -71,6 +72,7 @@ import server.galaxyunderchaos.ship.ShipNetworking;
 import server.galaxyunderchaos.menu.ModMenuTypes;
 import server.galaxyunderchaos.worldgen.biome.ModBiomes;
 import server.galaxyunderchaos.worldgen.tree.ModTreeGrowers;
+import server.galaxyunderchaos.worldgen.structure.ModStructureTypes;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -326,6 +328,18 @@ import java.util.function.Supplier;
     public static final RegistryObject<Item> TYTHON_JEDI_CROSSED_TORSO_STATUE_ITEM = ITEMS.register("tython_jedi_crossed_torso_statue", () -> new BlockItem(TYTHON_JEDI_CROSSED_TORSO_STATUE.get(), new Item.Properties()));
 
 
+    public static final RegistryObject<Block> KORRIBAN_IDLE_HEAD_STATUE = BLOCKS.register("korriban_idle_head_statue", TythonJediStatueHEAD::new);
+    public static final RegistryObject<Item> KORRIBAN_IDLE_HEAD_STATUE_ITEM = ITEMS.register("korriban_idle_head_statue", () -> new BlockItem(KORRIBAN_IDLE_HEAD_STATUE.get(), new Item.Properties()));
+    public static final RegistryObject<Block> KORRIBAN_IDLE_TORSO_STATUE = BLOCKS.register("korriban_idle_torso_statue", TythonJediStatueTORSO::new);
+    public static final RegistryObject<Item> KORRIBAN_IDLE_TORSO_STATUE_ITEM = ITEMS.register("korriban_idle_torso_statue", () -> new BlockItem(KORRIBAN_IDLE_TORSO_STATUE.get(), new Item.Properties()));
+    public static final RegistryObject<Block> KORRIBAN_IDLE_LEG_1_STATUE = BLOCKS.register("korriban_idle_leg_1_statue", TythonJediStatueLEG::new);
+    public static final RegistryObject<Item> KORRIBAN_IDLE_LEG_1_STATUE_ITEM = ITEMS.register("korriban_idle_leg_1_statue", () -> new BlockItem(KORRIBAN_IDLE_LEG_1_STATUE.get(), new Item.Properties()));
+    public static final RegistryObject<Block> KORRIBAN_IDLE_LEG_2_STATUE = BLOCKS.register("korriban_idle_leg_2_statue", TythonJediStatueLEG::new);
+    public static final RegistryObject<Item> KORRIBAN_IDLE_LEGS_2_STATUE_ITEM = ITEMS.register("korriban_idle_leg_2_statue", () -> new BlockItem(KORRIBAN_IDLE_LEG_2_STATUE.get(), new Item.Properties()));
+    public static final RegistryObject<Block> KORRIBAN_CROSSED_TORSO_STATUE = BLOCKS.register("korriban_crossed_torso_statue", TythonJediStatueCTORSO::new);
+    public static final RegistryObject<Item> KORRIBAN_CROSSED_TORSO_STATUE_ITEM = ITEMS.register("korriban_crossed_torso_statue", () -> new BlockItem(KORRIBAN_CROSSED_TORSO_STATUE.get(), new Item.Properties()));
+
+
     public static final RegistryObject<Block> SITH_GUARD_STATUE = BLOCKS.register("sith_guard_statue", SithGuard::new);
     public static final RegistryObject<Item> SITH_GUARD_STATUE_ITEM = ITEMS.register("sith_guard_statue", () -> new BlockItem(SITH_GUARD_STATUE.get(), new Item.Properties()));
     public static final RegistryObject<Block> LIGHTSABER_CRAFTING_TABLE = BLOCKS.register("lightsaber_crafting_table", () -> new LightsaberCraftingTableBlock());
@@ -369,13 +383,15 @@ import java.util.function.Supplier;
 
     // #ITEMS
 
+    public static final RegistryObject<Item> GALACTIC_GUIDE_BOOK = ITEMS.register("galactic_guide_book", () -> new GalacticGuideBookItem(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> SHUURA = ITEMS.register("shuura", () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEat().nutrition(4).saturationMod(2f).build())));
     public static final RegistryObject<Item> HEART_BERRY = ITEMS.register("heart_berry", () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEat().nutrition(8).saturationMod(2f).build())));
-    public static final RegistryObject<Item> JEDI_HOLOBOOK = ITEMS.register("jedi_holobook", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_HOLOBOOK = ITEMS.register("ancient_holobook", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SITH_HOLOBOOK = ITEMS.register("sith_holobook", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> JEDI_HOLOBOOK = ITEMS.register("jedi_holobook", () -> new ForceLoreHolobookItem(ForceSide.LIGHT, new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_HOLOBOOK = ITEMS.register("ancient_holobook", () -> new ForceLoreHolobookItem(ForceSide.NEUTRAL, new Item.Properties()));
+    public static final RegistryObject<Item> SITH_HOLOBOOK = ITEMS.register("sith_holobook", () -> new ForceLoreHolobookItem(ForceSide.DARK, new Item.Properties()));
     public static final RegistryObject<Item> RED_KYBER = ITEMS.register("red_kyber", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BLOOD_ORANGE_KYBER = ITEMS.register("blood_orange_kyber", () -> new Item(new Item.Properties()));
@@ -401,6 +417,7 @@ import java.util.function.Supplier;
     public static final RegistryObject<Item> NAVIGATION_COMPUTER = ITEMS.register("navigation_computer", () -> new Item(new Item.Properties()));
 //    public static final RegistryObject<Item> REACTOR_ASSEMBLY = ITEMS.register("reactor_assembly", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TITANIUM_CHROMIUM_INGOT = ITEMS.register("titanium_chromium_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FORCE_SHACKLES = ITEMS.register("force_shackles", () -> new ForceShacklesItem(new Item.Properties().stacksTo(1).durability(10)));
     public static final RegistryObject<Item> CYAN_KYBER = ITEMS.register("cyan_kyber", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WHITE_KYBER = ITEMS.register("white_kyber", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MAGENTA_KYBER = ITEMS.register("magenta_kyber", () -> new Item(new Item.Properties()));
@@ -526,6 +543,8 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
             () -> new ForgeSpawnEggItem(galaxyunderchaos.ACID_SPIDER, 0x53524b, 0xdac741, new Item.Properties()));
     public static final RegistryObject<Item> WINGMAW_SPAWN_EGG = ITEMS.register("wingmaw_spawn_egg",
             () -> new ForgeSpawnEggItem(galaxyunderchaos.WINGMAW, 0x53524b, 0xdac741, new Item.Properties()));
+    public static final RegistryObject<Item> VONSKR_SPAWN_EGG = ITEMS.register("vonskr_spawn_egg",
+            () -> new ForgeSpawnEggItem(galaxyunderchaos.VONSKR, 0x2D241F, 0xB9875A, new Item.Properties()));
     public static final RegistryObject<Block> COUNCIL_CHAIR_1 = BLOCKS.register("council_chair_1", () -> new RotatableSittableChairBlock(BlockBehaviour.Properties.of().strength(2.0F).noOcclusion()));
     public static final RegistryObject<Block> COUNCIL_CHAIR_2 = BLOCKS.register("council_chair_2", () -> new RotatableSittableChairBlock(BlockBehaviour.Properties.of().strength(2.0F).noOcclusion()));
     public static final RegistryObject<Block> COUNCIL_CHAIR_3 = BLOCKS.register("council_chair_3", () -> new RotatableSittableChairBlock(BlockBehaviour.Properties.of().strength(2.0F).noOcclusion()));
@@ -1590,6 +1609,12 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
     public static final RegistryObject<EntityType<WingmawEntity>> WINGMAW =
             ENTITY_TYPES.register("wingmaw", () -> EntityType.Builder.of(WingmawEntity::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.0f).build("wingmaw"));
+    public static final RegistryObject<EntityType<VonskrEntity>> VONSKR =
+            ENTITY_TYPES.register("vonskr", () -> EntityType.Builder.of(VonskrEntity::new, MobCategory.MONSTER)
+                    .sized(1.15F, 1.05F)
+                    .clientTrackingRange(64)
+                    .updateInterval(2)
+                    .build("vonskr"));
     public static final RegistryObject<EntityType<ForceUserEntity>> JEDI_FORCE_USER =
             ENTITY_TYPES.register("jedi_force_user", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
                     .sized(0.6F, 1.95F)
@@ -1626,6 +1651,18 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
                     .clientTrackingRange(80)
                     .updateInterval(2)
                     .build("jedi_master"));
+    public static final RegistryObject<EntityType<ForceUserEntity>> NEUTRAL_FORCE_USER =
+            ENTITY_TYPES.register("neutral_force_user", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
+                    .sized(0.6F, 1.95F)
+                    .clientTrackingRange(64)
+                    .updateInterval(2)
+                    .build("neutral_force_user"));
+    public static final RegistryObject<EntityType<ForceUserEntity>> NEUTRAL_MASTER =
+            ENTITY_TYPES.register("neutral_master", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
+                    .sized(0.6F, 1.95F)
+                    .clientTrackingRange(80)
+                    .updateInterval(2)
+                    .build("neutral_master"));
     public static final RegistryObject<EntityType<ForceUserEntity>> SITH_APPRENTICE =
             ENTITY_TYPES.register("sith_apprentice", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
                     .sized(0.48F, 1.52F)
@@ -1638,6 +1675,12 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
                     .clientTrackingRange(64)
                     .updateInterval(2)
                     .build("jedi_padawan"));
+    public static final RegistryObject<EntityType<ForceUserEntity>> NEUTRAL_PADAWAN =
+            ENTITY_TYPES.register("neutral_padawan", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
+                    .sized(0.48F, 1.52F)
+                    .clientTrackingRange(64)
+                    .updateInterval(2)
+                    .build("neutral_padawan"));
     public static final RegistryObject<EntityType<ForceUserEntity>> JEDI_TEMPLE_GUARD =
             ENTITY_TYPES.register("jedi_temple_guard", () -> EntityType.Builder.<ForceUserEntity>of(ForceUserEntity::new, MobCategory.CREATURE)
                     .sized(0.6F, 1.95F)
@@ -1663,10 +1706,16 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
             () -> new ForgeSpawnEggItem(SITH_LORD, 0x240000, 0xFF2B1F, new Item.Properties()));
     public static final RegistryObject<Item> JEDI_MASTER_SPAWN_EGG = ITEMS.register("jedi_master_spawn_egg",
             () -> new ForgeSpawnEggItem(JEDI_MASTER, 0x2E5FDB, 0xF1E0B1, new Item.Properties()));
+    public static final RegistryObject<Item> NEUTRAL_FORCE_USER_SPAWN_EGG = ITEMS.register("neutral_force_user_spawn_egg",
+            () -> new ForgeSpawnEggItem(NEUTRAL_FORCE_USER, 0xF5F5F5, 0x8FA0B3, new Item.Properties()));
+    public static final RegistryObject<Item> NEUTRAL_MASTER_SPAWN_EGG = ITEMS.register("neutral_master_spawn_egg",
+            () -> new ForgeSpawnEggItem(NEUTRAL_MASTER, 0xFFFFFF, 0x66707C, new Item.Properties()));
     public static final RegistryObject<Item> SITH_APPRENTICE_SPAWN_EGG = ITEMS.register("sith_apprentice_spawn_egg",
             () -> new ForgeSpawnEggItem(SITH_APPRENTICE, 0x4A0000, 0xE06042, new Item.Properties()));
     public static final RegistryObject<Item> JEDI_PADAWAN_SPAWN_EGG = ITEMS.register("jedi_padawan_spawn_egg",
             () -> new ForgeSpawnEggItem(JEDI_PADAWAN, 0x4F7DDB, 0xFFF4C8, new Item.Properties()));
+    public static final RegistryObject<Item> NEUTRAL_PADAWAN_SPAWN_EGG = ITEMS.register("neutral_padawan_spawn_egg",
+            () -> new ForgeSpawnEggItem(NEUTRAL_PADAWAN, 0xF7F7F7, 0xC8D0D8, new Item.Properties()));
     public static final RegistryObject<Item> JEDI_TEMPLE_GUARD_SPAWN_EGG = ITEMS.register("jedi_temple_guard_spawn_egg",
             () -> new ForgeSpawnEggItem(JEDI_TEMPLE_GUARD, 0xE6C34A, 0xF7F0DA, new Item.Properties()));
     public static final RegistryObject<Item> SITH_GUARD_SPAWN_EGG = ITEMS.register("sith_guard_spawn_egg",
@@ -1694,6 +1743,12 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
                     .clientTrackingRange(64)
                     .updateInterval(1)
                     .build("force_ability_effect"));
+    public static final RegistryObject<EntityType<ForceProjectionCloneEntity>> FORCE_PROJECTION_CLONE =
+            ENTITY_TYPES.register("force_projection_clone", () -> EntityType.Builder.<ForceProjectionCloneEntity>of(ForceProjectionCloneEntity::new, MobCategory.MISC)
+                    .sized(0.6F, 1.95F)
+                    .clientTrackingRange(64)
+                    .updateInterval(2)
+                    .build("force_projection_clone"));
     public static final RegistryObject<EntityType<ThrownLightsaberEntity>> THROWN_LIGHTSABER =
             ENTITY_TYPES.register("thrown_lightsaber", () -> EntityType.Builder.<ThrownLightsaberEntity>of(ThrownLightsaberEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F)
@@ -1725,6 +1780,7 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
         ITEMS.register(modEventBus);
         PARTICLE_TYPES.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
+        ModStructureTypes.register(modEventBus);
         CreativeMenuTabs.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
 //        registerLightsabers();
@@ -1815,20 +1871,25 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
     private void clientSetup(final FMLClientSetupEvent event) {
         EntityRenderers.register(galaxyunderchaos.ACID_SPIDER.get(), AcidSpiderRenderer::new);
         EntityRenderers.register(galaxyunderchaos.WINGMAW.get(), WingmawRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.VONSKR.get(), VonskrRenderer::new);
         EntityRenderers.register(galaxyunderchaos.JEDI_FORCE_USER.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_FORCE_USER.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_GHOST.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_LORD_GHOST.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_LORD.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.JEDI_MASTER.get(), ForceUserRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.NEUTRAL_FORCE_USER.get(), ForceUserRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.NEUTRAL_MASTER.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_APPRENTICE.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.JEDI_PADAWAN.get(), ForceUserRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.NEUTRAL_PADAWAN.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.JEDI_TEMPLE_GUARD.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SITH_GUARD.get(), ForceUserRenderer::new);
         EntityRenderers.register(galaxyunderchaos.SEAT.get(), SeatRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FORCE_BEAM_EFFECT.get(), ForceBeamEffectRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FORCE_PUSH_WAVE.get(), ForcePushWaveRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FORCE_ABILITY_EFFECT.get(), ForceAbilityEffectRenderer::new);
+        EntityRenderers.register(galaxyunderchaos.FORCE_PROJECTION_CLONE.get(), ForceProjectionCloneRenderer::new);
         EntityRenderers.register(galaxyunderchaos.THROWN_LIGHTSABER.get(), ThrownLightsaberRenderer::new);
         EntityRenderers.register(galaxyunderchaos.NOVADIVE_ENTITY.get(), NovadiveRenderer::new);
         EntityRenderers.register(galaxyunderchaos.FLASHFIRE_ENTITY.get(), FlashfireRenderer::new);

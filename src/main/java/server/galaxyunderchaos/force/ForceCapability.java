@@ -23,10 +23,14 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
     private int lightDatacrons = 0;
     private int darkDatacrons = 0;
     private int ancientDatacrons = 0;
+    private int lightSidePoints = 0;
+    private int darkSidePoints = 0;
+    private int neutralKnowledgePoints = 0;
     private ForceSide committedSide = ForceSide.UNIVERSAL;
     private ForceSide alignmentFlashSide = ForceSide.UNIVERSAL;
     private int alignmentFlashTicks = 0;
     private boolean hasTrainedStudent = false;
+    private boolean hasForceMentor = false;
 
     private String activeVisualPowerId = "";
     private int visualTicks = 0;
@@ -83,6 +87,7 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
             case NEUTRAL -> {
                 unlockPower(ForcePower.NEUTRAL);
                 unlockPower(ForcePower.PUSH1);
+                unlockPower(ForcePower.PULL1);
                 unlockPower(ForcePower.SPEED);
                 unlockPower(ForcePower.SIGHT1);
                 unlockPower(ForcePower.MEDITATION1);
@@ -182,6 +187,83 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
         }
     }
 
+
+    public int getLightSidePoints() {
+        return lightSidePoints;
+    }
+
+    public int getDarkSidePoints() {
+        return darkSidePoints;
+    }
+
+    public int getNeutralKnowledgePoints() {
+        return neutralKnowledgePoints;
+    }
+
+    public int getAlignmentPoints(ForceSide side) {
+        return switch (side) {
+            case LIGHT -> lightSidePoints;
+            case DARK -> darkSidePoints;
+            case NEUTRAL -> neutralKnowledgePoints;
+            default -> Math.max(lightSidePoints, Math.max(darkSidePoints, neutralKnowledgePoints));
+        };
+    }
+
+    public int getAlignmentBalance() {
+        return lightSidePoints - darkSidePoints;
+    }
+
+    public ForceSide getObservedAlignmentSide() {
+        int balance = getAlignmentBalance();
+        if (balance >= 25) {
+            return ForceSide.LIGHT;
+        }
+        if (balance <= -25) {
+            return ForceSide.DARK;
+        }
+        return ForceSide.NEUTRAL;
+    }
+
+    public void addAlignmentPoints(ForceSide side, int amount) {
+        int clamped = Math.max(0, amount);
+        if (clamped <= 0) {
+            return;
+        }
+        switch (side) {
+            case LIGHT -> lightSidePoints += clamped;
+            case DARK -> darkSidePoints += clamped;
+            case NEUTRAL -> neutralKnowledgePoints += clamped;
+            default -> { return; }
+        }
+        dirty = true;
+    }
+
+    public boolean hasAlignmentPointsFor(ForceSide side, int amount) {
+        int clamped = Math.max(0, amount);
+        if (clamped <= 0) {
+            return true;
+        }
+        return getAlignmentPoints(side) >= clamped;
+    }
+
+    public boolean consumeAlignmentPoints(ForceSide side, int amount) {
+        int clamped = Math.max(0, amount);
+        if (clamped <= 0) {
+            return true;
+        }
+        if (!hasAlignmentPointsFor(side, clamped)) {
+            return false;
+        }
+        switch (side) {
+            case LIGHT -> lightSidePoints -= clamped;
+            case DARK -> darkSidePoints -= clamped;
+            case NEUTRAL -> neutralKnowledgePoints -= clamped;
+            default -> { return false; }
+        }
+        dirty = true;
+        return true;
+    }
+
     public boolean hasTrainedStudent() {
         return hasTrainedStudent;
     }
@@ -193,26 +275,43 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
         }
     }
 
+    public boolean hasForceMentor() {
+        return hasForceMentor;
+    }
+
+    public void setHasForceMentor(boolean hasForceMentor) {
+        if (this.hasForceMentor != hasForceMentor) {
+            this.hasForceMentor = hasForceMentor;
+            dirty = true;
+        }
+    }
+
     public void renounceAndCommit(ForceSide newSide) {
         ForceSide safeSide = newSide == null ? ForceSide.UNIVERSAL : newSide;
+
+        // Renouncing a side strips old path-specific abilities. Universal Force
+        // training levels and neutral/ancient knowledge remain, so switching
+        // paths does not erase basic sensitivity or balance techniques.
+        if (safeSide == ForceSide.LIGHT) {
+            removeSidePowers(ForceSide.DARK);
+        } else if (safeSide == ForceSide.DARK) {
+            removeSidePowers(ForceSide.LIGHT);
+        } else if (safeSide == ForceSide.NEUTRAL) {
+            removeSidePowers(ForceSide.LIGHT);
+            removeSidePowers(ForceSide.DARK);
+        }
+
         unlockPower(ForcePower.FORCE_SENSITIVITY);
         unlockPower(ForcePower.FORCE_LEVEL1);
         if (safeSide == ForceSide.LIGHT) {
-            removeSidePowers(ForceSide.DARK);
             unlockPower(ForcePower.LIGHT_SIDE);
         } else if (safeSide == ForceSide.DARK) {
-            removeSidePowers(ForceSide.LIGHT);
             unlockPower(ForcePower.DARK_SIDE);
         } else if (safeSide == ForceSide.NEUTRAL) {
             unlockPower(ForcePower.NEUTRAL);
         }
         committedSide = safeSide;
-        if (selectedPowerId != null) {
-            ForcePower selected = ForcePower.byId(selectedPowerId);
-            if (selected != null && !hasPower(selected)) {
-                selectedPowerId = "";
-            }
-        }
+        validateSelectedPower();
         currentForce = getMaxForce();
         dirty = true;
     }
@@ -222,6 +321,15 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
             ForcePower power = ForcePower.byId(id);
             return power != null && power.side() == side;
         });
+    }
+
+    private void validateSelectedPower() {
+        if (selectedPowerId != null) {
+            ForcePower selected = ForcePower.byId(selectedPowerId);
+            if (selected != null && !hasPower(selected)) {
+                selectedPowerId = "";
+            }
+        }
     }
 
 
@@ -482,7 +590,11 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
         lightDatacrons = other.lightDatacrons;
         darkDatacrons = other.darkDatacrons;
         ancientDatacrons = other.ancientDatacrons;
+        lightSidePoints = other.lightSidePoints;
+        darkSidePoints = other.darkSidePoints;
+        neutralKnowledgePoints = other.neutralKnowledgePoints;
         hasTrainedStudent = other.hasTrainedStudent;
+        hasForceMentor = other.hasForceMentor;
         committedSide = other.committedSide;
         alignmentFlashSide = other.alignmentFlashSide;
         alignmentFlashTicks = other.alignmentFlashTicks;
@@ -511,8 +623,12 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
         tag.putInt("LightDatacrons", lightDatacrons);
         tag.putInt("DarkDatacrons", darkDatacrons);
         tag.putInt("AncientDatacrons", ancientDatacrons);
+        tag.putInt("LightSidePoints", lightSidePoints);
+        tag.putInt("DarkSidePoints", darkSidePoints);
+        tag.putInt("NeutralKnowledgePoints", neutralKnowledgePoints);
         tag.putString("CommittedSide", getCommittedSide().name());
         tag.putBoolean("HasTrainedStudent", hasTrainedStudent);
+        tag.putBoolean("HasForceMentor", hasForceMentor);
         tag.putString("AlignmentFlashSide", getAlignmentFlashSide().name());
         tag.putInt("AlignmentFlashTicks", alignmentFlashTicks);
         tag.putString("ActiveVisualPower", activeVisualPowerId);
@@ -539,8 +655,12 @@ public class ForceCapability implements INBTSerializable<CompoundTag> {
         lightDatacrons = tag.getInt("LightDatacrons");
         darkDatacrons = tag.getInt("DarkDatacrons");
         ancientDatacrons = tag.getInt("AncientDatacrons");
+        lightSidePoints = tag.getInt("LightSidePoints");
+        darkSidePoints = tag.getInt("DarkSidePoints");
+        neutralKnowledgePoints = tag.getInt("NeutralKnowledgePoints");
         committedSide = parseSide(tag.getString("CommittedSide"), ForceSide.UNIVERSAL);
         hasTrainedStudent = tag.getBoolean("HasTrainedStudent");
+        hasForceMentor = tag.getBoolean("HasForceMentor");
         alignmentFlashSide = parseSide(tag.getString("AlignmentFlashSide"), ForceSide.UNIVERSAL);
         alignmentFlashTicks = tag.getInt("AlignmentFlashTicks");
         activeVisualPowerId = tag.getString("ActiveVisualPower");

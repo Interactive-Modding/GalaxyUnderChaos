@@ -19,7 +19,7 @@ public final class ForceUserLoadout {
             "blue", "blue", "blue",
             "green", "green", "green",
             "yellow", "cyan",
-            "purple", "white"
+            "purple"
     };
 
     private static final String[] JEDI_RARE_COLORS = {
@@ -34,9 +34,7 @@ public final class ForceUserLoadout {
     };
 
     private static final String[] NEUTRAL_COLORS = {
-            "blue", "green", "yellow", "cyan", "white", "purple", "orange", "amber",
-            "gold", "lime_green", "turquoise", "magenta", "pink", "light_blue", "dark_blue",
-            "deep_violet", "arctic_blue", "rose_pink", "red", "blood_orange", "maroon"
+            "white"
     };
 
     private ForceUserLoadout() {
@@ -47,7 +45,7 @@ public final class ForceUserLoadout {
     }
 
     public static ItemStack randomLightsaber(RandomSource random, ForceUserSide side, float modifierChance, boolean lordQuality) {
-        String bladeColor = side.isDark() ? chooseSithColor(random) : chooseJediColor(random);
+        String bladeColor = side.isDark() ? chooseSithColor(random) : side.isNeutral() ? "white" : chooseJediColor(random);
         List<String> hilts = new ArrayList<>(AdvancedLightsaberLegacyHilts.HILTS.keySet());
         String emitter = randomFrom(hilts, random);
         String switchSection = random.nextFloat() < (lordQuality ? 0.55F : 0.35F) ? randomFrom(hilts, random) : emitter;
@@ -86,19 +84,36 @@ public final class ForceUserLoadout {
     }
 
     public static List<ForcePower> randomPowers(RandomSource random, ForceUserSide side, int maxTier) {
-        ForcePower[] pool = side.isDark()
-                ? new ForcePower[] {
-                ForcePower.LIGHTNING1, ForcePower.LIGHTNING2, ForcePower.LIGHTNING3,
-                ForcePower.DRAIN1, ForcePower.DRAIN2, ForcePower.DRAIN3,
-                ForcePower.WOUND1, ForcePower.WOUND2, ForcePower.WOUND3,
-                ForcePower.PUSH1, ForcePower.PUSH2, ForcePower.PUSH3, ForcePower.SPEED, ForcePower.THROW1, ForcePower.RESIST1, ForcePower.RESIST2, ForcePower.SIGHT1
+        ForcePower[] pool;
+        if (side.isDark()) {
+            pool = new ForcePower[] {
+                    ForcePower.LIGHTNING1, ForcePower.LIGHTNING2, ForcePower.LIGHTNING3,
+                    ForcePower.DRAIN1, ForcePower.DRAIN2, ForcePower.DRAIN3,
+                    ForcePower.WOUND1, ForcePower.WOUND2, ForcePower.WOUND3,
+                    ForcePower.FORCE_SCREAM1, ForcePower.FORCE_SCREAM2, ForcePower.FORCE_SCREAM3,
+                    ForcePower.FORCE_DESTRUCTION1, ForcePower.FORCE_DESTRUCTION2, ForcePower.FORCE_DESTRUCTION3,
+                    ForcePower.PUSH1, ForcePower.PUSH2, ForcePower.PUSH3, ForcePower.PULL1, ForcePower.PULL2, ForcePower.PULL3, ForcePower.SPEED, ForcePower.FORCE_LEAP, ForcePower.THROW1, ForcePower.RESIST1, ForcePower.RESIST2, ForcePower.SIGHT1
+            };
+        } else if (side.isNeutral()) {
+            pool = new ForcePower[] {
+                    ForcePower.PUSH1, ForcePower.PUSH2, ForcePower.PUSH3,
+                    ForcePower.PULL1, ForcePower.PULL2, ForcePower.PULL3,
+                    ForcePower.SPEED, ForcePower.SIGHT1, ForcePower.SIGHT2, ForcePower.SIGHT3,
+                    ForcePower.RESIST1, ForcePower.RESIST2, ForcePower.RESIST3,
+                    ForcePower.MEDITATION1, ForcePower.MEDITATION2, ForcePower.MEDITATION3,
+                    ForcePower.FORCE_LEAP, ForcePower.FORCE_PROJECTION1, ForcePower.FORCE_PROJECTION2, ForcePower.FORCE_PROJECTION3,
+                    ForcePower.THROW1, ForcePower.THROW2,
+                    ForcePower.REBOUND
+            };
+        } else {
+            pool = new ForcePower[] {
+                    ForcePower.HEAL1, ForcePower.HEAL2, ForcePower.HEAL3,
+                    ForcePower.FORTIFY1, ForcePower.FORTIFY2, ForcePower.FORTIFY3,
+                    ForcePower.STUN1, ForcePower.STUN2, ForcePower.STUN3,
+                    ForcePower.ELECTRIC_JUDGMENT1, ForcePower.ELECTRIC_JUDGMENT2, ForcePower.ELECTRIC_JUDGMENT3, ForcePower.TUTAMINIS,
+                    ForcePower.PUSH1, ForcePower.PUSH2, ForcePower.PUSH3, ForcePower.PULL1, ForcePower.PULL2, ForcePower.PULL3, ForcePower.SPEED, ForcePower.FORCE_LEAP, ForcePower.SIGHT1, ForcePower.RESIST1, ForcePower.RESIST2, ForcePower.THROW1
+            };
         }
-                : new ForcePower[] {
-                ForcePower.HEAL1, ForcePower.HEAL2, ForcePower.HEAL3,
-                ForcePower.FORTIFY1, ForcePower.FORTIFY2, ForcePower.FORTIFY3,
-                ForcePower.STUN1, ForcePower.STUN2, ForcePower.STUN3,
-                ForcePower.PUSH1, ForcePower.PUSH2, ForcePower.PUSH3, ForcePower.SPEED, ForcePower.SIGHT1, ForcePower.RESIST1, ForcePower.RESIST2, ForcePower.THROW1
-        };
 
         int count = Math.max(1, maxTier) + random.nextInt(3);
         List<ForcePower> result = new ArrayList<>();
@@ -120,12 +135,19 @@ public final class ForceUserLoadout {
         if (powerSide == ForceSide.NEUTRAL || powerSide == ForceSide.UNIVERSAL) {
             return true;
         }
-        return side.isDark() ? powerSide == ForceSide.DARK : powerSide == ForceSide.LIGHT;
+        if (side.isDark()) {
+            return powerSide == ForceSide.DARK;
+        }
+        if (side.isNeutral()) {
+            return powerSide == ForceSide.NEUTRAL || powerSide == ForceSide.UNIVERSAL;
+        }
+        return powerSide == ForceSide.LIGHT;
     }
 
     public static ItemStack holobookFor(ForceUserSide side) {
         return side.isDark()
                 ? new ItemStack(galaxyunderchaos.SITH_HOLOBOOK.get())
+                : side.isNeutral() ? new ItemStack(galaxyunderchaos.ANCIENT_HOLOBOOK.get())
                 : new ItemStack(galaxyunderchaos.JEDI_HOLOBOOK.get());
     }
 
@@ -136,7 +158,7 @@ public final class ForceUserLoadout {
     }
 
     public static ItemStack datacronFor(ForceUserSide side) {
-        return side.isDark() ? new ItemStack(galaxyunderchaos.SITH_DATACRON.get()) : new ItemStack(galaxyunderchaos.JEDI_DATACRON.get());
+        return side.isDark() ? new ItemStack(galaxyunderchaos.SITH_DATACRON.get()) : side.isNeutral() ? new ItemStack(galaxyunderchaos.ANCIENT_DATACRON.get()) : new ItemStack(galaxyunderchaos.JEDI_DATACRON.get());
     }
 
     public static void setLightsaberActive(ItemStack stack, boolean active) {

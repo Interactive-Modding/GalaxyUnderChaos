@@ -40,6 +40,10 @@ public final class LegacyRenderStates {
         return RenderStateShardAccessor.guc$getColorDepthWrite();
     }
 
+    public static RenderStateShard.WriteMaskStateShard depthWrite() {
+        return RenderStateShardAccessor.guc$getDepthWrite();
+    }
+
     public static RenderStateShard.OverlayStateShard noOverlay() {
         return RenderStateShardAccessor.guc$getNoOverlay();
     }

@@ -45,6 +45,14 @@ public final class KeyBindings {
             "key.categories.galaxyunderchaos"
     );
 
+    public static final KeyMapping SHOW_FORCE_ALIGNMENT = new KeyMapping(
+            "key.galaxyunderchaos.show_force_alignment",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_H,
+            "key.categories.galaxyunderchaos"
+    );
+
     public static final KeyMapping SHIP_ASCEND = new KeyMapping(
             "key.galaxyunderchaos.ship_ascend",
             KeyConflictContext.IN_GAME,
@@ -105,6 +113,7 @@ public final class KeyBindings {
         event.register(TOGGLE_LIGHTSABER);
         event.register(CYCLE_FORCE_POWER);
         event.register(USE_FORCE_POWER);
+        event.register(SHOW_FORCE_ALIGNMENT);
         event.register(SHIP_ASCEND);
         event.register(SHIP_DESCEND);
         event.register(SHIP_ROLL_LEFT);

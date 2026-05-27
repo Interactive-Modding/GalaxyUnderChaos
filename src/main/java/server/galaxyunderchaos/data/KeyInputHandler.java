@@ -1,13 +1,16 @@
 package server.galaxyunderchaos.data;
 
 import client.ShipRenderingHandler;
+import client.renderer.ForceAlignmentOverlay;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import server.galaxyunderchaos.galaxyunderchaos;
 import server.galaxyunderchaos.entity.NovadiveEntity;
+import server.galaxyunderchaos.entity.forceuser.ForceUserEntity;
 import server.galaxyunderchaos.entity.FlashfireEntity;
 import server.galaxyunderchaos.force.*;
 import server.galaxyunderchaos.lightsaber.LightsaberFormNetworking;
@@ -87,22 +90,29 @@ public class KeyInputHandler {
             ForceNetworking.sendToServer(new CycleForcePowerPacket());
         }
 
-        boolean isLightning = mc.player != null && mc.player.getCapability(ForceProvider.FORCE_CAPABILITY)
-                .map(cap -> {
-                    ForcePower power = cap.getSelectedPower();
-                    return power == ForcePower.LIGHTNING1 || power == ForcePower.LIGHTNING2 || power == ForcePower.LIGHTNING3;
-                }).orElse(false);
+        while (KeyBindings.SHOW_FORCE_ALIGNMENT.consumeClick()) {
+            Entity lookedAt = mc.crosshairPickEntity;
+            if (lookedAt instanceof ForceUserEntity forceUser) {
+                ForceAlignmentOverlay.showEntityStatus(forceUser, 180);
+            } else {
+                ForceAlignmentOverlay.showStatus(180);
+            }
+        }
+
+        boolean holdAbility = mc.player != null && mc.player.getCapability(ForceProvider.FORCE_CAPABILITY)
+                .map(cap -> ForcePowerHandler.isHoldAbility(cap.getSelectedPower()))
+                .orElse(false);
         boolean down = KeyBindings.USE_FORCE_POWER.isDown();
 
         if (down && !wasForceUseDown) {
-            if (isLightning) {
+            if (holdAbility) {
                 ForceNetworking.sendToServer(new SetForceUseStatePacket(true));
             } else {
                 ForceNetworking.sendToServer(new UseForcePowerPacket());
             }
         }
 
-        if (!down && wasForceUseDown && isLightning) {
+        if (!down && wasForceUseDown && holdAbility) {
             ForceNetworking.sendToServer(new SetForceUseStatePacket(false));
         }
 

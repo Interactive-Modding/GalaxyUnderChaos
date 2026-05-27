@@ -27,6 +27,11 @@ public interface RenderStateShardAccessor {
         throw new AssertionError();
     }
 
+    @Accessor("DEPTH_WRITE")
+    static RenderStateShard.WriteMaskStateShard guc$getDepthWrite() {
+        throw new AssertionError();
+    }
+
     @Accessor("NO_OVERLAY")
     static RenderStateShard.OverlayStateShard guc$getNoOverlay() {
         throw new AssertionError();

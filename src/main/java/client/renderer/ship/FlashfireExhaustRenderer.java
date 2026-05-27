@@ -1,7 +1,6 @@
 package client.renderer.ship;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.joml.Matrix4f;
 import server.galaxyunderchaos.entity.FlashfireEntity;
 import server.galaxyunderchaos.ship.FlashfireEngineLayout;
 
@@ -49,7 +48,6 @@ public final class FlashfireExhaustRenderer {
             return;
         }
 
-        Matrix4f matrix = new Matrix4f(poseStack.last().pose());
         float flicker = 0.9F + ((ship.tickCount + partialTick) % 6.0F) * 0.025F;
 
         int engineIndex = 0;
@@ -59,11 +57,24 @@ public final class FlashfireExhaustRenderer {
             float z = engine.renderZ() + GLOBAL_ENGINE_OFFSET_Z + getEngineOffset(engineIndex, 2);
             float scale = getEngineScale(engineIndex);
 
-            ShipEnginePrivateGlow.queueCone(matrix, x, y, z, 0.12F * scale, 1.05F * scale * power * flicker, 70, 145, 255, 92);
-            ShipEnginePrivateGlow.queueCone(matrix, x, y, z, 0.055F * scale, 0.72F * scale * power * flicker, 180, 220, 255, 165);
+            // Keep this in the normal entity buffer path. Do not restore the old late/private queue;
+            // that is what caused Oculus to double / misplace the engine cones.
+            // These values intentionally compensate for the loss of the old stacked private pass
+            // so the exhaust keeps the same bright saber-like punch without rendering twice.
+            float outerRadius = 0.14F * scale;
+            float outerLength = 1.10F * scale * power * flicker;
+
+            // Draw small -> large because the engine RenderType writes depth.
+            // This keeps the bright core visible while the final outer cone leaves
+            // a real depth value for water / translucent entities behind the jet.
+            ShipEnginePrivateGlow.renderCone(poseStack, buffer, x, y, z, 0.030F * scale, 0.56F * scale * power * flicker, 235, 250, 255, 255);
+            ShipEnginePrivateGlow.renderCone(poseStack, buffer, x, y, z, 0.070F * scale, 0.78F * scale * power * flicker, 165, 215, 255, 245);
+            ShipEnginePrivateGlow.renderCone(poseStack, buffer, x, y, z, outerRadius, outerLength, 70, 145, 255, 175);
 
             engineIndex++;
         }
+
+        ShipEnginePrivateGlow.flush(buffer);
     }
 
     private static float getEngineOffset(int engineIndex, int axis) {

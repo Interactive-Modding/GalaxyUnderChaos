@@ -25,8 +25,8 @@ public enum ForceUserSpecies {
 
     RODIAN_MALE("rodian_male", "rodian_male", ForceUserSide.LIGHT, false, "rodian_male", "rodian_male_2", "rodian_male_3"),
     RODIAN_FEMALE("rodian_female", "rodian_female", ForceUserSide.LIGHT, false, "rodian_female", "rodian_female_2", "rodian_female_3"),
-    ZABRAK_MALE("zabrak_male", "zabrack_male", ForceUserSide.LIGHT, false),
-    ZABRAK_FEMALE("zabrak_female", "zabrack_female", ForceUserSide.LIGHT, false),
+    ZABRAK_MALE("zabrak_male", "zabrack_male", ForceUserSide.LIGHT, false, "zabrack_male", "zabrack_male_2", "zabrack_male_3"),
+    ZABRAK_FEMALE("zabrak_female", "zabrack_female", ForceUserSide.LIGHT, false, "zabrack_female", "zabrack_female_2", "zabrack_female_3"),
     TWILEK_MALE("twilek_male", "twilek_male", ForceUserSide.LIGHT, false, "twilek_male", "twilek_male_2", "twilek_male_3"),
     TWILEK_FEMALE("twilek_female", "twilek_female", ForceUserSide.LIGHT, false, "twilek_female", "twilek_female_2", "twilek_female_3"),
     TOGRUTA_MALE("togruta_male", "togruta_male", ForceUserSide.LIGHT, false, "togruta_male", "togruta_male_2", "togruta_male_3", "togruta_male_4"),

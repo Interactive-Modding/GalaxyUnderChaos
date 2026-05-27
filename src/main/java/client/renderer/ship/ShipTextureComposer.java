@@ -116,7 +116,7 @@ public final class ShipTextureComposer {
             int height = Math.min(target.getHeight(), mask.getHeight());
             for (int y = 0; y < height; y++) {
                 for (int x = 0; x < width; x++) {
-                    if (isProtectedGlassPixel(x, y)) {
+                    if (isProtectedGlassPixel(x, y) && !isRightEngineRecolorPixel(x, y)) {
                         continue;
                     }
 
@@ -136,6 +136,16 @@ public final class ShipTextureComposer {
                 }
             }
         }
+    }
+
+    /**
+     * Some right-engine UV islands sit inside rectangles that were originally
+     * protected as cockpit/window pixels. These islands are not glass, so they
+     * must stay recolorable while the actual cockpit glass remains protected.
+     */
+    private static boolean isRightEngineRecolorPixel(int x, int y) {
+        return in(x, y, 153, 187, 167, 200)
+                || in(x, y, 0, 189, 8, 202);
     }
 
     /**

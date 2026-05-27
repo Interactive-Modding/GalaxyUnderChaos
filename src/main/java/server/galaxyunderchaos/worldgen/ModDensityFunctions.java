@@ -211,7 +211,7 @@ public class ModDensityFunctions {
     private static ResourceKey<DensityFunction> densityKey(String path) {
         return ResourceKey.create(
                 Registries.DENSITY_FUNCTION,
-                ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, path)
+                new ResourceLocation(galaxyunderchaos.MODID, path)
         );
     }
 }

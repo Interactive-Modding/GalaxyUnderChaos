@@ -74,8 +74,15 @@ public class HolocronPowerActionPacket {
                             player.displayClientMessage(Component.literal("Embracing dark side..."), false);
                         } else if (power == ForcePower.LIGHT_SIDE) {
                             cap.setCommittedSide(ForceSide.LIGHT);
-                            player.displayClientMessage(Component.literal("You turn toward the light side."), false);
+                            cap.beginAlignmentFlash(ForceSide.LIGHT, 120);
+                            player.displayClientMessage(Component.literal("Embracing the light..."), false);
                         }
+                    }
+
+                    if (ForceHolocronLogic.isAncientHolocron(menu.getSide()) && power == ForcePower.NEUTRAL) {
+                        cap.setCommittedSide(ForceSide.NEUTRAL);
+                        cap.beginAlignmentFlash(ForceSide.NEUTRAL, 120);
+                        player.displayClientMessage(Component.literal("Embracing balance..."), false);
                     }
 
                     if (power.isSelectable()) {

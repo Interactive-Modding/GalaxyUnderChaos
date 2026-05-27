@@ -1,43 +1,122 @@
 package client.renderer.ship;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
+import client.renderer.lightsaber.legacy.LegacyRenderStates;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.blaze3d.vertex.VertexSorting;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderStateShard;
+import net.minecraft.client.renderer.RenderType;
 import org.joml.Matrix4f;
-import server.galaxyunderchaos.galaxyunderchaos;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Shader-resistant private engine exhaust pass.
+ * Ship engine exhaust glow.
  *
- * The ship engines previously used a normal translucent RenderType. That works in vanilla, but Iris/Oculus
- * and some optimization stacks can route custom translucent RenderTypes through shader programs that strip
- * or recolor additive POSITION_COLOR geometry. This mirrors the private saber outer-glow path: queue the
- * already-transformed engine geometry during the entity render, then replay it in a controlled additive pass
- * after the level has rendered.
+ * Important: this is intentionally NOT a late RenderLevelStage private pass.
+ * The previous ship engine implementation queued engine cones and replayed
+ * them after the level render. Shader stacks such as Oculus can make entity
+ * rendering / level stages run in extra passes, which caused the same engine
+ * cone to stack or replay from the wrong captured matrix.
+ *
+ * This now follows the stable part of the working lightsaber glow path:
+ * a normal POSITION_COLOR RenderType using the vanilla lightning shader,
+ * additive blending, no cull, no lightmap, and LEQUAL depth. It renders once
+ * through the entity's regular buffer instead of being replayed later.
+ *
+ * The glow writes color and depth in one visible pass. Do NOT add a separate
+ * invisible depth-only pass here: Oculus/Iris shader stacks can treat that as
+ * a broken translucent/depth prepass and make the exhaust appear see-through.
+ *
+ * The exhaust callers draw the small bright cone first, then the middle cone,
+ * then the outer cone. That keeps the core visible while still placing a real
+ * depth value in the scene so later water and translucent entity passes do not
+ * blend over the engine jet when they are behind it.
  */
-@Mod.EventBusSubscriber(modid = galaxyunderchaos.MODID, value = Dist.CLIENT)
 public final class ShipEnginePrivateGlow {
-    private static final int MAX_BATCHES = 256;
-    private static final List<EngineConeBatch> BATCHES = new ArrayList<>();
+    private static final Object TYPE_LOCK = new Object();
+    private static RenderType engineGlowType;
 
     private ShipEnginePrivateGlow() {
     }
 
-    public static void queueCone(Matrix4f localPose,
+    private static RenderType engineGlowType() {
+        RenderType type = engineGlowType;
+        if (type == null) {
+            synchronized (TYPE_LOCK) {
+                type = engineGlowType;
+                if (type == null) {
+                    type = createEngineGlowType();
+                    engineGlowType = type;
+                }
+            }
+        }
+        return type;
+    }
+
+    private static RenderType createEngineGlowType() {
+        RenderType.CompositeState state = RenderType.CompositeState.builder()
+                .setShaderState(LegacyRenderStates.rendertypeLightningShader())
+                .setTransparencyState(LegacyRenderStates.additiveGlow())
+                .setCullState(LegacyRenderStates.noCull())
+                .setLightmapState(LegacyRenderStates.noLightmap())
+                .setOverlayState(LegacyRenderStates.noOverlay())
+                .setWriteMaskState(LegacyRenderStates.colorDepthWrite())
+                .setDepthTestState(LegacyRenderStates.lequalDepth())
+                .setOutputState(LegacyRenderStates.translucentTarget())
+                .createCompositeState(false);
+
+        return RenderType.create(
+                "guc_ship_engine_glow",
+                DefaultVertexFormat.POSITION_COLOR,
+                VertexFormat.Mode.TRIANGLES,
+                512,
+                false,
+                true,
+                state
+        );
+    }
+
+    public static void renderCone(PoseStack poseStack,
+                                  MultiBufferSource buffer,
+                                  float x,
+                                  float y,
+                                  float z,
+                                  float radius,
+                                  float length,
+                                  int red,
+                                  int green,
+                                  int blue,
+                                  int alpha) {
+        if (poseStack == null || buffer == null || length <= 0.0F || radius <= 0.0F || alpha <= 0) {
+            return;
+        }
+
+        VertexConsumer consumer = buffer.getBuffer(engineGlowType());
+        Matrix4f pose = poseStack.last().pose();
+        int segments = 16;
+        float tipZ = z - length;
+
+        for (int i = 0; i < segments; i++) {
+            double a0 = (Math.PI * 2.0D * i) / segments;
+            double a1 = (Math.PI * 2.0D * (i + 1)) / segments;
+
+            float x0 = x + (float) Math.cos(a0) * radius;
+            float y0 = y + (float) Math.sin(a0) * radius;
+            float x1 = x + (float) Math.cos(a1) * radius;
+            float y1 = y + (float) Math.sin(a1) * radius;
+
+            vertex(consumer, pose, x0, y0, z, red, green, blue, alpha);
+            vertex(consumer, pose, x1, y1, z, red, green, blue, alpha);
+            vertex(consumer, pose, x, y, tipZ, red, green, blue, 0);
+        }
+    }
+
+    /**
+     * Kept only so older call sites fail soft instead of crashing if one was
+     * missed during a partial merge. New ship exhaust code uses renderCone().
+     */
+    public static void queueCone(Matrix4f ignoredLocalPose,
                                  float x,
                                  float y,
                                  float z,
@@ -47,101 +126,16 @@ public final class ShipEnginePrivateGlow {
                                  int green,
                                  int blue,
                                  int alpha) {
-        if (localPose == null || length <= 0.0F || radius <= 0.0F || alpha <= 0) {
-            return;
-        }
-
-        if (BATCHES.size() > MAX_BATCHES) {
-            BATCHES.clear();
-        }
-
-        BATCHES.add(new EngineConeBatch(
-                new Matrix4f(RenderSystem.getProjectionMatrix()),
-                new Matrix4f(RenderSystem.getModelViewStack().last().pose()),
-                new Matrix4f(localPose),
-                x,
-                y,
-                z,
-                radius,
-                length,
-                red,
-                green,
-                blue,
-                alpha
-        ));
+        // No-op by design. The old queued private pass caused duplicate / wrong-pass engine glow under Oculus.
     }
 
-    @SubscribeEvent
-    public static void renderPrivateEngineGlow(RenderLevelStageEvent event) {
-        if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_LEVEL || BATCHES.isEmpty()) {
-            return;
+    public static void flush(MultiBufferSource buffer) {
+        if (buffer instanceof MultiBufferSource.BufferSource source) {
+            source.endBatch(engineGlowType());
         }
-
-        Matrix4f oldProjection = new Matrix4f(RenderSystem.getProjectionMatrix());
-        PoseStack modelViewStack = RenderSystem.getModelViewStack();
-
-        RenderSystem.enableDepthTest();
-        RenderSystem.depthFunc(515);
-        RenderSystem.depthMask(false);
-        RenderSystem.disableCull();
-        RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-
-        for (EngineConeBatch batch : BATCHES) {
-            RenderSystem.setProjectionMatrix(batch.projection(), VertexSorting.DISTANCE_TO_ORIGIN);
-
-            modelViewStack.pushPose();
-            modelViewStack.last().pose().identity();
-            modelViewStack.mulPoseMatrix(batch.modelView());
-            RenderSystem.applyModelViewMatrix();
-
-            drawCone(batch);
-
-            modelViewStack.popPose();
-            RenderSystem.applyModelViewMatrix();
-        }
-
-        RenderSystem.setProjectionMatrix(oldProjection, VertexSorting.DISTANCE_TO_ORIGIN);
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.disableBlend();
-        RenderSystem.enableCull();
-        RenderSystem.depthMask(true);
-        RenderSystem.depthFunc(515);
-        RenderSystem.enableDepthTest();
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-
-        BATCHES.clear();
     }
 
-    private static void drawCone(EngineConeBatch batch) {
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder builder = tesselator.getBuilder();
-        builder.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
-
-        Matrix4f pose = batch.localPose();
-        int segments = 16;
-        float tipZ = batch.z() - batch.length();
-
-        for (int i = 0; i < segments; i++) {
-            double a0 = (Math.PI * 2.0D * i) / segments;
-            double a1 = (Math.PI * 2.0D * (i + 1)) / segments;
-
-            float x0 = batch.x() + (float)Math.cos(a0) * batch.radius();
-            float y0 = batch.y() + (float)Math.sin(a0) * batch.radius();
-            float x1 = batch.x() + (float)Math.cos(a1) * batch.radius();
-            float y1 = batch.y() + (float)Math.sin(a1) * batch.radius();
-
-            vertex(builder, pose, x0, y0, batch.z(), batch.red(), batch.green(), batch.blue(), batch.alpha());
-            vertex(builder, pose, x1, y1, batch.z(), batch.red(), batch.green(), batch.blue(), batch.alpha());
-            vertex(builder, pose, batch.x(), batch.y(), tipZ, batch.red(), batch.green(), batch.blue(), 0);
-        }
-
-        BufferUploader.drawWithShader(builder.end());
-    }
-
-    private static void vertex(BufferBuilder builder,
+    private static void vertex(VertexConsumer consumer,
                                Matrix4f pose,
                                float x,
                                float y,
@@ -150,20 +144,6 @@ public final class ShipEnginePrivateGlow {
                                int green,
                                int blue,
                                int alpha) {
-        builder.vertex(pose, x, y, z).color(red, green, blue, alpha).endVertex();
-    }
-
-    private record EngineConeBatch(Matrix4f projection,
-                                   Matrix4f modelView,
-                                   Matrix4f localPose,
-                                   float x,
-                                   float y,
-                                   float z,
-                                   float radius,
-                                   float length,
-                                   int red,
-                                   int green,
-                                   int blue,
-                                   int alpha) {
+        consumer.vertex(pose, x, y, z).color(red, green, blue, alpha).endVertex();
     }
 }

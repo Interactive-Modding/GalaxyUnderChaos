@@ -103,6 +103,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(galaxyunderchaos.ARCTIC_BLUE_CRYSTAL_ORE.get())
                 .add(galaxyunderchaos.ROSE_PINK_CRYSTAL_ORE.get())
                 .add(galaxyunderchaos.LIGHTSABER_CRAFTING_TABLE.get())
+                .add(galaxyunderchaos.SHIP_CRAFTING_TABLE.get())
                 .add(galaxyunderchaos.TYTHON_JEDI_CROSSED_TORSO_STATUE.get())
                 .add(galaxyunderchaos.TYTHON_JEDI_IDLE_HEAD_STATUE.get())
                 .add(galaxyunderchaos.TYTHON_JEDI_IDLE_LEG_1_STATUE.get())
@@ -192,6 +193,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(galaxyunderchaos.TYTHON_TEMPLE_CHAIR_3.get())
                 .add(galaxyunderchaos.TYTHON_TEMPLE_CHAIR_4.get())
                 .add(galaxyunderchaos.TYTHON_TEMPLE_CHAIR_5.get())
+                .add(galaxyunderchaos.KORRIBAN_CROSSED_TORSO_STATUE.get())
+                .add(galaxyunderchaos.KORRIBAN_IDLE_HEAD_STATUE.get())
+                .add(galaxyunderchaos.KORRIBAN_IDLE_LEG_1_STATUE.get())
+                .add(galaxyunderchaos.KORRIBAN_IDLE_LEG_2_STATUE.get())
+                .add(galaxyunderchaos.KORRIBAN_IDLE_TORSO_STATUE.get())
                 .add(galaxyunderchaos.TYTHON_JEDI_IDLE_TORSO_STATUE.get());
     }
 }

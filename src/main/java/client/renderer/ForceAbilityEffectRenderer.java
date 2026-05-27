@@ -52,6 +52,13 @@ public class ForceAbilityEffectRenderer extends EntityRenderer<ForceAbilityEffec
             case ForceAbilityEffectEntity.KIND_MEDITATION -> renderMeditation(consumer, pose, offset, radius, height, progress, fade);
             case ForceAbilityEffectEntity.KIND_RESIST -> renderResist(consumer, pose, offset, radius, height, progress, fade);
             case ForceAbilityEffectEntity.KIND_REBOUND -> renderRebound(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_SCREAM -> renderScream(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_DESTRUCTION -> renderDestruction(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_PROJECTION -> renderProjection(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_SHACKLES -> renderShackles(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_LEAP -> renderLeap(consumer, pose, offset, radius, height, progress, fade);
+            case ForceAbilityEffectEntity.KIND_TUTAMINIS -> renderTutaminis(consumer, pose, offset, radius, height, progress, fade, livingAnchor);
+            case ForceAbilityEffectEntity.KIND_WALL_OF_LIGHT -> renderWallOfLight(consumer, pose, offset, radius, height, progress, fade);
             case ForceAbilityEffectEntity.KIND_SIGHT, ForceAbilityEffectEntity.KIND_THROW -> {
                 return;
             }
@@ -141,6 +148,107 @@ public class ForceAbilityEffectRenderer extends EntityRenderer<ForceAbilityEffec
         int alpha = alpha(210, fade);
         drawRing(consumer, pose, c.add(0.0D, height * 0.45D, 0.0D), radius * (0.25F + progress * 0.85F), 0.06F, 120, 225, 255, alpha);
         drawVerticalCross(consumer, pose, c.add(0.0D, height * 0.45D, 0.0D), radius * (0.35F + progress * 0.45F), 0.045F, 235, 250, 255, alpha(160, fade));
+    }
+
+
+    private static void renderScream(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(190, fade);
+        float expansion = radius * (0.45F + progress * 1.25F);
+        drawRing(consumer, pose, c.add(0.0D, height * 0.55D, 0.0D), expansion, 0.055F, 220, 35, 95, alpha);
+        drawRing(consumer, pose, c.add(0.0D, height * 0.35D, 0.0D), expansion * 0.75F, 0.035F, 255, 105, 140, alpha(130, fade));
+        drawVerticalCross(consumer, pose, c.add(0.0D, height * 0.55D, 0.0D), expansion * 0.55F, 0.030F, 115, 0, 40, alpha(120, fade));
+    }
+
+    private static void renderDestruction(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(210, fade);
+        Vec3 center = c.add(0.0D, height * 0.45D, 0.0D);
+        float blast = radius * (0.30F + progress * 1.15F);
+        drawBubbleShell(consumer, pose, center, blast, 255, 80, 20, alpha);
+        drawRing(consumer, pose, center, blast * 1.18F, 0.055F, 255, 215, 110, alpha(135, fade));
+        drawVerticalCross(consumer, pose, center, blast * 0.72F, 0.045F, 255, 245, 190, alpha(160, fade));
+    }
+
+    private static void renderProjection(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(135, fade);
+        Vec3 center = c.add(0.0D, height * 0.50D, 0.0D);
+        drawBubbleShell(consumer, pose, center, Math.max(radius * 1.18F, height * 0.62F), 170, 175, 255, alpha);
+        drawRing(consumer, pose, c.add(0.0D, height * 0.72D, 0.0D), radius * (0.25F + progress * 0.85F), 0.028F, 235, 240, 255, alpha(120, fade));
+    }
+
+    private static void renderShackles(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(210, fade);
+        float squeeze = radius * (0.75F - progress * 0.20F);
+        drawVerticalCage(consumer, pose, c, squeeze, height * 1.03F, 125, 25, 185, alpha);
+        drawRing(consumer, pose, c.add(0.0D, height * 0.30D, 0.0D), squeeze, 0.045F, 220, 145, 255, alpha(160, fade));
+        drawRing(consumer, pose, c.add(0.0D, height * 0.66D, 0.0D), squeeze * 0.92F, 0.045F, 220, 145, 255, alpha(160, fade));
+    }
+
+    private static void renderLeap(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(170, fade);
+        drawRing(consumer, pose, c.add(0.0D, 0.10D, 0.0D), radius * (0.35F + progress * 0.85F), 0.045F, 105, 240, 255, alpha);
+        drawLineNoCamera(consumer, pose, c.add(-radius * 0.35F, 0.10D, 0.0D), c.add(0.0D, height * 0.88D, 0.0D), 0.035F, 210, 255, 255, alpha(125, fade));
+        drawLineNoCamera(consumer, pose, c.add(radius * 0.35F, 0.10D, 0.0D), c.add(0.0D, height * 0.88D, 0.0D), 0.035F, 210, 255, 255, alpha(125, fade));
+    }
+
+    private static void renderWallOfLight(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade) {
+        int alpha = alpha(215, fade);
+        Vec3 center = c.add(0.0D, height * 0.52D, 0.0D);
+        float wallRadius = Math.max(radius * 0.95F, height * 0.72F) * (0.92F + Mth.sin(progress * Mth.PI) * 0.10F);
+        drawVerticalBubbleRing(consumer, pose, center, wallRadius, 0.0F, 0.060F, 255, 248, 200, alpha);
+        drawVerticalBubbleRing(consumer, pose, center, wallRadius * 0.82F, Mth.PI * 0.5F, 0.040F, 210, 235, 255, alpha(160, fade));
+        drawRing(consumer, pose, c.add(0.0D, 0.12D, 0.0D), wallRadius * (0.65F + progress * 0.35F), 0.045F, 255, 245, 185, alpha(145, fade));
+        drawVerticalCross(consumer, pose, center, wallRadius * 0.70F, 0.050F, 255, 255, 235, alpha(170, fade));
+        drawBubbleHexArcs(consumer, pose, center, wallRadius * 0.92F, 255, 248, 210, alpha(120, fade));
+    }
+
+    private static void renderTutaminis(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, float height, float progress, float fade, LivingEntity anchor) {
+        int alpha = alpha(190, fade);
+        Vec3 forward = anchor.getLookAngle().normalize();
+        Vec3 side = new Vec3(0.0D, 1.0D, 0.0D).cross(forward);
+        if (side.lengthSqr() < 1.0E-6D) {
+            side = new Vec3(1.0D, 0.0D, 0.0D);
+        } else {
+            side = side.normalize();
+        }
+        Vec3 up = new Vec3(0.0D, 1.0D, 0.0D);
+        float discRadius = Math.max(0.122F, radius * 0.120F) * (1.0F + Mth.sin(progress * Mth.PI) * 0.05F);
+        Vec3 base = c.add(forward.scale(0.72D)).add(0.0D, height * 0.63D, 0.0D);
+        Vec3 left = base.add(side.scale(-0.38D));
+        Vec3 right = base.add(side.scale(0.38D));
+
+        drawOrientedDisc(consumer, pose, left, side, up, discRadius, 255, 232, 140, alpha);
+        drawOrientedDisc(consumer, pose, right, side, up, discRadius, 255, 232, 140, alpha);
+        drawOrientedRing(consumer, pose, left, side, up, discRadius * 1.10F, 0.009F, 255, 255, 220, alpha(170, fade));
+        drawOrientedRing(consumer, pose, right, side, up, discRadius * 1.10F, 0.009F, 255, 255, 220, alpha(170, fade));
+        drawLineNoCamera(consumer, pose, left.subtract(side.scale(discRadius * 0.42F)), left.add(side.scale(discRadius * 0.42F)), 0.006F, 255, 255, 230, alpha(140, fade));
+        drawLineNoCamera(consumer, pose, right.subtract(side.scale(discRadius * 0.42F)), right.add(side.scale(discRadius * 0.42F)), 0.006F, 255, 255, 230, alpha(140, fade));
+        drawLineNoCamera(consumer, pose, left.subtract(up.scale(discRadius * 0.42F)), left.add(up.scale(discRadius * 0.42F)), 0.006F, 255, 255, 230, alpha(140, fade));
+        drawLineNoCamera(consumer, pose, right.subtract(up.scale(discRadius * 0.42F)), right.add(up.scale(discRadius * 0.42F)), 0.006F, 255, 255, 230, alpha(140, fade));
+    }
+
+    private static void drawOrientedDisc(VertexConsumer consumer, Matrix4f pose, Vec3 center, Vec3 axisU, Vec3 axisV, float radius, int r, int g, int b, int a) {
+        int segments = 32;
+        for (int i = 0; i < segments; i++) {
+            double a0 = (Mth.PI * 2.0F) * i / segments;
+            double a1 = (Mth.PI * 2.0F) * (i + 1) / segments;
+            Vec3 p0 = center.add(axisU.scale(Math.cos(a0) * radius)).add(axisV.scale(Math.sin(a0) * radius));
+            Vec3 p1 = center.add(axisU.scale(Math.cos(a1) * radius)).add(axisV.scale(Math.sin(a1) * radius));
+            quad(consumer, pose, center, p0, p1, center, r, g, b, a / 3);
+        }
+    }
+
+    private static void drawOrientedRing(VertexConsumer consumer, Matrix4f pose, Vec3 center, Vec3 axisU, Vec3 axisV, float radius, float width, int r, int g, int b, int a) {
+        int segments = 48;
+        float inner = Math.max(0.0F, radius - width);
+        for (int i = 0; i < segments; i++) {
+            double a0 = (Mth.PI * 2.0F) * i / segments;
+            double a1 = (Mth.PI * 2.0F) * (i + 1) / segments;
+            Vec3 p0 = center.add(axisU.scale(Math.cos(a0) * radius)).add(axisV.scale(Math.sin(a0) * radius));
+            Vec3 p1 = center.add(axisU.scale(Math.cos(a1) * radius)).add(axisV.scale(Math.sin(a1) * radius));
+            Vec3 i1 = center.add(axisU.scale(Math.cos(a1) * inner)).add(axisV.scale(Math.sin(a1) * inner));
+            Vec3 i0 = center.add(axisU.scale(Math.cos(a0) * inner)).add(axisV.scale(Math.sin(a0) * inner));
+            quad(consumer, pose, p0, p1, i1, i0, r, g, b, a);
+        }
     }
 
     private static void drawBubbleShell(VertexConsumer consumer, Matrix4f pose, Vec3 c, float radius, int r, int g, int b, int a) {

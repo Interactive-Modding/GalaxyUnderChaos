@@ -15,12 +15,12 @@ import server.galaxyunderchaos.entity.forceuser.ForceUserLoadout;
 
 public class ForceUserLightsaberLayer extends RenderLayer<ForceUserEntity, ForceUserLayeredModel> {
     /**
-     * The saber item renderer applies its own ItemDisplayContext scale. THIRD_PERSON_RIGHT_HAND uses
-     * 0.17 internally while FIXED uses 0.32, so these two outer scales make the hilt read as the
-     * same physical size on the belt and in the hand.
+     * Keep NPC belt sabers at the same readable waist size as player belt sabers.
+     * The hand transform still uses its own context scale, but belt rendering uses
+     * FIXED just like the player belt renderer.
      */
     private static final float HAND_OUTER_SCALE = 1.00F;
-    private static final float BELT_OUTER_SCALE = 0.36F;
+    private static final float BELT_OUTER_SCALE = 0.50F;
 
     public ForceUserLightsaberLayer(RenderLayerParent<ForceUserEntity, ForceUserLayeredModel> parent) {
         super(parent);

@@ -25,6 +25,12 @@ import server.galaxyunderchaos.galaxyunderchaos;
 import server.galaxyunderchaos.menu.ModMenuTypes;
 import client.renderer.BleedingTableRenderer;
 import client.renderer.forceuser.ForceUserModelLayers;
+import client.renderer.forceuser.PlayerForceSpeciesLayer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 @Mod.EventBusSubscriber(
         modid = galaxyunderchaos.MODID,
@@ -76,6 +82,38 @@ public final class ClientModEvents {
         event.registerLayerDefinition(ModModelLayers.HEART_BERRY_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(BleedingTableModel.LAYER_LOCATION, BleedingTableModel::createBodyLayer);
         ForceUserModelLayers.register(event);
+    }
+
+    @SubscribeEvent
+    public static void addPlayerLayers(EntityRenderersEvent.AddLayers event) {
+        PlayerRenderer defaultRenderer = event.getSkin("default");
+        if (defaultRenderer != null && !hasPlayerForceSpeciesLayer(defaultRenderer)) {
+            defaultRenderer.addLayer(new PlayerForceSpeciesLayer(defaultRenderer, event.getEntityModels()));
+        }
+        PlayerRenderer slimRenderer = event.getSkin("slim");
+        if (slimRenderer != null && !hasPlayerForceSpeciesLayer(slimRenderer)) {
+            slimRenderer.addLayer(new PlayerForceSpeciesLayer(slimRenderer, event.getEntityModels()));
+        }
+    }
+
+    private static boolean hasPlayerForceSpeciesLayer(PlayerRenderer renderer) {
+        try {
+            Field layersField = LivingEntityRenderer.class.getDeclaredField("layers");
+            layersField.setAccessible(true);
+            Object value = layersField.get(renderer);
+            if (!(value instanceof List<?> layers)) {
+                return false;
+            }
+            for (Object layer : layers) {
+                if (layer instanceof PlayerForceSpeciesLayer) {
+                    return true;
+                }
+            }
+        } catch (ReflectiveOperationException ignored) {
+            // If reflection fails, allow Forge to add the layer once through the
+            // normal path instead of breaking player rendering.
+        }
+        return false;
     }
     /* ──────────────────────────────
        Register Ak as a wood‑type so

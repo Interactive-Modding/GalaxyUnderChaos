@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "galaxyunderchaos:korriban_dry_canyon",
+      "required": false
+    },
+    {
+      "id": "galaxyunderchaos:korriban_sith_tomb",
+      "required": false
+    }
+  ]
+}

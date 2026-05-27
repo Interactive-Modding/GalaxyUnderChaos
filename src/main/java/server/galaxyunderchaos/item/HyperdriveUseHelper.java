@@ -10,7 +10,10 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import server.galaxyunderchaos.entity.FlashfireEntity;
 import server.galaxyunderchaos.entity.NovadiveEntity;
+import server.galaxyunderchaos.entity.forceuser.ForceUserEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -81,6 +84,11 @@ public final class HyperdriveUseHelper {
             EntityType<?> shipType = ship.getType();
             CompoundTag shipData = new CompoundTag();
             ship.saveWithoutId(shipData);
+            // Recreate riders manually so the pilot and bonded apprentice/padawan are
+            // attached in a controlled order after the copied ship appears.
+            shipData.remove("Passengers");
+
+            List<ForceUserTransfer> forceUserPassengers = collectForceUserPassengers(ship);
             player.stopRiding();
 
             Entity copiedShip = shipType.create(targetLevel);
@@ -89,6 +97,11 @@ public final class HyperdriveUseHelper {
                 copiedShip.moveTo(x, y, z, yRot, ship.getXRot());
                 copiedShip.setDeltaMovement(ship.getDeltaMovement());
                 targetLevel.addFreshEntity(copiedShip);
+
+                for (ForceUserTransfer transfer : forceUserPassengers) {
+                    transfer.spawnInTarget(targetLevel, copiedShip, x, y + 0.75D, z, yRot);
+                }
+
                 ship.discard();
 
                 player.teleportTo(targetLevel, x, y + 0.75D, z, yRot, xRot);
@@ -98,5 +111,34 @@ public final class HyperdriveUseHelper {
         }
 
         player.teleportTo(targetLevel, x, y, z, player.getYRot(), player.getXRot());
+    }
+
+    private static List<ForceUserTransfer> collectForceUserPassengers(Entity ship) {
+        List<ForceUserTransfer> transfers = new ArrayList<>();
+        for (Entity passenger : new ArrayList<>(ship.getPassengers())) {
+            if (passenger instanceof ForceUserEntity forceUser) {
+                CompoundTag tag = new CompoundTag();
+                forceUser.saveWithoutId(tag);
+                transfers.add(new ForceUserTransfer(forceUser.getType(), tag, forceUser.getDeltaMovement()));
+                forceUser.stopRiding();
+                forceUser.discard();
+            }
+        }
+        return transfers;
+    }
+
+    private record ForceUserTransfer(EntityType<?> type, CompoundTag tag, net.minecraft.world.phys.Vec3 motion) {
+        private void spawnInTarget(ServerLevel targetLevel, Entity copiedShip, double x, double y, double z, float yRot) {
+            Entity copied = type.create(targetLevel);
+            if (!(copied instanceof ForceUserEntity forceUser)) {
+                return;
+            }
+
+            forceUser.load(tag);
+            forceUser.moveTo(x, y, z, yRot, 0.0F);
+            forceUser.setDeltaMovement(motion);
+            targetLevel.addFreshEntity(forceUser);
+            forceUser.startRiding(copiedShip, true);
+        }
     }
 }

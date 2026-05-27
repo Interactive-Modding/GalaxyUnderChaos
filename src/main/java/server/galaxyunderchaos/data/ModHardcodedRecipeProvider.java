@@ -181,7 +181,7 @@ public class ModHardcodedRecipeProvider extends RecipeProvider implements ICondi
                 .pattern("#X#")
                 .pattern("#R#")
                 .define('#', galaxyunderchaos.TITANIUM_CHROMIUM_INGOT.get())
-                .define('R', Items.NETHERITE_INGOT)
+                .define('R', Items.QUARTZ)
                 .define('T', Items.DIAMOND)
                 .define('X', galaxyunderchaos.NAVIGATION_COMPUTER.get())
                 .unlockedBy(getHasName(galaxyunderchaos.NAVIGATION_COMPUTER.get()), has(galaxyunderchaos.NAVIGATION_COMPUTER.get()))

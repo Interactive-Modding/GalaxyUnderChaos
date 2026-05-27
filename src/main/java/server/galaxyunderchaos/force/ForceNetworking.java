@@ -59,6 +59,42 @@ public final class ForceNetworking {
                 HolocronPowerActionPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_SERVER));
 
+        NETWORK.registerMessage(id++, ForceUserInteractionScreenPacket.class,
+                ForceUserInteractionScreenPacket::encode,
+                ForceUserInteractionScreenPacket::decode,
+                ForceUserInteractionScreenPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+
+        NETWORK.registerMessage(id++, ForceUserInteractionActionPacket.class,
+                ForceUserInteractionActionPacket::encode,
+                ForceUserInteractionActionPacket::decode,
+                ForceUserInteractionActionPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        NETWORK.registerMessage(id++, ForceUserIdentityUpdatePacket.class,
+                ForceUserIdentityUpdatePacket::encode,
+                ForceUserIdentityUpdatePacket::decode,
+                ForceUserIdentityUpdatePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        NETWORK.registerMessage(id++, ForceRenounceScreenPacket.class,
+                ForceRenounceScreenPacket::encode,
+                ForceRenounceScreenPacket::decode,
+                ForceRenounceScreenPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+
+        NETWORK.registerMessage(id++, ForceRenounceConfirmPacket.class,
+                ForceRenounceConfirmPacket::encode,
+                ForceRenounceConfirmPacket::decode,
+                ForceRenounceConfirmPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_SERVER));
+
+        NETWORK.registerMessage(id++, PlayerForceIdentitySyncPacket.class,
+                PlayerForceIdentitySyncPacket::encode,
+                PlayerForceIdentitySyncPacket::decode,
+                PlayerForceIdentitySyncPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+
         NETWORK.registerMessage(id++, SyncForceVisualPacket.class,
                 SyncForceVisualPacket::encode,
                 SyncForceVisualPacket::decode,
@@ -82,5 +118,23 @@ public final class ForceNetworking {
 
     public static void sendVisualToTracking(ServerPlayer player, SyncForceVisualPacket packet) {
         NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), packet);
+    }
+
+    public static void sendForceUserScreen(ServerPlayer player, ForceUserInteractionScreenPacket packet) {
+        if (NETWORK != null && player != null) {
+            NETWORK.send(PacketDistributor.PLAYER.with(() -> player), packet);
+        }
+    }
+
+    public static void sendRenounceScreen(ServerPlayer player, ForceRenounceScreenPacket packet) {
+        if (NETWORK != null && player != null) {
+            NETWORK.send(PacketDistributor.PLAYER.with(() -> player), packet);
+        }
+    }
+
+    public static void sendIdentityToTracking(ServerPlayer player, PlayerForceIdentitySyncPacket packet) {
+        if (NETWORK != null && player != null) {
+            NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player), packet);
+        }
     }
 }

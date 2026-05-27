@@ -2,13 +2,17 @@
   "structures": [
     {
       "structure": "galaxyunderchaos:bogan_large_dark_side_temple",
-      "weight": 1
+      "weight": 2
+    },
+    {
+      "structure": "galaxyunderchaos:bogan_corrupt_nexus",
+      "weight": 3
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 80,
-    "separation": 24,
+    "spacing": 52,
+    "separation": 18,
     "salt": 1553101131
   }
 }

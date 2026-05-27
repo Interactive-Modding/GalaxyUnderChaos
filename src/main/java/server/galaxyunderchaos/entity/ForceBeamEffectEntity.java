@@ -20,6 +20,8 @@ import server.galaxyunderchaos.galaxyunderchaos;
 public class ForceBeamEffectEntity extends Entity implements IEntityAdditionalSpawnData {
     public static final int KIND_LIGHTNING = 0;
     public static final int KIND_DRAIN = 1;
+    public static final int KIND_JUDGMENT = 2;
+    public static final int KIND_DESTRUCTION_ORB = 3;
 
     private static final EntityDataAccessor<Integer> OWNER_ID = SynchedEntityData.defineId(ForceBeamEffectEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TARGET_ID = SynchedEntityData.defineId(ForceBeamEffectEntity.class, EntityDataSerializers.INT);
@@ -186,6 +188,10 @@ public class ForceBeamEffectEntity extends Entity implements IEntityAdditionalSp
 
     public int getLifeTicks() {
         return this.entityData.get(LIFE_TICKS);
+    }
+
+    public float getProgress(float partialTick) {
+        return net.minecraft.util.Mth.clamp((this.tickCount + partialTick) / (float) Math.max(1, getLifeTicks()), 0.0F, 1.0F);
     }
 
     @Override

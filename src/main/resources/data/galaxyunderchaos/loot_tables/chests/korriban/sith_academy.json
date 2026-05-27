@@ -1,0 +1,96 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "academy_saber_forms",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:makashi_holobook"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:shien_djem_so_holobook",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:juyo_vaapad_holobook",
+          "weight": 2
+        }
+      ]
+    },
+    {
+      "name": "academy_saber_parts",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 3.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:tag",
+          "name": "galaxyunderchaos:lightsaber_parts",
+          "expand": true
+        }
+      ]
+    },
+    {
+      "name": "academy_sith_lore",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_datacron",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_holobook",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:sith_holocron"
+        }
+      ]
+    },
+    {
+      "name": "academy_dark_kyber_optional",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 1.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:red_kyber",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:blood_orange_kyber",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:purple_kyber"
+        }
+      ]
+    }
+  ]
+}

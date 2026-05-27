@@ -49,7 +49,12 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
 
     private NonNullList<ItemStack> items = NonNullList.withSize(27, ItemStack.EMPTY);
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    private static final String NBT_PLAYER_PLACED_TOMB = "PlayerPlacedTomb";
+    private static final String NBT_TOMB_REWARDS_LOCKED = "TombRewardsLocked";
+
     private boolean guardianTriggered;
+    private boolean tombRewardsLocked;
+    private boolean playerPlacedTomb;
     private boolean opened;
     private long openGameTime = -1L;
     private UUID coffinInstanceId = UUID.randomUUID();
@@ -99,7 +104,7 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
 
         markOpened(level, mainPos);
 
-        if (guardianTriggered) {
+        if (areTombRewardsLocked()) {
             return;
         }
 
@@ -108,7 +113,7 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
             this.unpackLootTable(player);
             scatterGeneratedLoot(level, ForceUserSide.LIGHT, false);
             spawnTempleGuards(level, mainPos);
-            guardianTriggered = true;
+            lockTombRewards();
             setChanged();
             return;
         }
@@ -117,7 +122,7 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
             this.unpackLootTable(player);
             scatterGeneratedLoot(level, ForceUserSide.DARK, true);
             spawnGuardian(level, mainPos, galaxyunderchaos.SITH_LORD_GHOST.get());
-            guardianTriggered = true;
+            lockTombRewards();
             setChanged();
             return;
         }
@@ -125,7 +130,7 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
         if (state.is(galaxyunderchaos.SITH_COFFIN.get())) {
             scatterGeneratedLoot(level, ForceUserSide.DARK, false);
             spawnGuardian(level, mainPos, galaxyunderchaos.SITH_GHOST.get());
-            guardianTriggered = true;
+            lockTombRewards();
             setChanged();
         }
     }
@@ -161,6 +166,14 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
             ItemStack saber = ForceUserLoadout.randomLightsaber(level.getRandom(), side, lordQuality ? 0.28F : 0.08F, lordQuality);
             scatterItem(saber, level);
         }
+
+        // Jedi coffins and Sith Lord coffins have a 25% chance to contain exactly
+        // one lightsaber modifier crystal. Regular Sith coffins intentionally do
+        // not use this roll.
+        if (side.isLight() || (side.isDark() && lordQuality)) {
+            scatterRandomFocusingCrystal(level);
+        }
+
         scatterItem(new ItemStack(galaxyunderchaos.INTERNAL_LIGHTSABER_CIRCUITRY.get()), level);
         scatterItem(new ItemStack(Items.DIAMOND, 1 + level.getRandom().nextInt(lordQuality ? 2 : 1)), level);
         scatterItem(new ItemStack(Items.GOLD_INGOT, 1 + level.getRandom().nextInt(lordQuality ? 4 : 3)), level);
@@ -190,6 +203,40 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
                 return;
             }
         }
+    }
+
+    public void markPlacedByPlayer() {
+        this.playerPlacedTomb = true;
+        lockTombRewards();
+        setChanged();
+        if (this.level != null && !this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.worldPosition, getBlockState(), getBlockState(), 3);
+        }
+    }
+
+    private void lockTombRewards() {
+        this.guardianTriggered = true;
+        this.tombRewardsLocked = true;
+    }
+
+    private boolean areTombRewardsLocked() {
+        return this.tombRewardsLocked || this.guardianTriggered || this.playerPlacedTomb;
+    }
+
+    private void scatterRandomFocusingCrystal(Level level) {
+        if (level.getRandom().nextFloat() >= 0.25F) {
+            return;
+        }
+
+        ItemStack crystal = switch (level.getRandom().nextInt(6)) {
+            case 0 -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_COMPRESSED.get());
+            case 1 -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_CRACKED.get());
+            case 2 -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_INVERTING.get());
+            case 3 -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_FINE_CUT.get());
+            case 4 -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_PRISMATIC.get());
+            default -> new ItemStack(galaxyunderchaos.FOCUSING_CRYSTAL_FORCE_WHIP.get());
+        };
+        scatterItem(crystal, level);
     }
 
     private void insertGeneratedLoot(ItemStack stack) {
@@ -332,6 +379,8 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putBoolean("GuardianTriggered", guardianTriggered);
+        tag.putBoolean(NBT_TOMB_REWARDS_LOCKED, areTombRewardsLocked());
+        tag.putBoolean(NBT_PLAYER_PLACED_TOMB, playerPlacedTomb);
         saveVisualState(tag);
         if (!this.trySaveLootTable(tag)) {
             ContainerHelper.saveAllItems(tag, this.items);
@@ -342,7 +391,10 @@ public class CoffinBlockEntity extends RandomizableContainerBlockEntity implemen
     public void load(CompoundTag tag) {
         super.load(tag);
         boolean clonedFromStructure = tag.contains("CoffinBoundPos") && tag.getLong("CoffinBoundPos") != this.worldPosition.asLong();
-        guardianTriggered = !clonedFromStructure && tag.getBoolean("GuardianTriggered");
+        boolean savedGuardianTriggered = tag.getBoolean("GuardianTriggered");
+        playerPlacedTomb = !clonedFromStructure && tag.getBoolean(NBT_PLAYER_PLACED_TOMB);
+        tombRewardsLocked = !clonedFromStructure && (tag.getBoolean(NBT_TOMB_REWARDS_LOCKED) || savedGuardianTriggered || playerPlacedTomb);
+        guardianTriggered = !clonedFromStructure && (savedGuardianTriggered || tombRewardsLocked);
         loadVisualState(tag);
         items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
         if (!clonedFromStructure && !this.tryLoadLootTable(tag)) {

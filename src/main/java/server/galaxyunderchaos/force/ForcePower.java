@@ -22,6 +22,11 @@ public enum ForcePower {
     STUN1("stun1", "Force Stun I", ForceSide.LIGHT, ForcePowerType.PER_USE, 50, LIGHT_SIDE, 2, 0),
     STUN2("stun2", "Force Stun II", ForceSide.LIGHT, ForcePowerType.PER_USE, 100, STUN1, 2, 1),
     STUN3("stun3", "Force Stun III", ForceSide.LIGHT, ForcePowerType.PER_USE, 150, STUN2, 2, 2),
+    ELECTRIC_JUDGMENT1("electric_judgment1", "Electric Judgment I", ForceSide.LIGHT, ForcePowerType.PER_USE, 0, LIGHT_SIDE, 4, 3),
+    ELECTRIC_JUDGMENT2("electric_judgment2", "Electric Judgment II", ForceSide.LIGHT, ForcePowerType.PER_USE, 0, ELECTRIC_JUDGMENT1, 4, 4),
+    ELECTRIC_JUDGMENT3("electric_judgment3", "Electric Judgment III", ForceSide.LIGHT, ForcePowerType.PER_USE, 0, ELECTRIC_JUDGMENT2, 4, 5),
+    TUTAMINIS("tutaminis", "Tutaminis", ForceSide.LIGHT, ForcePowerType.BUFF, 0, LIGHT_SIDE, 1, 3),
+    WALL_OF_LIGHT("wall_of_light", "Wall of Light", ForceSide.LIGHT, ForcePowerType.PER_USE, 0, TUTAMINIS, 15, 3),
 
     DRAIN1("drain1", "Force Drain I", ForceSide.DARK, ForcePowerType.PER_USE, 100, DARK_SIDE, 3, 0),
     DRAIN2("drain2", "Force Drain II", ForceSide.DARK, ForcePowerType.PER_USE, 150, DRAIN1, 3, 1),
@@ -32,6 +37,13 @@ public enum ForcePower {
     WOUND1("wound1", "Force Wound I", ForceSide.DARK, ForcePowerType.PER_USE, 50, DARK_SIDE, 5, 0),
     WOUND2("wound2", "Force Wound II", ForceSide.DARK, ForcePowerType.PER_USE, 115, WOUND1, 5, 1),
     WOUND3("wound3", "Force Wound III", ForceSide.DARK, ForcePowerType.PER_USE, 170, WOUND2, 5, 2),
+    FORCE_SCREAM1("force_scream1", "Force Scream I", ForceSide.DARK, ForcePowerType.PER_USE, 70, DARK_SIDE, 2, 3),
+    FORCE_SCREAM2("force_scream2", "Force Scream II", ForceSide.DARK, ForcePowerType.PER_USE, 105, FORCE_SCREAM1, 2, 4),
+    FORCE_SCREAM3("force_scream3", "Force Scream III", ForceSide.DARK, ForcePowerType.PER_USE, 140, FORCE_SCREAM2, 2, 5),
+    FORCE_DESTRUCTION1("force_destruction1", "Force Destruction I", ForceSide.DARK, ForcePowerType.PER_USE, 120, DARK_SIDE, 3, 3),
+    FORCE_DESTRUCTION2("force_destruction2", "Force Destruction II", ForceSide.DARK, ForcePowerType.PER_USE, 165, FORCE_DESTRUCTION1, 3, 4),
+    FORCE_DESTRUCTION3("force_destruction3", "Force Destruction III", ForceSide.DARK, ForcePowerType.PER_USE, 220, FORCE_DESTRUCTION2, 3, 5),
+    FORCE_SHACKLES("force_shackles", "Force Shackles", ForceSide.DARK, ForcePowerType.META, 0, null, 4, 3),
 
     STEALTH("stealth", "Force Stealth", ForceSide.NEUTRAL, ForcePowerType.BUFF, 40, NEUTRAL, 11, 0),
     SPEED("speed", "Force Speed", ForceSide.NEUTRAL, ForcePowerType.BUFF, 30, NEUTRAL, 12, 0),
@@ -49,7 +61,14 @@ public enum ForcePower {
     RESIST3("resist3", "Resist Energy III", ForceSide.NEUTRAL, ForcePowerType.BUFF, 70, RESIST2, 8, 2),
     PUSH1("push1", "Force Push I", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 50, NEUTRAL, 9, 0),
     PUSH2("push2", "Force Push II", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 85, PUSH1, 9, 1),
-    PUSH3("push3", "Force Push III", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 120, PUSH2, 9, 2);
+    PUSH3("push3", "Force Push III", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 120, PUSH2, 9, 2),
+    PULL1("pull1", "Force Pull I", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 55, NEUTRAL, 15, 0),
+    PULL2("pull2", "Force Pull II", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 90, PULL1, 15, 1),
+    PULL3("pull3", "Force Pull III", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 130, PULL2, 15, 2),
+    FORCE_LEAP("force_leap", "Force Leap", ForceSide.NEUTRAL, ForcePowerType.PER_USE, 80, SPEED, 5, 3),
+    FORCE_PROJECTION1("force_projection1", "Force Projection I", ForceSide.NEUTRAL, ForcePowerType.BUFF, 70, NEUTRAL, 6, 3),
+    FORCE_PROJECTION2("force_projection2", "Force Projection II", ForceSide.NEUTRAL, ForcePowerType.BUFF, 105, FORCE_PROJECTION1, 6, 4),
+    FORCE_PROJECTION3("force_projection3", "Force Projection III", ForceSide.NEUTRAL, ForcePowerType.BUFF, 140, FORCE_PROJECTION2, 6, 5);
 
     private static final Map<String, ForcePower> BY_ID = new LinkedHashMap<>();
     private static final List<ForcePower> SELECTABLE_ORDER = new ArrayList<>();
@@ -61,6 +80,11 @@ public enum ForcePower {
                 SELECTABLE_ORDER.add(power);
             }
         }
+        // Backwards compatibility for worlds that saved the old single-rank IDs.
+        BY_ID.put("electric_judgment", ELECTRIC_JUDGMENT1);
+        BY_ID.put("force_scream", FORCE_SCREAM1);
+        BY_ID.put("force_destruction", FORCE_DESTRUCTION1);
+        BY_ID.put("force_projection", FORCE_PROJECTION1);
     }
 
     private final String id;
@@ -93,17 +117,24 @@ public enum ForcePower {
     public int iconY() { return iconY; }
 
     public boolean isSelectable() {
-        return type != ForcePowerType.META && this != REBOUND;
+        return type != ForcePowerType.META && this != REBOUND && this != FORCE_SHACKLES;
     }
 
     public int tier() {
-        int tier = 1;
-        ForcePower cursor = this;
-        while (cursor.parent != null && cursor.parent.type != ForcePowerType.META) {
-            tier++;
-            cursor = cursor.parent;
-        }
-        return tier;
+        return switch (this) {
+            case ELECTRIC_JUDGMENT1, FORCE_SCREAM1, FORCE_DESTRUCTION1, FORCE_PROJECTION1, PULL1 -> 1;
+            case ELECTRIC_JUDGMENT2, FORCE_SCREAM2, FORCE_DESTRUCTION2, FORCE_PROJECTION2, PULL2 -> 2;
+            case ELECTRIC_JUDGMENT3, FORCE_SCREAM3, FORCE_DESTRUCTION3, FORCE_PROJECTION3, PULL3 -> 3;
+            default -> {
+                int tier = 1;
+                ForcePower cursor = this;
+                while (cursor.parent != null && cursor.parent.type != ForcePowerType.META) {
+                    tier++;
+                    cursor = cursor.parent;
+                }
+                yield tier;
+            }
+        };
     }
 
     public String description() {
@@ -126,6 +157,11 @@ public enum ForcePower {
             case STUN1 -> "Briefly locks down a target with slowness, weakness, and mining fatigue.";
             case STUN2 -> "Stuns a target longer and applies stronger control.";
             case STUN3 -> "Strongest stun tier with the longest control window.";
+            case ELECTRIC_JUDGMENT1 -> "Hold to channel controlled light-side judgment that shocks and weakens a target.";
+            case ELECTRIC_JUDGMENT2 -> "Stronger Electric Judgment with improved range, damage, and control.";
+            case ELECTRIC_JUDGMENT3 -> "Mastered Electric Judgment with maximum sustained light-side shock pressure.";
+            case TUTAMINIS -> "Hold to project twin palm defenses that block sabers, absorb energy, and reflect lightning or judgment.";
+            case WALL_OF_LIGHT -> "Consumes all Force energy and drains the caster's health to sever a targeted Force user's Force connection for one minute.";
             case DRAIN1 -> "Damages a target, heals the caster, and restores Force energy.";
             case DRAIN2 -> "Drains more health and returns more Force energy.";
             case DRAIN3 -> "Maximum drain damage, healing, and Force return.";
@@ -135,6 +171,13 @@ public enum ForcePower {
             case WOUND1 -> "Crushes a target with damage, weakness, slowing, and a short lift.";
             case WOUND2 -> "Deals heavier dark-side wound damage and longer debuffs.";
             case WOUND3 -> "Maximum wound damage and control pressure.";
+            case FORCE_SCREAM1 -> "Releases a dark-side shockwave that damages, weakens, and knocks back nearby enemies.";
+            case FORCE_SCREAM2 -> "A wider and stronger Force Scream shockwave.";
+            case FORCE_SCREAM3 -> "Maximum Force Scream radius, damage, and disorientation.";
+            case FORCE_DESTRUCTION1 -> "Launches a red sphere of dark-side energy that explodes at the aimed location.";
+            case FORCE_DESTRUCTION2 -> "A larger destructive sphere with stronger blast radius and fire damage.";
+            case FORCE_DESTRUCTION3 -> "Maximum Force Destruction sphere damage, range, and explosive pressure.";
+            case FORCE_SHACKLES -> "A crafted restraint effect that suppresses Force use and nearly immobilizes the target.";
             case STEALTH -> "Turns the user invisible and increases movement speed temporarily.";
             case SPEED -> "Boosts movement and jumping for rapid repositioning.";
             case REBOUND -> "Passive technique that can reflect pressure back when triggered by combat logic.";
@@ -152,6 +195,14 @@ public enum ForcePower {
             case PUSH1 -> "Knocks targets backward in front of the user.";
             case PUSH2 -> "Pushes farther with more force and damage.";
             case PUSH3 -> "Maximum push range, knockback, and impact damage.";
+            case PULL1 -> "Yanks targets toward the user and briefly destabilizes them.";
+            case PULL2 -> "Pulls targets from farther away with stronger impact control.";
+            case PULL3 -> "Maximum pull range, force, and disruption.";
+            case FORCE_LEAP -> "Launches the user forward and upward with a costly, limited air-jump burst.";
+            case FORCE_PROJECTION1 -> "Creates one fake living projection of the user to pull enemy attention.";
+            case FORCE_PROJECTION2 -> "Creates two stronger fake projections with a longer distraction window.";
+            case FORCE_PROJECTION3 -> "Creates three one-shot combat projections that help fight and expose themselves to Force Sight like living decoys.";
+            default -> this.displayName;
         };
     }
 

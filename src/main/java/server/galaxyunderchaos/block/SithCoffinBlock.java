@@ -68,6 +68,7 @@ public class SithCoffinBlock extends AbstractCoffinBlock {
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.LivingEntity placer, net.minecraft.world.item.ItemStack stack) {
         BlockPos above = pos.above();
         level.setBlock(above, state.setValue(BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.UPPER), 3);
+        markPlayerPlacedTomb(level, pos);
     }
     public RenderShape getRenderShape(BlockState state) {
         // Only render the LOWER half, make the UPPER half invisible

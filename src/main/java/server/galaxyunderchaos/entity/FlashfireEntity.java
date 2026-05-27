@@ -549,7 +549,9 @@ public class FlashfireEntity extends Entity implements GeoEntity, CustomizableSh
     }
 
     private void alignPassengerToShip(Entity passenger) {
-        float yaw = this.getYRot();
+        // The ship model's cockpit faces the local -Z nose. Passenger bodies need
+        // the same visual forward direction, which is opposite the raw entity yaw.
+        float yaw = Mth.wrapDegrees(this.getYRot() + 180.0F);
 
         if (passenger instanceof LivingEntity living) {
             living.setYBodyRot(yaw);
@@ -648,22 +650,31 @@ public class FlashfireEntity extends Entity implements GeoEntity, CustomizableSh
 
     @Override
     public int getShipColor(ShipColorSection section) {
+        if (section == null) {
+            return this.entityData.get(BASE_COLOR);
+        }
         return switch (section) {
             case BASE -> this.entityData.get(BASE_COLOR);
             case PRIMARY -> this.entityData.get(PRIMARY_COLOR);
             case SECONDARY -> this.entityData.get(SECONDARY_COLOR);
             case INTERIOR -> this.entityData.get(INTERIOR_COLOR);
+            default -> this.entityData.get(BASE_COLOR);
         };
     }
 
     @Override
     public void setShipColor(ShipColorSection section, int color) {
         int safeColor = ShipCustomization.clampColor(color);
+        if (section == null) {
+            this.entityData.set(BASE_COLOR, safeColor);
+            return;
+        }
         switch (section) {
             case BASE -> this.entityData.set(BASE_COLOR, safeColor);
             case PRIMARY -> this.entityData.set(PRIMARY_COLOR, safeColor);
             case SECONDARY -> this.entityData.set(SECONDARY_COLOR, safeColor);
             case INTERIOR -> this.entityData.set(INTERIOR_COLOR, safeColor);
+            default -> this.entityData.set(BASE_COLOR, safeColor);
         }
     }
 

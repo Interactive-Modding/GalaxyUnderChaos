@@ -34,6 +34,13 @@ public class ForceAbilityEffectEntity extends Entity implements IEntityAdditiona
     public static final int KIND_RESIST = 8;
     public static final int KIND_REBOUND = 9;
     public static final int KIND_THROW = 10;
+    public static final int KIND_SCREAM = 11;
+    public static final int KIND_DESTRUCTION = 12;
+    public static final int KIND_PROJECTION = 13;
+    public static final int KIND_SHACKLES = 14;
+    public static final int KIND_LEAP = 15;
+    public static final int KIND_TUTAMINIS = 16;
+    public static final int KIND_WALL_OF_LIGHT = 17;
 
     private static final EntityDataAccessor<Integer> OWNER_ID = SynchedEntityData.defineId(ForceAbilityEffectEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> TARGET_ID = SynchedEntityData.defineId(ForceAbilityEffectEntity.class, EntityDataSerializers.INT);

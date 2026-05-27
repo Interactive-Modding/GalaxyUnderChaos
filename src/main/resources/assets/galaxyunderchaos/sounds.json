@@ -122,6 +122,12 @@
       "galaxyunderchaos:force/lightning4"
     ]
   },
+  "force_scream": {
+    "subtitle": "sounds.galaxyunderchaos.force_scream",
+    "sounds": [
+      "galaxyunderchaos:force/scream"
+    ]
+  },
   "force_lightning_loop": {
     "subtitle": "sounds.galaxyunderchaos.force_lightning",
     "sounds": [
@@ -207,6 +213,27 @@
     "subtitle": "sounds.galaxyunderchaos.ship_engine_stop",
     "sounds": [
       "galaxyunderchaos:ship_off"
+    ]
+  },
+  "vonskr_living": {
+    "subtitle": "sounds.galaxyunderchaos.vonskr_living",
+    "sounds": [
+      "galaxyunderchaos:vonskr_living"
+    ]
+  },
+  "vonskr_hurt": {
+    "subtitle": "sounds.galaxyunderchaos.vonskr_hurt",
+    "sounds": [
+      {
+        "name": "galaxyunderchaos:vonskr_hurt",
+        "stream": false
+      }
+    ]
+  },
+  "vonskr_attack": {
+    "subtitle": "sounds.galaxyunderchaos.vonskr_attack",
+    "sounds": [
+      "galaxyunderchaos:vonskr_attack"
     ]
   }
 }

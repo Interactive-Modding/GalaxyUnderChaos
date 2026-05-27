@@ -37,13 +37,28 @@ public class ForceBeamEffectRenderer extends EntityRenderer<ForceBeamEffectEntit
         VertexConsumer consumer = buffer.getBuffer(RenderType.lightning());
         Matrix4f pose = poseStack.last().pose();
 
-        if (entity.getEffectKind() == ForceBeamEffectEntity.KIND_DRAIN) {
+        if (entity.getEffectKind() == ForceBeamEffectEntity.KIND_DESTRUCTION_ORB) {
+            Vec3 start = getHandPosition(livingOwner, true, partialTick).subtract(origin);
+            renderDestructionOrb(entity, consumer, pose, start, end.subtract(origin), cameraPos, partialTick);
+        } else if (entity.getEffectKind() == ForceBeamEffectEntity.KIND_DRAIN) {
             Vec3 start = getHandPosition(livingOwner, true, partialTick).subtract(origin);
             drawJaggedBolt(consumer, pose, start, end.subtract(origin), cameraPos,
                     entity.getId() * 131L + entity.tickCount * 31L,
                     3, 0.050F, 0.016F,
                     190, 75, 235, 180,
                     255, 205, 255, 235);
+        } else if (entity.getEffectKind() == ForceBeamEffectEntity.KIND_JUDGMENT) {
+            int strandCount = 2;
+            for (int hand = 0; hand < 2; hand++) {
+                Vec3 start = getHandPosition(livingOwner, hand == 0, partialTick).subtract(origin);
+                for (int strand = 0; strand < strandCount; strand++) {
+                    drawJaggedBolt(consumer, pose, start, end.subtract(origin), cameraPos,
+                            entity.getId() * 91337L + entity.tickCount * 701L + hand * 53L + strand * 11L,
+                            4, 0.045F, 0.014F,
+                            255, 220, 90, 165,
+                            255, 255, 220, 235);
+                }
+            }
         } else {
             int strandCount = 2; // Half the previous lightning density.
             for (int hand = 0; hand < 2; hand++) {
@@ -59,6 +74,47 @@ public class ForceBeamEffectRenderer extends EntityRenderer<ForceBeamEffectEntit
         }
 
         super.render(entity, entityYaw, partialTick, poseStack, buffer, packedLight);
+    }
+
+    private static void renderDestructionOrb(ForceBeamEffectEntity entity, VertexConsumer consumer, Matrix4f pose, Vec3 start, Vec3 end, Vec3 cameraPos, float partialTick) {
+        float progress = entity.getProgress(partialTick);
+        float eased = progress * progress * (3.0F - 2.0F * progress);
+        Vec3 orb = start.lerp(end, eased);
+        float radius = 0.18F + 0.10F * (float) Math.sin(progress * Math.PI);
+
+        drawLine(consumer, pose, start, orb, cameraPos, 0.035F, 210, 15, 15, 115);
+        drawBillboardDisc(consumer, pose, orb, cameraPos, radius * 1.65F, 255, 35, 22, 95);
+        drawBillboardDisc(consumer, pose, orb, cameraPos, radius, 255, 65, 25, 205);
+        drawBillboardDisc(consumer, pose, orb, cameraPos, radius * 0.42F, 255, 225, 175, 240);
+
+        double ringRadius = radius * 1.15D;
+        for (int i = 0; i < 8; i++) {
+            double a0 = Math.PI * 2.0D * i / 8.0D;
+            double a1 = Math.PI * 2.0D * (i + 1) / 8.0D;
+            Vec3 p0 = orb.add(Math.cos(a0) * ringRadius, Math.sin(a0) * ringRadius, 0.0D);
+            Vec3 p1 = orb.add(Math.cos(a1) * ringRadius, Math.sin(a1) * ringRadius, 0.0D);
+            drawLine(consumer, pose, p0, p1, cameraPos, 0.018F, 255, 80, 28, 180);
+        }
+    }
+
+    private static void drawBillboardDisc(VertexConsumer consumer, Matrix4f pose, Vec3 center, Vec3 cameraPos, float radius, int r, int g, int b, int a) {
+        Vec3 normal = cameraPos.subtract(center);
+        if (normal.lengthSqr() < 1.0E-7D) {
+            normal = new Vec3(0.0D, 0.0D, 1.0D);
+        } else {
+            normal = normal.normalize();
+        }
+        Vec3 up = Math.abs(normal.y) > 0.92D ? new Vec3(1.0D, 0.0D, 0.0D) : new Vec3(0.0D, 1.0D, 0.0D);
+        Vec3 right = up.cross(normal).normalize().scale(radius);
+        Vec3 realUp = normal.cross(right).normalize().scale(radius);
+        vertex(consumer, pose, center.add(right).add(realUp), r, g, b, a);
+        vertex(consumer, pose, center.subtract(right).add(realUp), r, g, b, a);
+        vertex(consumer, pose, center.subtract(right).subtract(realUp), r, g, b, a);
+        vertex(consumer, pose, center.add(right).subtract(realUp), r, g, b, a);
+        vertex(consumer, pose, center.add(right).subtract(realUp), r, g, b, a);
+        vertex(consumer, pose, center.subtract(right).subtract(realUp), r, g, b, a);
+        vertex(consumer, pose, center.subtract(right).add(realUp), r, g, b, a);
+        vertex(consumer, pose, center.add(right).add(realUp), r, g, b, a);
     }
 
     private static Vec3 getHandPosition(LivingEntity owner, boolean rightHand, float partialTick) {

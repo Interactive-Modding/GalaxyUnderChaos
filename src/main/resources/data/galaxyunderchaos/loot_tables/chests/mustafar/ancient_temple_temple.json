@@ -76,6 +76,32 @@
           "name": "minecraft:bone"
         }
       ]
+    },
+    {
+      "name": "neutral_datacrons_max_2",
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0.0,
+        "max": 2.0
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_datacron",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:ancient_holobook",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "galaxyunderchaos:white_kyber",
+          "weight": 1
+        }
+      ]
     }
   ]
 }

@@ -14,6 +14,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import server.galaxyunderchaos.item.DoubleLightsaberItem;
 import server.galaxyunderchaos.item.LightsaberItem;
 
 @Mod.EventBusSubscriber(modid = "galaxyunderchaos", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -91,8 +92,12 @@ public class LightsaberBeltRenderer {
         // Position the lightsaber at the waist
 //        poseStack.translate(-0.19F, 0.45F, -.14F);
 
-        // Rotate horizontally, laying flat against waist
+        // Rotate horizontally, laying flat against waist. Single-bladed sabers need an
+        // extra half-turn here so the emitter/pommel direction matches the player belt.
         poseStack.mulPose(Axis.ZP.rotationDegrees(135.0F));
+        if (lightsaberStack.getItem() instanceof LightsaberItem && !(lightsaberStack.getItem() instanceof DoubleLightsaberItem)) {
+            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
+        }
 
         // Scale to appropriate size (adjust as necessary)
         poseStack.scale(0.5F, 0.5F, 0.5F);

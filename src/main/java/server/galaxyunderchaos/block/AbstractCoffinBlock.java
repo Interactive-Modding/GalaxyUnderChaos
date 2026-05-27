@@ -32,11 +32,29 @@ public abstract class AbstractCoffinBlock extends BaseEntityBlock {
         return InteractionResult.PASS;
     }
 
+    protected void markPlayerPlacedTomb(Level level, BlockPos mainPos) {
+        if (level.isClientSide) {
+            return;
+        }
+        BlockEntity blockEntity = level.getBlockEntity(mainPos);
+        if (blockEntity instanceof CoffinBlockEntity coffin) {
+            coffin.markPlacedByPlayer();
+        }
+    }
+
     protected void dropMainContainer(Level level, BlockPos pos, BlockState state) {
         BlockPos mainPos = getMainBlockPos(state, pos);
+        // Multi-block coffins/tombs call onRemove for both halves. Only the real
+        // container half may drop contents; otherwise breaking one side can cause
+        // the other half to resolve the same block entity and duplicate generated loot.
+        if (!pos.equals(mainPos)) {
+            return;
+        }
+
         BlockEntity blockEntity = level.getBlockEntity(mainPos);
         if (blockEntity instanceof CoffinBlockEntity coffin) {
             Containers.dropContents(level, mainPos, coffin);
+            coffin.clearContent();
             level.updateNeighbourForOutputSignal(mainPos, state.getBlock());
         }
     }

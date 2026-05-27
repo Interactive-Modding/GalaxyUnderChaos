@@ -231,7 +231,8 @@ public class ForceHolocronScreen extends AbstractContainerScreen<ForceHolocronMe
                 int y = nodeY(power);
                 boolean unlocked = cap.hasPower(power);
                 boolean prereq = ForceHolocronLogic.hasPrerequisites(menu.getSide(), cap, power);
-                boolean affordable = ForceHolocronLogic.hasDatacronsForUnlock(menu.getSide(), cap, power);
+                boolean affordable = ForceHolocronLogic.hasDatacronsForUnlock(menu.getSide(), cap, power)
+                        && ForceHolocronLogic.hasAlignmentForUnlock(menu.getSide(), cap, power);
                 boolean available = prereq && affordable;
                 boolean hovered = isInside(mouseX, mouseY, x, y, NODE_SIZE, NODE_SIZE);
                 boolean selected = cap.getSelectedPower() == power;
@@ -451,7 +452,14 @@ public class ForceHolocronScreen extends AbstractContainerScreen<ForceHolocronMe
                         ForceSide bank = ForceHolocronLogic.getDatacronBank(menu.getSide());
                         lines.add(Component.literal("Unlock cost: " + cost + " " + bankLabel(bank) + " datacrons"));
                         lines.add(Component.literal("Stored: " + cap.getDatacrons(bank)));
-                        lines.add(Component.literal(cap.getDatacrons(bank) >= cost ? "Ready to unlock." : "More datacrons required."));
+                        int alignmentCost = ForceHolocronLogic.getAlignmentPointCost(menu.getSide(), hovered);
+                        if (alignmentCost > 0) {
+                            ForceSide alignmentBank = ForceHolocronLogic.getAlignmentBank(menu.getSide(), hovered);
+                            lines.add(Component.literal("Alignment cost: " + alignmentCost + " " + bankLabel(alignmentBank) + " points"));
+                            lines.add(Component.literal("Points: " + cap.getAlignmentPoints(alignmentBank)));
+                        }
+                        boolean ready = cap.getDatacrons(bank) >= cost && ForceHolocronLogic.hasAlignmentForUnlock(menu.getSide(), cap, hovered);
+                        lines.add(Component.literal(ready ? "Ready to unlock." : "More datacrons/alignment required."));
                     }
                 }
 
@@ -514,25 +522,36 @@ public class ForceHolocronScreen extends AbstractContainerScreen<ForceHolocronMe
     }
 
     private static int treeRow(ForcePower power) {
+        if (power == null) {
+            return 18;
+        }
+
         return switch (power) {
             case FORCE_SENSITIVITY, FORCE_LEVEL1, FORCE_LEVEL2, FORCE_LEVEL3, FORCE_LEVEL4, FORCE_LEVEL5 -> 0;
             case LIGHT_SIDE -> 1;
             case HEAL1, HEAL2, HEAL3 -> 2;
-            case FORTIFY1, FORTIFY2, FORTIFY3 -> 3;
-            case STUN1, STUN2, STUN3 -> 4;
-            case DARK_SIDE -> 5;
-            case DRAIN1, DRAIN2, DRAIN3 -> 6;
-            case LIGHTNING1, LIGHTNING2, LIGHTNING3 -> 7;
-            case WOUND1, WOUND2, WOUND3 -> 8;
-            case NEUTRAL -> 9;
-            case STEALTH -> 10;
-            case SPEED -> 11;
-            case REBOUND -> 12;
-            case SIGHT1, SIGHT2, SIGHT3 -> 13;
-            case MEDITATION1, MEDITATION2, MEDITATION3 -> 14;
-            case THROW1, THROW2 -> 15;
-            case RESIST1, RESIST2, RESIST3 -> 16;
-            case PUSH1, PUSH2, PUSH3 -> 17;
+            case FORTIFY1, FORTIFY2, FORTIFY3-> 3;
+            case TUTAMINIS, WALL_OF_LIGHT -> 4;
+            case STUN1, STUN2, STUN3 -> 5;
+            case ELECTRIC_JUDGMENT1, ELECTRIC_JUDGMENT2, ELECTRIC_JUDGMENT3 -> 6;
+            case DARK_SIDE -> 7;
+            case DRAIN1, DRAIN2, DRAIN3 -> 8;
+            case LIGHTNING1, LIGHTNING2, LIGHTNING3-> 9;
+            case FORCE_DESTRUCTION1, FORCE_DESTRUCTION2, FORCE_DESTRUCTION3-> 10;
+            case WOUND1, WOUND2, WOUND3-> 11 ;
+            case FORCE_SCREAM1, FORCE_SCREAM2, FORCE_SCREAM3 -> 12;
+            case NEUTRAL -> 13;
+            case STEALTH -> 14;
+            case SPEED, FORCE_LEAP -> 15;
+            case REBOUND -> 16;
+            case SIGHT1, SIGHT2, SIGHT3 -> 17;
+            case MEDITATION1, MEDITATION2, MEDITATION3 -> 18;
+            case FORCE_PROJECTION1, FORCE_PROJECTION2, FORCE_PROJECTION3 -> 19;
+            case THROW1, THROW2 -> 20;
+            case RESIST1, RESIST2, RESIST3 -> 21;
+            case PUSH1, PUSH2, PUSH3 -> 22;
+            case PULL1, PULL2, PULL3 -> 23;
+            default -> 24;
         };
     }
 

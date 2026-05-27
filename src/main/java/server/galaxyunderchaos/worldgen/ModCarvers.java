@@ -68,7 +68,7 @@ public class ModCarvers {
     private static ResourceKey<ConfiguredWorldCarver<?>> carverKey(String path) {
         return ResourceKey.create(
                 Registries.CONFIGURED_CARVER,
-                ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, path)
+                new ResourceLocation(galaxyunderchaos.MODID, path)
         );
     }
 }

@@ -20,39 +20,40 @@ import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import server.galaxyunderchaos.entity.ModEntityTypes;
 import server.galaxyunderchaos.galaxyunderchaos;
 import server.galaxyunderchaos.worldgen.ModPlacedFeatures;
 
 public class ModBiomes {
-    public static final ResourceKey<Biome> NABOO_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_biome"));
-    public static final ResourceKey<Biome> HOTH_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_biome"));
-    public static final ResourceKey<Biome> ILUM_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_biome"));
-    public static final ResourceKey<Biome> ILUM_BIOME_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_biome_forest"));
-    public static final ResourceKey<Biome> MUSTAFAR_LAVA_FIELD = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_lava_field"));
-    public static final ResourceKey<Biome> MUSTAFAR_VOLCANIC_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_volcanic_plains"));
-    public static final ResourceKey<Biome> MUSTAFAR_MAGMA_LAKE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_magma_lake"));
-    public static final ResourceKey<Biome> OSSUS_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_forest"));
-    public static final ResourceKey<Biome> OSSUS_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_plains"));
-    public static final ResourceKey<Biome> OSSUS_MOUNTAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_mountains"));
-    public static final ResourceKey<Biome> OSSUS_OCEAN = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_ocean"));
-    public static final ResourceKey<Biome> OSSUS_DEEP_OCEAN = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_deep_ocean"));
-    public static final ResourceKey<Biome> MALACHOR_UPPER_LAYER = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor_upper_layer"));
-    public static final ResourceKey<Biome> MALACHOR_LOWER_SURFACE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor_lower_surface"));
-    public static final ResourceKey<Biome> NABOO_SWAMP = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_swamp"));
-    public static final ResourceKey<Biome> NABOO_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_plains"));
-    public static final ResourceKey<Biome> NABOO_OCEAN = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_ocean"));
-    public static final ResourceKey<Biome> KORRIBAN_DRY_CANYON = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban_dry_canyon"));
-    public static final ResourceKey<Biome> KORRIBAN_SITH_TOMB = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban_sith_tomb"));
-    public static final ResourceKey<Biome> TYTHON_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_forest"));
-    public static final ResourceKey<Biome> TYTHON_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_plains"));
-    public static final ResourceKey<Biome> TYTHON_MOUNTAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_mountains"));
-    public static final ResourceKey<Biome> TYTHON_LAKE = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_lake"));
-    public static final ResourceKey<Biome> TYTHON_OCEAN = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_ocean"));
-    public static final ResourceKey<Biome> DANTOOINE_PLAINS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_plains"));
-    public static final ResourceKey<Biome> DANTOOINE_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_forest"));
-    public static final ResourceKey<Biome> DANTOOINE_HILLS = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_hills"));
-    public static final ResourceKey<Biome> ASHLA_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ashla_biome"));
-    public static final ResourceKey<Biome> BOGAN_BIOME = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "bogan_biome"));
+    public static final ResourceKey<Biome> NABOO_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"naboo_biome"));
+    public static final ResourceKey<Biome> HOTH_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"hoth_biome"));
+    public static final ResourceKey<Biome> ILUM_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ilum_biome"));
+    public static final ResourceKey<Biome> ILUM_BIOME_FOREST = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ilum_biome_forest"));
+    public static final ResourceKey<Biome> MUSTAFAR_LAVA_FIELD = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"mustafar_lava_field"));
+    public static final ResourceKey<Biome> MUSTAFAR_VOLCANIC_PLAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"mustafar_volcanic_plains"));
+    public static final ResourceKey<Biome> MUSTAFAR_MAGMA_LAKE = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"mustafar_magma_lake"));
+    public static final ResourceKey<Biome> OSSUS_FOREST = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ossus_forest"));
+    public static final ResourceKey<Biome> OSSUS_PLAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ossus_plains"));
+    public static final ResourceKey<Biome> OSSUS_MOUNTAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ossus_mountains"));
+    public static final ResourceKey<Biome> OSSUS_OCEAN = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ossus_ocean"));
+    public static final ResourceKey<Biome> OSSUS_DEEP_OCEAN = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ossus_deep_ocean"));
+    public static final ResourceKey<Biome> MALACHOR_UPPER_LAYER = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"malachor_upper_layer"));
+    public static final ResourceKey<Biome> MALACHOR_LOWER_SURFACE = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"malachor_lower_surface"));
+    public static final ResourceKey<Biome> NABOO_SWAMP = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"naboo_swamp"));
+    public static final ResourceKey<Biome> NABOO_PLAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"naboo_plains"));
+    public static final ResourceKey<Biome> NABOO_OCEAN = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"naboo_ocean"));
+    public static final ResourceKey<Biome> KORRIBAN_DRY_CANYON = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"korriban_dry_canyon"));
+    public static final ResourceKey<Biome> KORRIBAN_SITH_TOMB = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"korriban_sith_tomb"));
+    public static final ResourceKey<Biome> TYTHON_FOREST = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"tython_forest"));
+    public static final ResourceKey<Biome> TYTHON_PLAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"tython_plains"));
+    public static final ResourceKey<Biome> TYTHON_MOUNTAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"tython_mountains"));
+    public static final ResourceKey<Biome> TYTHON_LAKE = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"tython_lake"));
+    public static final ResourceKey<Biome> TYTHON_OCEAN = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"tython_ocean"));
+    public static final ResourceKey<Biome> DANTOOINE_PLAINS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"dantooine_plains"));
+    public static final ResourceKey<Biome> DANTOOINE_FOREST = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"dantooine_forest"));
+    public static final ResourceKey<Biome> DANTOOINE_HILLS = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"dantooine_hills"));
+    public static final ResourceKey<Biome> ASHLA_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"ashla_biome"));
+    public static final ResourceKey<Biome> BOGAN_BIOME = ResourceKey.create(Registries.BIOME, new ResourceLocation(galaxyunderchaos.MODID,"bogan_biome"));
 
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, "galaxyunderchaos");
 
@@ -88,6 +89,12 @@ public class ModBiomes {
         context.register(ASHLA_BIOME, createAshlaBiome(context));
 
 
+    }
+
+    private static void addVonskrSpawns(MobSpawnSettings.Builder spawns, int weight) {
+        spawns.addSpawn(MobCategory.MONSTER,
+                new MobSpawnSettings.SpawnerData(galaxyunderchaos.VONSKR.get(), weight, 1, 2));
+        spawns.addMobCharge(galaxyunderchaos.VONSKR.get(), 0.75D, 0.15D);
     }
     private static Biome createDantooinePlains(BootstapContext<Biome> context) {
 
@@ -371,13 +378,17 @@ public class ModBiomes {
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_PUMPKIN));
 
         generation.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
+        spawns.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
+        addVonskrSpawns(spawns, 1);
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_GHOST.get(), 1, 1, 1));
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.4f)
                 .downfall(0.0f)
                 .generationSettings(generation.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .fogColor(1312000)
                         .skyColor(65535)
@@ -786,13 +797,18 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(VegetationPlacements.PATCH_BERRY_COMMON));
 
         gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, features.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
-
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 3, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.WINGMAW.get(), 3, 1, 1));
+        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
         return new Biome.BiomeBuilder()
                 .temperature(0.7F)
                 .downfall(0.8F)
                 .hasPrecipitation(true)
                 .generationSettings(gen.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(46578)
                         .fogColor(12638463)
@@ -843,13 +859,26 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(VegetationPlacements.PATCH_BERRY_COMMON));
 
         gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, features.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 3, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(galaxyunderchaos.WINGMAW.get(), 4, 1, 1));
+        spawns.addSpawn(MobCategory.MONSTER,
+                new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 2, 1, 1));
 
         return new Biome.BiomeBuilder()
                 .temperature(0.5F)
                 .downfall(0.4F)
                 .hasPrecipitation(true)
                 .generationSettings(gen.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(46578)
                         .fogColor(12638463)
@@ -900,13 +929,26 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(VegetationPlacements.PATCH_BERRY_COMMON));
 
         gen.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, features.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 3, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE,
+                new MobSpawnSettings.SpawnerData(galaxyunderchaos.WINGMAW.get(), 4, 1, 1));
+        spawns.addSpawn(MobCategory.MONSTER,
+                new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 3, 1, 1));
 
         return new Biome.BiomeBuilder()
                 .temperature(0.8F)
                 .downfall(0.6F)
                 .hasPrecipitation(true)
                 .generationSettings(gen.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(46578)
                         .fogColor(12638463)
@@ -1041,9 +1083,17 @@ public class ModBiomes {
                 MobCategory.MONSTER,
                 new MobSpawnSettings.SpawnerData(EntityType.SPIDER, 10, 1, 4)
         );
-//                        .addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.KORRIBAN_GHOST, 10, 1, 4))
         spawns.addMobCharge(EntityType.SPIDER, 1.0, 1.0);
+        addVonskrSpawns(spawns, 1);
 
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_FORCE_USER.get(), 3, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_APPRENTICE.get(), 2, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_LORD.get(), 1, 1, 1));
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(1.2f)
@@ -1092,6 +1142,10 @@ public class ModBiomes {
         );
 
         spawns.addMobCharge(EntityType.CAVE_SPIDER, 1.0, 1.0);
+        addVonskrSpawns(spawns, 1);
+
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_GHOST.get(), 1, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_LORD_GHOST.get(), 1, 1, 1));
 
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
@@ -1366,12 +1420,15 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                 placed.getOrThrow(OrePlacements.ORE_DIAMOND_LARGE));
 
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+        addVonskrSpawns(spawns, 1);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(0.0f)
                 .downfall(0.0f)
                 .generationSettings(gen.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(1842204)
                         .fogColor(4013373)
@@ -1411,12 +1468,15 @@ public class ModBiomes {
         gen.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,
                 placed.getOrThrow(OrePlacements.ORE_COPPER));
 
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+        addVonskrSpawns(spawns, 1);
+
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(-0.8f)
                 .downfall(0.0f)
                 .generationSettings(gen.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(2829099)
                         .fogColor(1776418)
@@ -1597,9 +1657,12 @@ public class ModBiomes {
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
 
         spawns.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
-        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.FROG, 10, 1, 5));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 4, 2, 2));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 1, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
         spawns.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE,
                 new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
 
@@ -1704,8 +1767,11 @@ public class ModBiomes {
 
         spawns.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
         spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.FROG, 10, 1, 5));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 3, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
         spawns.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE,
                 new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
 
@@ -1796,8 +1862,8 @@ public class ModBiomes {
         MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
         spawns.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8));
         spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.FROG, 10, 1, 5));
-        spawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 1, 1));
+        spawns.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.OCELOT, 2, 1, 1));
         spawns.addSpawn(MobCategory.UNDERGROUND_WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 10, 4, 6));
 
         return new Biome.BiomeBuilder()
@@ -1991,13 +2057,29 @@ public class ModBiomes {
         generation.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, placedFeatureHolder.getOrThrow(VegetationPlacements.PATCH_PUMPKIN));
 
         generation.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, placedFeatureHolder.getOrThrow(MiscOverworldPlacements.FREEZE_TOP_LAYER));
-
+        MobSpawnSettings.Builder spawns = new MobSpawnSettings.Builder();
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_FORCE_USER.get(), 3, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_PADAWAN.get(), 2, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.JEDI_MASTER.get(), 1, 1, 1));
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_FORCE_USER.get(), 3, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_APPRENTICE.get(), 2, 1, 1));
+//
+//        spawns.addSpawn(MobCategory.CREATURE,
+//                new MobSpawnSettings.SpawnerData(galaxyunderchaos.SITH_LORD.get(), 1, 1, 1));
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(true)
                 .temperature(-1.0f)
                 .downfall(2.0f)
                 .generationSettings(generation.build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(spawns.build())
                 .specialEffects(new BiomeSpecialEffects.Builder()
                         .skyColor(15462399)
                         .fogColor(12638463)

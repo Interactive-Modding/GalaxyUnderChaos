@@ -65,6 +65,7 @@ public class JediCoffinBlock extends AbstractCoffinBlock {
         Direction direction = placer.getDirection();
         BlockPos headPos = pos.relative(direction);
         level.setBlock(headPos, state.setValue(BlockStateProperties.BED_PART, BedPart.HEAD).setValue(FACING, direction), 3);
+        markPlayerPlacedTomb(level, pos);
     }
 
     @Override

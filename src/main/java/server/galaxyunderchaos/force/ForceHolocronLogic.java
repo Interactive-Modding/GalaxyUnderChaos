@@ -16,7 +16,7 @@ public final class ForceHolocronLogic {
     }
 
     public static boolean isAllowed(ForceSide side, ForcePower power) {
-        if (power == null) {
+        if (power == null || power == ForcePower.FORCE_SHACKLES) {
             return false;
         }
         return switch (side) {
@@ -72,7 +72,32 @@ public final class ForceHolocronLogic {
         if (!hasPrerequisites(side, cap, power)) {
             return false;
         }
-        return hasDatacronsForUnlock(side, cap, power);
+        return hasDatacronsForUnlock(side, cap, power) && hasAlignmentForUnlock(side, cap, power);
+    }
+
+    public static int getAlignmentPointCost(ForceSide holocronSide, ForcePower power) {
+        if (power == null || power == ForcePower.FORCE_SENSITIVITY || power == ForcePower.FORCE_LEVEL1) {
+            return 0;
+        }
+        if (isForceLevelUpgrade(power)) {
+            return Math.max(10, power.tier() * 12);
+        }
+        if (!power.isSelectable()) {
+            return 0;
+        }
+        return Math.max(5, power.tier() * 8);
+    }
+
+    public static ForceSide getAlignmentBank(ForceSide holocronSide, ForcePower power) {
+        if (power != null && power.side() != ForceSide.UNIVERSAL && power.side() != ForceSide.NEUTRAL) {
+            return power.side();
+        }
+        return holocronSide == ForceSide.UNIVERSAL ? ForceSide.NEUTRAL : holocronSide;
+    }
+
+    public static boolean hasAlignmentForUnlock(ForceSide holocronSide, ForceCapability cap, ForcePower power) {
+        int cost = getAlignmentPointCost(holocronSide, power);
+        return cost <= 0 || cap.hasAlignmentPointsFor(getAlignmentBank(holocronSide, power), cost);
     }
 
     public static boolean hasPrerequisites(ForceSide side, ForceCapability cap, ForcePower power) {
@@ -83,7 +108,14 @@ public final class ForceHolocronLogic {
         if (parent != null && !cap.hasPower(parent)) {
             return false;
         }
+        if (requiresForceMentor(power) && !cap.hasForceMentor()) {
+            return false;
+        }
         return !requiresCompletedStudentTraining(power) || cap.hasTrainedStudent();
+    }
+
+    public static boolean requiresForceMentor(ForcePower power) {
+        return power == ForcePower.FORCE_SENSITIVITY;
     }
 
     public static boolean requiresCompletedStudentTraining(ForcePower power) {

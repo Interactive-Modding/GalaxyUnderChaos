@@ -42,6 +42,6 @@ public class ModNoises {
     }
 
     private static ResourceKey<NormalNoise.NoiseParameters> noiseKey(String path) {
-        return ResourceKey.create(Registries.NOISE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, path));
+        return ResourceKey.create(Registries.NOISE, new ResourceLocation(galaxyunderchaos.MODID, path));
     }
 }

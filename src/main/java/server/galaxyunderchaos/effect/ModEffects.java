@@ -30,6 +30,12 @@ public final class ModEffects {
         registerForcePower(ForcePower.STUN1, MobEffectCategory.HARMFUL, 0x83D8FF);
         registerForcePower(ForcePower.STUN2, MobEffectCategory.HARMFUL, 0x66C9FF);
         registerForcePower(ForcePower.STUN3, MobEffectCategory.HARMFUL, 0x47B8FF);
+        
+        registerForcePower(ForcePower.ELECTRIC_JUDGMENT1, MobEffectCategory.HARMFUL, 0xFFF08A);
+        registerForcePower(ForcePower.ELECTRIC_JUDGMENT2, MobEffectCategory.HARMFUL, 0xFFE057);
+        registerForcePower(ForcePower.ELECTRIC_JUDGMENT3, MobEffectCategory.HARMFUL, 0xFFD026);
+        registerForcePower(ForcePower.TUTAMINIS, MobEffectCategory.BENEFICIAL, 0xFFE8A3);
+        registerForcePower(ForcePower.WALL_OF_LIGHT, MobEffectCategory.HARMFUL, 0xFFF6C8);
 
         // Dark side
         registerForcePower(ForcePower.DRAIN1, MobEffectCategory.HARMFUL, 0x8E3DC8);
@@ -41,6 +47,13 @@ public final class ModEffects {
         registerForcePower(ForcePower.WOUND1, MobEffectCategory.HARMFUL, 0xCB3434);
         registerForcePower(ForcePower.WOUND2, MobEffectCategory.HARMFUL, 0xB52525);
         registerForcePower(ForcePower.WOUND3, MobEffectCategory.HARMFUL, 0x9E1818);
+        registerForcePower(ForcePower.FORCE_SCREAM1, MobEffectCategory.HARMFUL, 0x9B1144);
+        registerForcePower(ForcePower.FORCE_SCREAM2, MobEffectCategory.HARMFUL, 0xB7134E);
+        registerForcePower(ForcePower.FORCE_SCREAM3, MobEffectCategory.HARMFUL, 0xD21858);
+        registerForcePower(ForcePower.FORCE_DESTRUCTION1, MobEffectCategory.HARMFUL, 0xFF4B1A);
+        registerForcePower(ForcePower.FORCE_DESTRUCTION2, MobEffectCategory.HARMFUL, 0xFF351A);
+        registerForcePower(ForcePower.FORCE_DESTRUCTION3, MobEffectCategory.HARMFUL, 0xE71616);
+        registerForcePower(ForcePower.FORCE_SHACKLES, MobEffectCategory.HARMFUL, 0x6B0F95);
 
         // Neutral / utility
         registerForcePower(ForcePower.STEALTH, MobEffectCategory.BENEFICIAL, 0x6F6F86);
@@ -60,6 +73,13 @@ public final class ModEffects {
         registerForcePower(ForcePower.PUSH1, MobEffectCategory.HARMFUL, 0xA7D6FF);
         registerForcePower(ForcePower.PUSH2, MobEffectCategory.HARMFUL, 0x8EC9FF);
         registerForcePower(ForcePower.PUSH3, MobEffectCategory.HARMFUL, 0x72B9FF);
+        registerForcePower(ForcePower.PULL1, MobEffectCategory.HARMFUL, 0x91C8FF);
+        registerForcePower(ForcePower.PULL2, MobEffectCategory.HARMFUL, 0x78B8FF);
+        registerForcePower(ForcePower.PULL3, MobEffectCategory.HARMFUL, 0x5EA6FF);
+        registerForcePower(ForcePower.FORCE_LEAP, MobEffectCategory.BENEFICIAL, 0xA8F0FF);
+        registerForcePower(ForcePower.FORCE_PROJECTION1, MobEffectCategory.BENEFICIAL, 0xC8C7FF);
+        registerForcePower(ForcePower.FORCE_PROJECTION2, MobEffectCategory.BENEFICIAL, 0xAFAEFF);
+        registerForcePower(ForcePower.FORCE_PROJECTION3, MobEffectCategory.BENEFICIAL, 0x9694FF);
     }
 
     private ModEffects() {}

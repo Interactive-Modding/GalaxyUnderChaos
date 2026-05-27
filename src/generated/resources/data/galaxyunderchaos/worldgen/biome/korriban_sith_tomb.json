@@ -38,6 +38,10 @@
   ],
   "has_precipitation": false,
   "spawn_costs": {
+    "galaxyunderchaos:vonskr": {
+      "charge": 0.75,
+      "energy_budget": 0.15
+    },
     "minecraft:cave_spider": {
       "charge": 1.0,
       "energy_budget": 1.0
@@ -54,6 +58,12 @@
         "maxCount": 2,
         "minCount": 1,
         "weight": 10
+      },
+      {
+        "type": "galaxyunderchaos:vonskr",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 1
       }
     ],
     "underground_water_creature": [],

@@ -5,8 +5,10 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import server.galaxyunderchaos.entity.forceuser.PlayerForceIdentity;
 
 import java.util.stream.Collectors;
 
@@ -29,7 +31,12 @@ public final class ForceCommand {
                 .then(Commands.literal("unlockall")
                         .executes(ctx -> unlockAll(ctx.getSource())))
                 .then(Commands.literal("refill")
-                        .executes(ctx -> refill(ctx.getSource()))));
+                        .executes(ctx -> refill(ctx.getSource())))
+                .then(Commands.literal("identity")
+                        .then(Commands.literal("reset")
+                                .requires(source -> source.hasPermission(2))
+                                .then(Commands.argument("player", EntityArgument.player())
+                                        .executes(ctx -> resetIdentity(ctx.getSource(), EntityArgument.getPlayer(ctx, "player")))))));
     }
 
     private static int list(CommandSourceStack source) {
@@ -101,6 +108,13 @@ public final class ForceCommand {
             ForceCapabilityManager.refill(player);
             source.sendSuccess(() -> Component.literal("Force energy restored."), true);
         }
+        return Command.SINGLE_SUCCESS;
+    }
+
+    private static int resetIdentity(CommandSourceStack source, ServerPlayer target) {
+        PlayerForceIdentity.clearIdentity(target);
+        target.displayClientMessage(Component.literal("Your Force identity was reset by an admin. You may choose species/details again."), false);
+        source.sendSuccess(() -> Component.literal("Reset Force identity for " + target.getGameProfile().getName() + "."), true);
         return Command.SINGLE_SUCCESS;
     }
 }

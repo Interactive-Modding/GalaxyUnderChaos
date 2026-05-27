@@ -25,11 +25,15 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> ACID_SPIDER_LIVING = registerSoundEvent("acid_spider_living");
     public static final RegistryObject<SoundEvent> ACID_SPIDER_HURT = registerSoundEvent("acid_spider_hurt");
     public static final RegistryObject<SoundEvent> ACID_SPIDER_ATTACK = registerSoundEvent("acid_spider_attack");
+    public static final RegistryObject<SoundEvent> VONSKR_LIVING = registerSoundEvent("vonskr_living");
+    public static final RegistryObject<SoundEvent> VONSKR_HURT = registerSoundEvent("vonskr_hurt");
+    public static final RegistryObject<SoundEvent> VONSKR_ATTACK = registerSoundEvent("vonskr_attack");
     public static final RegistryObject<SoundEvent> FORCE_CAST = registerSoundEvent("force_cast");
     public static final RegistryObject<SoundEvent> FORCE_CAST_DARK = registerSoundEvent("force_cast_dark");
     public static final RegistryObject<SoundEvent> FORCE_CAST_FAIL = registerSoundEvent("force_cast_fail");
     public static final RegistryObject<SoundEvent> FORCE_HEAL = registerSoundEvent("force_heal");
     public static final RegistryObject<SoundEvent> FORCE_LIGHTNING_START = registerSoundEvent("force_lightning_start");
+    public static final RegistryObject<SoundEvent> FORCE_SCERAM = registerSoundEvent("force_scream");
     public static final RegistryObject<SoundEvent> FORCE_LIGHTNING_LOOP = registerSoundEvent("force_lightning_loop");
     public static final RegistryObject<SoundEvent> FORCE_STEALTH_ON = registerSoundEvent("force_stealth_on");
     public static final RegistryObject<SoundEvent> FORCE_STEALTH_OFF = registerSoundEvent("force_stealth_off");

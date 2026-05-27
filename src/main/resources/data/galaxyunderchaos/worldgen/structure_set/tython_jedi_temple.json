@@ -2,13 +2,21 @@
   "structures": [
     {
       "structure": "galaxyunderchaos:tython_jedi_temple",
-      "weight": 1
+      "weight": 2
+    },
+    {
+      "structure": "galaxyunderchaos:tython_jedaii_training_grounds",
+      "weight": 3
+    },
+    {
+      "structure": "galaxyunderchaos:tython_jedaii_battlegrounds",
+      "weight": 3
     }
   ],
   "placement": {
     "type": "minecraft:random_spread",
-    "spacing": 80,
-    "separation": 24,
+    "spacing": 54,
+    "separation": 18,
     "salt": 1991969773
   }
 }

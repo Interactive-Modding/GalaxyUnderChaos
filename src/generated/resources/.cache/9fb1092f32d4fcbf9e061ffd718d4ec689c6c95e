@@ -1,4 +1,4 @@
-// 1.20.1	2026-05-13T20:03:02.0945566	Recipes
+// 1.20.1	2026-05-20T23:41:45.5870027	Recipes
 0a003fbf452c24975ef15ff08806de154b933b21 data/galaxyunderchaos/advancements/recipes/building_blocks/ak_planks.json
 62b44176684c86075dc44aeee7ddde0f9e8c6c72 data/galaxyunderchaos/advancements/recipes/building_blocks/ak_slab.json
 0a864092ac7807ff0f6887ef867ab6d00da8b2d3 data/galaxyunderchaos/advancements/recipes/building_blocks/ak_stairs.json
@@ -396,7 +396,7 @@ a24e4f5b83a5242e7caea4668bb05680af0af6cf data/galaxyunderchaos/recipes/polar_sig
 379765bb5b01d4b04a2e3715d2e915315893d8eb data/galaxyunderchaos/recipes/polar_slab.json
 c3ac548bfe5d6bc5719f37aab1b2b5c6ee6e4cf2 data/galaxyunderchaos/recipes/polar_stairs.json
 bc2a4f58b45934d6826d008d8f5032ab768fb828 data/galaxyunderchaos/recipes/polar_trapdoor.json
-9bebc9dafc075002a723913aac4c810fbfd51f45 data/galaxyunderchaos/recipes/portal_item.json
+da7d573e689b32929d29695b8bc6c6f6edb99827 data/galaxyunderchaos/recipes/portal_item.json
 63f82d7a6b5910ac4252f72d46254bb3c47b5f8c data/galaxyunderchaos/recipes/rutiger_boat.json
 f9c02e65fdbbdfb84c8ffdb360eed488ff61a368 data/galaxyunderchaos/recipes/rutiger_button.json
 0bb2f075cdca1051c8cdc1d80b558696e89014b3 data/galaxyunderchaos/recipes/rutiger_chest_boat.json

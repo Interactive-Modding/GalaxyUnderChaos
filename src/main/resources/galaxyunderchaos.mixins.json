@@ -4,7 +4,12 @@
   "package": "client.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "galaxyunderchaos.refmap.json",
-  "mixins": [],
+  "mixins": [
+    "LevelPlanetTimeMixin",
+    "ServerLevelPlanetTimeMixin",
+    "JigsawStructureAccessor",
+    "JigsawStructureLimitMixin"
+  ],
   "client": [
     "RenderStateShardAccessor",
     "CameraMixin",

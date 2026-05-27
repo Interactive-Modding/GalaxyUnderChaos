@@ -38,12 +38,12 @@ public class ModBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(ModBiomes.DANTOOINE_PLAINS)),
                 HolderSet.direct(placedFeature.getOrThrow(ModPlacedFeatures.BLBA_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-        context.register(SPAWN_ACID_SPIDER, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(ModBiomes.TYTHON_FOREST), biomes.getOrThrow(ModBiomes.TYTHON_MOUNTAINS)),
-                List.of(new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 10, 1, 2))));
-        context.register(SPAWN_WINGMAW, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(ModBiomes.TYTHON_FOREST), biomes.getOrThrow(ModBiomes.TYTHON_MOUNTAINS)),
-                List.of(new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 20, 1, 3))));
+//        context.register(SPAWN_ACID_SPIDER, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+//                HolderSet.direct(biomes.getOrThrow(ModBiomes.TYTHON_FOREST), biomes.getOrThrow(ModBiomes.TYTHON_MOUNTAINS)),
+//                List.of(new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 10, 1, 2))));
+//        context.register(SPAWN_WINGMAW, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+//                HolderSet.direct(biomes.getOrThrow(ModBiomes.TYTHON_FOREST), biomes.getOrThrow(ModBiomes.TYTHON_MOUNTAINS)),
+//                List.of(new MobSpawnSettings.SpawnerData(galaxyunderchaos.ACID_SPIDER.get(), 20, 1, 3))));
 
     }
 

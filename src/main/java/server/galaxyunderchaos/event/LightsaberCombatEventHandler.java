@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import server.galaxyunderchaos.force.ForcePowerHandler;
 import server.galaxyunderchaos.galaxyunderchaos;
 import server.galaxyunderchaos.item.LightsaberItem;
 import server.galaxyunderchaos.lightsaber.LightsaberFormCapabilityManager;
@@ -112,7 +113,30 @@ public class LightsaberCombatEventHandler {
     @SubscribeEvent
     public static void onLivingAttack(LivingAttackEvent event) {
         LivingEntity target = event.getEntity();
-        if (!(target instanceof Player player) || player.level().isClientSide) {
+        if (target.level().isClientSide) {
+            return;
+        }
+
+        Entity incoming = event.getSource().getDirectEntity();
+        if (incoming == null) {
+            incoming = event.getSource().getEntity();
+        }
+
+        if (incoming != null && ForcePowerHandler.isTutaminisActive(target) && isActiveSaberAttack(incoming)) {
+            event.setCanceled(true);
+            target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
+                    ModSounds.LIGHTSABER_DEFLECT.get(), SoundSource.PLAYERS, 0.85F, 1.45F);
+            if (target instanceof net.minecraft.server.level.ServerPlayer defender) {
+                ForcePowerHandler.spawnTutaminisVisual(defender);
+            }
+            if (incoming instanceof LivingEntity attacker) {
+                attacker.invulnerableTime = 0;
+                attacker.hurt(target.damageSources().indirectMagic(target, target), Math.max(1.0F, event.getAmount() * 0.35F));
+            }
+            return;
+        }
+
+        if (!(target instanceof Player player)) {
             return;
         }
 
@@ -121,10 +145,6 @@ public class LightsaberCombatEventHandler {
             return;
         }
 
-        Entity incoming = event.getSource().getDirectEntity();
-        if (incoming == null) {
-            incoming = event.getSource().getEntity();
-        }
         if (incoming == null || !isFrontFacingGuard(player, incoming)) {
             return;
         }

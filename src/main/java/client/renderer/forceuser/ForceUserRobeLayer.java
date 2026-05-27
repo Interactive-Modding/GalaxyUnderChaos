@@ -23,6 +23,8 @@ public class ForceUserRobeLayer extends RenderLayer<ForceUserEntity, ForceUserLa
     private static final ResourceLocation SITH_ROBES_ALT = robeTexture("sith_robes_alt");
     private static final ResourceLocation JEDI_ROBES = robeTexture("jedi_robes");
     private static final ResourceLocation JEDI_ROBES_ALT = robeTexture("jedi_robes_alt");
+    private static final ResourceLocation NEUTRAL_ROBES = robeTexture("neutral_robes");
+    private static final ResourceLocation NEUTRAL_ROBES_ALT = robeTexture("neutral_robes_alt");
 
     private final Map<String, EntityModel<ForceUserEntity>> robes;
 
@@ -53,6 +55,15 @@ public class ForceUserRobeLayer extends RenderLayer<ForceUserEntity, ForceUserLa
          * - Sith spawn: base texture already has the correct Sith robe. Render no additive robe.
          * - Jedi spawn: render ONLY jedi_robes_alt over the base model.
          */
+        if (side.isNeutral()) {
+            if (jediOriginalSpecies) {
+                renderRobe("jedi_robes", NEUTRAL_ROBES, poseStack, buffer, packedLight, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, entity.isGhost() ? 0.48F : 1.0F);
+            } else {
+                renderRobe("sith_robes", NEUTRAL_ROBES_ALT, poseStack, buffer, packedLight, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, entity.isGhost() ? 0.48F : 1.0F);
+            }
+            return;
+        }
+
         if (side.isDark()) {
             if (jediOriginalSpecies) {
                 renderRobe("sith_robes_alt", SITH_ROBES_ALT, poseStack, buffer, packedLight, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, entity.isGhost() ? 0.48F : 1.0F);

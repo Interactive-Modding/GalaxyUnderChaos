@@ -25,71 +25,71 @@ import java.util.OptionalLong;
 
 public class ModDimensions {
 
-    public static final ResourceKey<LevelStem> TYTHON_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython"));
-    public static final ResourceKey<Level> TYTHON_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython"));
-    public static final ResourceKey<DimensionType> TYTHON_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_type"));
+    public static final ResourceKey<LevelStem> TYTHON_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"tython"));
+    public static final ResourceKey<Level> TYTHON_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"tython"));
+    public static final ResourceKey<DimensionType> TYTHON_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"tython_type"));
 
-    public static final ResourceKey<LevelStem> NABOO_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo"));
-    public static final ResourceKey<Level> NABOO_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo"));
-    public static final ResourceKey<DimensionType> NABOO_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_type"));
+    public static final ResourceKey<LevelStem> NABOO_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"naboo"));
+    public static final ResourceKey<Level> NABOO_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"naboo"));
+    public static final ResourceKey<DimensionType> NABOO_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"naboo_type"));
 
-    public static final ResourceKey<LevelStem> HOTH_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth"));
-    public static final ResourceKey<Level> HOTH_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth"));
-    public static final ResourceKey<DimensionType> HOTH_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_type"));
+    public static final ResourceKey<LevelStem> HOTH_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"hoth"));
+    public static final ResourceKey<Level> HOTH_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"hoth"));
+    public static final ResourceKey<DimensionType> HOTH_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"hoth_type"));
 
-    public static final ResourceKey<LevelStem> ILUM_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum"));
-    public static final ResourceKey<Level> ILUM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum"));
-    public static final ResourceKey<DimensionType> ILUM_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_type"));
+    public static final ResourceKey<LevelStem> ILUM_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"ilum"));
+    public static final ResourceKey<Level> ILUM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"ilum"));
+    public static final ResourceKey<DimensionType> ILUM_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"ilum_type"));
 
-    public static final ResourceKey<LevelStem> MUSTAFAR_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar"));
-    public static final ResourceKey<Level> MUSTAFAR_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar"));
-    public static final ResourceKey<DimensionType> MUSTAFAR_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_type"));
+    public static final ResourceKey<LevelStem> MUSTAFAR_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"mustafar"));
+    public static final ResourceKey<Level> MUSTAFAR_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"mustafar"));
+    public static final ResourceKey<DimensionType> MUSTAFAR_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"mustafar_type"));
 
-    public static final ResourceKey<LevelStem> OSSUS_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus"));
-    public static final ResourceKey<Level> OSSUS_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus"));
-    public static final ResourceKey<DimensionType> OSSUS_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_type"));
+    public static final ResourceKey<LevelStem> OSSUS_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"ossus"));
+    public static final ResourceKey<Level> OSSUS_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"ossus"));
+    public static final ResourceKey<DimensionType> OSSUS_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"ossus_type"));
 
-    public static final ResourceKey<LevelStem> ASHLA_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ashla"));
-    public static final ResourceKey<Level> ASHLA_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ashla"));
-    public static final ResourceKey<DimensionType> ASHLA_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ashla_type"));
+    public static final ResourceKey<LevelStem> ASHLA_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"ashla"));
+    public static final ResourceKey<Level> ASHLA_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"ashla"));
+    public static final ResourceKey<DimensionType> ASHLA_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"ashla_type"));
 
-    public static final ResourceKey<LevelStem> BOGAN_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "bogan"));
-    public static final ResourceKey<Level> BOGAN_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "bogan"));
-    public static final ResourceKey<DimensionType> BOGAN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "bogan_type"));
+    public static final ResourceKey<LevelStem> BOGAN_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"bogan"));
+    public static final ResourceKey<Level> BOGAN_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"bogan"));
+    public static final ResourceKey<DimensionType> BOGAN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"bogan_type"));
 
-    public static final ResourceKey<LevelStem> MALACHOR_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor"));
-    public static final ResourceKey<Level> MALACHOR_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor"));
-    public static final ResourceKey<DimensionType> MALACHOR_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor_type"));
+    public static final ResourceKey<LevelStem> MALACHOR_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"malachor"));
+    public static final ResourceKey<Level> MALACHOR_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"malachor"));
+    public static final ResourceKey<DimensionType> MALACHOR_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"malachor_type"));
 
-    public static final ResourceKey<LevelStem> KORRIBAN_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban"));
-    public static final ResourceKey<Level> KORRIBAN_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban"));
-    public static final ResourceKey<DimensionType> KORRIBAN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban_type"));
+    public static final ResourceKey<LevelStem> KORRIBAN_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"korriban"));
+    public static final ResourceKey<Level> KORRIBAN_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"korriban"));
+    public static final ResourceKey<DimensionType> KORRIBAN_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"korriban_type"));
 
-    public static final ResourceKey<LevelStem> DANTOOINE_KEY = ResourceKey.create(Registries.LEVEL_STEM, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine"));
-    public static final ResourceKey<Level> DANTOOINE_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine"));
-    public static final ResourceKey<DimensionType> DANTOOINE_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_type"));
+    public static final ResourceKey<LevelStem> DANTOOINE_KEY = ResourceKey.create(Registries.LEVEL_STEM, new ResourceLocation(galaxyunderchaos.MODID,"dantooine"));
+    public static final ResourceKey<Level> DANTOOINE_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(galaxyunderchaos.MODID,"dantooine"));
+    public static final ResourceKey<DimensionType> DANTOOINE_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(galaxyunderchaos.MODID,"dantooine_type"));
 
-    public static final ResourceKey<NoiseGeneratorSettings> TYTHON_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "tython_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> NABOO_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "naboo_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> HOTH_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "hoth_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> ILUM_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ilum_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> MUSTAFAR_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "mustafar_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> OSSUS_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ossus_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> ASHLA_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "ashla_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> BOGAN_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "bogan_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> MALACHOR_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "malachor_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> KORRIBAN_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "korriban_noise_settings"));
-    public static final ResourceKey<NoiseGeneratorSettings> DANTOOINE_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, ResourceLocation.fromNamespaceAndPath(galaxyunderchaos.MODID, "dantooine_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> TYTHON_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"tython_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> NABOO_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"naboo_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> HOTH_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"hoth_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> ILUM_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"ilum_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> MUSTAFAR_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"mustafar_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> OSSUS_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"ossus_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> ASHLA_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"ashla_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> BOGAN_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"bogan_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> MALACHOR_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"malachor_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> KORRIBAN_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"korriban_noise_settings"));
+    public static final ResourceKey<NoiseGeneratorSettings> DANTOOINE_NOISE = ResourceKey.create(Registries.NOISE_SETTINGS, new ResourceLocation(galaxyunderchaos.MODID,"dantooine_noise_settings"));
 
     public static void bootstrapType(BootstapContext<DimensionType> context) {
         context.register(ASHLA_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.8f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
-        context.register(BOGAN_DIM_TYPE, new DimensionType(OptionalLong.of(18000), false, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)));
+        context.register(BOGAN_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)));
         context.register(DANTOOINE_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 7)));
         context.register(HOTH_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(ILUM_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(KORRIBAN_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "overworld"), 0.1f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)));
-        context.register(MALACHOR_DIM_TYPE, new DimensionType(OptionalLong.of(18000), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
-        context.register(MUSTAFAR_DIM_TYPE, new DimensionType(OptionalLong.of(18000), true, false, true, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.1f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
+        context.register(MALACHOR_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.05f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
+        context.register(MUSTAFAR_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, true, true, 1.0, true, true, -64, 384, 256, BlockTags.INFINIBURN_NETHER, new ResourceLocation("minecraft", "the_nether"), 0.1f, new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 0)));
         context.register(NABOO_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, false, ConstantInt.of(0), 0)));
         context.register(OSSUS_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 384, 384, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation("minecraft", "overworld"), 0.0f, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 7)));
         context.register(TYTHON_DIM_TYPE, new DimensionType(OptionalLong.empty(), true, false, false, true, 1.0, true, true, -64, 320, 256, BlockTags.INFINIBURN_OVERWORLD, new ResourceLocation(galaxyunderchaos.MODID, "tython"), 0.0f, new DimensionType.MonsterSettings(false, true, UniformInt.of(0, 7), 7)));

@@ -1,10 +1,12 @@
 {
-  "generated_structure_count": 23,
+  "generated_structure_count": 24,
   "notes": [
-    "Existing .nbt templates from src/main/resources/data/galaxyunderchaos/structures are referenced by template pools and are not duplicated in this fixed-only zip.",
+    "1.0.2 fix: Structures now use galaxyunderchaos:large_single_template instead of minecraft:jigsaw because these templates are single-piece .nbt files, not jigsaw-piece structures.",
+    "Planet structure sets were rebalanced so related sites roll from shared planet pools where possible, reducing back-to-back temple/shrine clustering while keeping loot locations available.",
+    "Ashla crystal cave is lowered with a negative y_offset so it embeds near the terrain instead of appearing high above the ground.",
     "korriban_massive_sith_temple.nbt is a loot-patched copy of malachor_temple.nbt so Korriban massive temple chests use chests/korriban/massive_sith_temple.",
     "mustafar_ancient_temple.nbt is a loot-patched copy of ancient_temple.nbt so Mustafar ancient temple chests use Mustafar ancient temple loot via the same-length alias ancient_temple_temple.json.",
-    "Every structure has a biome tag, jigsaw structure JSON, structure set JSON, and template pool JSON."
+    "Sith Academy now has the full data-driven structure stack, Korriban biome tags, Sith loot, and Sith structure spawn overrides."
   ],
   "structures": [
     {
@@ -244,6 +246,23 @@
       "maxdist": 128
     },
     {
+      "id": "sith_academy",
+      "template": "sith_academy",
+      "biomes": [
+        "galaxyunderchaos:korriban_dry_canyon",
+        "galaxyunderchaos:korriban_sith_tomb"
+      ],
+      "spacing": 84,
+      "separation": 28,
+      "adaptation": "beard_thin",
+      "maxdist": 128,
+      "spawns": [
+        "galaxyunderchaos:sith_force_user",
+        "galaxyunderchaos:sith_apprentice",
+        "galaxyunderchaos:sith_lord"
+      ]
+    },
+    {
       "id": "malachor_massive_sith_temple",
       "template": "malachor_temple",
       "biomes": [
@@ -281,5 +300,6 @@
       "adaptation": "none",
       "maxdist": 96
     }
-  ]
+  ],
+  "structure_type": "galaxyunderchaos:large_single_template"
 }
