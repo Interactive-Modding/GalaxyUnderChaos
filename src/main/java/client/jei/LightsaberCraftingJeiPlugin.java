@@ -49,8 +49,7 @@ public class LightsaberCraftingJeiPlugin implements IModPlugin {
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         registration.addRecipeClickArea(LightsaberCraftingTableScreen.class, 94, 19, 154, 84, LightsaberCraftingRecipeCategory.TYPE);
         registration.addRecipeClickArea(LightsaberCraftingTableScreen.class, 220, 82, 28, 28, LightsaberCraftingRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ShipCraftingTableScreen.class, 93, 18, 154, 90, ShipCraftingRecipeCategory.TYPE);
-        registration.addRecipeClickArea(ShipCraftingTableScreen.class, ShipCraftingTableMenu.RESULT_SLOT_X - 4, ShipCraftingTableMenu.RESULT_SLOT_Y - 4, 26, 26, ShipCraftingRecipeCategory.TYPE);
+        registration.addRecipeClickArea(ShipCraftingTableScreen.class, 204, 7, 42, 10, ShipCraftingRecipeCategory.TYPE);
     }
 
     @Override

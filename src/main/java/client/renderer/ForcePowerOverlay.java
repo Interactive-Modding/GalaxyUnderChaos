@@ -7,6 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import server.galaxyunderchaos.force.ForceCapability;
@@ -20,13 +21,24 @@ public class ForcePowerOverlay {
     private static final ResourceLocation FORCE_HUD_ICONS =
             new ResourceLocation(galaxyunderchaos.MODID, "textures/gui/icons.png");
 
+    /*
+     * RenderGuiOverlayEvent.Post fires once for every vanilla overlay layer.
+     * Without this filter the Force/saber HUD is drawn many times per frame
+     * while a saber is active, which can spike GPU usage badly.
+     */
+    private static final ResourceLocation RENDER_AFTER_OVERLAY = VanillaGuiOverlay.HOTBAR.id();
+
     private static final int HUD_LEFT = 24;
     private static final int HUD_BOTTOM_OFFSET = 70;
     private static final int RADIUS = 28;
-    private static final int ARC_STEPS = 30;
+    private static final int ARC_STEPS = 18;
 
     @SubscribeEvent
     public static void onRenderOverlay(RenderGuiOverlayEvent.Post event) {
+        if (!RENDER_AFTER_OVERLAY.equals(event.getOverlay().id())) {
+            return;
+        }
+
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player == null || mc.options.hideGui) {

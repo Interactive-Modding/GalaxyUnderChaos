@@ -123,7 +123,9 @@ public class ShipCraftingTableScreen extends AbstractContainerScreen<ShipCraftin
     private void renderDecorations(GuiGraphics graphics) {
 //        graphics.drawString(this.font, "Ship Sections", this.leftPos + 11, this.topPos + 41, 0xDCE9FF, false);
         graphics.drawString(this.font, "Blueprint", this.leftPos + 11, this.topPos + 7, 0x9AB3D4, false);
+        graphics.drawString(this.font, "Output", this.leftPos + 56, this.topPos + 7, 0x9AB3D4, false);
         graphics.drawString(this.font, "Preview", this.leftPos + 98, this.topPos + 7, 0xDCE9FF, false);
+        graphics.drawString(this.font, "Recipes", this.leftPos + 205, this.topPos + 7, 0x90A9C9, false);
         graphics.drawString(this.font, "Drag ship preview to rotate", this.leftPos + 101, this.topPos + 97, 0x90A9C9, false);
 
         drawSlotFrame(graphics, ShipCraftingTableMenu.BLUEPRINT_SLOT_X, ShipCraftingTableMenu.BLUEPRINT_SLOT_Y);
@@ -221,6 +223,10 @@ public class ShipCraftingTableScreen extends AbstractContainerScreen<ShipCraftin
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0) {
+            if (isMouseOverMenuSlot(mouseX, mouseY)) {
+                return super.mouseClicked(mouseX, mouseY, button);
+            }
+
             ShipColorSection clickedSection = getClickedSection(mouseX, mouseY);
             if (clickedSection != null) {
                 selectedSection = clickedSection;
@@ -267,6 +273,17 @@ public class ShipCraftingTableScreen extends AbstractContainerScreen<ShipCraftin
         int x = this.leftPos + PREVIEW_X;
         int y = this.topPos + PREVIEW_Y;
         return mouseX >= x && mouseX < x + PREVIEW_W && mouseY >= y && mouseY < y + PREVIEW_H;
+    }
+
+    private boolean isMouseOverMenuSlot(double mouseX, double mouseY) {
+        for (net.minecraft.world.inventory.Slot slot : this.menu.slots) {
+            int x = this.leftPos + slot.x;
+            int y = this.topPos + slot.y;
+            if (mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private ShipColorSection getClickedSection(double mouseX, double mouseY) {
@@ -326,7 +343,7 @@ public class ShipCraftingTableScreen extends AbstractContainerScreen<ShipCraftin
         this.renderBackground(graphics);
         super.render(graphics, mouseX, mouseY, partialTick);
 
-        if (isMouseOverPreview(mouseX, mouseY) && !this.menu.getPreviewStack().isEmpty()) {
+        if (isMouseOverPreview(mouseX, mouseY) && !isMouseOverMenuSlot(mouseX, mouseY) && !this.menu.getPreviewStack().isEmpty()) {
             graphics.renderTooltip(this.font, Component.literal("Left click + drag to rotate"), mouseX, mouseY);
         } else {
             ShipColorSection hoveredSection = getClickedSection(mouseX, mouseY);

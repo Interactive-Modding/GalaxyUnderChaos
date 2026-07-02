@@ -1,22 +1,6 @@
 package server.galaxyunderchaos;
 
-import client.renderer.*;
-import client.renderer.ship.NovadiveRenderer;
-import client.renderer.forceuser.ForceUserRenderer;
-import client.renderer.ship.FlashfireRenderer;
-import client.screen.*;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.BoatRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleType;
@@ -36,8 +20,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -46,9 +28,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -1771,14 +1751,14 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
     public galaxyunderchaos() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+        BLOCKS.register(modEventBus);
+        ITEMS.register(modEventBus);
+        ENTITY_TYPES.register(modEventBus);
+        PARTICLE_TYPES.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModMenuTypes.MENUS.register(modEventBus);
         ModEntityTypes.ENTITY_TYPES.register(modEventBus);
         ModEffects.register(modEventBus);
-        ENTITY_TYPES.register(modEventBus);
-        BLOCKS.register(modEventBus);
-        ITEMS.register(modEventBus);
-        PARTICLE_TYPES.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
         ModStructureTypes.register(modEventBus);
         CreativeMenuTabs.register(modEventBus);
@@ -1786,11 +1766,7 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
 //        registerLightsabers();
         registerAdvancedLightsaberContent();
         ModSounds.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(LightsaberBeltRenderer.class);
-//        MinecraftForge.EVENT_BUS.register(ForcePowerOverlay.class);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        modEventBus.addListener(this::clientSetup);
-        MinecraftForge.EVENT_BUS.register(HyperspaceOverlayRenderer.class);
         ModLootModifiers.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(LightsaberFormEventHandler.class);
     }
@@ -1800,165 +1776,6 @@ public static final RegistryObject<Item> FOCUSING_CRYSTAL_FORCE_WHIP = ITEMS.reg
         LightsaberFormNetworking.registerPackets(event);
         ForceNetworking.registerPackets(event);
         ShipNetworking.registerPackets(event);
-    }
-    @Mod.EventBusSubscriber(modid = galaxyunderchaos.MODID,
-            bus = Mod.EventBusSubscriber.Bus.MOD,
-            value = Dist.CLIENT)
-    public class ModClient {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            event.enqueueWork(() -> {
-                EntityRenderers.register(ModEntityTypes.AK_BOAT.get(), pContext -> new AkBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.AK_CHEST_BOAT.get(), pContext -> new AkBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.DILLIA_BOAT.get(), pContext -> new DilliaBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.DILLIA_CHEST_BOAT.get(), pContext -> new DilliaBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.NABOO_PINE_BOAT.get(), pContext -> new NabooPineBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.NABOO_PINE_CHEST_BOAT.get(), pContext -> new NabooPineBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.HEART_BERRY_BOAT.get(), pContext -> new HBBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.HEART_BERRY_CHEST_BOAT.get(), pContext -> new HBBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.BLBA_BOAT.get(), pContext -> new BlbaBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.BLBA_CHEST_BOAT.get(), pContext -> new BlbaBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.CAMBYLICTUS_BOAT.get(), pContext -> new CambylictusBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.CAMBYLICTUS_CHEST_BOAT.get(), pContext -> new CambylictusBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.PERLOTE_BOAT.get(), pContext -> new PerloteBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.PERLOTE_CHEST_BOAT.get(), pContext -> new PerloteBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.RUTIGER_BOAT.get(), pContext -> new RutigerBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.RUTIGER_CHEST_BOAT.get(), pContext -> new RutigerBoatRenderer(pContext, true));
-                EntityRenderers.register(ModEntityTypes.POLAR_BOAT.get(), pContext -> new PolarBoatRenderer(pContext, false));
-                EntityRenderers.register(ModEntityTypes.POLAR_CHEST_BOAT.get(), pContext -> new PolarBoatRenderer(pContext, true));
-                Sheets.addWoodType(galaxyunderchaos.AK_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.DILLIA_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.NABOO_PINE_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.HEART_BERRY_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.BLBA_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.CAMBYLICTUS_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.PERLOTE_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.RUTIGER_WOOD_TYPE);
-                Sheets.addWoodType(galaxyunderchaos.POLAR_WOOD_TYPE);
-
-                BlockEntityRenderers.register(ModBlockEntities.AK_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.AK_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.DILLIA_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.DILLIA_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.NABOO_PINE_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.NABOO_PINE_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.HEART_BERRY_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.HEART_BERRY_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.BLBA_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.BLBA_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.CAMBYLICTUS_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.CAMBYLICTUS_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.PERLOTE_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.PERLOTE_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.RUTIGER_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.RUTIGER_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.POLAR_SIGN_BE.get(),    SignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.POLAR_HANGING_SIGN_BE.get(), HangingSignRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.SABER_STAND_BE.get(), GroundSaberStandRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.BLEEDING_TABLE_BE.get(), BleedingTableRenderer::new);
-                BlockEntityRenderers.register(ModBlockEntities.COFFIN_BE.get(), CoffinGeoRenderer::new);
-
-            });
-        }
-
-        @SubscribeEvent
-        public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-            event.registerSpriteSet(galaxyunderchaos.JEDI_COFFIN_PARTICLE.get(), client.particle.CoffinRuneParticle.JediProvider::new);
-            event.registerSpriteSet(galaxyunderchaos.SITH_COFFIN_PARTICLE.get(), client.particle.CoffinRuneParticle.SithProvider::new);
-        }
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event) {
-        EntityRenderers.register(galaxyunderchaos.ACID_SPIDER.get(), AcidSpiderRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.WINGMAW.get(), WingmawRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.VONSKR.get(), VonskrRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.JEDI_FORCE_USER.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_FORCE_USER.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_GHOST.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_LORD_GHOST.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_LORD.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.JEDI_MASTER.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.NEUTRAL_FORCE_USER.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.NEUTRAL_MASTER.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_APPRENTICE.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.JEDI_PADAWAN.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.NEUTRAL_PADAWAN.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.JEDI_TEMPLE_GUARD.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SITH_GUARD.get(), ForceUserRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.SEAT.get(), SeatRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.FORCE_BEAM_EFFECT.get(), ForceBeamEffectRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.FORCE_PUSH_WAVE.get(), ForcePushWaveRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.FORCE_ABILITY_EFFECT.get(), ForceAbilityEffectRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.FORCE_PROJECTION_CLONE.get(), ForceProjectionCloneRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.THROWN_LIGHTSABER.get(), ThrownLightsaberRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.NOVADIVE_ENTITY.get(), NovadiveRenderer::new);
-        EntityRenderers.register(galaxyunderchaos.FLASHFIRE_ENTITY.get(), FlashfireRenderer::new);
-        event.enqueueWork(() -> {
-            ModItemProperties.addCustomItemProperties();
-            Minecraft mc = Minecraft.getInstance();
-
-            mc.getEntityRenderDispatcher()
-                    .getSkinMap()
-                    .values()
-                    .forEach(renderer -> {
-                        if (renderer instanceof PlayerRenderer pr) {
-                            pr.addLayer(new LightsaberFirstPersonLayer(pr));
-                        }
-                    });
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.GROUND_SABER_STAND.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.WHITE_GROUND_SABER_STAND.get(), RenderType.cutout());
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_2.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_3.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(galaxyunderchaos.MALACHOR_TEMPLE_STONE_GLASS_4.get(), RenderType.translucent());
-            java.util.List.of(
-                    galaxyunderchaos.BLBA_LEAVES.get(),
-                    galaxyunderchaos.BLBA_SAPLING.get(),
-                    galaxyunderchaos.DILLIA_LEAVES.get(),
-                    galaxyunderchaos.DILLIA_SAPLING.get(),
-                    galaxyunderchaos.DILLIA_DOOR_BLOCK.get(),
-                    galaxyunderchaos.DILLIA_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.BLBA_DOOR_BLOCK.get(),
-                    galaxyunderchaos.BLBA_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.CAMBYLICTUS_DOOR_BLOCK.get(),
-                    galaxyunderchaos.CAMBYLICTUS_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.PERLOTE_DOOR_BLOCK.get(),
-                    galaxyunderchaos.PERLOTE_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.RUTIGER_DOOR_BLOCK.get(),
-                    galaxyunderchaos.RUTIGER_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.POLAR_DOOR_BLOCK.get(),
-                    galaxyunderchaos.POLAR_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.BELLEW_FLOWER.get(),
-                    galaxyunderchaos.CAMBYLICTUS_LEAVES.get(),
-                    galaxyunderchaos.CAMBYLICTUS_SAPLING.get(),
-                    galaxyunderchaos.PERLOTE_LEAVES.get(),
-                    galaxyunderchaos.PERLOTE_SAPLING.get(),
-                    galaxyunderchaos.RUTIGER_LEAVES.get(),
-                    galaxyunderchaos.RUTIGER_SAPLING.get(),
-                    galaxyunderchaos.POLAR_LEAVES.get(),
-                    galaxyunderchaos.POLAR_SAPLING.get(),
-                    galaxyunderchaos.NABOO_PINE_LEAVES.get(),
-                    galaxyunderchaos.NABOO_PINE_SAPLING.get(),
-                    galaxyunderchaos.NABOO_PINE_DOOR_BLOCK.get(),
-                    galaxyunderchaos.NABOO_PINE_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.QUEENS_HEART_FLOWER.get(),
-                    galaxyunderchaos.HEART_BERRY_LEAVES.get(),
-                    galaxyunderchaos.HEART_BERRY_FRUIT_LEAVES.get(),
-                    galaxyunderchaos.HEART_BERRY_SAPLING.get(),
-                    galaxyunderchaos.AK_LEAVES.get(),
-                    galaxyunderchaos.AK_SAPLING.get(),
-                    galaxyunderchaos.AK_DOOR_BLOCK.get(),
-                    galaxyunderchaos.AK_TRAPDOOR_BLOCK.get(),
-                    galaxyunderchaos.HEART_BERRY_DOOR_BLOCK.get(),
-                    galaxyunderchaos.HEART_BERRY_TRAPDOOR_BLOCK.get()
-            ).forEach(block -> ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutout()));
-
-            galaxyunderchaos.LIGHTSABERS.values()
-                    .forEach(reg -> ItemBlockRenderTypes.setRenderLayer(
-                            Block.byItem(reg.get()),
-                            RenderType.translucent()
-                    ));
-        });
     }
 
 //    @SubscribeEvent

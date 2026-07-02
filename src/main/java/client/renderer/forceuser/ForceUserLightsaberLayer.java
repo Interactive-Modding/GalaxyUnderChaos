@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import server.galaxyunderchaos.Config;
 import server.galaxyunderchaos.entity.forceuser.ForceUserEntity;
 import server.galaxyunderchaos.entity.forceuser.ForceUserLoadout;
 
@@ -33,12 +34,23 @@ public class ForceUserLightsaberLayer extends RenderLayer<ForceUserEntity, Force
             if (!held.isEmpty()) {
                 renderInRightHand(entity, held, poseStack, buffer, packedLight);
             }
-        } else {
+        } else if (shouldRenderBeltLightsaber(entity)) {
             ItemStack belt = entity.getBeltLightsaber();
             if (!belt.isEmpty()) {
                 renderOnBelt(entity, belt, poseStack, buffer, packedLight);
             }
         }
+    }
+
+    private static boolean shouldRenderBeltLightsaber(ForceUserEntity entity) {
+        // The config is for crowd/ambient NPC optimization only. Apprentices/padawans
+        // and master-tier NPCs keep their belt hilts visible because their rank needs
+        // to remain readable even when generic NPC belt rendering is disabled.
+        if (Config.renderNpcBeltLightsabers) {
+            return true;
+        }
+        var role = entity.getForceUserRole();
+        return role.isStudent() || role.isBoss();
     }
 
     private void renderOnBelt(ForceUserEntity entity, ItemStack stack, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {

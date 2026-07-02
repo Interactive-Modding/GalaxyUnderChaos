@@ -36,12 +36,17 @@ public class Config
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
 
+    public static final ForgeConfigSpec.BooleanValue RENDER_NPC_BELT_LIGHTSABERS = BUILDER
+            .comment("Render inactive lightsabers on generic Force-user NPC belts. Disable this if Force-user crowds or temples cause client FPS drops. Apprentice/padawan and master-tier NPCs ignore this setting and keep belt hilts visible.")
+            .define("renderNpcBeltLightsabers", true);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
     public static int magicNumber;
     public static String magicNumberIntroduction;
     public static Set<Item> items;
+    public static boolean renderNpcBeltLightsabers = true;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -54,6 +59,7 @@ public class Config
         logDirtBlock = LOG_DIRT_BLOCK.get();
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+        renderNpcBeltLightsabers = RENDER_NPC_BELT_LIGHTSABERS.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()

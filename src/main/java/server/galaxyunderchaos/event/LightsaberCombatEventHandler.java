@@ -79,7 +79,9 @@ public class LightsaberCombatEventHandler {
             boolean blocking = isBlockingWithSaber(player);
 
             if (holdingActiveSaber || blocking) {
-                cap.setStaminaVisibleTicks(Math.max(cap.getStaminaVisibleTicks(), 40));
+                cap.keepStaminaVisible(40);
+            } else {
+                cap.tickStaminaVisibility();
             }
 
             float moveDrain = LightsaberFormEffects.getMovementDrainMultiplier(form);
@@ -104,7 +106,7 @@ public class LightsaberCombatEventHandler {
                 cap.setGuardStamina(Math.min(cap.getMaxGuardStamina(), cap.getGuardStamina() + Math.max(1, Math.round(regen))));
             }
 
-            if (event.player instanceof net.minecraft.server.level.ServerPlayer sp && (cap.isDirty() || sp.tickCount % 10 == 0 && cap.isStaminaVisible())) {
+            if (event.player instanceof net.minecraft.server.level.ServerPlayer sp && (cap.isDirty() || (sp.tickCount % 10 == 0 && cap.isStaminaVisible()))) {
                 LightsaberFormCapabilityManager.syncCapability(sp);
             }
         });
@@ -123,17 +125,19 @@ public class LightsaberCombatEventHandler {
         }
 
         if (incoming != null && ForcePowerHandler.isTutaminisActive(target) && isActiveSaberAttack(incoming)) {
-            event.setCanceled(true);
-            target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                    ModSounds.LIGHTSABER_DEFLECT.get(), SoundSource.PLAYERS, 0.85F, 1.45F);
-            if (target instanceof net.minecraft.server.level.ServerPlayer defender) {
-                ForcePowerHandler.spawnTutaminisVisual(defender);
+            if (ForcePowerHandler.tryConsumeTutaminisSaberBlock(target)) {
+                event.setCanceled(true);
+                target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
+                        ModSounds.LIGHTSABER_DEFLECT.get(), SoundSource.PLAYERS, 0.85F, 1.45F);
+                if (target instanceof net.minecraft.server.level.ServerPlayer defender) {
+                    ForcePowerHandler.spawnTutaminisVisual(defender);
+                }
+                if (incoming instanceof LivingEntity attacker) {
+                    attacker.invulnerableTime = 0;
+                    attacker.hurt(target.damageSources().indirectMagic(target, target), Math.max(1.0F, event.getAmount() * 0.35F));
+                }
+                return;
             }
-            if (incoming instanceof LivingEntity attacker) {
-                attacker.invulnerableTime = 0;
-                attacker.hurt(target.damageSources().indirectMagic(target, target), Math.max(1.0F, event.getAmount() * 0.35F));
-            }
-            return;
         }
 
         if (!(target instanceof Player player)) {

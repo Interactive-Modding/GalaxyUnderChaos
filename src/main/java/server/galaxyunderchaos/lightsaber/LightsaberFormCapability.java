@@ -94,15 +94,28 @@ public class LightsaberFormCapability implements INBTSerializable<CompoundTag> {
 
     public void tickLastGuardContact() {
         lastGuardContactTicks++;
+    }
+
+    public void keepStaminaVisible(int ticks) {
+        int clamped = Math.max(0, ticks);
+        if (staminaVisibleTicks < clamped) {
+            staminaVisibleTicks = clamped;
+            dirty = true;
+        }
+    }
+
+    public void tickStaminaVisibility() {
         if (staminaVisibleTicks > 0) {
             staminaVisibleTicks--;
+            if (staminaVisibleTicks == 0) {
+                dirty = true;
+            }
         }
     }
 
     public void markGuardContact() {
         lastGuardContactTicks = 0;
-        staminaVisibleTicks = Math.max(staminaVisibleTicks, 120);
-        dirty = true;
+        keepStaminaVisible(120);
     }
 
     public int getStaminaVisibleTicks() {

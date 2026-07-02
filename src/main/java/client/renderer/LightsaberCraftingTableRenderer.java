@@ -31,21 +31,21 @@ public class LightsaberCraftingTableRenderer implements BlockEntityRenderer<Ligh
         Direction facing = blockEntity.getBlockState().getValue(LightsaberCraftingTableBlock.FACING);
         float rotation = -facing.toYRot();
 
-        for (int slot = 0; slot < LightsaberCraftingTableLogic.INPUT_SLOT_COUNT; ++slot) {
-            ItemStack stack = blockEntity.getItem(slot);
-            if (stack.isEmpty()) {
-                continue;
-            }
-
-            poseStack.pushPose();
-            poseStack.translate(0.5D, 1.02D, 0.5D);
-            poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(rotation));
-            poseStack.translate(POSITIONS[slot][0], 0.0D, POSITIONS[slot][1]);
-            poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(90.0F));
-            poseStack.scale(0.45F, 0.45F, 0.45F);
-            this.itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
-            poseStack.popPose();
-        }
+//        for (int slot = 0; slot < LightsaberCraftingTableLogic.INPUT_SLOT_COUNT; ++slot) {
+//            ItemStack stack = blockEntity.getItem(slot);
+//            if (stack.isEmpty()) {
+//                continue;
+//            }
+//
+//            poseStack.pushPose();
+//            poseStack.translate(0.5D, 1.02D, 0.5D);
+//            poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(rotation));
+//            poseStack.translate(POSITIONS[slot][0], 0.0D, POSITIONS[slot][1]);
+//            poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(90.0F));
+//            poseStack.scale(0.45F, 0.45F, 0.45F);
+//            this.itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, packedLight, packedOverlay, poseStack, buffer, blockEntity.getLevel(), 0);
+//            poseStack.popPose();
+//        }
 
         LightsaberCraftingTableLogic.Evaluation evaluation = LightsaberCraftingTableLogic.evaluate(blockEntity);
         ItemStack previewResult = LightsaberCraftingTableLogic.inactivePreview(evaluation.result());
@@ -67,12 +67,15 @@ public class LightsaberCraftingTableRenderer implements BlockEntityRenderer<Ligh
         float rotation = -facing.toYRot();
 
         poseStack.pushPose();
-        poseStack.translate(0.5D, 1.055D, 0.5D);
+        poseStack.translate(0.5D, 1.08D, 0.61D);
         poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(rotation));
-        poseStack.translate(0.0D, 0.016D, 0.045D);
+        poseStack.translate(0.0D, 0.018D, 0.020D);
+        // The raw forge preview renderer is much larger than a normal item render. Keep the
+        // completed hilt small enough to sit on the table rests instead of covering the block.
+        poseStack.mulPose(com.mojang.math.Axis.YP.rotationDegrees(90.0F));
         poseStack.mulPose(com.mojang.math.Axis.ZP.rotationDegrees(90.0F));
         poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(90.0F));
-        poseStack.scale(0.72F, 0.72F, 0.72F);
+        poseStack.scale(0.18F, 0.18F, 0.18F);
         ModItemRenderer.renderForgePreview(previewResult, poseStack, buffer, packedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();
     }

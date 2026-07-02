@@ -22,8 +22,8 @@ public class ShipCraftingTableMenu extends AbstractContainerMenu {
 
     public static final int BLUEPRINT_SLOT_X = 20;
     public static final int BLUEPRINT_SLOT_Y = 17;
-    public static final int RESULT_SLOT_X = 136;
-    public static final int RESULT_SLOT_Y = 87;
+    public static final int RESULT_SLOT_X = 58;
+    public static final int RESULT_SLOT_Y = 17;
     public static final int PLAYER_INV_X = 47;
     public static final int PLAYER_INV_Y = 184;
     public static final int HOTBAR_Y = 242;

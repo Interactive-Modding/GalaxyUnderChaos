@@ -93,7 +93,7 @@ public final class LightsaberDynamicLightHandler {
             Entity entity = adapter.entity;
 
             if (!entity.isAlive()) {
-                DynamicLightsBridge.remove(adapter);
+                removeAdapter(adapter);
                 iterator.remove();
                 continue;
             }
@@ -104,7 +104,7 @@ public final class LightsaberDynamicLightHandler {
 
             int lightLevel = getActiveSaberLightLevel(itemEntity.getItem());
             if (lightLevel <= 0) {
-                DynamicLightsBridge.remove(adapter);
+                removeAdapter(adapter);
                 iterator.remove();
             } else {
                 adapter.lightLevel = lightLevel;
@@ -129,7 +129,7 @@ public final class LightsaberDynamicLightHandler {
 
         if (lightLevel <= 0) {
             if (existing != null) {
-                DynamicLightsBridge.remove(existing);
+                removeAdapter(existing);
                 ACTIVE_LIGHTS.remove(uuid);
             }
             return;
@@ -137,7 +137,7 @@ public final class LightsaberDynamicLightHandler {
 
         if (existing != null) {
             if (existing.level != entity.level()) {
-                DynamicLightsBridge.remove(existing);
+                removeAdapter(existing);
                 ACTIVE_LIGHTS.remove(uuid);
             } else {
                 existing.entity = entity;
@@ -154,8 +154,15 @@ public final class LightsaberDynamicLightHandler {
 
     private static void removeLight(UUID uuid) {
         DynamicLightAdapter existing = ACTIVE_LIGHTS.remove(uuid);
-        if (existing != null) {
-            DynamicLightsBridge.remove(existing);
+        removeAdapter(existing);
+    }
+
+    private static void removeAdapter(DynamicLightAdapter adapter) {
+        if (adapter != null) {
+            // If the external Dynamic Lights mod keeps a stale reference after removal,
+            // make the proxy report zero light instead of leaving a permanent light source.
+            adapter.disable();
+            DynamicLightsBridge.remove(adapter);
         }
     }
 
@@ -175,6 +182,10 @@ public final class LightsaberDynamicLightHandler {
                     new Class<?>[]{sourceInterface},
                     handler
             );
+        }
+
+        private void disable() {
+            this.lightLevel = 0;
         }
 
         private Object invoke(Object proxy, Method method, Object[] args) {
@@ -245,7 +256,7 @@ public final class LightsaberDynamicLightHandler {
             }
             resolved = true;
 
-            if (!ModList.get().isLoaded("dynamiclights")) {
+            if (!ModList.get().isLoaded("dynamiclights") && !ModList.get().isLoaded("dynamiclightsreforged")) {
                 available = false;
                 return;
             }

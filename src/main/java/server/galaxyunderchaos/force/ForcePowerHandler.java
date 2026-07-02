@@ -30,7 +30,9 @@ import java.util.List;
 
 public final class ForcePowerHandler {
     private static final int DEFAULT_COOLDOWN = 15;
+    private static final int TUTAMINIS_SABER_BLOCK_COOLDOWN_TICKS = 100;
     private static final String LEAP_CHAIN_TAG = "GalaxyUnderChaosForceLeapChain";
+    private static final String TUTAMINIS_SABER_BLOCK_READY_TIME_TAG = "GalaxyUnderChaosTutaminisSaberBlockReadyTime";
 
     private ForcePowerHandler() {}
 
@@ -472,6 +474,20 @@ public final class ForcePowerHandler {
 
     public static boolean isTutaminisActive(LivingEntity entity) {
         return hasForceEffect(entity, ForcePower.TUTAMINIS);
+    }
+
+    public static boolean tryConsumeTutaminisSaberBlock(LivingEntity defender) {
+        if (!isTutaminisActive(defender)) {
+            return false;
+        }
+        long gameTime = defender.level().getGameTime();
+        CompoundTag data = defender.getPersistentData();
+        long readyTime = data.getLong(TUTAMINIS_SABER_BLOCK_READY_TIME_TAG);
+        if (readyTime > gameTime) {
+            return false;
+        }
+        data.putLong(TUTAMINIS_SABER_BLOCK_READY_TIME_TAG, gameTime + TUTAMINIS_SABER_BLOCK_COOLDOWN_TICKS);
+        return true;
     }
 
     public static void spawnTutaminisVisual(ServerPlayer player) {
